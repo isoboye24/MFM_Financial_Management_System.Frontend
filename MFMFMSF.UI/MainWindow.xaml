@@ -4,47 +4,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:MFMFMSF.UI.Controls" xmlns:views="clr-namespace:MFMFMSF.UI.Features.Dashboard.Views"
     WindowStyle="None"
     ResizeMode="CanResize"
-    WindowState="Minimized"
+    WindowState="Normal"
+    WindowStartupLocation="CenterScreen"
     Background="#F5F7FB">
 
     <Grid>
 
         <Grid.ColumnDefinitions>
-
-            <!-- Sidebar -->
-            <ColumnDefinition Width="290"/>
-
-            <!-- Main Content -->
+            <ColumnDefinition Width="260"/>
             <ColumnDefinition Width="*"/>
-
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
-        <controls:Sidebar Grid.Row="0"/>
+        <controls:Sidebar Grid.Column="0"/>
 
-        <!-- Main Content -->
-        <Grid Grid.ColumnSpan="3" Margin="34,0,0,0">
+        <!-- Right side -->
+        <Grid Grid.Column="1">
 
             <Grid.RowDefinitions>
-
-                <!-- Top Bar -->
-                <RowDefinition Height="20"/>
-
-                <!-- Welcome and Notification Bar -->
-                <RowDefinition Height="80"/>
-
-                <!-- Dashboard -->
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
-
             </Grid.RowDefinitions>
 
             <controls:TopBar x:Name="TopBarControl" Grid.Row="0"/>
 
             <ScrollViewer Grid.Row="1">
-
-                <!-- DashboardView -->
                 <views:DashboardView/>
-
             </ScrollViewer>
 
         </Grid>
@@ -52,3 +37,4 @@
     </Grid>
 
 </Window>
+

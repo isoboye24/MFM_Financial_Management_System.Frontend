@@ -43,5 +43,25 @@ namespace MFMFMSF.UI.Controls
         {
             CloseRequested?.Invoke(this, EventArgs.Empty);
         }
+
+        private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Window? window = Window.GetWindow(this);
+
+            if (window == null)
+                return;
+
+            if (e.ClickCount == 2)
+            {
+                window.WindowState =
+                    window.WindowState == WindowState.Maximized
+                    ? WindowState.Normal
+                    : WindowState.Maximized;
+
+                return;
+            }
+
+            window.DragMove();
+        }
     }
 }

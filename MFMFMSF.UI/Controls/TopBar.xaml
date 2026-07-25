@@ -6,62 +6,69 @@
              xmlns:local="clr-namespace:MFMFMSF.UI.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
 
-            <ColumnDefinition/>
+    <Border Background="White"
+        MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
 
-            <ColumnDefinition Width="120"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
 
-        </Grid.ColumnDefinitions>
+                <ColumnDefinition/>
 
-        <StackPanel Grid.Column="1"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right">
+                <ColumnDefinition Width="120"/>
 
-            <Button x:Name="MinimizeButton"
-                    Width="40"
-                    Cursor="Hand"
-                    Content="—"
-                    Click="MinimizeButton_Click"/>
+            </Grid.ColumnDefinitions>
 
-            <Button x:Name="MaximizeButton"
-                    Width="40"
-                    Cursor="Hand"
-                    Content="□"
-                    Click="MaximizeButton_Click"/>
+            <StackPanel Grid.Column="1"
+                 Orientation="Horizontal"
+                 HorizontalAlignment="Right">
 
-            <Button x:Name="CloseButton"
-                    Width="40"
-                    Cursor="Hand"
-                    Content="✕"
-                    Foreground="Red"
-                    Click="CloseButton_Click">
-                <Button.Style>
+                <Button x:Name="MinimizeButton"
+                 Width="40"
+                 Cursor="Hand"
+                 Content="—"
+                 Click="MinimizeButton_Click"/>
 
-                    <Style TargetType="Button">
+                <Button x:Name="MaximizeButton"
+                 Width="40"
+                 Cursor="Hand"
+                 Content="□"
+                 Click="MaximizeButton_Click"/>
 
-                        <Setter Property="Background" Value="Transparent"/>
+                <Button x:Name="CloseButton"
+                 Width="40"
+                 Cursor="Hand"
+                 Content="✕"
+                 Foreground="Red"
+                 Click="CloseButton_Click">
+                    <Button.Style>
 
-                        <Setter Property="Foreground" Value="Black"/>
+                        <Style TargetType="Button">
 
-                        <Style.Triggers>
+                            <Setter Property="Background" Value="Transparent"/>
 
-                            <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
 
-                                <Setter Property="Background" Value="#E81123"/>
+                            <Style.Triggers>
 
-                                <Setter Property="Foreground" Value="White"/>
+                                <Trigger Property="IsMouseOver" Value="True">
 
-                            </Trigger>
+                                    <Setter Property="Background" Value="#E81123"/>
 
-                        </Style.Triggers>
+                                    <Setter Property="Foreground" Value="White"/>
 
-                    </Style>
+                                </Trigger>
 
-                </Button.Style>
-            </Button>
+                            </Style.Triggers>
 
-        </StackPanel>
-    </Grid>
+                        </Style>
+
+                    </Button.Style>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+
+    </Border>
+   
 </UserControl>
