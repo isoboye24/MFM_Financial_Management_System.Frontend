@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="MFMFMSF.UI.Controls.Sidebar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Background="#171B45">
 
@@ -53,9 +54,51 @@
 
         </StackPanel>
 
-        <!-- Navigation will go here -->
+        <!-- Navigations -->
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1"
+            Margin="0,20,0,0">
+
+            <controls:SidebarMenuItem
+                Title="Dashboard"
+                Icon="🏠"
+                IsSelected="True"/>
+
+            <controls:SidebarMenuItem
+                Title="Offerings"
+                Icon="🎁"/>
+
+            <controls:SidebarMenuItem
+        Title="Tithes"
+        Icon="❤"/>
+
+            <controls:SidebarMenuItem
+        Title="Seeds"
+        Icon="🌱"/>
+
+            <controls:SidebarMenuItem
+        Title="Other Income"
+        Icon="$"/>
+
+            <controls:SidebarMenuItem
+        Title="Expenditures"
+        Icon="💼"/>
+
+            <controls:SidebarMenuItem
+        Title="Projects"
+        Icon="🏢"/>
+
+            <controls:SidebarMenuItem
+        Title="Members"
+        Icon="👥"/>
+
+            <controls:SidebarMenuItem
+        Title="Reports"
+        Icon="📊"/>
+
+            <controls:SidebarMenuItem
+        Title="Settings"
+        Icon="⚙"/>
 
         </StackPanel>
 
