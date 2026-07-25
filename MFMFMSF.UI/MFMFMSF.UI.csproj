@@ -15,10 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\" />
-    <Folder Include="Controls\" />
-    <Folder Include="Assets\" />
-    <Folder Include="Themes\" />
+    <Folder Include="Assets\Icons\" />
+    <Folder Include="Assets\Images\" />
   </ItemGroup>
 
 </Project>
