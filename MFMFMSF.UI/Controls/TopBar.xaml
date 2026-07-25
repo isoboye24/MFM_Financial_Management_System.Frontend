@@ -15,31 +15,52 @@
 
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="MFM Financial Management System"
-           VerticalAlignment="Center"
-           Margin="15,0"
-           FontWeight="SemiBold"
-           FontSize="14"/>
-
         <StackPanel Grid.Column="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
 
             <Button x:Name="MinimizeButton"
                     Width="40"
+                    Cursor="Hand"
                     Content="—"
                     Click="MinimizeButton_Click"/>
 
             <Button x:Name="MaximizeButton"
                     Width="40"
+                    Cursor="Hand"
                     Content="□"
                     Click="MaximizeButton_Click"/>
 
             <Button x:Name="CloseButton"
                     Width="40"
+                    Cursor="Hand"
                     Content="✕"
                     Foreground="Red"
-                    Click="CloseButton_Click"/>
+                    Click="CloseButton_Click">
+                <Button.Style>
+
+                    <Style TargetType="Button">
+
+                        <Setter Property="Background" Value="Transparent"/>
+
+                        <Setter Property="Foreground" Value="Black"/>
+
+                        <Style.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+
+                                <Setter Property="Background" Value="#E81123"/>
+
+                                <Setter Property="Foreground" Value="White"/>
+
+                            </Trigger>
+
+                        </Style.Triggers>
+
+                    </Style>
+
+                </Button.Style>
+            </Button>
 
         </StackPanel>
     </Grid>
