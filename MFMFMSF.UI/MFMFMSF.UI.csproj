@@ -17,6 +17,14 @@
   <ItemGroup>
     <Folder Include="Assets\Icons\" />
     <Folder Include="Assets\Images\" />
+    <Folder Include="Features\Members\Controls\" />
+    <Folder Include="Features\Members\Resources\" />
+    <Folder Include="Features\Members\ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="5.3.2" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.3.2" />
   </ItemGroup>
 
 </Project>

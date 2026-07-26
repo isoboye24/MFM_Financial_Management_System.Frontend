@@ -1,12 +1,35 @@
 ﻿<UserControl x:Class="MFMFMSF.UI.Controls.SidebarMenuItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Root"
+             Cursor="Hand"
              Height="55">
-    
+
     <Border x:Name="MenuBorder"
-            Margin="12,4"
-            CornerRadius="10"
-            Background="Transparent">
+        Margin="12,4"
+        CornerRadius="10">
+
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Background" Value="Transparent"/>
+
+                <Style.Triggers>
+
+                    <!-- Hover -->
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#2A2F63"/>
+                    </Trigger>
+
+                    <!-- Selected -->
+                    <DataTrigger Binding="{Binding IsSelected, ElementName=Root}"
+                             Value="True">
+                        <Setter Property="Background" Value="#5B4CF3"/>
+                    </DataTrigger>
+
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
 
         <Grid Margin="15,0">
 
@@ -16,20 +39,24 @@
             </Grid.ColumnDefinitions>
 
             <!-- Icon -->
-            <TextBlock x:Name="IconText"
-                       Grid.Column="0"
-                       FontSize="18"
-                       Foreground="White"
-                       VerticalAlignment="Center"/>
+            <materialDesign:PackIcon
+                Grid.Column="0"
+                Width="22"
+                Height="22"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="White"
+                Kind="{Binding Icon, ElementName=Root}" />
 
             <!-- Title -->
-            <TextBlock x:Name="TitleText"
-                       Grid.Column="1"
-                       Margin="15,0,0,0"
-                       FontSize="16"
-                       FontWeight="SemiBold"
-                       Foreground="White"
-                       VerticalAlignment="Center"/>
+            <TextBlock
+                Grid.Column="1"
+                Margin="15,0,0,0"
+                VerticalAlignment="Center"
+                FontSize="16"
+                FontWeight="SemiBold"
+                Foreground="White"
+                Text="{Binding Title, ElementName=Root}" />
 
         </Grid>
 

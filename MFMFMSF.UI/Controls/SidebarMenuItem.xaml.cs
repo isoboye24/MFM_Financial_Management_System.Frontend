@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using MaterialDesignThemes.Wpf;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MFMFMSF.UI.Controls
 {
@@ -8,6 +10,8 @@ namespace MFMFMSF.UI.Controls
     /// </summary>
     public partial class SidebarMenuItem : UserControl
     {
+        public event RoutedEventHandler? Click;
+
         public SidebarMenuItem()
         {
             InitializeComponent();
@@ -24,30 +28,20 @@ namespace MFMFMSF.UI.Controls
                 nameof(Title),
                 typeof(string),
                 typeof(SidebarMenuItem),
-                new PropertyMetadata(string.Empty, OnTitleChanged));
+                new PropertyMetadata(string.Empty));
 
-        private static void OnTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public PackIconKind Icon
         {
-            ((SidebarMenuItem)d).TitleText.Text = e.NewValue?.ToString();
-        }
-
-        public string Icon
-        {
-            get => (string)GetValue(IconProperty);
+            get => (PackIconKind)GetValue(IconProperty);
             set => SetValue(IconProperty, value);
         }
 
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register(
                 nameof(Icon),
-                typeof(string),
+                typeof(PackIconKind),
                 typeof(SidebarMenuItem),
-                new PropertyMetadata(string.Empty, OnIconChanged));
-
-        private static void OnIconChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            ((SidebarMenuItem)d).IconText.Text = e.NewValue?.ToString();
-        }
+                new PropertyMetadata(PackIconKind.ViewDashboard));
 
         public bool IsSelected
         {
@@ -72,5 +66,27 @@ namespace MFMFMSF.UI.Controls
                         (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#5B4CF3"))
                     : System.Windows.Media.Brushes.Transparent;
         }
+
+        private void MenuBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (Command?.CanExecute(null) == true)
+            {
+                Command.Execute(null);
+            }
+
+            Click?.Invoke(this, new RoutedEventArgs());
+        }
+
+        public ICommand? Command
+        {
+            get => (ICommand?)GetValue(CommandProperty);
+            set => SetValue(CommandProperty, value);
+        }
+
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register(
+                nameof(Command),
+                typeof(ICommand),
+                typeof(SidebarMenuItem));
     }
 }

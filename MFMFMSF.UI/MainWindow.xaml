@@ -28,8 +28,8 @@
 
             <controls:TopBar x:Name="TopBarControl" Grid.Row="0"/>
 
-            <ScrollViewer Grid.Row="1">
-                <views:DashboardView/>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ContentControl Content="{Binding CurrentView}" />
             </ScrollViewer>
 
         </Grid>

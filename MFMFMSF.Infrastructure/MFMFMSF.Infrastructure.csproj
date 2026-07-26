@@ -11,4 +11,8 @@
     <ProjectReference Include="..\MFMFMSF.Shared\MFMFMSF.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Service\" />
+  </ItemGroup>
+
 </Project>
