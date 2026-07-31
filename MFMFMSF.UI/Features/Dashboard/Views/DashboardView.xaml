@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
+             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls" 
+             xmlns:lvc="clr-namespace:MFMFMSF.UI.Features.Dashboard.Controls" 
+             xmlns:viewmodels="clr-namespace:MFMFMSF.UI.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="900"
              d:DesignWidth="1400">
@@ -103,13 +106,8 @@
                 <Border Grid.Column="0"
                         Background="White"
                         CornerRadius="18"
-                        Padding="20">
-
-                    <TextBlock
-                        FontWeight="SemiBold"
-                        FontSize="18"
-                        Text="Income Overview"/>
-
+                        Padding="10">
+                    <lvc:IncomeChart/>
                 </Border>
 
                 <Border Grid.Column="2"
@@ -144,19 +142,42 @@
                     <TextBlock
                         FontWeight="SemiBold"
                         FontSize="18"
-                        Text="Recent Transactions"/>
+                        Text="Recent Records"/>
 
                 </Border>
 
                 <Border Grid.Column="2"
-                        Background="White"
-                        CornerRadius="18"
-                        Padding="20">
+            Background="White"
+            CornerRadius="18"
+            Padding="20">
 
-                    <TextBlock
-                        FontWeight="SemiBold"
-                        FontSize="18"
-                        Text="Quick Actions"/>
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                Grid.Row="0"
+                Text="Quick Actions"
+                FontSize="18"
+                FontWeight="SemiBold"/>
+
+                        <UniformGrid
+                Grid.Row="2"
+                Rows="2"
+                Columns="3">
+                    <controls:QuickActionButton
+                        Margin="6"
+                        Title="Record Offering"
+                        IconKind="Gift"
+                        IconBackground="#5B5CEB"/>
+
+                        </UniformGrid>
+
+                    </Grid>
 
                 </Border>
 

@@ -3,10 +3,126 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Dashboard.Controls"
+             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Dashboard.Controls" 
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Border
+        CornerRadius="18"
+        Padding="25"
+        Background="White">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Header -->
+
+                <TextBlock
+                Text="Income Overview"
+                FontWeight="SemiBold"
+                FontSize="20"/>
+
+                <ComboBox
+                Grid.Column="1"
+                Width="120"
+                Height="35"
+                HorizontalAlignment="Right">
+
+                    <ComboBoxItem>This Month</ComboBoxItem>
+                    <ComboBoxItem>Last Month</ComboBoxItem>
+                    <ComboBoxItem>This Year</ComboBoxItem>
+
+                </ComboBox>
+
+                <!-- Donut -->
+
+                <Grid Grid.Row="1">
+
+                    <lvc:PieChart
+                        Series="{Binding Series}"
+                        LegendPosition="Hidden"/>
+
+                </Grid>
+
+                <!-- Income List -->
+
+                <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="25,0,0,0">
+
+                    <ItemsControl ItemsSource="{Binding IncomeItems}">
+
+                        <ItemsControl.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Grid Margin="0 12">
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="70"/>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Ellipse
+                                    Width="12"
+                                    Height="12"
+                                    Fill="{Binding Color}"
+                                    VerticalAlignment="Center"/>
+
+                                    <TextBlock
+                                    Grid.Column="1"
+                                    Text="{Binding Name}"
+                                    FontSize="15"/>
+
+                                    <TextBlock
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Right"
+                                    Text="{Binding Amount,StringFormat=C}"/>
+
+                                    <TextBlock
+                                    Grid.Column="3"
+                                    HorizontalAlignment="Right"
+                                    Text="{Binding Percentage,StringFormat={}{0:F1}%}"/>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                    <Separator Margin="0 15"/>
+
+                    <TextBlock
+                    Text="Total Income"
+                    Foreground="Gray"/>
+
+                    <TextBlock
+                    Text="{Binding TotalIncome,StringFormat=C}"
+                    FontSize="28"
+                    FontWeight="Bold"
+                    Foreground="#6C4CF6"/>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
     </Grid>
 </UserControl>
