@@ -115,10 +115,7 @@
                         CornerRadius="18"
                         Padding="20">
 
-                    <TextBlock
-                        FontWeight="SemiBold"
-                        FontSize="18"
-                        Text="Expense Overview"/>
+                    <lvc:IncomeVsExpenditure/>
 
                 </Border>
 
