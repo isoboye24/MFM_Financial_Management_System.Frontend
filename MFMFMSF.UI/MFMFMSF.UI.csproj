@@ -20,6 +20,7 @@
     <Folder Include="Features\Members\Controls\" />
     <Folder Include="Features\Members\Resources\" />
     <Folder Include="Features\Members\ViewModels\" />
+    <Folder Include="Features\Offering\" />
   </ItemGroup>
 
   <ItemGroup>

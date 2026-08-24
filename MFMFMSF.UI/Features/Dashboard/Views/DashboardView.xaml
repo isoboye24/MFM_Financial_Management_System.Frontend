@@ -23,32 +23,16 @@
                 <RowDefinition Height="350"/>
             </Grid.RowDefinitions>
 
-            <!-- ================= HEADER ================= -->
+            <!-- ================= TOP BAR ================= -->
 
             <Border Grid.Row="0"
                     Height="60"
                     Background="White"
                     CornerRadius="15"
-                    Padding="20"
+                    Padding="2"
                     Margin="0,0,0,20">
 
-                <DockPanel LastChildFill="False">
-
-                    <StackPanel>
-
-                        <TextBlock
-                            FontSize="24"
-                            FontWeight="SemiBold"
-                            Text="Dashboard"/>
-
-                        <TextBlock
-                            Foreground="Gray"
-                            FontSize="13"
-                            Text="Welcome back! Here's today's summary."/>
-
-                    </StackPanel>
-
-                </DockPanel>
+                <lvc:TopWelcomeBar/>
 
             </Border>
 
