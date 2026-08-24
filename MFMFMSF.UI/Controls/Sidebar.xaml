@@ -68,9 +68,10 @@
 
             <controls:SidebarMenuItem
                 Title="Offerings"
-                Icon="Gift"/>
+                Icon="Gift"
+                Command="{Binding NavigateOfferingsCommand}"/>  
 
-                        <controls:SidebarMenuItem
+            <controls:SidebarMenuItem
                 Title="Tithes"
                 Icon="HeartOutline"/>
 

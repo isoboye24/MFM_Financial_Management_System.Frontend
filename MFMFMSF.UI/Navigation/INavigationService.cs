@@ -2,7 +2,7 @@
 
 namespace MFMFMSF.UI.Navigation
 {
-    interface INavigationService
+    public interface INavigationService
     {
         void Navigate(UserControl page);
         event Action<UserControl>? PageChanged;

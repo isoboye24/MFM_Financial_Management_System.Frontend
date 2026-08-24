@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Offering.Controls.OfferingStatCards"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:MFMFMSF.UI.Features.Offering.Controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+
+        <!-- TOTAL OFFERINGS -->
+        <controls:OfferingStatCard
+            Grid.Column="0"
+            Title="Total Offerings"
+            Amount="$28,450.00"
+            Percentage="12.5%"
+            Comparison="vs Apr 1 – Apr 30"
+            Icon="Gift"
+            IconBackground="#EEE7FF"
+            IconForeground="#6941E8"/>
+
+
+        <!-- TITHES -->
+        <controls:OfferingStatCard
+            Grid.Column="2"
+            Title="Tithes"
+            Amount="$18,620.00"
+            Percentage="10.3%"
+            Comparison="vs Apr 1 – Apr 30"
+            Icon="Heart"
+            IconBackground="#E2EEFF"
+            IconForeground="#3478E5"/>
+
+
+        <!-- SEEDS -->
+        <controls:OfferingStatCard
+            Grid.Column="4"
+            Title="Seeds (Faith Promise)"
+            Amount="$6,870.00"
+            Percentage="8.7%"
+            Comparison="vs Apr 1 – Apr 30"
+            Icon="Sprout"
+            IconBackground="#E1F5EC"
+            IconForeground="#42A979"/>
+
+
+        <!-- SPECIAL OFFERINGS -->
+        <controls:OfferingStatCard
+            Grid.Column="6"
+            Title="Special Offerings"
+            Amount="$2,960.00"
+            Percentage="5.2%"
+            Comparison="vs Apr 1 – Apr 30"
+            Icon="Cash"
+            IconBackground="#FFF0D9"
+            IconForeground="#F29A22"/>
+
+
+        <!-- TRANSACTIONS -->
+        <controls:OfferingStatCard
+            Grid.Column="8"
+            Title="Total Transactions"
+            Amount="215"
+            Percentage="9.1%"
+            Comparison="vs Apr 1 – Apr 30"
+            Icon="AccountMultiple"
+            IconBackground="#FFE5EE"
+            IconForeground="#E65B89"/>
+
+    </Grid>
+
+</UserControl>

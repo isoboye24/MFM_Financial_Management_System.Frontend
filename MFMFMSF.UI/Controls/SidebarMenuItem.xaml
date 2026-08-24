@@ -8,7 +8,8 @@
 
     <Border x:Name="MenuBorder"
         Margin="12,4"
-        CornerRadius="10">
+        CornerRadius="10"
+        MouseLeftButtonUp="MenuBorder_MouseLeftButtonUp">
 
         <Border.Style>
             <Style TargetType="Border">

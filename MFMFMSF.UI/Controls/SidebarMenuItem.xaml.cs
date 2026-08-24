@@ -87,6 +87,7 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(Command),
                 typeof(ICommand),
-                typeof(SidebarMenuItem));
+                typeof(SidebarMenuItem),
+                new PropertyMetadata(null));
     }
 }

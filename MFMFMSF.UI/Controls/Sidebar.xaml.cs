@@ -1,32 +1,19 @@
 ﻿using MFMFMSF.UI.Features.Dashboard.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using MFMFMSF.UI.Navigation;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static MFMFMSF.UI.Features.Dashboard.ViewModels.SidebarViewModels;
 
 namespace MFMFMSF.UI.Controls
 {
-    /// <summary>
-    /// Interaction logic for Sidebar.xaml
-    /// </summary>
     public partial class Sidebar : UserControl
     {
         public Sidebar()
         {
             InitializeComponent();
+        }
 
-            DataContext = new SidebarViewModels(/* navigation service */);
+        public void SetNavigationService(INavigationService navigation)
+        {
+            DataContext = new SidebarViewModel(navigation);
         }
     }
 }
