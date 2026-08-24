@@ -1,0 +1,800 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Offering.Controls.OfferingSideCards"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             mc:Ignorable="d"
+             d:DesignHeight="500"
+             d:DesignWidth="270">
+
+    <UserControl.Resources>
+
+        <!-- ========================================= -->
+        <!-- COLORS -->
+        <!-- ========================================= -->
+
+        <SolidColorBrush x:Key="PrimaryText"
+                         Color="#172033"/>
+
+        <SolidColorBrush x:Key="SecondaryText"
+                         Color="#667085"/>
+
+        <SolidColorBrush x:Key="BorderColor"
+                         Color="#EAECF0"/>
+
+        <SolidColorBrush x:Key="Purple"
+                         Color="#6654D9"/>
+
+        <SolidColorBrush x:Key="Green"
+                         Color="#35B58C"/>
+
+        <SolidColorBrush x:Key="Orange"
+                         Color="#FF9D2E"/>
+
+        <SolidColorBrush x:Key="Blue"
+                         Color="#3182E8"/>
+
+
+        <!-- ========================================= -->
+        <!-- CARD SHADOW -->
+        <!-- ========================================= -->
+
+        <DropShadowEffect x:Key="CardShadow"
+                          BlurRadius="12"
+                          ShadowDepth="1"
+                          Opacity="0.06"
+                          Color="#000000"/>
+
+
+        <!-- ========================================= -->
+        <!-- SECTION TITLE -->
+        <!-- ========================================= -->
+
+        <Style x:Key="SectionTitle"
+               TargetType="TextBlock">
+
+            <Setter Property="FontFamily"
+                    Value="Segoe UI"/>
+
+            <Setter Property="FontSize"
+                    Value="11"/>
+
+            <Setter Property="FontWeight"
+                    Value="SemiBold"/>
+
+            <Setter Property="Foreground"
+                    Value="{StaticResource PrimaryText}"/>
+
+        </Style>
+
+
+        <!-- ========================================= -->
+        <!-- SMALL TEXT -->
+        <!-- ========================================= -->
+
+        <Style x:Key="SmallText"
+               TargetType="TextBlock">
+
+            <Setter Property="FontFamily"
+                    Value="Segoe UI"/>
+
+            <Setter Property="FontSize"
+                    Value="8"/>
+
+            <Setter Property="Foreground"
+                    Value="{StaticResource SecondaryText}"/>
+
+        </Style>
+
+
+        <!-- ========================================= -->
+        <!-- CARD -->
+        <!-- ========================================= -->
+
+        <Style x:Key="SideCard"
+               TargetType="Border">
+
+            <Setter Property="Background"
+                    Value="#FFFFFF"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#EAECF0"/>
+
+            <Setter Property="BorderThickness"
+                    Value="1"/>
+
+            <Setter Property="CornerRadius"
+                    Value="9"/>
+
+            <Setter Property="Effect"
+                    Value="{StaticResource CardShadow}"/>
+
+        </Style>
+
+    </UserControl.Resources>
+
+
+    <!-- ===================================================== -->
+    <!-- MAIN CONTAINER -->
+    <!-- ===================================================== -->
+
+    <StackPanel>
+
+
+        <!-- ================================================= -->
+        <!-- 1. OFFERINGS SUMMARY -->
+        <!-- ================================================= -->
+
+        <Border Style="{StaticResource SideCard}"
+                Height="158"
+                Padding="12"
+                Margin="0,0,0,10">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+
+                <!-- TITLE -->
+
+                <TextBlock Grid.Row="0"
+                           Text="Offerings Summary"
+                           Style="{StaticResource SectionTitle}"
+                           Margin="0,0,0,4"/>
+
+
+                <!-- CHART + LEGEND -->
+
+                <Grid Grid.Row="1">
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="105"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- ================================= -->
+                    <!-- DONUT CHART -->
+                    <!-- ================================= -->
+
+                    <Grid Grid.Column="0"
+                          Width="98"
+                          Height="98"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center">
+
+                        <lvc:PieChart
+                            Series="{Binding OfferingSeries}"
+                            LegendPosition="Hidden"
+                            Background="Transparent"/>
+
+
+                        <!-- CENTER TEXT -->
+
+                        <StackPanel HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                            <TextBlock Text="$56,900.00"
+                                       FontFamily="Segoe UI"
+                                       FontSize="10"
+                                       FontWeight="SemiBold"
+                                       Foreground="{StaticResource PrimaryText}"
+                                       HorizontalAlignment="Center"/>
+
+                            <TextBlock Text="Total"
+                                       FontFamily="Segoe UI"
+                                       FontSize="8"
+                                       Foreground="{StaticResource SecondaryText}"
+                                       HorizontalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+
+                    <!-- ================================= -->
+                    <!-- LEGEND -->
+                    <!-- ================================= -->
+
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Center"
+                                Margin="4,0,0,0">
+
+
+                        <!-- TITHES -->
+
+                        <Grid Margin="0,2">
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="9"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="34"/>
+                                <ColumnDefinition Width="48"/>
+
+                            </Grid.ColumnDefinitions>
+
+
+                            <Ellipse Grid.Column="0"
+                                     Width="6"
+                                     Height="6"
+                                     Fill="#3182E8"
+                                     VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="Tithes"
+                                       Style="{StaticResource SmallText}"/>
+
+                            <TextBlock Grid.Column="2"
+                                       Text="32.7%"
+                                       Style="{StaticResource SmallText}"
+                                       HorizontalAlignment="Right"/>
+
+                            <TextBlock Grid.Column="3"
+                                       Text="$18,620.00"
+                                       Style="{StaticResource SmallText}"
+                                       HorizontalAlignment="Right"/>
+
+                        </Grid>
+
+
+                        <!-- OFFERINGS -->
+
+                        <Grid Margin="0,2">
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="9"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="34"/>
+                                <ColumnDefinition Width="48"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse Grid.Column="0"
+                                     Width="6"
+                                     Height="6"
+                                     Fill="#6654D9"
+                                     VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="Offerings"
+                                       Style="{StaticResource SmallText}"/>
+
+                            <TextBlock Grid.Column="2"
+                                       Text="50.0%"
+                                       Style="{StaticResource SmallText}"
+                                       HorizontalAlignment="Right"/>
+
+                            <TextBlock Grid.Column="3"
+                                       Text="$28,450.00"
+                                       Style="{StaticResource SmallText}"
+                                       HorizontalAlignment="Right"/>
+
+                        </Grid>
+
+
+                        <!-- SEEDS -->
+
+                        <Grid Margin="0,2">
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="9"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="34"/>
+                                <ColumnDefinition Width="48"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse Grid.Column="0"
+                                     Width="6"
+                                     Height="6"
+                                     Fill="#35B58C"
+                                     VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="Seeds (Faith Promise)"
+                                       Style="{StaticResource SmallText}"/>
+
+                            <TextBlock Grid.Column="2"
+                                       Text="12.1%"
+                                       Style="{StaticResource SmallText}"
+                                       HorizontalAlignment="Right"/>
+
+                            <TextBlock Grid.Column="3"
+                                       Text="$6,870.00"
+                                       Style="{StaticResource SmallText}"
+                                       HorizontalAlignment="Right"/>
+
+                        </Grid>
+
+
+                        <!-- SPECIAL OFFERINGS -->
+
+                        <Grid Margin="0,2">
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="9"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="34"/>
+                                <ColumnDefinition Width="48"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse Grid.Column="0"
+                                     Width="6"
+                                     Height="6"
+                                     Fill="#FF9D2E"
+                                     VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Column="1"
+                                       Text="Special Offerings"
+                                       Style="{StaticResource SmallText}"/>
+
+                            <TextBlock Grid.Column="2"
+                                       Text="5.2%"
+                                       Style="{StaticResource SmallText}"
+                                       HorizontalAlignment="Right"/>
+
+                            <TextBlock Grid.Column="3"
+                                       Text="$2,960.00"
+                                       Style="{StaticResource SmallText}"
+                                       HorizontalAlignment="Right"/>
+
+                        </Grid>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
+
+        <!-- ================================================= -->
+        <!-- 2. OFFERING BY METHOD -->
+        <!-- ================================================= -->
+
+        <Border Style="{StaticResource SideCard}"
+                Height="140"
+                Padding="12"
+                Margin="0,0,0,10">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+
+                <!-- TITLE -->
+
+                <TextBlock Grid.Row="0"
+                           Text="Offering by Method"
+                           Style="{StaticResource SectionTitle}"
+                           Margin="0,0,0,8"/>
+
+
+                <!-- METHODS -->
+
+                <StackPanel Grid.Row="1">
+
+
+                    <!-- CASH -->
+
+                    <Grid Height="24">
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="65"/>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Grid.Column="0"
+                                   Text="Cash"
+                                   Style="{StaticResource SmallText}"
+                                   VerticalAlignment="Center"/>
+
+
+                        <Grid Grid.Column="1"
+                              Height="6"
+                              VerticalAlignment="Center">
+
+                            <Border Background="#F0F2F5"
+                                    CornerRadius="3"/>
+
+                            <Border Width="35"
+                                    HorizontalAlignment="Left"
+                                    Background="#35B58C"
+                                    CornerRadius="3"/>
+
+                        </Grid>
+
+
+                        <TextBlock Grid.Column="2"
+                                   Text="35.4%"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+
+                        <TextBlock Grid.Column="3"
+                                   Text="$20,150.00"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+                    </Grid>
+
+
+                    <!-- BANK TRANSFER -->
+
+                    <Grid Height="24">
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="65"/>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Grid.Column="0"
+                                   Text="Bank Transfer"
+                                   Style="{StaticResource SmallText}"
+                                   VerticalAlignment="Center"/>
+
+
+                        <Grid Grid.Column="1"
+                              Height="6"
+                              VerticalAlignment="Center">
+
+                            <Border Background="#F0F2F5"
+                                    CornerRadius="3"/>
+
+                            <Border Width="48"
+                                    HorizontalAlignment="Left"
+                                    Background="#3182E8"
+                                    CornerRadius="3"/>
+
+                        </Grid>
+
+
+                        <TextBlock Grid.Column="2"
+                                   Text="38.7%"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+
+                        <TextBlock Grid.Column="3"
+                                   Text="$22,030.00"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+                    </Grid>
+
+
+                    <!-- MOBILE MONEY -->
+
+                    <Grid Height="24">
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="65"/>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Grid.Column="0"
+                                   Text="Mobile Money"
+                                   Style="{StaticResource SmallText}"
+                                   VerticalAlignment="Center"/>
+
+
+                        <Grid Grid.Column="1"
+                              Height="6"
+                              VerticalAlignment="Center">
+
+                            <Border Background="#F0F2F5"
+                                    CornerRadius="3"/>
+
+                            <Border Width="22"
+                                    HorizontalAlignment="Left"
+                                    Background="#FF9D2E"
+                                    CornerRadius="3"/>
+
+                        </Grid>
+
+
+                        <TextBlock Grid.Column="2"
+                                   Text="17.6%"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+
+                        <TextBlock Grid.Column="3"
+                                   Text="$10,000.00"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+                    </Grid>
+
+
+                    <!-- CARD -->
+
+                    <Grid Height="24">
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="65"/>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Grid.Column="0"
+                                   Text="Card"
+                                   Style="{StaticResource SmallText}"
+                                   VerticalAlignment="Center"/>
+
+
+                        <Grid Grid.Column="1"
+                              Height="6"
+                              VerticalAlignment="Center">
+
+                            <Border Background="#F0F2F5"
+                                    CornerRadius="3"/>
+
+                            <Border Width="11"
+                                    HorizontalAlignment="Left"
+                                    Background="#6654D9"
+                                    CornerRadius="3"/>
+
+                        </Grid>
+
+
+                        <TextBlock Grid.Column="2"
+                                   Text="8.3%"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+
+                        <TextBlock Grid.Column="3"
+                                   Text="$4,720.00"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+                    </Grid>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+
+
+        <!-- ================================================= -->
+        <!-- 3. TOP GIVERS -->
+        <!-- ================================================= -->
+
+        <Border Style="{StaticResource SideCard}"
+                Height="170"
+                Padding="12">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="34"/>
+
+                </Grid.RowDefinitions>
+
+
+                <!-- TITLE -->
+
+                <TextBlock Grid.Row="0"
+                           Text="Top Givers (This Month)"
+                           Style="{StaticResource SectionTitle}"
+                           Margin="0,0,0,6"/>
+
+
+                <!-- ========================================= -->
+                <!-- GIVERS -->
+                <!-- ========================================= -->
+
+                <StackPanel Grid.Row="1">
+
+
+                    <!-- JOHN DOE -->
+
+                    <Grid Height="28">
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="24"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="75"/>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <Border Width="15"
+                                Height="15"
+                                CornerRadius="8"
+                                Background="#F2C23B"
+                                HorizontalAlignment="Left">
+
+                            <TextBlock Text="1"
+                                       FontSize="8"
+                                       Foreground="White"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+
+                        </Border>
+
+
+                        <TextBlock Grid.Column="1"
+                                   Text="John Doe"
+                                   Style="{StaticResource SmallText}"
+                                   Foreground="#172033"
+                                   VerticalAlignment="Center"/>
+
+
+                        <TextBlock Grid.Column="2"
+                                   Text="$2,000.00"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+                    </Grid>
+
+
+                    <!-- DAVID JOHNSON -->
+
+                    <Grid Height="28">
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="24"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="75"/>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <Border Width="15"
+                                Height="15"
+                                CornerRadius="8"
+                                Background="#A8ADB8"
+                                HorizontalAlignment="Left">
+
+                            <TextBlock Text="2"
+                                       FontSize="8"
+                                       Foreground="White"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+
+                        </Border>
+
+
+                        <TextBlock Grid.Column="1"
+                                   Text="David Johnson"
+                                   Style="{StaticResource SmallText}"
+                                   Foreground="#172033"
+                                   VerticalAlignment="Center"/>
+
+
+                        <TextBlock Grid.Column="2"
+                                   Text="$1,250.00"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+                    </Grid>
+
+
+                    <!-- PETER BROWN -->
+
+                    <Grid Height="28">
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="24"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="75"/>
+
+                        </Grid.ColumnDefinitions>
+
+
+                        <Border Width="15"
+                                Height="15"
+                                CornerRadius="8"
+                                Background="#D07A32"
+                                HorizontalAlignment="Left">
+
+                            <TextBlock Text="3"
+                                       FontSize="8"
+                                       Foreground="White"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+
+                        </Border>
+
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Peter Brown"
+                                   Style="{StaticResource SmallText}"
+                                   Foreground="#172033"
+                                   VerticalAlignment="Center"/>
+
+
+                        <TextBlock Grid.Column="2"
+                                   Text="$850.00"
+                                   Style="{StaticResource SmallText}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+                    </Grid>
+
+                </StackPanel>
+
+
+                <!-- ========================================= -->
+                <!-- VIEW ALL MEMBERS -->
+                <!-- ========================================= -->
+
+                <Button Grid.Row="2"
+                        Background="Transparent"
+                        BorderBrush="#EAECF0"
+                        BorderThickness="1"
+                        Foreground="#5B4BDB"
+                        FontFamily="Segoe UI"
+                        FontSize="9"
+                        Content="View All Members"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Bottom"
+                        Height="27"/>
+
+            </Grid>
+
+        </Border>
+
+    </StackPanel>
+
+</UserControl>

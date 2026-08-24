@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:MFMFMSF.UI.Controls" 
              xmlns:lvc="clr-namespace:MFMFMSF.UI.Features.Dashboard.Controls" 
              xmlns:viewmodels="clr-namespace:MFMFMSF.UI.ViewModels" 
-             d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="900"
              d:DesignWidth="1400">
