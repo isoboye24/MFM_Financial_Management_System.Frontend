@@ -73,7 +73,8 @@
 
             <controls:SidebarMenuItem
                 Title="Tithes"
-                Icon="HeartOutline"/>
+                Icon="HeartOutline"
+                Command="{Binding NavigateTithesCommand}"/>
 
                         <controls:SidebarMenuItem
                 Title="Seeds"

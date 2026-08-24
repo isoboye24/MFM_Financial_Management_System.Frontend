@@ -22,6 +22,9 @@
     <Folder Include="Features\Members\ViewModels\" />
     <Folder Include="Features\Offering\Resources\" />
     <Folder Include="Features\Offering\ViewModels\" />
+    <Folder Include="Features\Tithes\Controls\" />
+    <Folder Include="Features\Tithes\Resources\" />
+    <Folder Include="Features\Tithes\ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
