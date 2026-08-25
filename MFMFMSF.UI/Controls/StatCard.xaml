@@ -3,84 +3,123 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
-    <Border
-        Background="White"
-        CornerRadius="10"
-        Padding="20"
-        Width="250"
-        Height="135">
+    <Border Background="White"
+            BorderBrush="#E8EAF2"
+            BorderThickness="1"
+            CornerRadius="10"
+            Padding="16,12">
 
-        <Border.Effect>
-            <DropShadowEffect
-                BlurRadius="18"
-                ShadowDepth="2"
-                Opacity="0.12"/>
-        </Border.Effect>
+        <Grid>
 
-        <StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <!-- Top -->
-            <DockPanel LastChildFill="True">
 
-                <Border
-                    Width="50"
-                    Height="50"
-                    CornerRadius="25"
-                    Background="#F1EEFF"
-                    DockPanel.Dock="Left">
+            <!-- ================================================= -->
+            <!-- TOP -->
+            <!-- ================================================= -->
+
+            <Grid Grid.Row="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="42"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!-- ICON CIRCLE -->
+
+                <Border Grid.Column="0"
+                        Width="38"
+                        Height="38"
+                        CornerRadius="19"
+                        Background="{Binding IconBackground,
+                            RelativeSource={RelativeSource AncestorType=UserControl}}">
 
                     <materialDesign:PackIcon
-                        Kind="{Binding IconKind, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                        Width="18"
-                        Height="18"
-                        Foreground="#7C5CFC"
+                        Kind="{Binding Icon,
+                            RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Width="21"
+                        Height="21"
+                        Foreground="{Binding IconForeground,
+                            RelativeSource={RelativeSource AncestorType=UserControl}}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"/>
+
                 </Border>
 
-                <StackPanel Margin="0,0,0,0">
+
+                <!-- TITLE + AMOUNT -->
+
+                <StackPanel Grid.Column="1"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center">
 
                     <TextBlock
-                        Text="{Binding Title, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Text="{Binding Title,
+                            RelativeSource={RelativeSource AncestorType=UserControl}}"
                         FontSize="12"
-                        Foreground="#777"/>
+                        FontWeight="SemiBold"
+                        Foreground="#151936"
+                        TextTrimming="CharacterEllipsis"/>
 
                     <TextBlock
-                        Text="{Binding Amount, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                        FontSize="24"
-                        FontWeight="Bold"
-                        Margin="0,4,0,0"
-                        Foreground="#222"/>
+                        Text="{Binding Amount,
+                            RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Margin="0,3,0,0"
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Foreground="#101432"/>
+
                 </StackPanel>
 
-            </DockPanel>
+            </Grid>
 
-            <!-- Bottom -->
-            <StackPanel
-                Orientation="Horizontal"
-                Margin="0,20,0,0">
 
-                <materialDesign:PackIcon
-                    Kind="ArrowUp"
-                    Width="15"
-                    Height="15"
-                    VerticalAlignment="Center"
-                    Foreground="#21C56B"/>
+            <!-- ================================================= -->
+            <!-- BOTTOM -->
+            <!-- ================================================= -->
+
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        Margin="0,10,0,0">
+
+                <!-- ARROW -->
+
+                <TextBlock Text="↑"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Foreground="#0DAA68"
+                           VerticalAlignment="Center"/>
+
+
+                <!-- PERCENTAGE -->
 
                 <TextBlock
-                    Text="{Binding Percentage, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Margin="6,0,0,0"
+                    Text="{Binding Percentage,
+                        RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Margin="3,0,7,0"
+                    FontSize="11"
                     FontWeight="SemiBold"
-                    Foreground="#21C56B"/>
+                    Foreground="#0DAA68"
+                    VerticalAlignment="Center"/>
+
+
+                <!-- COMPARISON -->
 
                 <TextBlock
-                    Text="{Binding ComparisonText, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Margin="8,0,0,0"
-                    Foreground="#999"/>
+                    Text="{Binding Comparison,
+                        RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    FontSize="10"
+                    Foreground="#68708A"
+                    VerticalAlignment="Center"/>
 
             </StackPanel>
 
-        </StackPanel>
+        </Grid>
 
     </Border>
 

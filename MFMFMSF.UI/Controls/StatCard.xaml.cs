@@ -1,12 +1,10 @@
-﻿using MaterialDesignThemes.Wpf;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using MaterialDesignThemes.Wpf;
 
 namespace MFMFMSF.UI.Controls
 {
-    /// <summary>
-    /// Interaction logic for StatCard.xaml
-    /// </summary>
     public partial class StatCard : UserControl
     {
         public StatCard()
@@ -14,9 +12,10 @@ namespace MFMFMSF.UI.Controls
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty TitleProperty =
-        DependencyProperty.Register(nameof(Title), typeof(string),
-            typeof(StatCard));
+
+        // =====================================================
+        // TITLE
+        // =====================================================
 
         public string Title
         {
@@ -24,9 +23,17 @@ namespace MFMFMSF.UI.Controls
             set => SetValue(TitleProperty, value);
         }
 
-        public static readonly DependencyProperty AmountProperty =
-            DependencyProperty.Register(nameof(Amount), typeof(string),
-                typeof(StatCard));
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register(
+                nameof(Title),
+                typeof(string),
+                typeof(StatCard),
+                new PropertyMetadata(string.Empty));
+
+
+        // =====================================================
+        // AMOUNT
+        // =====================================================
 
         public string Amount
         {
@@ -34,9 +41,17 @@ namespace MFMFMSF.UI.Controls
             set => SetValue(AmountProperty, value);
         }
 
-        public static readonly DependencyProperty PercentageProperty =
-            DependencyProperty.Register(nameof(Percentage), typeof(string),
-                typeof(StatCard));
+        public static readonly DependencyProperty AmountProperty =
+            DependencyProperty.Register(
+                nameof(Amount),
+                typeof(string),
+                typeof(StatCard),
+                new PropertyMetadata(string.Empty));
+
+
+        // =====================================================
+        // PERCENTAGE
+        // =====================================================
 
         public string Percentage
         {
@@ -44,26 +59,83 @@ namespace MFMFMSF.UI.Controls
             set => SetValue(PercentageProperty, value);
         }
 
-        public static readonly DependencyProperty ComparisonTextProperty =
-            DependencyProperty.Register(nameof(ComparisonText), typeof(string),
-                typeof(StatCard));
+        public static readonly DependencyProperty PercentageProperty =
+            DependencyProperty.Register(
+                nameof(Percentage),
+                typeof(string),
+                typeof(StatCard),
+                new PropertyMetadata(string.Empty));
 
-        public string ComparisonText
+
+        // =====================================================
+        // COMPARISON
+        // =====================================================
+
+        public string Comparison
         {
-            get => (string)GetValue(ComparisonTextProperty);
-            set => SetValue(ComparisonTextProperty, value);
+            get => (string)GetValue(ComparisonProperty);
+            set => SetValue(ComparisonProperty, value);
         }
 
-        public static readonly DependencyProperty IconKindProperty =
-            DependencyProperty.Register(nameof(IconKind),
+        public static readonly DependencyProperty ComparisonProperty =
+            DependencyProperty.Register(
+                nameof(Comparison),
+                typeof(string),
+                typeof(StatCard),
+                new PropertyMetadata(string.Empty));
+
+
+        // =====================================================
+        // ICON
+        // =====================================================
+
+        public PackIconKind Icon
+        {
+            get => (PackIconKind)GetValue(IconProperty);
+            set => SetValue(IconProperty, value);
+        }
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register(
+                nameof(Icon),
                 typeof(PackIconKind),
                 typeof(StatCard),
-                new PropertyMetadata(PackIconKind.Bank));
+                new PropertyMetadata(PackIconKind.None));
 
-        public PackIconKind IconKind
+
+        // =====================================================
+        // ICON BACKGROUND
+        // =====================================================
+
+        public Brush IconBackground
         {
-            get => (PackIconKind)GetValue(IconKindProperty);
-            set => SetValue(IconKindProperty, value);
+            get => (Brush)GetValue(IconBackgroundProperty);
+            set => SetValue(IconBackgroundProperty, value);
         }
+
+        public static readonly DependencyProperty IconBackgroundProperty =
+            DependencyProperty.Register(
+                nameof(IconBackground),
+                typeof(Brush),
+                typeof(StatCard),
+                new PropertyMetadata(null));
+
+
+        // =====================================================
+        // ICON FOREGROUND
+        // =====================================================
+
+        public Brush IconForeground
+        {
+            get => (Brush)GetValue(IconForegroundProperty);
+            set => SetValue(IconForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty IconForegroundProperty =
+            DependencyProperty.Register(
+                nameof(IconForeground),
+                typeof(Brush),
+                typeof(StatCard),
+                new PropertyMetadata(null));
     }
 }
