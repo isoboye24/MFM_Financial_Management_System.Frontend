@@ -55,7 +55,7 @@
                 CornerRadius="15"
                 Padding="2">
 
-                        
+                        <lvc2:TitheTable/>
 
                     </Border>
 
