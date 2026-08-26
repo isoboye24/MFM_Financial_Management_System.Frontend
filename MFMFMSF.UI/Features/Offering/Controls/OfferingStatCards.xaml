@@ -1,83 +1,84 @@
 ﻿<UserControl x:Class="MFMFMSF.UI.Features.Offering.Controls.OfferingStatCards"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:controls="clr-namespace:MFMFMSF.UI.Controls">
 
     <Grid>
 
-        <Grid.ColumnDefinitions>
+        <UniformGrid Columns="5"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch">
 
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="16"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="16"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="16"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="16"/>
-            <ColumnDefinition Width="*"/>
-
-        </Grid.ColumnDefinitions>
-
-
-        <!-- TOTAL OFFERINGS -->
-        <controls:StatCard
-            Grid.Column="0"
-            Title="Total Offerings"
-            Amount="$28,450.00"
-            Percentage="12.5%"
-            Comparison="vs Apr 1 – Apr 30"
-            Icon="Gift"
-            IconBackground="#EEE7FF"
-            IconForeground="#6941E8"/>
+            <!-- TOTAL OFFERINGS -->
+            <controls:SummaryCard
+                Margin="8"
+                Title="Total Offerings"
+                Amount="$28,450.00"
+                Percentage="12.5%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="Gift"
+                IconBackground="#EEE7FF"
+                IconForeground="#6941E8"/>
 
 
-        <!-- TITHES -->
-        <controls:StatCard
-            Grid.Column="2"
-            Title="Tithes"
-            Amount="$18,620.00"
-            Percentage="10.3%"
-            Comparison="vs Apr 1 – Apr 30"
-            Icon="Heart"
-            IconBackground="#E2EEFF"
-            IconForeground="#3478E5"/>
+            <!-- TITHES -->
+            <controls:SummaryCard
+                Margin="8"
+                Title="Tithes"
+                Amount="$18,620.00"
+                Percentage="10.3%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="Heart"
+                IconBackground="#E2EEFF"
+                IconForeground="#3478E5"/>
 
 
-        <!-- SEEDS -->
-        <controls:StatCard
-            Grid.Column="4"
-            Title="Seeds (Faith Promise)"
-            Amount="$6,870.00"
-            Percentage="8.7%"
-            Comparison="vs Apr 1 – Apr 30"
-            Icon="Sprout"
-            IconBackground="#E1F5EC"
-            IconForeground="#42A979"/>
+            <!-- SEEDS -->
+            <controls:SummaryCard
+                Margin="8"
+                Title="Seeds (Faith Promise)"
+                Amount="$6,870.00"
+                Percentage="8.7%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="Sprout"
+                IconBackground="#E1F5EC"
+                IconForeground="#42A979"/>
 
 
-        <!-- SPECIAL OFFERINGS -->
-        <controls:StatCard
-            Title="Total Offerings"
-            Amount="$28,450.00"
-            Percentage="12.5%"
-            Comparison="vs Apr 1 – Apr 30"
-            Icon="Gift"
-            IconBackground="#E9E2FF"
-            IconForeground="#5B4CF3"/>
+            <!-- SPECIAL OFFERINGS -->
+            <controls:SummaryCard
+                Margin="8"
+                Title="Special Offerings"
+                Amount="$2,960.00"
+                Percentage="5.2%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="Cash"
+                IconBackground="#FFE9C7"
+                IconForeground="#FF9D20"/>
 
 
-        <!-- TRANSACTIONS -->
-        <controls:StatCard
-            Grid.Column="8"
-            Title="Total Transactions"
-            Amount="215"
-            Percentage="9.1%"
-            Comparison="vs Apr 1 – Apr 30"
-            Icon="AccountMultiple"
-            IconBackground="#FFE5EE"
-            IconForeground="#E65B89"/>
+            <!-- TOTAL TRANSACTIONS -->
+            <controls:SummaryCard
+                Margin="8"
+                Title="Total Transactions"
+                Amount="215"
+                Percentage="9.1%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="AccountMultiple"
+                IconBackground="#FFE5EE"
+                IconForeground="#E65B89"/>
+
+        </UniformGrid>
 
     </Grid>
 

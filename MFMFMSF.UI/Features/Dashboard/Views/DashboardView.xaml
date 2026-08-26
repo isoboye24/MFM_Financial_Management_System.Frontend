@@ -38,43 +38,13 @@
 
             <!-- ================= STATISTICS ================= -->
 
-            <UniformGrid Grid.Row="1"
-                         Columns="4"
-                         Margin="0,0,0,20">
+            <Border Grid.Row="1"
+            Padding="2"
+            Margin="0,0,0,20">
 
-                <controls:StatCard
-                    Margin="8"
-                    Title="Total Offerings"
-                    Amount="$28,450.00"
-                    Percentage="12.5%"
-                    ComparisonText="vs Last Month"
-                    IconKind="Church"/>
+                <lvc:StatisticCards/>
 
-                <controls:StatCard
-                    Margin="8"
-                    Title="Total Members"
-                    Amount="1,520"
-                    Percentage="8.7%"
-                    ComparisonText="vs Last Month"
-                    IconKind="AccountGroup"/>
-
-                <controls:StatCard
-                    Margin="8"
-                    Title="Income"
-                    Amount="$132,480"
-                    Percentage="15.2%"
-                    ComparisonText="vs Last Month"
-                    IconKind="CashMultiple"/>
-
-                <controls:StatCard
-                    Margin="8"
-                    Title="Projects"
-                    Amount="18"
-                    Percentage="5.4%"
-                    ComparisonText="Completed"
-                    IconKind="Briefcase"/>
-
-            </UniformGrid>
+            </Border>
 
             <!-- ================= CHARTS ================= -->
 

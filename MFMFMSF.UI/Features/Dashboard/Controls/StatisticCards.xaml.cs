@@ -18,9 +18,9 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
     /// <summary>
     /// Interaction logic for StatisticCard.xaml
     /// </summary>
-    public partial class StatisticCard : UserControl
+    public partial class StatisticCards : UserControl
     {
-        public StatisticCard()
+        public StatisticCards()
         {
             InitializeComponent();
         }

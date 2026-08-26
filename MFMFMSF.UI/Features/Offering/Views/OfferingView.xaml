@@ -35,10 +35,10 @@
             </Border>
 
             <Border Grid.Row="1"
-            Height="Auto"
-            CornerRadius="15"
-            Padding="2"
-            Margin="0,0,0,20">
+                    Background="Transparent"
+                    CornerRadius="15"
+                    Padding="2"
+                    Margin="0,0,0,0">
 
                 <lvc:OfferingStatCards/>
 

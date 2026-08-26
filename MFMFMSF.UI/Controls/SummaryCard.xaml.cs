@@ -5,9 +5,9 @@ using MaterialDesignThemes.Wpf;
 
 namespace MFMFMSF.UI.Controls
 {
-    public partial class StatCard : UserControl
+    public partial class SummaryCard : UserControl
     {
-        public StatCard()
+        public SummaryCard()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(Title),
                 typeof(string),
-                typeof(StatCard),
+                typeof(SummaryCard),
                 new PropertyMetadata(string.Empty));
 
 
@@ -45,7 +45,7 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(Amount),
                 typeof(string),
-                typeof(StatCard),
+                typeof(SummaryCard),
                 new PropertyMetadata(string.Empty));
 
 
@@ -63,7 +63,7 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(Percentage),
                 typeof(string),
-                typeof(StatCard),
+                typeof(SummaryCard),
                 new PropertyMetadata(string.Empty));
 
 
@@ -81,7 +81,7 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(Comparison),
                 typeof(string),
-                typeof(StatCard),
+                typeof(SummaryCard),
                 new PropertyMetadata(string.Empty));
 
 
@@ -99,7 +99,7 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(Icon),
                 typeof(PackIconKind),
-                typeof(StatCard),
+                typeof(SummaryCard),
                 new PropertyMetadata(PackIconKind.None));
 
 
@@ -117,7 +117,7 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(IconBackground),
                 typeof(Brush),
-                typeof(StatCard),
+                typeof(SummaryCard),
                 new PropertyMetadata(null));
 
 
@@ -135,7 +135,44 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(IconForeground),
                 typeof(Brush),
-                typeof(StatCard),
+                typeof(SummaryCard),
                 new PropertyMetadata(null));
+
+
+        // =====================================================
+        // TREND ARROW
+        // =====================================================
+
+        public string TrendArrow
+        {
+            get => (string)GetValue(TrendArrowProperty);
+            set => SetValue(TrendArrowProperty, value);
+        }
+
+        public static readonly DependencyProperty TrendArrowProperty =
+            DependencyProperty.Register(
+                nameof(TrendArrow),
+                typeof(string),
+                typeof(SummaryCard),
+                new PropertyMetadata("↑"));
+
+
+        // =====================================================
+        // TREND FOREGROUND
+        // =====================================================
+
+        public Brush TrendForeground
+        {
+            get => (Brush)GetValue(TrendForegroundProperty);
+            set => SetValue(TrendForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty TrendForegroundProperty =
+            DependencyProperty.Register(
+                nameof(TrendForeground),
+                typeof(Brush),
+                typeof(SummaryCard),
+                new PropertyMetadata(
+                    new SolidColorBrush(Color.FromRgb(13, 170, 104))));
     }
 }
