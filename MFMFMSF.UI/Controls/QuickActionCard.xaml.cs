@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using MaterialDesignThemes.Wpf;
 
-namespace MFMFMSF.UI.Features.Dashboard.Controls
+namespace MFMFMSF.UI.Controls
 {
     public partial class QuickActionCard : UserControl
     {

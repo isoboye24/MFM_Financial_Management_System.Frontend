@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.OtherIncome.Views" xmlns:lvc1="clr-namespace:MFMFMSF.UI.Controls" xmlns:lvc2="clr-namespace:MFMFMSF.UI.Features.OtherIncome.Controls"
+             xmlns:local="clr-namespace:MFMFMSF.UI.Features.OtherIncome.Views" 
+             xmlns:lvc1="clr-namespace:MFMFMSF.UI.Controls" 
+             xmlns:lvc2="clr-namespace:MFMFMSF.UI.Features.OtherIncome.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800"
@@ -58,10 +60,12 @@
 
                 </Border>
 
-                <Border Grid.Column="1">
+                <Border Grid.Column="1" Padding="20,0,0,0">
 
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="250"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
@@ -72,17 +76,16 @@
                         Padding="2"
                             Margin="0,0,0,20">
 
-                            <!--<lvc2:SeedSideCards/>-->
+                            <lvc2:OtherIncomeSideCards/>
 
                         </Border>
 
 
                         <Border Grid.Row="1"
                         Height="Auto"
-                        CornerRadius="15"
-                        Padding="2">
+                        CornerRadius="15">
 
-                            <!--<lvc2:RecentSeed/>-->
+                            <lvc2:OtherIncomeQuickActionCards/>
 
                         </Border>
 

@@ -64,7 +64,7 @@
                     <Border Grid.Column="1"
                     Height="Auto"
                     CornerRadius="15"
-                    Padding="2">
+                    Padding="20,0,0,0">
 
                         <lvc:OfferingSideCards/>                       
 
