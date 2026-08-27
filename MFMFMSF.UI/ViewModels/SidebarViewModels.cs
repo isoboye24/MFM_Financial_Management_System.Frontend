@@ -2,6 +2,7 @@
 using MFMFMSF.UI.Features.Dashboard.Views;
 using MFMFMSF.UI.Features.Members.Views;
 using MFMFMSF.UI.Features.Offering.Views;
+using MFMFMSF.UI.Features.Seeds.Views;
 using MFMFMSF.UI.Features.Tithes.Views;
 using MFMFMSF.UI.Navigation;
 using System.Windows.Input;
@@ -15,6 +16,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         public ICommand NavigateDashboardCommand { get; }
         public ICommand NavigateOfferingsCommand { get; }
         public ICommand NavigateTithesCommand { get; }
+        public ICommand NavigateSeedsCommand { get; }
         public ICommand NavigateMembersCommand { get; }
 
 
@@ -33,6 +35,10 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             NavigateTithesCommand =
                 new RelayCommand(_ =>
                     _navigation.Navigate(new TithesView()));
+
+            NavigateSeedsCommand =
+                new RelayCommand(_ =>
+                    _navigation.Navigate(new SeedsView()));
 
             NavigateMembersCommand =
                 new RelayCommand(_ =>

@@ -76,19 +76,20 @@
                 Icon="HeartOutline"
                 Command="{Binding NavigateTithesCommand}"/>
 
-                        <controls:SidebarMenuItem
+            <controls:SidebarMenuItem
                 Title="Seeds"
-                Icon="Sprout"/>
+                Icon="Sprout"
+                Command="{Binding NavigateSeedsCommand}"/>
 
-                        <controls:SidebarMenuItem
+            <controls:SidebarMenuItem
                 Title="Other Income"
                 Icon="CashPlus"/>
 
-                        <controls:SidebarMenuItem
+            <controls:SidebarMenuItem
                 Title="Expenditures"
                 Icon="CashMinus"/>
 
-                        <controls:SidebarMenuItem
+            <controls:SidebarMenuItem
                 Title="Projects"
                 Icon="OfficeBuilding"/>
 
