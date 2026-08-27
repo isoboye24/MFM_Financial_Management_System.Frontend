@@ -15,6 +15,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0"
@@ -66,8 +67,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="250"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>                            
                         </Grid.RowDefinitions>
 
                         <Border Grid.Row="0"
@@ -98,10 +98,23 @@
                             <lvc2:OtherIncomeProgressBars/>
 
                         </Border>
+                        
+                       
 
                     </Grid>
                 </Border>
+
+                
             </Grid>
+        </Border>
+
+        <Border Grid.Row="3"
+            Height="300"
+            CornerRadius="15"
+            Margin="0,20,0,20"> 
+
+            <lvc2:OtherIncomeTrend/>
+
         </Border>
 
     </Grid>
