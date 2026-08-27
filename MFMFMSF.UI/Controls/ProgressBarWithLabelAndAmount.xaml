@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Controls.ProgressBarWithLabelAndAmount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:MFMFMSF.UI.Converters">
+
+    <UserControl.Resources>
+
+        <converters:ProgressWidthConverter
+        x:Key="ProgressWidthConverter"/>
+
+    </UserControl.Resources>
+
+    <Grid Height="26">
+
+        <Grid.ColumnDefinitions>
+            <!-- LABEL -->
+            <ColumnDefinition Width="85"/>
+
+            <!-- PROGRESS BAR -->
+            <ColumnDefinition Width="*"/>
+
+            <!-- AMOUNT -->
+            <ColumnDefinition Width="115"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!-- ================= LABEL ================= -->
+
+        <TextBlock Grid.Column="0"
+                   Text="{Binding Label,
+                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                   FontSize="10"
+                   FontWeight="SemiBold"
+                   Foreground="#151936"
+                   VerticalAlignment="Center"/>
+
+
+        <!-- ================= PROGRESS BAR ================= -->
+
+        <ProgressBar Grid.Column="1"
+                     Height="6"
+                     Minimum="0"
+                     Maximum="100"
+                     Value="{Binding Percentage,
+                             RelativeSource={RelativeSource AncestorType=UserControl}}"
+                     VerticalAlignment="Center"
+                     Background="#F0F2F5"
+                     Foreground="{Binding BarForeground,
+                                 RelativeSource={RelativeSource AncestorType=UserControl}}">
+
+            <ProgressBar.Template>
+
+                <ControlTemplate TargetType="ProgressBar">
+
+                    <Grid>
+
+                        <!-- BACKGROUND -->
+
+                        <Border Background="#F0F2F5"
+                                CornerRadius="3"/>
+
+
+                        <!-- VALUE -->
+
+                        <Border HorizontalAlignment="Left"
+                                Background="{TemplateBinding Foreground}"
+                                CornerRadius="3">
+
+                            <Border.Width>
+
+                                <MultiBinding Converter="{StaticResource ProgressWidthConverter}">
+
+                                    <Binding Path="Value"
+                                             RelativeSource="{RelativeSource TemplatedParent}"/>
+
+                                    <Binding Path="ActualWidth"
+                                             RelativeSource="{RelativeSource TemplatedParent}"/>
+
+                                </MultiBinding>
+
+                            </Border.Width>
+
+                        </Border>
+
+                    </Grid>
+
+                </ControlTemplate>
+
+            </ProgressBar.Template>
+
+        </ProgressBar>
+
+
+        <!-- ================= AMOUNT ================= -->
+
+        <TextBlock Grid.Column="2"
+                   Text="{Binding Amount,
+                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                   FontSize="10"
+                   Foreground="#151936"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"/>
+
+    </Grid>
+
+</UserControl>

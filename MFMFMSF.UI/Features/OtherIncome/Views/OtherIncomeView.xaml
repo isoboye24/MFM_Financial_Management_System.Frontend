@@ -74,7 +74,7 @@
                         Height="Auto"
                         CornerRadius="15"
                         Padding="2"
-                            Margin="0,0,0,20">
+                        Margin="0,0,0,20">
 
                             <lvc2:OtherIncomeSideCards/>
 
@@ -83,9 +83,19 @@
 
                         <Border Grid.Row="1"
                         Height="Auto"
-                        CornerRadius="15">
+                        CornerRadius="15"
+                         Margin="0,0,0,20">
 
                             <lvc2:OtherIncomeQuickActionCards/>
+
+                        </Border>
+                        
+                        <Border Grid.Row="2"
+                        Height="Auto"
+                        CornerRadius="15"
+                        Margin="0,0,0,20">
+
+                            <lvc2:OtherIncomeProgressBars/>
 
                         </Border>
 
