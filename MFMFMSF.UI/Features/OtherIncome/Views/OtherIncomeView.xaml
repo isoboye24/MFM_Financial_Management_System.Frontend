@@ -40,7 +40,7 @@
             Padding="2"
             Margin="0,0,0,20">
 
-            <lvc2:OtherIncomeStatCards/>
+            <lvc1:StatisticCards/>
 
         </Border>
 

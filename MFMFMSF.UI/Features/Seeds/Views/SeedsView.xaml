@@ -38,7 +38,7 @@
                     Padding="2"
                     Margin="0,0,0,20">
 
-                <lvc2:SeedStatCards/>
+                <lvc1:StatisticCards/>
 
             </Border>
 

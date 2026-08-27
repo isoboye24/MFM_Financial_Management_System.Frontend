@@ -34,7 +34,6 @@
         
         <Border Grid.Row="1"
             Height="Auto"
-            Background="White"
             CornerRadius="15"
             Margin="0,0,0,20">
 
