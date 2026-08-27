@@ -22,7 +22,6 @@
     <Folder Include="Features\Members\ViewModels\" />
     <Folder Include="Features\Offering\Resources\" />
     <Folder Include="Features\Offering\ViewModels\" />
-    <Folder Include="Features\OtherIncome\Controls\" />
     <Folder Include="Features\OtherIncome\Resources\" />
     <Folder Include="Features\OtherIncome\ViewModels\" />
     <Folder Include="Features\Seeds\ViewModels\" />

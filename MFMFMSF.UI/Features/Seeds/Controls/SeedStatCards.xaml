@@ -52,7 +52,7 @@
             <!-- OTHER INCOME -->
             <controls:SummaryCard
              Margin="8"
-             Title="Special Offerings"
+             Title="Other Income"
              Amount="$2,960.00"
              Percentage="5.2%"
              Comparison="vs Apr 1 – Apr 30"
