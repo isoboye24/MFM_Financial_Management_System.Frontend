@@ -55,19 +55,19 @@
                         CornerRadius="15"
                         Padding="2">
 
-                    <lvc2:SeedTable/>
+                    <lvc2:SeedTable/>                        
 
                 </Border>
 
-                <Border Grid.Column="1"
+                    <Border Grid.Column="1"
                         Height="Auto"
                         CornerRadius="15"
                         Padding="2">
 
-                    
+                        <lvc2:SeedSideCards/>
 
-                </Border>
-            </Grid>
+                    </Border>
+                </Grid>
         </Border>
         </Grid>
     </Grid>
