@@ -88,7 +88,8 @@
 
             <controls:SidebarMenuItem
                 Title="Expenditures"
-                Icon="CashMinus"/>
+                Icon="CashMinus"
+                Command="{Binding NavigateExpendituresCommand}"/>
 
             <controls:SidebarMenuItem
                 Title="Projects"

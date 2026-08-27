@@ -17,6 +17,9 @@
   <ItemGroup>
     <Folder Include="Assets\Icons\" />
     <Folder Include="Assets\Images\" />
+    <Folder Include="Features\Expenditures\Controls\" />
+    <Folder Include="Features\Expenditures\ViewModels\" />
+    <Folder Include="Features\Expenditures\Resources\" />
     <Folder Include="Features\Members\Controls\" />
     <Folder Include="Features\Members\Resources\" />
     <Folder Include="Features\Members\ViewModels\" />
