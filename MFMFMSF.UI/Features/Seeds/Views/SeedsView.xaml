@@ -41,8 +41,34 @@
                 <lvc2:SeedStatCards/>
 
             </Border>
-            
-            
+
+            <Border Grid.Row="2">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Height="Auto"
+                        CornerRadius="15"
+                        Padding="2">
+
+                    <lvc2:SeedTable/>
+
+                </Border>
+
+                <Border Grid.Column="1"
+                        Height="Auto"
+                        CornerRadius="15"
+                        Padding="2">
+
+                    
+
+                </Border>
+            </Grid>
+        </Border>
         </Grid>
     </Grid>
 </UserControl>
