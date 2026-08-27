@@ -17,10 +17,10 @@
             </Grid.RowDefinitions>
 
             <Border Grid.Row="0"
-        Height="Auto"
-        Background="White"
-        CornerRadius="15"
-        Margin="0,0,0,20">
+                Height="Auto"
+                Background="White"
+                CornerRadius="15"
+                Margin="0,0,0,20">
 
                 <lvc1:PageTopBar
                     PageTitle="Title"
@@ -33,12 +33,12 @@
             </Border>
 
             <Border Grid.Row="1"
-        Height="Auto"
-        CornerRadius="15"
-        Padding="2"
-        Margin="0,0,0,20">
+                Height="Auto"
+                CornerRadius="15"
+                Padding="2"
+                Margin="0,0,0,20">
 
-                <lvc2:TitleStatCards/>
+                <lvc2:TitheStatCards/>
 
             </Border>
 

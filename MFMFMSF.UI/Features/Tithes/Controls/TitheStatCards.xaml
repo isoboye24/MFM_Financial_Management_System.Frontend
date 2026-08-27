@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MFMFMSF.UI.Features.Tithes.Controls.TitleStatCards"
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Tithes.Controls.TitheStatCards"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls">
@@ -49,10 +49,10 @@
                      IconForeground="#42A979"/>
 
 
-            <!-- SPECIAL OFFERINGS -->
+            <!-- OTHER INCOME -->
             <controls:SummaryCard
                      Margin="8"
-                     Title="Special Offerings"
+                     Title="Other Income"
                      Amount="$2,960.00"
                      Percentage="5.2%"
                      Comparison="vs Apr 1 – Apr 30"
@@ -63,16 +63,16 @@
                      IconForeground="#FF9D20"/>
 
 
-            <!-- TOTAL TRANSACTIONS -->
+            <!-- TOTAL EXPENDITURES -->
             <controls:SummaryCard
                      Margin="8"
-                     Title="Total Transactions"
-                     Amount="215"
+                     Title="Total Expenditures"
+                     Amount="$4,960.00"
                      Percentage="9.1%"
                      Comparison="vs Apr 1 – Apr 30"
                      TrendArrow="↑"
                      TrendForeground="#0DAA68"
-                     Icon="AccountMultiple"
+                     Icon="CashMinus"
                      IconBackground="#FFE5EE"
                      IconForeground="#E65B89"/>
 

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MFMFMSF.UI.Features.Tithes.Controls
+namespace MFMFMSF.UI.Features.Seeds.Controls
 {
     /// <summary>
-    /// Interaction logic for TitleStatCards.xaml
+    /// Interaction logic for SeedStatCards.xaml
     /// </summary>
-    public partial class TitleStatCards : UserControl
+    public partial class SeedStatCards : UserControl
     {
-        public TitleStatCards()
+        public SeedStatCards()
         {
             InitializeComponent();
         }

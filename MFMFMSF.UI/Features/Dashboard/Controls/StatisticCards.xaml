@@ -53,7 +53,7 @@
             <!-- SPECIAL OFFERINGS -->
             <controls:SummaryCard
         Margin="8"
-        Title="Special Offerings"
+        Title="Other Income"
         Amount="$2,960.00"
         Percentage="5.2%"
         Comparison="vs Apr 1 – Apr 30"
@@ -67,8 +67,8 @@
             <!-- TOTAL TRANSACTIONS -->
             <controls:SummaryCard
         Margin="8"
-        Title="Total Transactions"
-        Amount="215"
+        Title="Total Expenditures"
+        Amount="$2,960.00"
         Percentage="9.1%"
         Comparison="vs Apr 1 – Apr 30"
         TrendArrow="↑"
