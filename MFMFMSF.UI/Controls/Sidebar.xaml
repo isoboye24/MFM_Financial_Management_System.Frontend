@@ -83,7 +83,8 @@
 
             <controls:SidebarMenuItem
                 Title="Other Income"
-                Icon="CashPlus"/>
+                Icon="CashPlus"
+                Command="{Binding NavigateOtherIncomeCommand}"/>
 
             <controls:SidebarMenuItem
                 Title="Expenditures"
