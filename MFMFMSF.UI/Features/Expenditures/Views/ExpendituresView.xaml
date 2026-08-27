@@ -43,7 +43,7 @@
 
         </Border>
 
-        <Border Grid.Row="2">
+        <Border Grid.Row="2"  Margin="0,0,0,20">
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -52,7 +52,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="0"
-                    Height="Auto"
+                    Height="Auto"                       
                     CornerRadius="15">
 
                     <lvc2:ExpendituresTable/>
@@ -64,49 +64,43 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="250"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
                         <Border Grid.Row="0"
-                Height="Auto"
-                CornerRadius="15"
-                Padding="2"
-                Margin="0,0,0,20">
+                            Height="Auto"
+                            CornerRadius="15"
+                            Padding="2"
+                            Margin="0,0,0,20">
 
-                            <!--<lvc2:OtherIncomeSideCards/>-->
+                            <lvc2:ExpendituresSideCards/>
 
                         </Border>
 
 
                         <Border Grid.Row="1"
-                Height="Auto"
-                CornerRadius="15"
-                 Margin="0,0,0,20">
+                            Height="Auto"
+                            CornerRadius="15"
+                             Margin="0,0,0,20">
 
-                            <!--<lvc2:OtherIncomeQuickActionCards/>-->
+                            <lvc2:TopSpendingCategories/>
 
                         </Border>
 
                         <Border Grid.Row="2"
-                Height="Auto"
-                CornerRadius="15"
-                Margin="0,0,0,20">
+                            Height="200"
+                            CornerRadius="15">
 
-                            <!--<lvc2:OtherIncomeProgressBars/>-->
+                            <lvc2:ExpendituresTrend/>
 
                         </Border>
-
-
-
                     </Grid>
                 </Border>
-
-
             </Grid>
         </Border>
 
-
+        
 
     </Grid>
 </UserControl>
