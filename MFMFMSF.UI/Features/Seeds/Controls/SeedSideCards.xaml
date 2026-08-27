@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MFMFMSF.UI.Features.Seeds.Controls"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             >
     <UserControl.Resources>
 
         <!-- ========================================= -->

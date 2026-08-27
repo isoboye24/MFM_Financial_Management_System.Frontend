@@ -59,13 +59,35 @@
 
                 </Border>
 
-                    <Border Grid.Column="1"
-                        Height="Auto"
-                        CornerRadius="15"
-                        Padding="2">
+                    <Border Grid.Column="1">
 
-                        <lvc2:SeedSideCards/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
+                            <Border Grid.Row="0"
+                                Height="Auto"
+                                CornerRadius="15"
+                                Padding="2"
+                                    Margin="0,0,0,20">
+                                
+                                <lvc2:SeedSideCards/>
+                                
+                            </Border>
+
+
+                            <Border Grid.Row="1"
+                                Height="Auto"
+                                CornerRadius="15"
+                                Padding="2">
+
+                                <lvc2:RecentSeed/>
+
+                            </Border>
+
+                        </Grid>
                     </Border>
                 </Grid>
         </Border>
