@@ -39,7 +39,7 @@
             CornerRadius="15"
             Margin="0,0,0,20">
 
-            <lvc1:StatisticCards/>
+            <lvc2:ProjectCards/>
 
         </Border>
 
@@ -74,7 +74,7 @@
                     Padding="2"
                     Margin="0,0,0,20">
 
-                            <!--<lvc2:ExpendituresSideCards/>-->
+                            <lvc2:ProjectSideCards/>
 
                         </Border>
 
@@ -84,7 +84,7 @@
                     CornerRadius="15"
                      Margin="0,0,0,20">
 
-                            <!--<lvc2:TopSpendingCategories/>-->
+                            <lvc2:PreviousProjects/>
 
                         </Border>
 
