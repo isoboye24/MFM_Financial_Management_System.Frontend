@@ -23,7 +23,7 @@
                 Margin="0,0,0,20">
 
                 <lvc1:PageTopBar
-                    PageTitle="Title"
+                    PageTitle="Tithe"
                     PageDescription="View and manage all tithes given to the church."
                     DateRangeText="May 1 – May 31, 2025"
                     ActionText="Add Tithe"

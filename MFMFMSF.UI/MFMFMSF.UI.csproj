@@ -26,6 +26,9 @@
     <Folder Include="Features\Offering\ViewModels\" />
     <Folder Include="Features\OtherIncome\Resources\" />
     <Folder Include="Features\OtherIncome\ViewModels\" />
+    <Folder Include="Features\Projects\Controls\" />
+    <Folder Include="Features\Projects\ViewModels\" />
+    <Folder Include="Features\Projects\Resources\" />
     <Folder Include="Features\Seeds\ViewModels\" />
     <Folder Include="Features\Seeds\Resources\" />
     <Folder Include="Features\Tithes\Resources\" />

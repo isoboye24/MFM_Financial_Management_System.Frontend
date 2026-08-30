@@ -101,6 +101,7 @@
             <controls:SidebarMenuItem
                 Title="Projects"
                 Icon="OfficeBuilding"
+                Command="{Binding NavigateProjectsCommand}"
                 Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
