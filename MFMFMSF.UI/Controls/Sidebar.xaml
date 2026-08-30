@@ -105,9 +105,9 @@
                 Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
-                Title="Members"
+                Title="Workers"
                 Icon="AccountGroup"
-                Command="{Binding NavigateMembersCommand}"
+                Command="{Binding NavigateWorkersCommand}"
                 Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem

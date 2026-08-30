@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MFMFMSF.UI.Features.Members.Views
+namespace MFMFMSF.UI.Features.Workers.Views
 {
     /// <summary>
-    /// Interaction logic for MembersView.xaml
+    /// Interaction logic for WorkersView.xaml
     /// </summary>
-    public partial class MembersView : UserControl
+    public partial class WorkersView : UserControl
     {
-        public MembersView()
+        public WorkersView()
         {
             InitializeComponent();
         }

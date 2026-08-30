@@ -1,7 +1,7 @@
 ﻿using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Dashboard.Views;
 using MFMFMSF.UI.Features.Expenditures.Views;
-using MFMFMSF.UI.Features.Members.Views;
+using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Features.Offering.Views;
 using MFMFMSF.UI.Features.OtherIncome.Views;
 using MFMFMSF.UI.Features.Projects.Views;
@@ -23,7 +23,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         public ICommand NavigateOtherIncomeCommand { get; }
         public ICommand NavigateExpendituresCommand { get; }
         public ICommand NavigateProjectsCommand { get; }
-        public ICommand NavigateMembersCommand { get; }
+        public ICommand NavigateWorkersCommand { get; }
 
 
         public SidebarViewModel(INavigationService navigation)
@@ -58,9 +58,9 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
                 new RelayCommand(_ =>
                     _navigation.Navigate(new ProjectsView()));
 
-            NavigateMembersCommand =
+            NavigateWorkersCommand =
                 new RelayCommand(_ =>
-                    _navigation.Navigate(new MembersView()));
+                    _navigation.Navigate(new WorkersView()));
         }
     }
 }
