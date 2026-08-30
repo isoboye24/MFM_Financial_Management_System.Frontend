@@ -67,8 +67,15 @@ namespace MFMFMSF.UI.Controls
                     : System.Windows.Media.Brushes.Transparent;
         }
 
-        private void MenuBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        // =====================================================
+        // CLICK
+        // =====================================================
+
+        private void MenuBorder_MouseLeftButtonUp(
+            object sender,
+            MouseButtonEventArgs e)
         {
+            IsSelected = true;
             if (Command?.CanExecute(null) == true)
             {
                 Command.Execute(null);

@@ -57,56 +57,67 @@
 
         <!-- Navigations -->
 
-        <StackPanel Grid.Row="1"
+        <StackPanel x:Name="NavigationMenu"
+                    Grid.Row="1"
             Margin="0,20,0,0">
 
             <controls:SidebarMenuItem
                 Title="Dashboard"
                 Icon="ViewDashboard"
                 Command="{Binding NavigateDashboardCommand}"
-                IsSelected="True"/>
+                IsSelected="True"
+                Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Offerings"
                 Icon="Gift"
-                Command="{Binding NavigateOfferingsCommand}"/>  
+                Command="{Binding NavigateOfferingsCommand}"
+                Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Tithes"
                 Icon="HeartOutline"
-                Command="{Binding NavigateTithesCommand}"/>
+                Command="{Binding NavigateTithesCommand}"
+                Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Seeds"
                 Icon="Sprout"
-                Command="{Binding NavigateSeedsCommand}"/>
+                Command="{Binding NavigateSeedsCommand}"
+                Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Other Income"
                 Icon="CashPlus"
-                Command="{Binding NavigateOtherIncomeCommand}"/>
+                Command="{Binding NavigateOtherIncomeCommand}"
+                Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Expenditures"
                 Icon="CashMinus"
-                Command="{Binding NavigateExpendituresCommand}"/>
+                Command="{Binding NavigateExpendituresCommand}"
+                Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Projects"
-                Icon="OfficeBuilding"/>
+                Icon="OfficeBuilding"
+                Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Members"
                 Icon="AccountGroup"
-                Command="{Binding NavigateMembersCommand}"/>
+                Command="{Binding NavigateMembersCommand}"
+                Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Reports"
-                Icon="ChartBar"/>
+                Icon="ChartBar"
+                Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Settings"
-                Icon="Cog"/>
+                Icon="Cog"
+                Click="SidebarMenuItem_Click"/>
 
         </StackPanel>
 
