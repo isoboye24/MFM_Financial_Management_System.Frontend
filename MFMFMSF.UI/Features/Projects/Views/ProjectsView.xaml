@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Projects.Views" xmlns:lvc1="clr-namespace:MFMFMSF.UI.Controls"
+             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Projects.Views" 
+             xmlns:lvc1="clr-namespace:MFMFMSF.UI.Controls" 
+             xmlns:lvc2="clr-namespace:MFMFMSF.UI.Features.Projects.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800"
@@ -40,8 +42,63 @@
             <lvc1:StatisticCards/>
 
         </Border>
-        
-        
-        
+
+        <Border Grid.Row="2"  Margin="0,0,0,20">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+            Height="Auto"                       
+            CornerRadius="15">
+
+                    <lvc2:ProjectTable/>
+
+                </Border>
+
+                <Border Grid.Column="1" Padding="20,0,0,0">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                    Height="Auto"
+                    CornerRadius="15"
+                    Padding="2"
+                    Margin="0,0,0,20">
+
+                            <!--<lvc2:ExpendituresSideCards/>-->
+
+                        </Border>
+
+
+                        <Border Grid.Row="1"
+                    Height="Auto"
+                    CornerRadius="15"
+                     Margin="0,0,0,20">
+
+                            <!--<lvc2:TopSpendingCategories/>-->
+
+                        </Border>
+
+                        <Border Grid.Row="2"
+                    Height="200"
+                    CornerRadius="15">
+
+                            <!--<lvc2:ExpendituresTrend/>-->
+
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
     </Grid>
 </UserControl>
