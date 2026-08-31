@@ -1,28 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using MFMFMSF.UI.Controls;
+using MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Reports.Views
 {
-    /// <summary>
-    /// Interaction logic for ReportsView.xaml
-    /// </summary>
     public partial class ReportsView : UserControl
     {
         public ReportsView()
         {
             InitializeComponent();
+
+            // Show the first report when the page opens
+            ReportContent.Content = new FinancialSummaryTabPage();
+        }
+
+
+        private void PageTabs_TabChanged(
+            object? sender,
+            TabChangedEventArgs e)
+        {
+            switch (e.SelectedIndex)
+            {
+                case 0:
+                    ReportContent.Content = new FinancialSummaryTabPage();
+                    break;
+
+                case 1:
+                    //ReportContent.Content = new IncomeReports();
+                    break;
+
+                case 2:
+                    //ReportContent.Content = new ExpenditureReports();
+                    break;
+
+                case 3:
+                    //ReportContent.Content = new BudgetReports();
+                    break;
+
+                case 4:
+                    //ReportContent.Content = new ProjectReports();
+                    break;
+
+                case 5:
+                    //ReportContent.Content = new CustomReports();
+                    break;
+            }
         }
     }
 }

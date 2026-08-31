@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Controls.PageTabs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <UserControl.Resources>
+
+        <Style x:Key="TabButtonStyle"
+           TargetType="Button">
+
+            <Setter Property="Background"
+                Value="Transparent"/>
+
+            <Setter Property="BorderThickness"
+                Value="0"/>
+
+            <Setter Property="Foreground"
+                Value="#303653"/>
+
+            <Setter Property="FontSize"
+                Value="10"/>
+
+            <Setter Property="FontWeight"
+                Value="SemiBold"/>
+
+            <Setter Property="Cursor"
+                Value="Hand"/>
+
+            <Setter Property="Padding"
+                Value="8,0"/>
+
+            <Setter Property="HorizontalContentAlignment"
+                Value="Center"/>
+
+            <Setter Property="VerticalContentAlignment"
+                Value="Center"/>
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+
+                        <Border Background="{TemplateBinding Background}">
+
+                            <ContentPresenter
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                        </Border>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Border Background="White"
+                BorderBrush="#E8EAF2"
+                BorderThickness="1"
+                CornerRadius="8">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!-- FINANCIAL SUMMARY -->
+
+                <Button Grid.Column="0"
+                        Content="Financial Summary"
+                        Tag="0"
+                        Click="Tab_Click"
+                        Style="{StaticResource TabButtonStyle}"/>
+
+
+                <!-- INCOME REPORTS -->
+
+                <Button Grid.Column="1"
+                        Content="Income Reports"
+                        Tag="1"
+                        Click="Tab_Click"
+                        Style="{StaticResource TabButtonStyle}"/>
+
+
+                <!-- EXPENDITURE REPORTS -->
+
+                <Button Grid.Column="2"
+                        Content="Expenditure Reports"
+                        Tag="2"
+                        Click="Tab_Click"
+                        Style="{StaticResource TabButtonStyle}"/>
+
+
+                <!-- BUDGET REPORTS -->
+
+                <Button Grid.Column="3"
+                        Content="Budget Reports"
+                        Tag="3"
+                        Click="Tab_Click"
+                        Style="{StaticResource TabButtonStyle}"/>
+
+
+                <!-- PROJECT REPORTS -->
+
+                <Button Grid.Column="4"
+                        Content="Project Reports"
+                        Tag="4"
+                        Click="Tab_Click"
+                        Style="{StaticResource TabButtonStyle}"/>
+
+
+                <!-- CUSTOM REPORTS -->
+
+                <Button Grid.Column="5"
+                        Content="Custom Reports"
+                        Tag="5"
+                        Click="Tab_Click"
+                        Style="{StaticResource TabButtonStyle}"/>
+
+
+                <!-- ACTIVE TAB INDICATOR -->
+
+                <Border x:Name="ActiveIndicator"
+                        Grid.Column="0"
+                        Height="2"
+                        Background="#5B4CF3"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Stretch"
+                        Margin="8,0,8,0"/>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+
+
+    
+
+</UserControl>
