@@ -103,20 +103,20 @@
                         Click="Tab_Click"
                         Style="{StaticResource TabButtonStyle}"/>
 
-
-                <!-- BUDGET REPORTS -->
+                
+                <!-- PROJECT REPORTS -->
 
                 <Button Grid.Column="3"
-                        Content="Budget Reports"
+                        Content="Project Reports"
                         Tag="3"
                         Click="Tab_Click"
                         Style="{StaticResource TabButtonStyle}"/>
 
 
-                <!-- PROJECT REPORTS -->
+                <!-- BUDGET REPORTS -->
 
                 <Button Grid.Column="4"
-                        Content="Project Reports"
+                        Content="Budget Reports"
                         Tag="4"
                         Click="Tab_Click"
                         Style="{StaticResource TabButtonStyle}"/>

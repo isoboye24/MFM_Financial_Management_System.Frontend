@@ -1,5 +1,8 @@
 ﻿using MFMFMSF.UI.Controls;
+using MFMFMSF.UI.Features.Reports.Controls.ExpenditureReports;
 using MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports;
+using MFMFMSF.UI.Features.Reports.Controls.IncomeReports;
+using MFMFMSF.UI.Features.Reports.Controls.ProjectReports;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Reports.Views
@@ -26,19 +29,19 @@ namespace MFMFMSF.UI.Features.Reports.Views
                     break;
 
                 case 1:
-                    //ReportContent.Content = new IncomeReports();
+                    ReportContent.Content = new IncomeReportsTabPage();
                     break;
 
                 case 2:
-                    //ReportContent.Content = new ExpenditureReports();
+                    ReportContent.Content = new ExpenditureReportsTabPage();
                     break;
 
                 case 3:
-                    //ReportContent.Content = new BudgetReports();
+                    ReportContent.Content = new ProjectReportsTabPage();
                     break;
 
                 case 4:
-                    //ReportContent.Content = new ProjectReports();
+                    //ReportContent.Content = new BudgetReports();
                     break;
 
                 case 5:
