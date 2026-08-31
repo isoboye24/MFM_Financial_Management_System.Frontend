@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:MFMFMSF.UI.Features.Workers.Controls" 
              xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             >
     <Grid>
         <controls:TwoColumnsInfoCard
-            Width="270"
+            Width="Auto"
             CardTitle="Membership Information"
 
             Label1="Membership Type"

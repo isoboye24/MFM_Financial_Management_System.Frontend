@@ -107,12 +107,13 @@
             <controls:SidebarMenuItem
                 Title="Workers"
                 Icon="AccountGroup"
-                Command="{Binding NavigateWorkersCommand}"
+                Command="{Binding NavigateWorkersCommand}"                
                 Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
                 Title="Reports"
                 Icon="ChartBar"
+                Command="{Binding NavigateReportsCommand}"
                 Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem

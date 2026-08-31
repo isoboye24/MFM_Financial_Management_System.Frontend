@@ -7,7 +7,7 @@
              xmlns:Iv1="clr-namespace:MFMFMSF.UI.Controls"
              mc:Ignorable="d" 
              >
-    <Grid>
+    <Border>
         <Iv1:ProfileSummaryCard
             Width="Auto"
             Margin="8"
@@ -20,5 +20,5 @@
             JoinedDate="January 15, 2022"
             Address="Lagos, Nigeria"
             MaritalStatus="Married"/>
-    </Grid>
+    </Border>
 </UserControl>

@@ -150,7 +150,7 @@
                             Height="200"
                             CornerRadius="15">
 
-                            <!--<lvc2:ExpendituresTrend/>-->
+                            <lvc2:WorkersQuickActionCards/>
 
                         </Border>
                     </Grid>

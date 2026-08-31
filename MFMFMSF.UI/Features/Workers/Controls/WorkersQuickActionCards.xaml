@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Workers.Controls.WorkersQuickActionCards"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls">
+
+    <Border Background="White"
+            BorderBrush="#E8EAF2"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="10">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- ============================== -->
+            <!-- TITLE -->
+            <!-- ============================== -->
+
+            <TextBlock Grid.Row="0"
+                       Text="Quick Actions"
+                       FontSize="10"
+                       FontWeight="SemiBold"
+                       Foreground="#151936"
+                       Margin="0,0,0,8"/>
+
+
+            <!-- ============================== -->
+            <!-- ACTIONS -->
+            <!-- ============================== -->
+
+            <UniformGrid Grid.Row="1"
+                         Rows="2"
+                         Columns="3">
+
+
+                <!-- VIEW PROFILE -->
+
+                <controls:QuickActionCardWithoutBackgroundColor
+                    Margin="2"
+                    Title="View Profile"
+                    Icon="AccountOutline"
+                    IconForeground="#5B4CF3"
+                    ActionCommand="{Binding ViewProfileCommand}"/>
+
+
+                <!-- EDIT MEMBER -->
+
+                <controls:QuickActionCardWithoutBackgroundColor
+                    Margin="2"
+                    Title="Edit Member"
+                    Icon="PencilOutline"
+                    IconForeground="#5B4CF3"
+                    ActionCommand="{Binding EditMemberCommand}"/>
+
+
+                <!-- ADD FAMILY MEMBER -->
+
+                <controls:QuickActionCardWithoutBackgroundColor
+                    Margin="2"
+                    Title="Add Family Member"
+                    Icon="AccountMultiplePlusOutline"
+                    IconForeground="#5B4CF3"
+                    ActionCommand="{Binding AddFamilyMemberCommand}"/>
+
+
+                <!-- MEMBER ATTENDANCE -->
+
+                <controls:QuickActionCardWithoutBackgroundColor
+                    Margin="2"
+                    Title="Member Attendance"
+                    Icon="CalendarOutline"
+                    IconForeground="#5B4CF3"
+                    ActionCommand="{Binding MemberAttendanceCommand}"/>
+
+
+                <!-- GIVING HISTORY -->
+
+                <controls:QuickActionCardWithoutBackgroundColor
+                    Margin="2"
+                    Title="Giving History"
+                    Icon="CurrencyUsd"
+                    IconForeground="#5B4CF3"
+                    ActionCommand="{Binding GivingHistoryCommand}"/>
+
+
+                <!-- SEND MESSAGE -->
+
+                <controls:QuickActionCardWithoutBackgroundColor
+                    Margin="2"
+                    Title="Send Message"
+                    Icon="EmailOutline"
+                    IconForeground="#5B4CF3"
+                    ActionCommand="{Binding SendMessageCommand}"/>
+
+            </UniformGrid>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>
