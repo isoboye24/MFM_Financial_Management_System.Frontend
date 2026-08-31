@@ -1,0 +1,522 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Meetings.Controls.MeetingsTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <!-- ========================================================= -->
+    <!-- RESOURCES -->
+    <!-- ========================================================= -->
+
+    <UserControl.Resources>
+
+        <!-- ===================================================== -->
+        <!-- HEADER STYLE -->
+        <!-- ===================================================== -->
+
+        <Style x:Key="TableHeaderStyle"
+               TargetType="TextBlock">
+
+            <Setter Property="FontSize"
+                    Value="8"/>
+
+            <Setter Property="FontWeight"
+                    Value="SemiBold"/>
+
+            <Setter Property="Foreground"
+                    Value="#303653"/>
+
+            <Setter Property="VerticalAlignment"
+                    Value="Center"/>
+
+        </Style>
+
+
+        <!-- ===================================================== -->
+        <!-- TABLE ACTION BUTTON -->
+        <!-- ===================================================== -->
+
+        <Style x:Key="TableActionButtonStyle"
+               TargetType="Button">
+
+            <Setter Property="Width"
+                    Value="28"/>
+
+            <Setter Property="Height"
+                    Value="28"/>
+
+            <Setter Property="Background"
+                    Value="#F5F6FC"/>
+
+            <Setter Property="Foreground"
+                    Value="#5B4CF3"/>
+
+            <Setter Property="BorderThickness"
+                    Value="0"/>
+
+            <Setter Property="Padding"
+                    Value="0"/>
+
+            <Setter Property="Cursor"
+                    Value="Hand"/>
+
+            <Setter Property="Margin"
+                    Value="2,0"/>
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5">
+
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+
+                        </Border>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+
+                    <Setter Property="Background"
+                            Value="#EAE7FF"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+
+        <!-- ===================================================== -->
+        <!-- DELETE BUTTON -->
+        <!-- ===================================================== -->
+
+        <Style x:Key="DeleteActionButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource TableActionButtonStyle}">
+
+            <Setter Property="Foreground"
+                    Value="#F0445F"/>
+
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+
+                    <Setter Property="Background"
+                            Value="#FFE9ED"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
+
+        <!-- ===================================================== -->
+        <!-- FILTER COMBO BOX -->
+        <!-- ===================================================== -->
+
+        <Style x:Key="TableFilterStyle"
+               TargetType="ComboBox">
+
+            <Setter Property="Height"
+                    Value="30"/>
+
+            <Setter Property="FontSize"
+                    Value="9"/>
+
+            <Setter Property="Foreground"
+                    Value="#303653"/>
+
+            <Setter Property="Background"
+                    Value="White"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#E8EAF2"/>
+
+            <Setter Property="BorderThickness"
+                    Value="1"/>
+
+            <Setter Property="Padding"
+                    Value="8,0"/>
+
+        </Style>
+
+
+        <!-- ===================================================== -->
+        <!-- SEARCH BOX -->
+        <!-- ===================================================== -->
+
+        <Style x:Key="TableSearchStyle"
+               TargetType="TextBox">
+
+            <Setter Property="Height"
+                    Value="30"/>
+
+            <Setter Property="FontSize"
+                    Value="9"/>
+
+            <Setter Property="Foreground"
+                    Value="#303653"/>
+
+            <Setter Property="Background"
+                    Value="White"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#E8EAF2"/>
+
+            <Setter Property="BorderThickness"
+                    Value="1"/>
+
+            <Setter Property="Padding"
+                    Value="8,0"/>
+
+        </Style>
+
+    </UserControl.Resources>
+
+
+    <!-- ========================================================= -->
+    <!-- MAIN CARD -->
+    <!-- ========================================================= -->
+
+    <Border Background="White"
+            BorderBrush="#E8EAF2"
+            BorderThickness="1"
+            CornerRadius="10"
+            Padding="12">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <!-- FILTERS -->
+                <RowDefinition Height="Auto"/>
+
+                <!-- TABLE HEADER -->
+                <RowDefinition Height="38"/>
+
+                <!-- TABLE DATA -->
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+
+            <!-- ================================================= -->
+            <!-- FILTERS -->
+            <!-- ================================================= -->
+
+            <Grid Grid.Row="0"
+                  Margin="0,0,0,12">
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*"/>
+
+                    <ColumnDefinition Width="Auto"/>
+
+                    <ColumnDefinition Width="Auto"/>
+
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <!-- SEARCH -->
+
+                <TextBox Grid.Column="0"
+                         Width="220"
+                         HorizontalAlignment="Left"
+                         Style="{StaticResource TableSearchStyle}"
+                         Text=""/>
+
+
+                <!-- MEETING TYPE -->
+
+                <ComboBox Grid.Column="1"
+                          Width="120"
+                          Margin="8,0,0,0"
+                          Style="{StaticResource TableFilterStyle}">
+
+                    <ComboBoxItem Content="All Meetings"
+                                  IsSelected="True"/>
+
+                    <ComboBoxItem Content="Sunday Service"/>
+
+                    <ComboBoxItem Content="Workers Meeting"/>
+
+                    <ComboBoxItem Content="Youth Fellowship"/>
+
+                    <ComboBoxItem Content="Bible Study"/>
+
+                </ComboBox>
+
+
+                <!-- MONTH -->
+
+                <ComboBox Grid.Column="2"
+                          Width="100"
+                          Margin="8,0,0,0"
+                          Style="{StaticResource TableFilterStyle}">
+
+                    <ComboBoxItem Content="All Months"
+                                  IsSelected="True"/>
+
+                    <ComboBoxItem Content="May 2025"/>
+
+                    <ComboBoxItem Content="April 2025"/>
+
+                    <ComboBoxItem Content="March 2025"/>
+
+                </ComboBox>
+
+
+                <!-- DATE -->
+
+                <Button Grid.Column="3"
+                        Width="90"
+                        Height="30"
+                        Margin="8,0,0,0"
+                        Content="Date"
+                        FontSize="9"
+                        Foreground="#303653"
+                        Background="White"
+                        BorderBrush="#E8EAF2"
+                        BorderThickness="1"
+                        Cursor="Hand"/>
+
+            </Grid>
+
+
+            <!-- ================================================= -->
+            <!-- TABLE HEADER -->
+            <!-- ================================================= -->
+
+            <Border Grid.Row="1"
+                    Background="#F8F9FC"
+                    BorderBrush="#E8EAF2"
+                    BorderThickness="0,1,0,1">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="2.2*"/>
+                        <ColumnDefinition Width="0.9*"/>
+                        <ColumnDefinition Width="0.9*"/>
+                        <ColumnDefinition Width="0.9*"/>
+                        <ColumnDefinition Width="1.3*"/>
+                        <ColumnDefinition Width="1.2*"/>
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock Grid.Column="0"
+                               Text="Meeting"
+                               Style="{StaticResource TableHeaderStyle}"
+                               Margin="8,0"/>
+
+
+                    <TextBlock Grid.Column="1"
+                               Text="Male"
+                               Style="{StaticResource TableHeaderStyle}"
+                               HorizontalAlignment="Center"/>
+
+
+                    <TextBlock Grid.Column="2"
+                               Text="Female"
+                               Style="{StaticResource TableHeaderStyle}"
+                               HorizontalAlignment="Center"/>
+
+
+                    <TextBlock Grid.Column="3"
+                               Text="Children"
+                               Style="{StaticResource TableHeaderStyle}"
+                               HorizontalAlignment="Center"/>
+
+
+                    <TextBlock Grid.Column="4"
+                               Text="Date"
+                               Style="{StaticResource TableHeaderStyle}"
+                               HorizontalAlignment="Center"/>
+
+
+                    <TextBlock Grid.Column="5"
+                               Text="Actions"
+                               Style="{StaticResource TableHeaderStyle}"
+                               HorizontalAlignment="Center"/>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- TABLE DATA -->
+            <!-- ================================================= -->
+
+            <ScrollViewer Grid.Row="2"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+
+                <ItemsControl ItemsSource="{Binding Meetings}">
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border BorderBrush="#EEF0F5"
+                                    BorderThickness="0,0,0,1"
+                                    Padding="0,10">
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="2.2*"/>
+                                        <ColumnDefinition Width="0.9*"/>
+                                        <ColumnDefinition Width="0.9*"/>
+                                        <ColumnDefinition Width="0.9*"/>
+                                        <ColumnDefinition Width="1.3*"/>
+                                        <ColumnDefinition Width="1.2*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <!-- MEETING -->
+
+                                    <TextBlock Grid.Column="0"
+                                               Text="{Binding Title}"
+                                               FontSize="9"
+                                               FontWeight="SemiBold"
+                                               Foreground="#151936"
+                                               VerticalAlignment="Center"
+                                               Margin="8,0"/>
+
+
+                                    <!-- MALE -->
+
+                                    <TextBlock Grid.Column="1"
+                                               Text="{Binding MaleCount}"
+                                               FontSize="9"
+                                               Foreground="#303653"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+
+
+                                    <!-- FEMALE -->
+
+                                    <TextBlock Grid.Column="2"
+                                               Text="{Binding FemaleCount}"
+                                               FontSize="9"
+                                               Foreground="#303653"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+
+
+                                    <!-- CHILDREN -->
+
+                                    <TextBlock Grid.Column="3"
+                                               Text="{Binding ChildrenCount}"
+                                               FontSize="9"
+                                               Foreground="#303653"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+
+
+                                    <!-- DATE -->
+
+                                    <TextBlock Grid.Column="4"
+                                               Text="{Binding Date}"
+                                               FontSize="9"
+                                               Foreground="#303653"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"/>
+
+
+                                    <!-- ACTIONS -->
+
+                                    <StackPanel Grid.Column="5"
+                                                Orientation="Horizontal"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+
+
+                                        <!-- VIEW -->
+
+                                        <Button Style="{StaticResource TableActionButtonStyle}"
+                                                Command="{Binding DataContext.ViewMeetingCommand,
+                                                                  RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}"
+                                                ToolTip="View">
+
+                                            <materialDesign:PackIcon
+                                                Kind="EyeOutline"
+                                                Width="14"
+                                                Height="14"/>
+
+                                        </Button>
+
+
+                                        <!-- EDIT -->
+
+                                        <Button Style="{StaticResource TableActionButtonStyle}"
+                                                Command="{Binding DataContext.EditMeetingCommand,
+                                                                  RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}"
+                                                ToolTip="Edit">
+
+                                            <materialDesign:PackIcon
+                                                Kind="PencilOutline"
+                                                Width="14"
+                                                Height="14"/>
+
+                                        </Button>
+
+
+                                        <!-- DELETE -->
+
+                                        <Button Style="{StaticResource DeleteActionButtonStyle}"
+                                                Command="{Binding DataContext.DeleteMeetingCommand,
+                                                                  RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}"
+                                                ToolTip="Delete">
+
+                                            <materialDesign:PackIcon
+                                                Kind="DeleteOutline"
+                                                Width="14"
+                                                Height="14"/>
+
+                                        </Button>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+            </ScrollViewer>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>

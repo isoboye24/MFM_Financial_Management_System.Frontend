@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MFMFMSF.UI.Features.Meetings.Controls
 {
     /// <summary>
-    /// Interaction logic for ListOfMeetings.xaml
+    /// Interaction logic for DeleteMeeting.xaml
     /// </summary>
-    public partial class ListOfMeetings : UserControl
+    public partial class DeleteMeeting : UserControl
     {
-        public ListOfMeetings()
+        public DeleteMeeting()
         {
             InitializeComponent();
         }
