@@ -78,8 +78,7 @@
 
                 <ContentControl
                     x:Name="ReportContent"
-                    Grid.Row="1"
-                    Margin="0,15,0,0"/>
+                    Grid.Row="1"/>
 
             </Grid>
 
