@@ -52,6 +52,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
                 <Border 
@@ -61,6 +62,16 @@
                      Margin="0,0,0,20">
 
                     <lvc:IncomeByCategory/>
+
+                </Border>
+                
+                <Border 
+                     Grid.Row="1"
+                    Height="220"
+                     CornerRadius="15"
+                     Margin="0,0,0,20">
+
+                    <lvc:ExpenditureByCategory/>
 
                 </Border>
             </Grid>           

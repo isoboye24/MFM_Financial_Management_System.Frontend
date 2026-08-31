@@ -1,0 +1,288 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports.ExpenditureByCategory"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+         mc:Ignorable="d"
+         d:DesignHeight="300"
+         d:DesignWidth="400">
+
+    <Border Background="White"
+        BorderBrush="#E8EAF2"
+        BorderThickness="1"
+        CornerRadius="8"
+        Padding="10">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- ========================================== -->
+            <!-- TITLE -->
+            <!-- ========================================== -->
+
+            <TextBlock Grid.Row="0"
+                   Text="Expenditure by Category (This Month)"
+                   FontSize="10"
+                   FontWeight="SemiBold"
+                   Foreground="#151936"
+                   Margin="0,0,0,5"/>
+
+
+            <!-- ========================================== -->
+            <!-- CHART + LEGEND -->
+            <!-- ========================================== -->
+
+            <Grid Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+
+                    <!-- DONUT -->
+                    <ColumnDefinition Width="125"/>
+
+                    <!-- LEGEND -->
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <!-- ====================================== -->
+                <!-- DONUT CHART -->
+                <!-- ====================================== -->
+
+                <Grid Width="125"
+  Height="125"
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center">
+
+                    <!-- DONUT -->
+
+                    <lvc:PieChart
+                Series="{Binding Series}"
+                LegendPosition="Hidden"
+                InitialRotation="-90"
+                Background="Transparent"
+                Width="125"
+                Height="125"/>
+
+
+                    <!-- CENTER TEXT -->
+
+                    <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+                        <TextBlock
+                        Text="$148,320"
+                        FontSize="12"
+                        FontWeight="SemiBold"
+                        Foreground="#151936"
+                        HorizontalAlignment="Center"/>
+
+                        <TextBlock
+                        Text="Total Expenses"
+                        FontSize="6"
+                        Foreground="#303653"
+                        HorizontalAlignment="Center"
+                        Margin="0,2,0,0"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+
+                <!-- ====================================== -->
+                <!-- LEGEND -->
+                <!-- ====================================== -->
+
+                <StackPanel Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Margin="5,0,0,0">
+
+
+                    <!-- OPHANAGE -->
+
+                    <Grid Height="20">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="14"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Grid.Column="0"
+                             Width="7"
+                             Height="7"
+                             Fill="#20A77A"
+                             VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="1"
+                               Text="Ophanage"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="2"
+                               Text="$62,450 (42.1%)"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                    </Grid>
+
+
+                    <!-- CHURCH RENT -->
+
+                    <Grid Height="20">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="14"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Grid.Column="0"
+                             Width="7"
+                             Height="7"
+                             Fill="#3478E5"
+                             VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="1"
+                               Text="Church Rent"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="2"
+                               Text="$38,700 (26.1%)"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                    </Grid>
+
+
+                    <!-- WORKERS -->
+
+                    <Grid Height="20">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="14"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Grid.Column="0"
+                             Width="7"
+                             Height="7"
+                             Fill="#F29A2E"
+                             VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="1"
+                               Text="Workers"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="2"
+                               Text="$22,650 (15.3%)"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                    </Grid>
+
+
+                    <!-- REFRESHMENTS -->
+
+                    <Grid Height="20">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="14"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Grid.Column="0"
+                             Width="7"
+                             Height="7"
+                             Fill="#FFAD68"
+                             VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="1"
+                               Text="Refreshments"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="2"
+                               Text="$17,820 (12.0%)"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                    </Grid>
+
+
+                    <!-- MISCELLENEOUS -->
+
+                    <Grid Height="20">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="14"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Grid.Column="0"
+                             Width="7"
+                             Height="7"
+                             Fill="#E95D87"
+                             VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="1"
+                               Text="Miscelleneous"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                        <TextBlock Grid.Column="2"
+                               Text="$6,700 (4.5%)"
+                               FontSize="8"
+                               Foreground="#303653"
+                               VerticalAlignment="Center"/>
+
+                    </Grid>
+
+                </StackPanel>
+
+            </Grid>
+
+
+            <!-- ========================================== -->
+            <!-- FOOTER -->
+            <!-- ========================================== -->
+
+            <Button Grid.Row="2"
+                Content="View full expenditure report  →"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="#5B4CF3"
+                FontSize="8"
+                FontWeight="SemiBold"
+                Cursor="Hand"
+                HorizontalAlignment="Center"
+                Padding="0"
+                Margin="0,3,10,0"/>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>
