@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Workers.Controls.WorkerProfileSummaryCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Workers.Controls" 
+             xmlns:Iv1="clr-namespace:MFMFMSF.UI.Controls"
+             mc:Ignorable="d" 
+             >
+    <Grid>
+        <Iv1:ProfileSummaryCard
+            Width="Auto"
+            Margin="8"
+            FullName="John Samuel"
+            MemberId="MEM-001248"
+            Status="Active Member"
+            Phone="+234 803 123 4567"
+            PhoneLabel=""
+            Email="john.samuel@email.com"
+            JoinedDate="January 15, 2022"
+            Address="Lagos, Nigeria"
+            MaritalStatus="Married"/>
+    </Grid>
+</UserControl>

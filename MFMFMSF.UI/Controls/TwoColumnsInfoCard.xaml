@@ -1,0 +1,186 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Controls.TwoColumnsInfoCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border Background="White"
+            BorderBrush="#E8EAF2"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="12">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="22"/>
+                <RowDefinition Height="22"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- ================================================= -->
+            <!-- TITLE -->
+            <!-- ================================================= -->
+
+            <TextBlock Grid.Row="0"
+                       Text="{Binding CardTitle,
+                                      RelativeSource={RelativeSource AncestorType=UserControl}}"
+                       FontSize="10"
+                       FontWeight="SemiBold"
+                       Foreground="#151936"
+                       Margin="0,0,0,5"/>
+
+
+            <!-- ================================================= -->
+            <!-- ROW 1 -->
+            <!-- ================================================= -->
+
+            <Grid Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Text="{Binding Label1,
+                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FontSize="8"
+                           Foreground="#303552"
+                           VerticalAlignment="Center"/>
+
+                <Border Grid.Column="1"
+                        Background="{Binding Value1Background,
+                                             RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        CornerRadius="4"
+                        Padding="6,2"
+                        VerticalAlignment="Center">
+
+                    <TextBlock Text="{Binding Value1,
+                                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               FontSize="7"
+                               Foreground="{Binding Value1Foreground,
+                                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               VerticalAlignment="Center"/>
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ================================================= -->
+            <!-- ROW 2 -->
+            <!-- ================================================= -->
+
+            <Grid Grid.Row="2">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Text="{Binding Label2,
+                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FontSize="8"
+                           Foreground="#303552"
+                           VerticalAlignment="Center"/>
+
+                <Border Grid.Column="1"
+                        Background="{Binding Value2Background,
+                                             RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        CornerRadius="4"
+                        Padding="6,2"
+                        VerticalAlignment="Center">
+
+                    <TextBlock Text="{Binding Value2,
+                                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               FontSize="7"
+                               Foreground="{Binding Value2Foreground,
+                                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               VerticalAlignment="Center"/>
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ================================================= -->
+            <!-- ROW 3 -->
+            <!-- ================================================= -->
+
+            <Grid Grid.Row="3">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Text="{Binding Label3,
+                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FontSize="8"
+                           Foreground="#303552"
+                           VerticalAlignment="Center"/>
+
+                <Border Grid.Column="1"
+                        Background="{Binding Value3Background,
+                                             RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        CornerRadius="4"
+                        Padding="6,2"
+                        VerticalAlignment="Center">
+
+                    <TextBlock Text="{Binding Value3,
+                                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               FontSize="7"
+                               Foreground="{Binding Value3Foreground,
+                                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               VerticalAlignment="Center"/>
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ================================================= -->
+            <!-- ROW 4 -->
+            <!-- ================================================= -->
+
+            <Grid Grid.Row="4">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Text="{Binding Label4,
+                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                           FontSize="8"
+                           Foreground="#303552"
+                           VerticalAlignment="Center"/>
+
+                <Border Grid.Column="1"
+                        Background="{Binding Value4Background,
+                                             RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        CornerRadius="4"
+                        Padding="6,2"
+                        VerticalAlignment="Center">
+
+                    <TextBlock Text="{Binding Value4,
+                                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               FontSize="7"
+                               Foreground="{Binding Value4Foreground,
+                                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               VerticalAlignment="Center"/>
+
+                </Border>
+
+            </Grid>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>

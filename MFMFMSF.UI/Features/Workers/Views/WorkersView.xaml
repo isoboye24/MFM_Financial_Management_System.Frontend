@@ -48,7 +48,8 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -99,7 +100,7 @@
                                     CornerRadius="15"
                                     Padding="0,0,2,0">
 
-                                    <!--<lvc2:NewWorkersTrend/>-->
+                                    <lvc2:WorkersByAgeGroup/>
 
                                 </Border>
                                 
@@ -118,7 +119,7 @@
 
                 </Border>
 
-                <Border Grid.Column="1" Padding="20,0,0,0">
+                <Border Grid.Column="2">
 
                     <Grid>
                         <Grid.RowDefinitions>
@@ -129,11 +130,9 @@
 
                         <Border Grid.Row="0"
                             Height="Auto"
-                            CornerRadius="15"
-                            Padding="2"
                             Margin="0,0,0,20">
 
-                            <!--<lvc2:ProjectSideCards/>-->
+                            <lvc2:WorkerProfileSummaryCard/>
 
                         </Border>
 
@@ -143,7 +142,7 @@
                             CornerRadius="15"
                              Margin="0,0,0,20">
 
-                            <!--<lvc2:PreviousProjects/>-->
+                            <lvc2:MembershipInformationCard/>
 
                         </Border>
 
