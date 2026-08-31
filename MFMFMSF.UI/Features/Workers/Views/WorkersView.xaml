@@ -56,7 +56,65 @@
                     Height="Auto"                       
                     CornerRadius="15">
 
-                    <!--<lvc2:ProjectTable/>-->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Border Grid.Row="0"
+                            Height="Auto"
+                            CornerRadius="15"
+                            Margin="0,0,0,20">
+                            
+                            <lvc2:WorkersTable/>
+                            
+                        </Border>
+
+                        <Border Grid.Row="1"
+                            Height="Auto"
+                            CornerRadius="15"
+                            Margin="0,0,0,20">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0"
+                                    Height="Auto"
+                                    CornerRadius="15"
+                                    Padding="0,0,2,0">
+
+                                    <lvc2:MembersByDepartmentCard/>
+
+                                </Border>
+                                
+                                <Border Grid.Column="2"
+                                    Height="Auto"
+                                    CornerRadius="15"
+                                    Padding="0,0,2,0">
+
+                                    <!--<lvc2:NewWorkersTrend/>-->
+
+                                </Border>
+                                
+                                <Border Grid.Column="4"
+                                    Height="Auto"
+                                    CornerRadius="15"
+                                    Padding="0,0,2,0">
+
+                                    <lvc2:NewWorkersTrend/>
+
+                                </Border>
+                            </Grid>
+
+                        </Border>
+                    </Grid>
 
                 </Border>
 
