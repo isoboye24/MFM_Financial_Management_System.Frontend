@@ -74,6 +74,16 @@
                     <lvc:ExpenditureByCategory/>
 
                 </Border>
+                
+                <Border 
+                     Grid.Row="2"
+                    Height="220"
+                     CornerRadius="15"
+                     Margin="0,0,0,20">
+
+                    <lvc:RecentReports/>
+
+                </Border>
             </Grid>           
             
         </Border>

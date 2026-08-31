@@ -1,0 +1,346 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports.RecentReports"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports"
+             mc:Ignorable="d"
+             d:DesignHeight="250"
+             d:DesignWidth="320">
+
+    <Border Background="White"
+            BorderBrush="#E8EAF2"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="10">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- ========================================== -->
+            <!-- TITLE -->
+            <!-- ========================================== -->
+
+            <TextBlock Grid.Row="0"
+                       Text="Recent Reports"
+                       FontSize="10"
+                       FontWeight="SemiBold"
+                       Foreground="#151936"
+                       Margin="0,0,0,6"/>
+
+
+            <!-- ========================================== -->
+            <!-- REPORTS -->
+            <!-- ========================================== -->
+
+            <StackPanel Grid.Row="1">
+
+
+                <!-- ====================================== -->
+                <!-- REPORT 1 -->
+                <!-- ====================================== -->
+
+                <Grid Height="30">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- DOCUMENT ICON -->
+
+                    <Border Grid.Column="0"
+                            Width="18"
+                            Height="18"
+                            Background="#F4F3FF"
+                            CornerRadius="3"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+
+                        <materialDesign:PackIcon
+                            Kind="FileDocumentOutline"
+                            Width="11"
+                            Height="11"
+                            Foreground="#303653"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                    </Border>
+
+
+                    <!-- REPORT INFORMATION -->
+
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="Income Statement - May 2025"
+                                   FontSize="8"
+                                   FontWeight="SemiBold"
+                                   Foreground="#151936"/>
+
+                        <TextBlock Text="Generated on May 31, 2025 10:30 AM"
+                                   FontSize="6.5"
+                                   Foreground="#6D7188"
+                                   Margin="0,1,0,0"/>
+
+                    </StackPanel>
+
+
+                    <!-- DOWNLOAD -->
+
+                    <Button Grid.Column="2"
+                            Width="20"
+                            Height="20"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Padding="0"
+                            Cursor="Hand"
+                            ToolTip="Download">
+
+                        <materialDesign:PackIcon
+                            Kind="Download"
+                            Width="11"
+                            Height="11"
+                            Foreground="#303653"/>
+
+                    </Button>
+
+                </Grid>
+
+
+                <!-- ====================================== -->
+                <!-- REPORT 2 -->
+                <!-- ====================================== -->
+
+                <Grid Height="30">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Border Grid.Column="0"
+                            Width="18"
+                            Height="18"
+                            Background="#F4F3FF"
+                            CornerRadius="3"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+
+                        <materialDesign:PackIcon
+                            Kind="FileDocumentOutline"
+                            Width="11"
+                            Height="11"
+                            Foreground="#303653"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                    </Border>
+
+
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="Expenditure Report - May 2025"
+                                   FontSize="8"
+                                   FontWeight="SemiBold"
+                                   Foreground="#151936"/>
+
+                        <TextBlock Text="Generated on May 31, 2025 10:28 AM"
+                                   FontSize="6.5"
+                                   Foreground="#6D7188"
+                                   Margin="0,1,0,0"/>
+
+                    </StackPanel>
+
+
+                    <Button Grid.Column="2"
+                            Width="20"
+                            Height="20"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Padding="0"
+                            Cursor="Hand"
+                            ToolTip="Download">
+
+                        <materialDesign:PackIcon
+                            Kind="Download"
+                            Width="11"
+                            Height="11"
+                            Foreground="#303653"/>
+
+                    </Button>
+
+                </Grid>
+
+
+                <!-- ====================================== -->
+                <!-- REPORT 3 -->
+                <!-- ====================================== -->
+
+                <Grid Height="30">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Border Grid.Column="0"
+                            Width="18"
+                            Height="18"
+                            Background="#F4F3FF"
+                            CornerRadius="3"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+
+                        <materialDesign:PackIcon
+                            Kind="FileDocumentOutline"
+                            Width="11"
+                            Height="11"
+                            Foreground="#303653"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                    </Border>
+
+
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="Budget vs Actual - May 2025"
+                                   FontSize="8"
+                                   FontWeight="SemiBold"
+                                   Foreground="#151936"/>
+
+                        <TextBlock Text="Generated on May 31, 2025 10:25 AM"
+                                   FontSize="6.5"
+                                   Foreground="#6D7188"
+                                   Margin="0,1,0,0"/>
+
+                    </StackPanel>
+
+
+                    <Button Grid.Column="2"
+                            Width="20"
+                            Height="20"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Padding="0"
+                            Cursor="Hand"
+                            ToolTip="Download">
+
+                        <materialDesign:PackIcon
+                            Kind="Download"
+                            Width="11"
+                            Height="11"
+                            Foreground="#303653"/>
+
+                    </Button>
+
+                </Grid>
+
+
+                <!-- ====================================== -->
+                <!-- REPORT 4 -->
+                <!-- ====================================== -->
+
+                <Grid Height="30">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Border Grid.Column="0"
+                            Width="18"
+                            Height="18"
+                            Background="#F4F3FF"
+                            CornerRadius="3"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+
+                        <materialDesign:PackIcon
+                            Kind="FileDocumentOutline"
+                            Width="11"
+                            Height="11"
+                            Foreground="#303653"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                    </Border>
+
+
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="Fund Summary - May 2025"
+                                   FontSize="8"
+                                   FontWeight="SemiBold"
+                                   Foreground="#151936"/>
+
+                        <TextBlock Text="Generated on May 31, 2025 10:20 AM"
+                                   FontSize="6.5"
+                                   Foreground="#6D7188"
+                                   Margin="0,1,0,0"/>
+
+                    </StackPanel>
+
+
+                    <Button Grid.Column="2"
+                            Width="20"
+                            Height="20"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Padding="0"
+                            Cursor="Hand"
+                            ToolTip="Download">
+
+                        <materialDesign:PackIcon
+                            Kind="Download"
+                            Width="11"
+                            Height="11"
+                            Foreground="#303653"/>
+
+                    </Button>
+
+                </Grid>
+
+            </StackPanel>
+
+
+            <!-- ========================================== -->
+            <!-- FOOTER -->
+            <!-- ========================================== -->
+
+            <Button Grid.Row="2"
+                    Content="View all reports history  →"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="#5B4CF3"
+                    FontSize="8"
+                    FontWeight="SemiBold"
+                    Padding="0"
+                    Cursor="Hand"
+                    HorizontalAlignment="Center"
+                    Margin="0,5,0,0"/>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>
