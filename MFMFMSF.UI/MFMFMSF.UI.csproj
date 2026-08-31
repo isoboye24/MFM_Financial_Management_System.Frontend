@@ -19,6 +19,8 @@
     <Folder Include="Assets\Images\" />
     <Folder Include="Features\Expenditures\ViewModels\" />
     <Folder Include="Features\Expenditures\Resources\" />
+    <Folder Include="Features\Meetings\ViewModels\" />
+    <Folder Include="Features\Meetings\Resources\" />
     <Folder Include="Features\Reports\Resources\" />
     <Folder Include="Features\Reports\ViewModels\" />
     <Folder Include="Features\Workers\Resources\" />

@@ -69,6 +69,12 @@
                 Click="SidebarMenuItem_Click"/>
 
             <controls:SidebarMenuItem
+                Title="Church Services"
+                Icon="MonitorAccount"
+                Command="{Binding NavigateMeetingsCommand}"
+                Click="SidebarMenuItem_Click"/>
+            
+            <controls:SidebarMenuItem
                 Title="Offerings"
                 Icon="Gift"
                 Command="{Binding NavigateOfferingsCommand}"
