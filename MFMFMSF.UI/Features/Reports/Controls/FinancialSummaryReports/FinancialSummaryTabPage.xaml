@@ -40,7 +40,7 @@
                     CornerRadius="15"
                     Margin="0,0,0,20">
 
-                    <!--<lvc:IncomeByCategory/>-->
+                    <lvc:SummaryByFunds/>
                     
                 </Border>
             </Grid>
