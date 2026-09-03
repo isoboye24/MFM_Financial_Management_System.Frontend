@@ -57,77 +57,83 @@
 
         <!-- Navigations -->
 
-        <StackPanel x:Name="NavigationMenu"
-                    Grid.Row="1"
-            Margin="0,20,0,0">
+        <ScrollViewer Grid.Row="1"
+              VerticalScrollBarVisibility="Auto"
+              HorizontalScrollBarVisibility="Disabled"
+              CanContentScroll="True">
 
-            <controls:SidebarMenuItem
-                Title="Dashboard"
-                Icon="ViewDashboard"
-                Command="{Binding NavigateDashboardCommand}"
-                IsSelected="True"
-                Click="SidebarMenuItem_Click"/>
+            <StackPanel x:Name="NavigationMenu"
+                Margin="0,20,0,20">
 
-            <controls:SidebarMenuItem
-                Title="Church Services"
-                Icon="MonitorAccount"
-                Command="{Binding NavigateMeetingsCommand}"
-                Click="SidebarMenuItem_Click"/>
-            
-            <controls:SidebarMenuItem
-                Title="Offerings"
-                Icon="Gift"
-                Command="{Binding NavigateOfferingsCommand}"
-                Click="SidebarMenuItem_Click"/>
+                <controls:SidebarMenuItem
+            Title="Dashboard"
+            Icon="ViewDashboard"
+            Command="{Binding NavigateDashboardCommand}"
+            IsSelected="True"
+            Click="SidebarMenuItem_Click"/>
 
-            <controls:SidebarMenuItem
-                Title="Tithes"
-                Icon="HeartOutline"
-                Command="{Binding NavigateTithesCommand}"
-                Click="SidebarMenuItem_Click"/>
+                <controls:SidebarMenuItem
+            Title="Church Services"
+            Icon="MonitorAccount"
+            Command="{Binding NavigateMeetingsCommand}"
+            Click="SidebarMenuItem_Click"/>
 
-            <controls:SidebarMenuItem
-                Title="Seeds"
-                Icon="Sprout"
-                Command="{Binding NavigateSeedsCommand}"
-                Click="SidebarMenuItem_Click"/>
+                <controls:SidebarMenuItem
+            Title="Offerings"
+            Icon="Gift"
+            Command="{Binding NavigateOfferingsCommand}"
+            Click="SidebarMenuItem_Click"/>
 
-            <controls:SidebarMenuItem
-                Title="Other Income"
-                Icon="CashPlus"
-                Command="{Binding NavigateOtherIncomeCommand}"
-                Click="SidebarMenuItem_Click"/>
+                <controls:SidebarMenuItem
+            Title="Tithes"
+            Icon="HeartOutline"
+            Command="{Binding NavigateTithesCommand}"
+            Click="SidebarMenuItem_Click"/>
 
-            <controls:SidebarMenuItem
-                Title="Expenditures"
-                Icon="CashMinus"
-                Command="{Binding NavigateExpendituresCommand}"
-                Click="SidebarMenuItem_Click"/>
+                <controls:SidebarMenuItem
+            Title="Seeds"
+            Icon="Sprout"
+            Command="{Binding NavigateSeedsCommand}"
+            Click="SidebarMenuItem_Click"/>
 
-            <controls:SidebarMenuItem
-                Title="Projects"
-                Icon="OfficeBuilding"
-                Command="{Binding NavigateProjectsCommand}"
-                Click="SidebarMenuItem_Click"/>
+                <controls:SidebarMenuItem
+            Title="Other Income"
+            Icon="CashPlus"
+            Command="{Binding NavigateOtherIncomeCommand}"
+            Click="SidebarMenuItem_Click"/>
 
-            <controls:SidebarMenuItem
-                Title="Workers"
-                Icon="AccountGroup"
-                Command="{Binding NavigateWorkersCommand}"                
-                Click="SidebarMenuItem_Click"/>
+                <controls:SidebarMenuItem
+            Title="Expenditures"
+            Icon="CashMinus"
+            Command="{Binding NavigateExpendituresCommand}"
+            Click="SidebarMenuItem_Click"/>
 
-            <controls:SidebarMenuItem
-                Title="Reports"
-                Icon="ChartBar"
-                Command="{Binding NavigateReportsCommand}"
-                Click="SidebarMenuItem_Click"/>
+                <controls:SidebarMenuItem
+            Title="Projects"
+            Icon="OfficeBuilding"
+            Command="{Binding NavigateProjectsCommand}"
+            Click="SidebarMenuItem_Click"/>
 
-            <controls:SidebarMenuItem
-                Title="Settings"
-                Icon="Cog"
-                Click="SidebarMenuItem_Click"/>
+                <controls:SidebarMenuItem
+            Title="Workers"
+            Icon="AccountGroup"
+            Command="{Binding NavigateWorkersCommand}"
+            Click="SidebarMenuItem_Click"/>
 
-        </StackPanel>
+                <controls:SidebarMenuItem
+            Title="Reports"
+            Icon="ChartBar"
+            Command="{Binding NavigateReportsCommand}"
+            Click="SidebarMenuItem_Click"/>
+
+                <controls:SidebarMenuItem
+            Title="Settings"
+            Icon="Cog"
+            Click="SidebarMenuItem_Click"/>
+
+            </StackPanel>
+
+        </ScrollViewer>
 
         <!-- User Profile will go here -->
 
