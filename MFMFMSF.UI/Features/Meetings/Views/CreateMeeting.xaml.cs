@@ -5,13 +5,16 @@ using System.Windows.Controls;
 namespace MFMFMSF.UI.Features.Meetings.Views
 {
     /// <summary>
-    /// Interaction logic for MeetingsView.xaml
+    /// Interaction logic for CreateMeeting.xaml
     /// </summary>
-    public partial class MeetingsView : UserControl
+    public partial class CreateMeeting : UserControl
     {
-        public MeetingsView(INavigationService navigationService)
+        public INavigationService NavigationService { get; }
+        public CreateMeeting(INavigationService navigationService)
         {
             InitializeComponent();
+
+            NavigationService = navigationService;
 
             DataContext = new MeetingsViewModel(navigationService);
         }

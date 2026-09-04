@@ -26,8 +26,8 @@
                 PageTitle="Church Services"
                 PageDescription="View and manage all services of the church."
                 DateRangeText="May 1 – May 31, 2025"
-                ActionText="Add Meeting"
-                ActionCommand="{Binding AddTitleCommand}"
+                ActionText="Add Church Service"
+                ActionCommand="{Binding AddMeetingCommand}"
                 DateRangeCommand="{Binding SelectDateRangeCommand}"/>
 
         </Border>
