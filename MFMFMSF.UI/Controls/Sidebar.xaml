@@ -129,6 +129,7 @@
                 <controls:SidebarMenuItem
             Title="Settings"
             Icon="Cog"
+                     Command="{Binding NavigateSettingsCommand}"
             Click="SidebarMenuItem_Click"/>
 
             </StackPanel>

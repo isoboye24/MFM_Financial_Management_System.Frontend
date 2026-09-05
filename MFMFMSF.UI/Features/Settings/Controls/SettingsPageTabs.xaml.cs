@@ -1,13 +1,15 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace MFMFMSF.UI.Controls
+namespace MFMFMSF.UI.Features.Settings.Controls
 {
-    public partial class PageTabs : UserControl
+    /// <summary>
+    /// Interaction logic for SettingsPageTabs.xaml
+    /// </summary>
+    public partial class SettingsPageTabs : UserControl
     {
-        public PageTabs()
+        public SettingsPageTabs()
         {
             InitializeComponent();
 
@@ -30,7 +32,7 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(SelectedIndex),
                 typeof(int),
-                typeof(PageTabs),
+                typeof(SettingsPageTabs),
                 new PropertyMetadata(0, OnSelectedIndexChanged));
 
 
@@ -38,7 +40,7 @@ namespace MFMFMSF.UI.Controls
             DependencyObject d,
             DependencyPropertyChangedEventArgs e)
         {
-            var control = (PageTabs)d;
+            var control = (SettingsPageTabs)d;
 
             control.UpdateSelectedTab((int)e.NewValue);
         }
@@ -57,9 +59,9 @@ namespace MFMFMSF.UI.Controls
             {
                 SelectedIndex = index;
 
-                TabChanged?.Invoke(
+                SettingsTabChanged?.Invoke(
                     this,
-                    new TabChangedEventArgs(index));
+                    new SettingsTabChangedEventArgs(index));
             }
         }
 
@@ -70,15 +72,15 @@ namespace MFMFMSF.UI.Controls
 
         private void UpdateSelectedTab(int index)
         {
-            if (ActiveIndicator == null)
+            if (SettingsActiveIndicator == null)
                 return;
 
             if (index < 0 || index > 5)
                 index = 0;
 
-            Grid.SetColumn(ActiveIndicator, index);
+            Grid.SetColumn(SettingsActiveIndicator, index);
 
-            if (ActiveIndicator.Parent is not Grid parentGrid)
+            if (SettingsActiveIndicator.Parent is not Grid parentGrid)
                 return;
 
             foreach (var child in parentGrid.Children)
@@ -101,21 +103,7 @@ namespace MFMFMSF.UI.Controls
         // TAB CHANGED EVENT
         // ==========================================
 
-        public event EventHandler<TabChangedEventArgs>? TabChanged;
-    }
-
-
-    // ==============================================
-    // EVENT ARGUMENTS
-    // ==============================================
-
-    public class TabChangedEventArgs : EventArgs
-    {
-        public int SelectedIndex { get; }
-
-        public TabChangedEventArgs(int selectedIndex)
-        {
-            SelectedIndex = selectedIndex;
-        }
+        public event EventHandler<SettingsTabChangedEventArgs>? SettingsTabChanged;
     }
 }
+

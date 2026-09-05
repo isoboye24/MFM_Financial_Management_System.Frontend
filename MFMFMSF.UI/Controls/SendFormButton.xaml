@@ -16,7 +16,7 @@
         Background="#5B4CF3"
         Foreground="White"
         BorderThickness="0"
-        FontSize="9"
+        FontSize="12"
         FontWeight="SemiBold">
 
         <Button.Template>

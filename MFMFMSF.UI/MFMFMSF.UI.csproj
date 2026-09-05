@@ -22,6 +22,8 @@
     <Folder Include="Features\Meetings\Resources\" />
     <Folder Include="Features\Reports\Resources\" />
     <Folder Include="Features\Reports\ViewModels\" />
+    <Folder Include="Features\Settings\Resources\" />
+    <Folder Include="Features\Settings\ViewModels\" />
     <Folder Include="Features\Workers\Resources\" />
     <Folder Include="Features\Workers\ViewModels\" />
     <Folder Include="Features\Offering\Resources\" />
