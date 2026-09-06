@@ -1,28 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Settings.Controls.MeetingCategories
 {
-    /// <summary>
-    /// Interaction logic for MeetingCategoriesList.xaml
-    /// </summary>
     public partial class MeetingCategoriesList : UserControl
     {
         public MeetingCategoriesList()
         {
             InitializeComponent();
         }
+
+
+        // ==========================================
+        // EDIT
+        // ==========================================
+
+        private void EditButton_Click(
+            object sender,
+            RoutedEventArgs e)
+        {
+            if (sender is Button button &&
+                button.Tag is MeetingCategoryItem item)
+            {
+                EditClicked?.Invoke(this, item);
+            }
+        }
+
+
+        // ==========================================
+        // DELETE
+        // ==========================================
+
+        private void DeleteButton_Click(
+            object sender,
+            RoutedEventArgs e)
+        {
+            if (sender is Button button &&
+                button.Tag is MeetingCategoryItem item)
+            {
+                DeleteClicked?.Invoke(this, item);
+            }
+        }
+
+
+        // ==========================================
+        // EVENTS
+        // ==========================================
+
+        public event EventHandler<MeetingCategoryItem>? EditClicked;
+
+        public event EventHandler<MeetingCategoryItem>? DeleteClicked;
     }
 }

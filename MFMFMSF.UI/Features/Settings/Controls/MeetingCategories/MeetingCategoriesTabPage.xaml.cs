@@ -1,28 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MFMFMSF.Core.Interfaces;
+using System;
+using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Settings.Controls.MeetingCategories
 {
-    /// <summary>
-    /// Interaction logic for MeetingCategoriesTabPage.xaml
-    /// </summary>
     public partial class MeetingCategoriesTabPage : UserControl
     {
-        public MeetingCategoriesTabPage()
+        private readonly IMeetingCategoryService _meetingCategoryService;
+
+        public MeetingCategoriesTabPage(
+            IMeetingCategoryService meetingCategoryService)
         {
             InitializeComponent();
+
+            _meetingCategoryService = meetingCategoryService;
+        }
+
+
+        private async void CreateMeetingCategoryControl_CreateClicked(
+            object sender,
+            EventArgs e)
+        {
+            string categoryName =
+                CreateMeetingCategoryControl.CategoryName.Trim();
+
+            try
+            {
+                await _meetingCategoryService.CreateAsync(categoryName);
+
+                MessageBox.Show(
+                    "Meeting category created successfully.",
+                    "Meeting Category",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+
+                CreateMeetingCategoryControl.CategoryName =
+                    string.Empty;
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show(
+                    "Unable to connect to the server.",
+                    "Connection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Unable to Create Meeting Category",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
     }
 }
