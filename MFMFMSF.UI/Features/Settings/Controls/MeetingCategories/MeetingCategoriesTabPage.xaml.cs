@@ -16,8 +16,18 @@ namespace MFMFMSF.UI.Features.Settings.Controls.MeetingCategories
             InitializeComponent();
 
             _meetingCategoryService = meetingCategoryService;
+
+            MeetingCategoriesListControl.SetService(_meetingCategoryService);
+
+            Loaded += MeetingCategoriesTabPage_Loaded;
         }
 
+        private async void MeetingCategoriesTabPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= MeetingCategoriesTabPage_Loaded;
+
+            await MeetingCategoriesListControl.LoadAsync();
+        }
 
         private async void CreateMeetingCategoryControl_CreateClicked(
             object sender,

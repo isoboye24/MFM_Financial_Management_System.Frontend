@@ -168,14 +168,14 @@
                           VerticalScrollBarVisibility="Auto"
                           HorizontalScrollBarVisibility="Disabled">
 
-                <ItemsControl>
+                <ItemsControl x:Name="CategoriesItemsControl">
 
                     <ItemsControl.ItemTemplate>
 
                         <DataTemplate>
 
                             <Border BorderBrush="#E8EAF2"
-                                    BorderThickness="0,0,0,1">
+                    BorderThickness="0,0,0,1">
 
                                 <Grid Height="44">
 
@@ -189,58 +189,53 @@
                                     <!-- NUMBER -->
 
                                     <TextBlock Grid.Column="0"
-                                               Text="{Binding Number}"
-                                               Margin="18,0,0,0"
-                                               VerticalAlignment="Center"
-                                               FontSize="10"
-                                               Foreground="#68708A"/>
+                               Text="{Binding Number}"
+                               Margin="18,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="10"
+                               Foreground="#68708A"/>
 
 
                                     <!-- NAME -->
 
                                     <TextBlock Grid.Column="1"
-                                               Text="{Binding Name}"
-                                               Margin="10,0,0,0"
-                                               VerticalAlignment="Center"
-                                               FontSize="10"
-                                               FontWeight="SemiBold"
-                                               Foreground="#303653"/>
+                               Text="{Binding Name}"
+                               Margin="10,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="10"
+                               FontWeight="SemiBold"
+                               Foreground="#303653"/>
 
 
                                     <!-- ACTIONS -->
 
                                     <StackPanel Grid.Column="2"
-                                                Orientation="Horizontal"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center">
-
-
-                                        <!-- EDIT -->
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
 
                                         <Button Style="{StaticResource ActionButtonStyle}"
-                                                ToolTip="Edit"
-                                                Click="EditButton_Click"
-                                                Tag="{Binding}">
+                                ToolTip="Edit"
+                                Click="EditButton_Click"
+                                Tag="{Binding}">
 
                                             <materialDesign:PackIcon
-                                                Kind="PencilOutline"
-                                                Width="15"
-                                                Height="15"/>
+                                Kind="PencilOutline"
+                                Width="15"
+                                Height="15"/>
 
                                         </Button>
 
 
-                                        <!-- DELETE -->
-
                                         <Button Style="{StaticResource DeleteButtonStyle}"
-                                                ToolTip="Delete"
-                                                Click="DeleteButton_Click"
-                                                Tag="{Binding}">
+                                ToolTip="Delete"
+                                Click="DeleteButton_Click"
+                                Tag="{Binding}">
 
                                             <materialDesign:PackIcon
-                                                Kind="DeleteOutline"
-                                                Width="15"
-                                                Height="15"/>
+                                Kind="DeleteOutline"
+                                Width="15"
+                                Height="15"/>
 
                                         </Button>
 
@@ -253,29 +248,6 @@
                         </DataTemplate>
 
                     </ItemsControl.ItemTemplate>
-
-
-                    <!-- SAMPLE DATA -->
-
-                    <ItemsControl.Items>
-
-                        <Iv1:MeetingCategoryItem
-                            Number="1"
-                            Name="Sunday Service"/>
-
-                        <Iv1:MeetingCategoryItem
-                            Number="2"
-                            Name="Bible Study"/>
-
-                        <Iv1:MeetingCategoryItem
-                            Number="3"
-                            Name="Prayer Meeting"/>
-
-                        <Iv1:MeetingCategoryItem
-                            Number="4"
-                            Name="Youth Service"/>
-
-                    </ItemsControl.Items>
 
                 </ItemsControl>
 

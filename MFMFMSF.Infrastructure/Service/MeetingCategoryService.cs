@@ -1,6 +1,7 @@
-﻿using System.Net.Http;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models;
+using System.Net.Http;
 using System.Net.Http.Json;
-using MFMFMSF.Core.Interfaces;
 
 namespace MFMFMSF.Infrastructure.Service
 {
@@ -15,6 +16,10 @@ namespace MFMFMSF.Infrastructure.Service
             _httpClient = httpClient;
         }
 
+        // ==========================================
+        // CREATE
+        // ==========================================
+
         public async Task CreateAsync(string name)
         {
             var request = new CreateMeetingCategoryRequest
@@ -25,6 +30,24 @@ namespace MFMFMSF.Infrastructure.Service
             var response = await _httpClient.PostAsJsonAsync(Endpoint, request);
 
             response.EnsureSuccessStatusCode();
+        }
+
+        // ==========================================
+        // GET ALL
+        // ==========================================
+
+        public async Task<IReadOnlyList<MeetingCategoryListItem>> GetAllAsync()
+        {
+            var response = await _httpClient.GetAsync(
+                $"{Endpoint}?Page=1&RecordsPerPage=100");
+
+            response.EnsureSuccessStatusCode();
+
+            var categories =
+                await response.Content.ReadFromJsonAsync<
+                    List<MeetingCategoryListItem>>();
+
+            return categories ?? [];
         }
     }
 
