@@ -75,7 +75,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls
             if (SettingsActiveIndicator == null)
                 return;
 
-            if (index < 0 || index > 5)
+            if (index < 0 || index > 1)
                 index = 0;
 
             Grid.SetColumn(SettingsActiveIndicator, index);
@@ -90,10 +90,8 @@ namespace MFMFMSF.UI.Features.Settings.Controls
                 {
                     button.Foreground =
                         buttonIndex == index
-                            ? new SolidColorBrush(
-                                Color.FromRgb(91, 76, 243))
-                            : new SolidColorBrush(
-                                Color.FromRgb(48, 54, 83));
+                            ? new SolidColorBrush(Color.FromRgb(91, 76, 243))
+                            : new SolidColorBrush(Color.FromRgb(48, 54, 83));
                 }
             }
         }
