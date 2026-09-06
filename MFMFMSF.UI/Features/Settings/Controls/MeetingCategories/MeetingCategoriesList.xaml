@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Settings.Controls.MeetingCategories.MeetingCategoriesList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Iv1="clr-namespace:MFMFMSF.UI.Features.Settings.Controls.MeetingCategories"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+
+    <Border Background="White"
+            BorderBrush="#E8EAF2"
+            BorderThickness="1"
+            CornerRadius="8">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- ================================================= -->
+            <!-- TABLE HEADER -->
+            <!-- ================================================= -->
+
+            <Border Grid.Row="0"
+                    Background="#F8F9FC"
+                    CornerRadius="8,8,0,0">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- NUMBER -->
+
+                    <TextBlock Grid.Column="0"
+                               Text="No."
+                               Margin="18,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="10"
+                               FontWeight="SemiBold"
+                               Foreground="#68708A"/>
+
+
+                    <!-- NAME -->
+
+                    <TextBlock Grid.Column="1"
+                               Text="Name"
+                               Margin="10,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="10"
+                               FontWeight="SemiBold"
+                               Foreground="#68708A"/>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- TABLE CONTENT -->
+            <!-- ================================================= -->
+
+            <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+
+                <ItemsControl>
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border BorderBrush="#E8EAF2"
+                                    BorderThickness="0,0,0,1"
+                                    Padding="0">
+
+                                <Grid Height="44">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <!-- NUMBER -->
+
+                                    <TextBlock Grid.Column="0"
+                                               Text="{Binding Number}"
+                                               Margin="18,0,0,0"
+                                               VerticalAlignment="Center"
+                                               FontSize="10"
+                                               Foreground="#68708A"/>
+
+
+                                    <!-- NAME -->
+
+                                    <TextBlock Grid.Column="1"
+                                               Text="{Binding Name}"
+                                               Margin="10,0,0,0"
+                                               VerticalAlignment="Center"
+                                               FontSize="10"
+                                               FontWeight="SemiBold"
+                                               Foreground="#303653"/>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+
+                    <!-- SAMPLE DATA -->
+
+                    <ItemsControl.Items>
+
+                        <Iv1:MeetingCategoryItem
+                            Number="1"
+                            Name="Sunday Service"/>
+
+                        <Iv1:MeetingCategoryItem
+                            Number="2"
+                            Name="Bible Study"/>
+
+                        <Iv1:MeetingCategoryItem
+                            Number="3"
+                            Name="Prayer Meeting"/>
+
+                        <Iv1:MeetingCategoryItem
+                            Number="4"
+                            Name="Youth Service"/>
+
+                    </ItemsControl.Items>
+
+                </ItemsControl>
+
+            </ScrollViewer>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>
