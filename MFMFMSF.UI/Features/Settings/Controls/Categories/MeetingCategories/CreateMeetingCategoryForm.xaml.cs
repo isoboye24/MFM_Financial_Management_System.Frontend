@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MFMFMSF.UI.Features.Settings.Controls.MeetingCategories
+namespace MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories
 {
     public partial class CreateMeetingCategoryForm : UserControl
     {

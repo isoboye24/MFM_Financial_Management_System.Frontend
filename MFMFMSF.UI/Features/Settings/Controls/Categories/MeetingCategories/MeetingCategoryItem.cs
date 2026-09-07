@@ -1,4 +1,4 @@
-﻿namespace MFMFMSF.UI.Features.Settings.Controls.MeetingCategories
+﻿namespace MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories
 {
     public class MeetingCategoryItem
     {

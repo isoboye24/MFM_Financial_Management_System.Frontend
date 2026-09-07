@@ -1,7 +1,6 @@
-﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.UI.Features.Settings.Controls;
+﻿using MFMFMSF.UI.Features.Settings.Controls;
 using MFMFMSF.UI.Features.Settings.Controls.General;
-using MFMFMSF.UI.Features.Settings.Controls.MeetingCategories;
+using MFMFMSF.UI.Features.Settings.Controls.Categories;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Settings.Views
@@ -27,7 +26,7 @@ namespace MFMFMSF.UI.Features.Settings.Views
                     break;
 
                 case 1:
-                    SettingsContent.Content = new MeetingCategoriesTabPage(App.MeetingCategoryService);
+                    SettingsContent.Content = new CategoriesTabPage(App.MeetingCategoryService);
                     break;
             }
         }

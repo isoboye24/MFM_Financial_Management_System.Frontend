@@ -4,13 +4,13 @@ using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MFMFMSF.UI.Features.Settings.Controls.MeetingCategories
+namespace MFMFMSF.UI.Features.Settings.Controls.Categories
 {
-    public partial class MeetingCategoriesTabPage : UserControl
+    public partial class CategoriesTabPage : UserControl
     {
         private readonly IMeetingCategoryService _meetingCategoryService;
 
-        public MeetingCategoriesTabPage(
+        public CategoriesTabPage(
             IMeetingCategoryService meetingCategoryService)
         {
             InitializeComponent();
@@ -19,12 +19,12 @@ namespace MFMFMSF.UI.Features.Settings.Controls.MeetingCategories
 
             MeetingCategoriesListControl.SetService(_meetingCategoryService);
 
-            Loaded += MeetingCategoriesTabPage_Loaded;
+            Loaded += CategoriesTabPage_Loaded;
         }
 
-        private async void MeetingCategoriesTabPage_Loaded(object sender, RoutedEventArgs e)
+        private async void CategoriesTabPage_Loaded(object sender, RoutedEventArgs e)
         {
-            Loaded -= MeetingCategoriesTabPage_Loaded;
+            Loaded -= CategoriesTabPage_Loaded;
 
             await MeetingCategoriesListControl.LoadAsync();
         }
