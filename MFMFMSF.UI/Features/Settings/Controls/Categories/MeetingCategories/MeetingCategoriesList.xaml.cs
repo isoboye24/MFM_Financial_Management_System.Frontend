@@ -78,9 +78,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories
         // EDIT
         // ==========================================
 
-        private void EditButton_Click(
-            object sender,
-            RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button &&
                 button.Tag is MeetingCategoryItem item)
@@ -94,14 +92,67 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories
         // DELETE
         // ==========================================
 
-        private void DeleteButton_Click(
-            object sender,
-            RoutedEventArgs e)
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button &&
-                button.Tag is MeetingCategoryItem item)
+            if (sender is not Button button ||
+                button.Tag is not MeetingCategoryItem item)
             {
-                DeleteClicked?.Invoke(this, item);
+                return;
+            }
+
+            var result = MessageBox.Show(
+                $"Are you sure you want to delete '{item.Name}'?",
+                "Delete Meeting Category",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            if (_meetingCategoryService == null)
+            {
+                MessageBox.Show(
+                    "Meeting category service has not been configured.",
+                    "Delete Meeting Category",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return;
+            }
+
+            try
+            {
+                await _meetingCategoryService.DeleteAsync(item.Id);
+
+                Categories.Remove(item);
+
+                RenumberCategories();
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show(
+                    "Unable to connect to the server.",
+                    "Connection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Unable to Delete Meeting Category",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        private void RenumberCategories()
+        {
+            int number = 1;
+
+            foreach (var category in Categories)
+            {
+                category.Number = number++;
             }
         }
 
@@ -111,7 +162,5 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories
         // ==========================================
 
         public event EventHandler<MeetingCategoryItem>? EditClicked;
-
-        public event EventHandler<MeetingCategoryItem>? DeleteClicked;
     }
 }

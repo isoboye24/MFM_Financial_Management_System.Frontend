@@ -1,7 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using MFMFMSF.Core.Interfaces;
 using MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories;
-using System;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,9 +32,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
         // LOAD CATEGORIES
         // ==========================================
 
-        private async void CategoriesTabPage_Loaded(
-            object sender,
-            RoutedEventArgs e)
+        private async void CategoriesTabPage_Loaded(object sender, RoutedEventArgs e)
         {
             Loaded -= CategoriesTabPage_Loaded;
 
@@ -47,9 +44,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
         // CREATE / UPDATE
         // ==========================================
 
-        private async void CreateMeetingCategoryControl_ActionClicked(
-            object? sender,
-            EventArgs e)
+        private async void CreateMeetingCategoryControl_ActionClicked(object? sender, EventArgs e)
         {
             string categoryName =
                 CreateMeetingCategoryControl.CategoryName.Trim();
@@ -124,9 +119,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
         // EDIT
         // ==========================================
 
-        private async void MeetingCategoriesListControl_EditClicked(
-            object? sender,
-            MeetingCategoryItem item)
+        private async void MeetingCategoriesListControl_EditClicked(object? sender, MeetingCategoryItem item)
         {
             try
             {
