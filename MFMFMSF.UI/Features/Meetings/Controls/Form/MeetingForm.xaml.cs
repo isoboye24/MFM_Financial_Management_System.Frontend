@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MFMFMSF.Core.Models;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Meetings.Controls.Form
@@ -9,6 +10,41 @@ namespace MFMFMSF.UI.Features.Meetings.Controls.Form
         {
             InitializeComponent();
         }
+
+        // =====================================================
+        // MEETING CATEGORIES
+        // =====================================================
+
+        public IEnumerable<MeetingCategoryListItem>? MeetingCategories
+        {
+            get => (IEnumerable<MeetingCategoryListItem>?)GetValue(MeetingCategoriesProperty);
+            set => SetValue(MeetingCategoriesProperty, value);
+        }
+
+        public static readonly DependencyProperty MeetingCategoriesProperty =
+            DependencyProperty.Register(
+                nameof(MeetingCategories),
+                typeof(IEnumerable<MeetingCategoryListItem>),
+                typeof(MeetingForm),
+                new PropertyMetadata(null));
+
+
+        // =====================================================
+        // CATEGORY
+        // =====================================================
+
+        public MeetingCategoryListItem? SelectedMeetingCategory
+        {
+            get => (MeetingCategoryListItem?)GetValue(SelectedMeetingCategoryProperty);
+            set => SetValue(SelectedMeetingCategoryProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedMeetingCategoryProperty =
+            DependencyProperty.Register(
+                nameof(SelectedMeetingCategory),
+                typeof(MeetingCategoryListItem),
+                typeof(MeetingForm),
+                new PropertyMetadata(null));
 
 
         // =====================================================
@@ -27,43 +63,6 @@ namespace MFMFMSF.UI.Features.Meetings.Controls.Form
                 typeof(DateTime?),
                 typeof(MeetingForm),
                 new PropertyMetadata(null));
-
-
-        // =====================================================
-        // CATEGORY
-        // =====================================================
-
-        public string SelectedMeetingCategory
-        {
-            get => (string)GetValue(SelectedMeetingCategoryProperty);
-            set => SetValue(SelectedMeetingCategoryProperty, value);
-        }
-
-        public static readonly DependencyProperty SelectedMeetingCategoryProperty =
-            DependencyProperty.Register(
-                nameof(SelectedMeetingCategory),
-                typeof(string),
-                typeof(MeetingForm),
-                new PropertyMetadata(string.Empty));
-
-
-        // =====================================================
-        // SUMMARY
-        // =====================================================
-
-        public string Summary
-        {
-            get => (string)GetValue(SummaryProperty);
-            set => SetValue(SummaryProperty, value);
-        }
-
-        public static readonly DependencyProperty SummaryProperty =
-            DependencyProperty.Register(
-                nameof(Summary),
-                typeof(string),
-                typeof(MeetingForm),
-                new PropertyMetadata(string.Empty));
-
 
         // =====================================================
         // MESSAGE TITLE
@@ -156,18 +155,18 @@ namespace MFMFMSF.UI.Features.Meetings.Controls.Form
 
 
         // =====================================================
-        // MESSAGE
+        // SUMMARY
         // =====================================================
 
-        public string Message
+        public string Summary
         {
-            get => (string)GetValue(MessageProperty);
-            set => SetValue(MessageProperty, value);
+            get => (string)GetValue(SummaryProperty);
+            set => SetValue(SummaryProperty, value);
         }
 
-        public static readonly DependencyProperty MessageProperty =
+        public static readonly DependencyProperty SummaryProperty =
             DependencyProperty.Register(
-                nameof(Message),
+                nameof(Summary),
                 typeof(string),
                 typeof(MeetingForm),
                 new PropertyMetadata(string.Empty));

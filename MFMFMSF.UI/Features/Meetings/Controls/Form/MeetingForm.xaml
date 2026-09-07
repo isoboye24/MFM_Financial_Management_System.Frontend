@@ -267,55 +267,26 @@
                                Style="{StaticResource FormLabel}"/>
 
                     <ComboBox
+                        ItemsSource="{Binding MeetingCategories,
+                                              RelativeSource={RelativeSource AncestorType=UserControl}}"
                         SelectedItem="{Binding SelectedMeetingCategory,
-                                               RelativeSource={RelativeSource AncestorType=UserControl}}"
-                        Style="{StaticResource FormComboBox}">
-
-                        <ComboBoxItem Content="Sunday Meeting"/>
-                        <ComboBoxItem Content="Bible Study"/>
-                        <ComboBoxItem Content="Prayer Meeting"/>
-                        <ComboBoxItem Content="Workers Meeting"/>
-                        <ComboBoxItem Content="Youth Meeting"/>
-                        <ComboBoxItem Content="Fasting &amp; Prayer"/>
-                        <ComboBoxItem Content="Special Meeting"/>
-
-                    </ComboBox>
+                                               RelativeSource={RelativeSource AncestorType=UserControl},
+                                               Mode=TwoWay}"
+                        DisplayMemberPath="Name"
+                        Style="{StaticResource FormComboBox}"
+                        ToolTip="Select the category of this meeting"/>
 
                     <TextBlock Text="Select the category of this meeting."
                                Style="{StaticResource FormHelperText}"/>
 
                 </StackPanel>
 
-
-                <!-- ================================================= -->
-                <!-- SUMMARY -->
-                <!-- ================================================= -->
-
-                <StackPanel Grid.Row="1"
-                            Grid.Column="0"
-                            Margin="0,0,0,12">
-
-                    <TextBlock Text="Summary *"
-                               Style="{StaticResource FormLabel}"/>
-
-                    <TextBox
-                        Text="{Binding Summary,
-                                       RelativeSource={RelativeSource AncestorType=UserControl},
-                                       UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource FormTextBox}"/>
-
-                    <TextBlock Text="Provide a short summary of the meeting."
-                               Style="{StaticResource FormHelperText}"/>
-
-                </StackPanel>
-
-
                 <!-- ================================================= -->
                 <!-- MESSAGE TITLE -->
                 <!-- ================================================= -->
 
                 <StackPanel Grid.Row="1"
-                            Grid.Column="2"
+                            Grid.Column="0"
                             Margin="0,0,0,12">
 
                     <TextBlock Text="Message Title"
@@ -337,8 +308,8 @@
                 <!-- MINISTER -->
                 <!-- ================================================= -->
 
-                <StackPanel Grid.Row="2"
-                            Grid.Column="0"
+                <StackPanel Grid.Row="1"
+                            Grid.Column="2"
                             Margin="0,0,0,12">
 
                     <TextBlock Text="Minister Name"
@@ -361,7 +332,7 @@
                 <!-- ================================================= -->
 
                 <StackPanel Grid.Row="2"
-                            Grid.Column="2"
+                            Grid.Column="0"
                             Margin="0,0,0,12">
 
                     <TextBlock Text="Male Attendance"
@@ -383,8 +354,8 @@
                 <!-- FEMALE ATTENDANCE -->
                 <!-- ================================================= -->
 
-                <StackPanel Grid.Row="3"
-                            Grid.Column="0"
+                <StackPanel Grid.Row="2"
+                            Grid.Column="2"
                             Margin="0,0,0,12">
 
                     <TextBlock Text="Female Attendance"
@@ -407,7 +378,7 @@
                 <!-- ================================================= -->
 
                 <StackPanel Grid.Row="3"
-                            Grid.Column="2"
+                            Grid.Column="0"
                             Margin="0,0,0,12">
 
                     <TextBlock Text="Children Attendance"
@@ -426,18 +397,17 @@
 
 
                 <!-- ================================================= -->
-                <!-- MESSAGE -->
+                <!-- SUMMARY -->
                 <!-- ================================================= -->
 
-                <StackPanel Grid.Row="4"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="3">
+                <StackPanel Grid.Row="3"
+                            Grid.Column="2">
 
-                    <TextBlock Text="Message"
+                    <TextBlock Text="Summary"
                                Style="{StaticResource FormLabel}"/>
 
                     <TextBox
-                        Text="{Binding Message,
+                        Text="{Binding Summary,
                                        RelativeSource={RelativeSource AncestorType=UserControl},
                                        UpdateSourceTrigger=PropertyChanged}"
                         Height="70"

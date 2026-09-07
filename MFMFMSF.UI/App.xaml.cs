@@ -9,9 +9,8 @@ namespace MFMFMSF.UI
     {
         public static HttpClient HttpClient { get; } = CreateHttpClient();
 
-        public static IMeetingCategoryService MeetingCategoryService { get; }
-            = new MeetingCategoryService(HttpClient);
-
+        public static IMeetingCategoryService MeetingCategoryService { get; } = new MeetingCategoryService(HttpClient);
+        public static IMeetingService MeetingService { get; } = new MeetingService(HttpClient);
 
         private static HttpClient CreateHttpClient()
         {

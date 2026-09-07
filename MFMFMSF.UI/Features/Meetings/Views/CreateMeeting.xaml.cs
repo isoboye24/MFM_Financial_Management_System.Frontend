@@ -1,22 +1,32 @@
-﻿using MFMFMSF.UI.Features.Meetings.ViewModels;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Meetings.ViewModels;
 using MFMFMSF.UI.Navigation;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Meetings.Views
 {
-    /// <summary>
-    /// Interaction logic for CreateMeeting.xaml
-    /// </summary>
     public partial class CreateMeeting : UserControl
     {
-        public INavigationService NavigationService { get; }
-        public CreateMeeting(INavigationService navigationService)
+        private readonly CreateMeetingViewModel _viewModel;
+
+        public CreateMeeting(INavigationService navigationService, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService)
         {
             InitializeComponent();
 
-            NavigationService = navigationService;
+            _viewModel = new CreateMeetingViewModel(meetingCategoryService, meetingService);
 
-            DataContext = new MeetingsViewModel(navigationService);
+            DataContext = _viewModel;
+
+            Loaded += CreateMeeting_Loaded;
+        }
+
+
+        private async void CreateMeeting_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= CreateMeeting_Loaded;
+
+            await _viewModel.LoadMeetingCategoriesAsync();
         }
     }
 }

@@ -31,17 +31,18 @@
         
         <Border Grid.Row="1"
                 Margin="0,0,0,20">
-            
+
             <controls2:MeetingForm
-                MeetingDate="{Binding Date}"
-                Summary="{Binding Summary}"
-                MessageTitle="{Binding MessageTitle}"
-                MinisterName="{Binding MinisterName}"
-                MaleAttendance="{Binding MaleAttendance}"
-                FemaleAttendance="{Binding FemaleAttendance}"
-                ChildrenAttendance="{Binding ChildrenAttendance}"
-                Message="{Binding Message}"/> 
-            
+                MeetingDate="{Binding Date, Mode=TwoWay}"
+                MeetingCategories="{Binding MeetingCategories}"
+                SelectedMeetingCategory="{Binding SelectedMeetingCategory, Mode=TwoWay}"
+                MessageTitle="{Binding MessageTitle, Mode=TwoWay}"
+                MinisterName="{Binding MinisterName, Mode=TwoWay}"
+                MaleAttendance="{Binding MaleAttendance, Mode=TwoWay}"
+                FemaleAttendance="{Binding FemaleAttendance, Mode=TwoWay}"
+                ChildrenAttendance="{Binding ChildrenAttendance, Mode=TwoWay}"
+                Summary="{Binding Summary, Mode=TwoWay}"/>
+
         </Border>
 
         <Border Grid.Row="2"

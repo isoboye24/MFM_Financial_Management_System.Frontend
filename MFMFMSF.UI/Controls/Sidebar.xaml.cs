@@ -1,4 +1,5 @@
-﻿using MFMFMSF.UI.Features.Dashboard.ViewModels;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Dashboard.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,14 +13,12 @@ namespace MFMFMSF.UI.Controls
             InitializeComponent();
         }
 
-        public void SetNavigationService(INavigationService navigation)
+        public void SetNavigationService(INavigationService navigation, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService)
         {
-            DataContext = new SidebarViewModel(navigation);
+            DataContext = new SidebarViewModel(navigation, meetingCategoryService, meetingService);
         }
 
-        private void SidebarMenuItem_Click(
-            object sender,
-            RoutedEventArgs e)
+        private void SidebarMenuItem_Click(object sender, RoutedEventArgs e)
         {
             // Deselect every menu item
             foreach (var child in NavigationMenu.Children)
