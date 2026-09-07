@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using MaterialDesignThemes.Wpf;
 
 namespace MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories
 {
@@ -31,17 +32,53 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories
 
 
         // ==========================================
-        // CREATE EVENT
+        // BUTTON TEXT
         // ==========================================
 
-        public event EventHandler? CreateClicked;
+        public string ButtonText
+        {
+            get => (string)GetValue(ButtonTextProperty);
+            set => SetValue(ButtonTextProperty, value);
+        }
+
+        public static readonly DependencyProperty ButtonTextProperty =
+            DependencyProperty.Register(
+                nameof(ButtonText),
+                typeof(string),
+                typeof(CreateMeetingCategoryForm),
+                new PropertyMetadata("Create"));
 
 
         // ==========================================
-        // CREATE BUTTON
+        // BUTTON ICON
         // ==========================================
 
-        private void CreateButton_Click(
+        public PackIconKind ButtonIcon
+        {
+            get => (PackIconKind)GetValue(ButtonIconProperty);
+            set => SetValue(ButtonIconProperty, value);
+        }
+
+        public static readonly DependencyProperty ButtonIconProperty =
+            DependencyProperty.Register(
+                nameof(ButtonIcon),
+                typeof(PackIconKind),
+                typeof(CreateMeetingCategoryForm),
+                new PropertyMetadata(PackIconKind.Plus));
+
+
+        // ==========================================
+        // ACTION EVENT
+        // ==========================================
+
+        public event EventHandler? ActionClicked;
+
+
+        // ==========================================
+        // ACTION BUTTON
+        // ==========================================
+
+        private void ActionButton_Click(
             object sender,
             RoutedEventArgs e)
         {
@@ -56,7 +93,9 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories
                 return;
             }
 
-            CreateClicked?.Invoke(this, EventArgs.Empty);
+            ActionClicked?.Invoke(
+                this,
+                EventArgs.Empty);
         }
     }
 }

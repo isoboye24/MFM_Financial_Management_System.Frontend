@@ -62,24 +62,24 @@
             <!-- CREATE BUTTON -->
             <!-- ============================================== -->
 
-             <Button Grid.Column="2"
-                Click="CreateButton_Click"
-                Height="36"
-                MinWidth="100"
-                Margin="15,0,0,0"
-                Padding="16,0"
-                Background="#5B4CF3"
-                Foreground="White"
-                BorderThickness="0"
-                Cursor="Hand"
-                FontSize="10"
-                FontWeight="SemiBold">
+            <Button Grid.Column="2"
+        Click="ActionButton_Click"
+        Height="36"
+        MinWidth="100"
+        Margin="15,0,0,0"
+        Padding="16,0"
+        Background="#5B4CF3"
+        Foreground="White"
+        BorderThickness="0"
+        Cursor="Hand"
+        FontSize="10"
+        FontWeight="SemiBold">
 
                 <Button.Template>
 
                     <ControlTemplate TargetType="Button">
 
-                        <Border x:Name="CreateButtonBorder"
+                        <Border x:Name="ActionButtonBorder"
                     Background="{TemplateBinding Background}"
                     CornerRadius="7"
                     Padding="{TemplateBinding Padding}">
@@ -89,14 +89,17 @@
                             VerticalAlignment="Center">
 
                                 <materialDesign:PackIcon
-                        Kind="Plus"
+                        Kind="{Binding ButtonIcon,
+                                       RelativeSource={RelativeSource AncestorType=UserControl}}"
                         Width="15"
                         Height="15"
                         Margin="0,0,6,0"
                         VerticalAlignment="Center"/>
 
-                                <TextBlock Text="Create"
-                               VerticalAlignment="Center"/>
+                                <TextBlock
+                        Text="{Binding ButtonText,
+                                       RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        VerticalAlignment="Center"/>
 
                             </StackPanel>
 
@@ -109,7 +112,7 @@
                             <Trigger Property="IsMouseOver"
                          Value="True">
 
-                                <Setter TargetName="CreateButtonBorder"
+                                <Setter TargetName="ActionButtonBorder"
                             Property="Background"
                             Value="#4E40D9"/>
 
@@ -121,7 +124,7 @@
                             <Trigger Property="IsPressed"
                          Value="True">
 
-                                <Setter TargetName="CreateButtonBorder"
+                                <Setter TargetName="ActionButtonBorder"
                             Property="Background"
                             Value="#4033C2"/>
 
@@ -133,7 +136,7 @@
                             <Trigger Property="IsEnabled"
                          Value="False">
 
-                                <Setter TargetName="CreateButtonBorder"
+                                <Setter TargetName="ActionButtonBorder"
                             Property="Opacity"
                             Value="0.5"/>
 

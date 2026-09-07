@@ -67,7 +67,9 @@
 
                             <lvc1:CreateMeetingCategoryForm
                                 x:Name="CreateMeetingCategoryControl"
-                                CreateClicked="CreateMeetingCategoryControl_CreateClicked"/>
+                                ButtonText="Create"
+                                ButtonIcon="Plus" 
+                                ActionClicked="CreateMeetingCategoryControl_ActionClicked"/>
 
                         </Border>
                         
@@ -76,7 +78,8 @@
                             Margin="0,0,0,10">
 
                             <lvc1:MeetingCategoriesList
-                                x:Name="MeetingCategoriesListControl"/>
+                                x:Name="MeetingCategoriesListControl"
+                                 EditClicked="MeetingCategoriesListControl_EditClicked"/>
 
                         </Border>
                         

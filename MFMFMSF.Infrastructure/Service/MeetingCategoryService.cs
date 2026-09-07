@@ -49,6 +49,31 @@ namespace MFMFMSF.Infrastructure.Service
 
             return categories ?? [];
         }
+
+        // ==========================================
+        // GET BY ID
+        // ==========================================
+
+        public async Task<MeetingCategoryDetail> GetByIdAsync(Guid id)
+        {
+            var response =
+                await _httpClient.GetAsync(
+                    $"{Endpoint}/{id}");
+
+            response.EnsureSuccessStatusCode();
+
+            var category =
+                await response.Content
+                    .ReadFromJsonAsync<MeetingCategoryDetail>();
+
+            if (category == null)
+            {
+                throw new InvalidOperationException(
+                    "The meeting category could not be loaded.");
+            }
+
+            return category;
+        }
     }
 
 

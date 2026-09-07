@@ -175,7 +175,7 @@
                         <DataTemplate>
 
                             <Border BorderBrush="#E8EAF2"
-                    BorderThickness="0,0,0,1">
+                                BorderThickness="0,0,0,1">
 
                                 <Grid Height="44">
 
@@ -189,53 +189,53 @@
                                     <!-- NUMBER -->
 
                                     <TextBlock Grid.Column="0"
-                               Text="{Binding Number}"
-                               Margin="18,0,0,0"
-                               VerticalAlignment="Center"
-                               FontSize="10"
-                               Foreground="#68708A"/>
+                                       Text="{Binding Number}"
+                                       Margin="18,0,0,0"
+                                       VerticalAlignment="Center"
+                                       FontSize="10"
+                                       Foreground="#68708A"/>
 
 
                                     <!-- NAME -->
 
                                     <TextBlock Grid.Column="1"
-                               Text="{Binding Name}"
-                               Margin="10,0,0,0"
-                               VerticalAlignment="Center"
-                               FontSize="10"
-                               FontWeight="SemiBold"
-                               Foreground="#303653"/>
+                                       Text="{Binding Name}"
+                                       Margin="10,0,0,0"
+                                       VerticalAlignment="Center"
+                                       FontSize="10"
+                                       FontWeight="SemiBold"
+                                       Foreground="#303653"/>
 
 
                                     <!-- ACTIONS -->
 
                                     <StackPanel Grid.Column="2"
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center">
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
 
                                         <Button Style="{StaticResource ActionButtonStyle}"
-                                ToolTip="Edit"
-                                Click="EditButton_Click"
-                                Tag="{Binding}">
+                                            ToolTip="Edit"
+                                            Click="EditButton_Click"
+                                            Tag="{Binding}">
 
                                             <materialDesign:PackIcon
-                                Kind="PencilOutline"
-                                Width="15"
-                                Height="15"/>
+                                                Kind="PencilOutline"
+                                                Width="15"
+                                                Height="15"/>
 
                                         </Button>
 
 
                                         <Button Style="{StaticResource DeleteButtonStyle}"
-                                ToolTip="Delete"
-                                Click="DeleteButton_Click"
-                                Tag="{Binding}">
+                                            ToolTip="Delete"
+                                            Click="DeleteButton_Click"
+                                            Tag="{Binding}">
 
                                             <materialDesign:PackIcon
-                                Kind="DeleteOutline"
-                                Width="15"
-                                Height="15"/>
+                                                Kind="DeleteOutline"
+                                                Width="15"
+                                                Height="15"/>
 
                                         </Button>
 
