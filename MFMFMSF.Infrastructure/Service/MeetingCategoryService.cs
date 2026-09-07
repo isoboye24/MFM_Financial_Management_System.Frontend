@@ -74,10 +74,34 @@ namespace MFMFMSF.Infrastructure.Service
 
             return category;
         }
+
+        // ==========================================
+        // UPDATE
+        // ==========================================
+
+        public async Task UpdateAsync(Guid id, string name)
+        {
+            var request = new UpdateMeetingCategoryRequest
+            {
+                Name = name
+            };
+
+            var response =
+                await _httpClient.PutAsJsonAsync(
+                    $"{Endpoint}/{id}",
+                    request);
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 
 
     internal class CreateMeetingCategoryRequest
+    {
+        public string Name { get; set; } = string.Empty;
+    }
+
+    internal class UpdateMeetingCategoryRequest
     {
         public string Name { get; set; } = string.Empty;
     }

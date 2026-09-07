@@ -71,13 +71,15 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
                 else
                 {
                     // UPDATE
+                    await _meetingCategoryService.UpdateAsync(
+                        _editingCategoryId.Value,
+                        categoryName);
+
                     MessageBox.Show(
-                        $"Ready to update:\n\n{categoryName}",
+                        "Meeting category updated successfully.",
                         "Meeting Category",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
-
-                    return;
                 }
 
 
