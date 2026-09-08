@@ -38,21 +38,7 @@ namespace MFMFMSF.UI.Controls
         // BACK COMMAND
         // =====================================================
 
-        public ICommand BackCommand
-        {
-            get => (ICommand)GetValue(BackCommandProperty);
-            private set => SetValue(BackCommandPropertyKey, value);
-        }
-
-        private static readonly DependencyPropertyKey BackCommandPropertyKey =
-            DependencyProperty.RegisterReadOnly(
-                nameof(BackCommand),
-                typeof(ICommand),
-                typeof(FormTitle),
-                new PropertyMetadata(null));
-
-        public static readonly DependencyProperty BackCommandProperty =
-            BackCommandPropertyKey.DependencyProperty;
+        public ICommand BackCommand { get; }
 
 
         private void GoBack()
