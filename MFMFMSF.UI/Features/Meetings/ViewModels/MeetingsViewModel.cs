@@ -1,8 +1,9 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.Infrastructure.Service;
+using MFMFMSF.Core.Models;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Meetings.Views;
 using MFMFMSF.UI.Navigation;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Meetings.ViewModels
@@ -12,6 +13,8 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IMeetingCategoryService _meetingCategoryService;
         private readonly IMeetingService _meetingService;
+
+        public ObservableCollection<MeetingListItem> Meetings { get; } = new();
 
         public ICommand AddMeetingCommand { get; }
 
@@ -32,6 +35,18 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         private void AddMeeting()
         {
             _navigationService.Navigate(new CreateMeeting(_navigationService, _meetingCategoryService, _meetingService));
+        }
+
+        public async Task LoadMeetingsAsync()
+        {
+            var meetings = await _meetingService.GetAllAsync();
+
+            Meetings.Clear();
+
+            foreach (var meeting in meetings)
+            {
+                Meetings.Add(meeting);
+            }
         }
     }
 }

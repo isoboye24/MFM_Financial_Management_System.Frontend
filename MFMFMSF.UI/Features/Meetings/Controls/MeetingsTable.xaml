@@ -313,6 +313,7 @@
 
                     <Grid.ColumnDefinitions>
 
+                        <ColumnDefinition Width="0.9*"/>
                         <ColumnDefinition Width="2.2*"/>
                         <ColumnDefinition Width="0.9*"/>
                         <ColumnDefinition Width="0.9*"/>
@@ -324,36 +325,41 @@
 
 
                     <TextBlock Grid.Column="0"
-                               Text="Meeting"
+                               Text="Category"
+                               Style="{StaticResource TableHeaderStyle}"
+                               Margin="8,0"/>
+                    
+                    <TextBlock Grid.Column="1"
+                               Text="Title"
                                Style="{StaticResource TableHeaderStyle}"
                                Margin="8,0"/>
 
 
-                    <TextBlock Grid.Column="1"
+                    <TextBlock Grid.Column="2"
                                Text="Male"
                                Style="{StaticResource TableHeaderStyle}"
                                HorizontalAlignment="Center"/>
 
 
-                    <TextBlock Grid.Column="2"
+                    <TextBlock Grid.Column="3"
                                Text="Female"
                                Style="{StaticResource TableHeaderStyle}"
                                HorizontalAlignment="Center"/>
 
 
-                    <TextBlock Grid.Column="3"
+                    <TextBlock Grid.Column="4"
                                Text="Children"
                                Style="{StaticResource TableHeaderStyle}"
                                HorizontalAlignment="Center"/>
 
 
-                    <TextBlock Grid.Column="4"
+                    <TextBlock Grid.Column="5"
                                Text="Date"
                                Style="{StaticResource TableHeaderStyle}"
                                HorizontalAlignment="Center"/>
 
 
-                    <TextBlock Grid.Column="5"
+                    <TextBlock Grid.Column="6"
                                Text="Actions"
                                Style="{StaticResource TableHeaderStyle}"
                                HorizontalAlignment="Center"/>
@@ -385,6 +391,7 @@
 
                                     <Grid.ColumnDefinitions>
 
+                                        <ColumnDefinition Width="0.9*"/>
                                         <ColumnDefinition Width="2.2*"/>
                                         <ColumnDefinition Width="0.9*"/>
                                         <ColumnDefinition Width="0.9*"/>
@@ -395,10 +402,20 @@
                                     </Grid.ColumnDefinitions>
 
 
-                                    <!-- MEETING -->
+                                    <!-- MEETING CATEGORY -->
 
                                     <TextBlock Grid.Column="0"
-                                               Text="{Binding Title}"
+                                               Text="{Binding MeetingCategory}"
+                                               FontSize="9"
+                                               FontWeight="SemiBold"
+                                               Foreground="#151936"
+                                               VerticalAlignment="Center"
+                                               Margin="8,0"/>
+
+                                    <!-- MEETING TITLE-->
+
+                                    <TextBlock Grid.Column="1"
+                                               Text="{Binding MessageTitle}"
                                                FontSize="9"
                                                FontWeight="SemiBold"
                                                Foreground="#151936"
@@ -408,8 +425,8 @@
 
                                     <!-- MALE -->
 
-                                    <TextBlock Grid.Column="1"
-                                               Text="{Binding MaleCount}"
+                                    <TextBlock Grid.Column="2"
+                                               Text="{Binding NoOfMaleAttendance}"
                                                FontSize="9"
                                                Foreground="#303653"
                                                HorizontalAlignment="Center"
@@ -418,8 +435,8 @@
 
                                     <!-- FEMALE -->
 
-                                    <TextBlock Grid.Column="2"
-                                               Text="{Binding FemaleCount}"
+                                    <TextBlock Grid.Column="3"
+                                               Text="{Binding NoOfFemaleAttendance}"
                                                FontSize="9"
                                                Foreground="#303653"
                                                HorizontalAlignment="Center"
@@ -428,8 +445,8 @@
 
                                     <!-- CHILDREN -->
 
-                                    <TextBlock Grid.Column="3"
-                                               Text="{Binding ChildrenCount}"
+                                    <TextBlock Grid.Column="4"
+                                               Text="{Binding NoOfChildrenAttendance}"
                                                FontSize="9"
                                                Foreground="#303653"
                                                HorizontalAlignment="Center"
@@ -438,7 +455,7 @@
 
                                     <!-- DATE -->
 
-                                    <TextBlock Grid.Column="4"
+                                    <TextBlock Grid.Column="5"
                                                Text="{Binding Date}"
                                                FontSize="9"
                                                Foreground="#303653"
@@ -448,7 +465,7 @@
 
                                     <!-- ACTIONS -->
 
-                                    <StackPanel Grid.Column="5"
+                                    <StackPanel Grid.Column="6"
                                                 Orientation="Horizontal"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">

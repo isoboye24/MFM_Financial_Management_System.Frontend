@@ -24,5 +24,14 @@ namespace MFMFMSF.Infrastructure.Service
 
             response.EnsureSuccessStatusCode();
         }
+
+        public async Task<IReadOnlyList<MeetingListItem>> GetAllAsync()
+        {
+            var meetings = await _httpClient.GetFromJsonAsync<
+                List<MeetingListItem>>(
+                    $"{Endpoint}?Page=1&RecordsPerPage=100");
+
+            return meetings ?? [];
+        }
     }
 }

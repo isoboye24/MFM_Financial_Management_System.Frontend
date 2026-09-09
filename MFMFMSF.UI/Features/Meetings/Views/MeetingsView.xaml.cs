@@ -1,16 +1,31 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.UI.Features.Meetings.ViewModels;
 using MFMFMSF.UI.Navigation;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Meetings.Views
 {
     public partial class MeetingsView : UserControl
     {
+        private readonly MeetingsViewModel _viewModel;
+
         public MeetingsView(INavigationService navigationService, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService)
         {
             InitializeComponent();
+
             DataContext = new MeetingsViewModel(navigationService, meetingCategoryService, meetingService);
+
+            _viewModel = new MeetingsViewModel(navigationService, meetingCategoryService, meetingService);
+
+            DataContext = _viewModel;
+            Loaded += MeetingsView_Loaded;
+        }
+
+        private async void MeetingsView_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= MeetingsView_Loaded;
+            await _viewModel.LoadMeetingsAsync();
         }
     }
 }
