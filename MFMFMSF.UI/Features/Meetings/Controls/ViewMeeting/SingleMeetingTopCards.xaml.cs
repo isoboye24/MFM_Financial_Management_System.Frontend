@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MFMFMSF.UI.Features.Meetings.Controls
+namespace MFMFMSF.UI.Features.Meetings.Controls.ViewMeeting
 {
     /// <summary>
-    /// Interaction logic for ViewMeeting.xaml
+    /// Interaction logic for SingleMeetingTopCards.xaml
     /// </summary>
-    public partial class ViewMeeting : UserControl
+    public partial class SingleMeetingTopCards : UserControl
     {
-        public ViewMeeting()
+        public SingleMeetingTopCards()
         {
             InitializeComponent();
         }

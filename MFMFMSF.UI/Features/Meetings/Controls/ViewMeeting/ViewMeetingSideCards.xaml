@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Meetings.Controls.ViewMeeting.ViewMeetingSideCards"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+            xmlns:controls="clr-namespace:MFMFMSF.UI.Controls">
+    <Grid>
+        <UniformGrid Rows="5"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch">
+
+            <!-- TOTAL MALE -->
+            <controls:SummaryCard
+             Margin="8"
+             Title="Total Male"
+             Amount="€ 1,050"
+             Percentage="12.5%"
+             Comparison="vs Apr 1 – Apr 30"
+             TrendArrow="↑"
+             TrendForeground="#0DAA68"
+             Icon="HumanMaleMale"
+             IconBackground="#EEE7FF"
+             IconForeground="#6941E8"/>
+
+
+            <!-- TOTAL FEMALE -->
+            <controls:SummaryCard
+             Margin="8"
+             Title="Total Female"
+             Amount="€ 650"
+             Percentage="10.3%"
+             Comparison="vs Apr 1 – Apr 30"
+             TrendArrow="↑"
+             TrendForeground="#0DAA68"
+             Icon="HumanFemaleFemale"
+             IconBackground="#E2EEFF"
+             IconForeground="#3478E5"/>
+
+
+            <!-- TOTAL CHILDREN -->
+            <controls:SummaryCard
+             Margin="8"
+             Title="Total Children"
+             Amount="€ 300"
+             Percentage="8.7%"
+             Comparison="vs Apr 1 – Apr 30"
+             TrendArrow="↑"
+             TrendForeground="#0DAA68"
+             Icon="HumanChild"
+             IconBackground="#E1F5EC"
+             IconForeground="#42A979"/>
+
+
+            <!-- TOTAL ATTENDANCE -->
+            <controls:SummaryCard
+             Margin="8"
+             Title="Total Attendance"
+             Amount="3"
+             Percentage="5.2%"
+             Comparison="vs Apr 1 – Apr 30"
+             TrendArrow="↑"
+             TrendForeground="#0DAA68"
+             Icon="PersonMultiple"
+             IconBackground="#FFE9C7"
+             IconForeground="#FF9D20"/>
+
+
+            
+
+        </UniformGrid>
+    </Grid>
+</UserControl>

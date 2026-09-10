@@ -1,5 +1,5 @@
 ﻿<UserControl x:Class="MFMFMSF.UI.Features.Expenditures.Controls.ExpendituresTrend"
-                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:lvc1="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF">
 
