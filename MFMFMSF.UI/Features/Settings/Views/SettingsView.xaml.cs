@@ -2,6 +2,7 @@
 using MFMFMSF.UI.Features.Settings.Controls.General;
 using MFMFMSF.UI.Features.Settings.Controls.Categories;
 using System.Windows.Controls;
+using MFMFMSF.UI.Features.Settings.Controls.DeletedData;
 
 namespace MFMFMSF.UI.Features.Settings.Views
 {
@@ -27,6 +28,10 @@ namespace MFMFMSF.UI.Features.Settings.Views
 
                 case 1:
                     SettingsContent.Content = new CategoriesTabPage(App.MeetingCategoryService);
+                    break;
+               
+                case 2:
+                    SettingsContent.Content = new DeletedDataTabPage();
                     break;
             }
         }
