@@ -140,17 +140,47 @@ namespace MFMFMSF.UI.Features.Meetings.Controls
         }
 
 
-        private void DeleteMeeting(MeetingListItem meeting)
+        private async void DeleteMeeting(MeetingListItem meeting)
         {
             var result = MessageBox.Show(
-                $"Delete '{meeting.MessageTitle}'?",
-                "Delete Meeting",
+                $"Are you sure you want to delete '{meeting.MessageTitle}'?",
+                "Delete Church Service",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Warning);
 
-            if (result == MessageBoxResult.Yes)
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            try
             {
+                if (MeetingService == null)
+                {
+                    MessageBox.Show(
+                        "Meeting service is not configured.",
+                        "Error",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+
+                    return;
+                }
+
+                await MeetingService.DeleteAsync(meeting.Id);
+
                 Meetings.Remove(meeting);
+
+                MessageBox.Show(
+                    "Church service deleted successfully.",
+                    "Success",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"The church service could not be deleted.\n\n{ex.Message}",
+                    "Delete Failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
     }
