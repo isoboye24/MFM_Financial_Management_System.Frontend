@@ -1,4 +1,4 @@
-﻿using MFMFMSF.Core.Models;
+﻿using MFMFMSF.Core.Models.MeetingCategories;
 
 namespace MFMFMSF.Core.Interfaces
 {

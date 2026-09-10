@@ -14,17 +14,15 @@ namespace MFMFMSF.UI.Features.Meetings.Views
         {
             InitializeComponent();
 
-            DataContext = new MeetingsViewModel(navigationService, meetingCategoryService, meetingService);
-
             _viewModel = new MeetingsViewModel(navigationService, meetingCategoryService, meetingService);
 
             DataContext = _viewModel;
+
             Loaded += MeetingsView_Loaded;
         }
 
         private async void MeetingsView_Loaded(object sender, RoutedEventArgs e)
         {
-            Loaded -= MeetingsView_Loaded;
             await _viewModel.LoadMeetingsAsync();
         }
     }

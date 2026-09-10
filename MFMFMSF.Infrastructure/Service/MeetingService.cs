@@ -1,5 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.Core.Models;
+using MFMFMSF.Core.Models.Meetings;
 using System.Net.Http;
 using System.Net.Http.Json;
 
@@ -32,6 +32,24 @@ namespace MFMFMSF.Infrastructure.Service
                     $"{Endpoint}?Page=1&RecordsPerPage=100");
 
             return meetings ?? [];
+        }
+
+        public async Task<MeetingDetail> GetByIdAsync(Guid id)
+        {
+            var meeting = await _httpClient.GetFromJsonAsync<MeetingDetail>(
+                $"{Endpoint}/{id}");
+
+            return meeting
+                ?? throw new InvalidOperationException("Meeting not found.");
+        }
+
+        public async Task UpdateAsync(Guid id, UpdateMeetingRequest request)
+        {
+            var response = await _httpClient.PutAsJsonAsync(
+                $"{Endpoint}/{id}",
+                request);
+
+            response.EnsureSuccessStatusCode();
         }
     }
 }

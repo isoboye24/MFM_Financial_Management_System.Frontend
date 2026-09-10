@@ -1,35 +1,48 @@
-﻿<UserControl x:Class="MFMFMSF.UI.Features.Meetings.Views.CreateMeeting"
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Meetings.Views.EditMeeting"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Meetings.Views" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
-             xmlns:controls2="clr-namespace:MFMFMSF.UI.Features.Meetings.Controls.Form" 
-             xmlns:viewmodels="clr-namespace:MFMFMSF.UI.Features.Meetings.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CreateMeetingViewModel}"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    
-    <Grid Background="#F5F7FB" Margin="20">
+             xmlns:controls2="clr-namespace:MFMFMSF.UI.Features.Meetings.Controls.Form"
+             mc:Ignorable="d">
+
+    <Grid Background="#F5F7FB"
+          Margin="20">
+
         <Grid.RowDefinitions>
+
             <RowDefinition Height="Auto"/>
+
             <RowDefinition Height="*"/>
+
             <RowDefinition Height="Auto"/>
+
         </Grid.RowDefinitions>
+
+
+        <!-- ================================================= -->
+        <!-- TITLE -->
+        <!-- ================================================= -->
 
         <Border Grid.Row="0"
                 Margin="0,0,0,20">
-            
+
             <controls:FormTitle
                 BreadcrumbText="Church Service"
-                CurrentPageText="Create Service"
-                Title="Create Service"
-                Description="Create a new church service to track and manage contributions."
+                CurrentPageText="Edit Service"
+                Title="Edit Service"
+                Description="Update the details of the church service."
                 NavigationService="{Binding NavigationService,
-                                           RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-            
+                    RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
         </Border>
-        
+
+
+        <!-- ================================================= -->
+        <!-- FORM -->
+        <!-- ================================================= -->
+
         <Border Grid.Row="1"
                 Margin="0,0,0,20">
 
@@ -46,15 +59,21 @@
 
         </Border>
 
+
+        <!-- ================================================= -->
+        <!-- UPDATE BUTTON -->
+        <!-- ================================================= -->
+
         <Border Grid.Row="2"
                 Margin="0,0,0,20">
-            
+
             <controls:SendFormButton
-                Text="Save Church Service"
+                Text="Update Church Service"
                 Icon="ContentSave"
-                Command="{Binding SaveMeetingCommand}"/>
-            
+                Command="{Binding UpdateMeetingCommand}"/>
+
         </Border>
-        
+
     </Grid>
+
 </UserControl>

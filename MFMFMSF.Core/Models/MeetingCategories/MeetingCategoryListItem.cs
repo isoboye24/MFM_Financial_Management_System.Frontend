@@ -1,4 +1,4 @@
-﻿namespace MFMFMSF.Core.Models
+﻿namespace MFMFMSF.Core.Models.MeetingCategories
 {
     public class MeetingCategoryListItem
     {

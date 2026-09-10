@@ -1,4 +1,4 @@
-﻿using MFMFMSF.Core.Models;
+﻿using MFMFMSF.Core.Models.MeetingCategories;
 using System.Windows;
 using System.Windows.Controls;
 

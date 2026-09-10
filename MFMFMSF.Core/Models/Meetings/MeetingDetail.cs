@@ -1,6 +1,6 @@
-﻿namespace MFMFMSF.Core.Models
+﻿namespace MFMFMSF.Core.Models.Meetings
 {
-    public class MeetingListItem
+    public class MeetingDetail
     {
         public Guid Id { get; set; }
         public string MessageTitle { get; set; } = string.Empty;
@@ -10,6 +10,7 @@
         public int NoOfMaleAttendance { get; set; }
         public int NoOfFemaleAttendance { get; set; }
         public int NoOfChildrenAttendance { get; set; }
+        public Guid MeetingCategoryId { get; set; }
         public string MeetingCategory { get; set; } = string.Empty;
     }
 }

@@ -2,6 +2,7 @@
 using MFMFMSF.Core.Models.MeetingCategories;
 using MFMFMSF.Core.Models.Meetings;
 using MFMFMSF.UI.Commands;
+using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -10,16 +11,34 @@ using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Meetings.ViewModels
 {
-    public class CreateMeetingViewModel : INotifyPropertyChanged
+    public class EditMeetingViewModel : INotifyPropertyChanged
     {
-        private readonly IMeetingCategoryService _meetingCategoryService;
         private readonly IMeetingService _meetingService;
+        private readonly IMeetingCategoryService _meetingCategoryService;
+        private readonly INavigationService _navigationService;
+
+        public Guid MeetingId { get; }
+
+        public ICommand UpdateMeetingCommand { get; }
+
+
+        public EditMeetingViewModel(Guid meetingId, IMeetingService meetingService, IMeetingCategoryService meetingCategoryService, INavigationService navigationService)
+        {
+            MeetingId = meetingId;
+
+            _meetingService = meetingService;
+            _meetingCategoryService = meetingCategoryService;
+            _navigationService = navigationService;
+            UpdateMeetingCommand = new RelayCommand(async _ => await UpdateMeetingAsync());
+        }
+
 
         // =====================================================
-        // FORM DATA
+        // FORM PROPERTIES
         // =====================================================
 
         private DateTime? _date;
+
         public DateTime? Date
         {
             get => _date;
@@ -27,15 +46,8 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         }
 
 
-        private string _summary = string.Empty;
-        public string Summary
-        {
-            get => _summary;
-            set => SetProperty(ref _summary, value);
-        }
-
-
         private string _messageTitle = string.Empty;
+
         public string MessageTitle
         {
             get => _messageTitle;
@@ -44,6 +56,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
 
 
         private string _ministerName = string.Empty;
+
         public string MinisterName
         {
             get => _ministerName;
@@ -52,6 +65,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
 
 
         private int _maleAttendance;
+
         public int MaleAttendance
         {
             get => _maleAttendance;
@@ -60,6 +74,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
 
 
         private int _femaleAttendance;
+
         public int FemaleAttendance
         {
             get => _femaleAttendance;
@@ -68,6 +83,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
 
 
         private int _childrenAttendance;
+
         public int ChildrenAttendance
         {
             get => _childrenAttendance;
@@ -75,15 +91,24 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         }
 
 
+        private string _summary = string.Empty;
+
+        public string Summary
+        {
+            get => _summary;
+            set => SetProperty(ref _summary, value);
+        }
+
+
         // =====================================================
-        // MEETING CATEGORIES
+        // CATEGORIES
         // =====================================================
 
-        public ObservableCollection<MeetingCategoryListItem> MeetingCategories { get; }
-            = new();
+        public ObservableCollection<MeetingCategoryListItem> MeetingCategories { get; } = new();
 
 
         private MeetingCategoryListItem? _selectedMeetingCategory;
+
         public MeetingCategoryListItem? SelectedMeetingCategory
         {
             get => _selectedMeetingCategory;
@@ -92,36 +117,13 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
 
 
         // =====================================================
-        // COMMANDS
+        // LOAD
         // =====================================================
 
-        public ICommand SaveMeetingCommand { get; }
-
-
-        // =====================================================
-        // CONSTRUCTOR
-        // =====================================================
-
-        public CreateMeetingViewModel(
-            IMeetingCategoryService meetingCategoryService,
-            IMeetingService meetingService)
+        public async Task LoadAsync()
         {
-            _meetingCategoryService = meetingCategoryService;
-            _meetingService = meetingService;
-
-            SaveMeetingCommand =
-                new RelayCommand(async _ => await SaveMeetingAsync());
-        }
-
-
-        // =====================================================
-        // LOAD MEETING CATEGORIES
-        // =====================================================
-
-        public async Task LoadMeetingCategoriesAsync()
-        {
-            var categories =
-                await _meetingCategoryService.GetAllAsync();
+            // First load categories
+            var categories = await _meetingCategoryService.GetAllAsync();
 
             MeetingCategories.Clear();
 
@@ -129,19 +131,42 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             {
                 MeetingCategories.Add(category);
             }
+
+
+            // Then load the meeting
+            var meeting = await _meetingService.GetByIdAsync(MeetingId);
+
+
+            // Populate the form
+            Date = meeting.Date;
+
+            MessageTitle = meeting.MessageTitle;
+
+            MinisterName = meeting.Minister;
+
+            MaleAttendance = meeting.NoOfMaleAttendance;
+
+            FemaleAttendance = meeting.NoOfFemaleAttendance;
+
+            ChildrenAttendance = meeting.NoOfChildrenAttendance;
+
+            Summary = meeting.Summary ?? string.Empty;
+
+
+            // Select the existing category
+            SelectedMeetingCategory = MeetingCategories.FirstOrDefault(x => x.Id == meeting.MeetingCategoryId);
         }
 
 
         // =====================================================
-        // SAVE MEETING
+        // UPDATE MEETING
         // =====================================================
-
-        private async Task SaveMeetingAsync()
+        private async Task UpdateMeetingAsync()
         {
             if (Date == null)
             {
                 MessageBox.Show(
-                    "Please select the date of the meeting.",
+                    "Please select a date.",
                     "Validation",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
@@ -182,46 +207,41 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
                 return;
             }
 
-            var request = new CreateMeetingRequest
+
+            var request = new UpdateMeetingRequest
             {
                 MessageTitle = MessageTitle.Trim(),
+
                 Date = Date.Value,
+
                 Summary = string.IsNullOrWhiteSpace(Summary)
                     ? null
                     : Summary.Trim(),
+
                 Minister = MinisterName.Trim(),
+
                 NoOfMaleAttendance = MaleAttendance,
+
                 NoOfFemaleAttendance = FemaleAttendance,
+
                 NoOfChildrenAttendance = ChildrenAttendance,
+
                 MeetingCategoryId = SelectedMeetingCategory.Id
             };
 
-            await _meetingService.CreateAsync(request);
+
+            await _meetingService.UpdateAsync(
+                MeetingId,
+                request);
+
 
             MessageBox.Show(
-                "Church service created successfully.",
+                "Church service updated successfully.",
                 "Success",
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
 
-            ClearForm();
-        }
-
-
-        // =====================================================
-        // CLEAR FORM
-        // =====================================================
-
-        private void ClearForm()
-        {
-            Date = null;
-            SelectedMeetingCategory = null;
-            Summary = string.Empty;
-            MessageTitle = string.Empty;
-            MinisterName = string.Empty;
-            MaleAttendance = 0;
-            FemaleAttendance = 0;
-            ChildrenAttendance = 0;
+            _navigationService.GoBack();
         }
 
 
@@ -243,7 +263,6 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
                 this,
                 new PropertyChangedEventArgs(propertyName));
         }
-
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

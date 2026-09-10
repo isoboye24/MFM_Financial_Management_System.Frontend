@@ -1,5 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.Core.Models;
+using MFMFMSF.Core.Models.Meetings;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Meetings.Views;
 using MFMFMSF.UI.Navigation;
@@ -17,6 +17,13 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         public ObservableCollection<MeetingListItem> Meetings { get; } = new();
 
         public ICommand AddMeetingCommand { get; }
+
+        // =====================================================
+        // SERVICES
+        // =====================================================
+        public INavigationService NavigationService => _navigationService;
+        public IMeetingCategoryService MeetingCategoryService => _meetingCategoryService;
+        public IMeetingService MeetingService => _meetingService;
 
 
         public MeetingsViewModel(

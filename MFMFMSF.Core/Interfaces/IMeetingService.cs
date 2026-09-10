@@ -1,4 +1,4 @@
-﻿using MFMFMSF.Core.Models;
+﻿using MFMFMSF.Core.Models.Meetings;
 
 namespace MFMFMSF.Core.Interfaces
 {
@@ -6,5 +6,7 @@ namespace MFMFMSF.Core.Interfaces
     {
         Task CreateAsync(CreateMeetingRequest request);
         Task<IReadOnlyList<MeetingListItem>> GetAllAsync();
+        Task<MeetingDetail> GetByIdAsync(Guid id);
+        Task UpdateAsync(Guid id, UpdateMeetingRequest request);
     }
 }

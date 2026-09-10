@@ -1,7 +1,8 @@
-﻿namespace MFMFMSF.Core.Models
+﻿namespace MFMFMSF.Core.Models.Meetings
 {
-    public class CreateMeetingRequest
+    public class MeetingListItem
     {
+        public Guid Id { get; set; }
         public string MessageTitle { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public string? Summary { get; set; }
@@ -9,6 +10,6 @@
         public int NoOfMaleAttendance { get; set; }
         public int NoOfFemaleAttendance { get; set; }
         public int NoOfChildrenAttendance { get; set; }
-        public Guid MeetingCategoryId { get; set; }
+        public string MeetingCategory { get; set; } = string.Empty;
     }
 }
