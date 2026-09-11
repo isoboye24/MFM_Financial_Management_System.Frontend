@@ -226,7 +226,7 @@
                                         </Button>
 
 
-                                        <!--<Button Style="{StaticResource DeleteButtonStyle}"
+                                        <Button Style="{StaticResource DeleteButtonStyle}"
                                         ToolTip="Delete"
                                         Click="DeleteGivingButton_Click"
                                         Tag="{Binding}">
@@ -236,7 +236,7 @@
                                             Width="15"
                                             Height="15"/>
 
-                                        </Button>-->
+                                        </Button>
 
                                     </StackPanel>
 

@@ -86,6 +86,16 @@ namespace MFMFMSF.Infrastructure.Service
 
             response.EnsureSuccessStatusCode();
         }
+
+        // ==========================================
+        // DELETE
+        // ==========================================
+        public async Task DeleteAsync(Guid id)
+        {
+            var response = await _httpClient.DeleteAsync($"{Endpoint}/{id}");
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 
     internal class CreateGivingCategoryRequest

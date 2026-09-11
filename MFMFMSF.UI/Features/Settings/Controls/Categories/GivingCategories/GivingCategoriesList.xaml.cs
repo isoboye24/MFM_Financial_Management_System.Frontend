@@ -95,59 +95,59 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories.GivingCategories
         // DELETE
         // ==========================================
 
-        //private async void DeleteGivingButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (sender is not Button button ||
-        //        button.Tag is not GivingCategoryItem item)
-        //    {
-        //        return;
-        //    }
+        private async void DeleteGivingButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is not Button button ||
+                button.Tag is not GivingCategoryItem item)
+            {
+                return;
+            }
 
-        //    var result = MessageBox.Show(
-        //        $"Are you sure you want to delete '{item.Name}'?",
-        //        "Delete Giving Category",
-        //        MessageBoxButton.YesNo,
-        //        MessageBoxImage.Warning);
+            var result = MessageBox.Show(
+                $"Are you sure you want to delete '{item.Name}'?",
+                "Delete Giving Category",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
 
-        //    if (result != MessageBoxResult.Yes)
-        //        return;
+            if (result != MessageBoxResult.Yes)
+                return;
 
-        //    if (_givingCategoryService == null)
-        //    {
-        //        MessageBox.Show(
-        //            "Giving category service has not been configured.",
-        //            "Delete Giving Category",
-        //            MessageBoxButton.OK,
-        //            MessageBoxImage.Error);
+            if (_givingCategoryService == null)
+            {
+                MessageBox.Show(
+                    "Giving category service has not been configured.",
+                    "Delete Giving Category",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
 
-        //        return;
-        //    }
+                return;
+            }
 
-        //    try
-        //    {
-        //        //await _givingCategoryService.DeleteAsync(item.Id);
+            try
+            {
+                await _givingCategoryService.DeleteAsync(item.Id);
 
-        //        //Categories.Remove(item);
+                Categories.Remove(item);
 
-        //        //RenumberCategories();
-        //    }
-        //    catch (HttpRequestException)
-        //    {
-        //        MessageBox.Show(
-        //            "Unable to connect to the server.",
-        //            "Connection Error",
-        //            MessageBoxButton.OK,
-        //            MessageBoxImage.Error);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(
-        //            ex.Message,
-        //            "Unable to Delete Meeting Category",
-        //            MessageBoxButton.OK,
-        //            MessageBoxImage.Error);
-        //    }
-        //}
+                RenumberCategories();
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show(
+                    "Unable to connect to the server.",
+                    "Connection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Unable to Delete Giving Category",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
 
         private void RenumberCategories()
         {
