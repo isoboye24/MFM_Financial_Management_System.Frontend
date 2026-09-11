@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories" 
+             xmlns:lvc2="clr-namespace:MFMFMSF.UI.Features.Settings.Controls.Categories.GivingCategories"
              xmlns:lvc1="clr-namespace:MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
@@ -33,9 +34,9 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -89,6 +90,48 @@
                 <Border Grid.Column="2"
                         CornerRadius="10"
                         Margin="0,0,0,10">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                            CornerRadius="15"
+                            Margin="0,0,0,20">
+
+                            <TextBlock Text="Giving Categories"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="18"
+                            FontWeight="SemiBold"/> 
+                        </Border>
+
+                        <Border Grid.Row="1"
+                            CornerRadius="10"
+                            Margin="0,0,0,10">
+
+                            <lvc2:CreateGivingCategoryForm
+                                x:Name="CreateGivingCategoryControl"
+                                ButtonText="Create"
+                                ButtonIcon="Plus" 
+                                ActionClicked="CreateGivingCategoryControl_ActionClicked"/>
+
+                        </Border>
+
+                        <Border Grid.Row="2"
+                            CornerRadius="10"
+                            Margin="0,0,0,10">
+
+                            <!--<lvc2:GivingCategoriesList
+                                x:Name="GivingCategoriesListControl"
+                                 EditClicked="GivingCategoriesListControl_EditClicked"/>-->
+
+                        </Border>
+
+                    </Grid>
 
                 </Border>
             </Grid>

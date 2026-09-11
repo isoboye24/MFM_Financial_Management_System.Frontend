@@ -27,7 +27,7 @@ namespace MFMFMSF.UI.Features.Settings.Views
                     break;
 
                 case 1:
-                    SettingsContent.Content = new CategoriesTabPage(App.MeetingCategoryService);
+                    SettingsContent.Content = new CategoriesTabPage(App.MeetingCategoryService, App.GivingCategoryService);
                     break;
                
                 case 2:

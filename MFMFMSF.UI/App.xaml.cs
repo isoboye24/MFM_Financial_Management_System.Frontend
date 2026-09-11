@@ -11,6 +11,7 @@ namespace MFMFMSF.UI
 
         public static IMeetingCategoryService MeetingCategoryService { get; } = new MeetingCategoryService(HttpClient);
         public static IMeetingService MeetingService { get; } = new MeetingService(HttpClient);
+        public static IGivingCategoryService GivingCategoryService { get; } = new GivingCategoryService(HttpClient);
 
         private static HttpClient CreateHttpClient()
         {

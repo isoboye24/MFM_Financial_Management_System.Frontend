@@ -10,19 +10,22 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
     public partial class CategoriesTabPage : UserControl
     {
         private readonly IMeetingCategoryService _meetingCategoryService;
+        private readonly IGivingCategoryService _givingCategoryService;
 
         private Guid? _editingCategoryId;
+        private Guid? _editingGivingCategoryId;
 
 
         public CategoriesTabPage(
-            IMeetingCategoryService meetingCategoryService)
+            IMeetingCategoryService meetingCategoryService,
+            IGivingCategoryService givingCategoryService)
         {
             InitializeComponent();
 
             _meetingCategoryService = meetingCategoryService;
+            _givingCategoryService = givingCategoryService;
 
-            MeetingCategoriesListControl.SetService(
-                _meetingCategoryService);
+            MeetingCategoriesListControl.SetService(_meetingCategoryService);
 
             Loaded += CategoriesTabPage_Loaded;
         }
@@ -41,7 +44,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
 
 
         // ==========================================
-        // CREATE / UPDATE
+        // CREATE / UPDATE MEETING CATEGORY
         // ==========================================
 
         private async void CreateMeetingCategoryControl_ActionClicked(object? sender, EventArgs e)
@@ -116,7 +119,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
 
 
         // ==========================================
-        // EDIT
+        // EDIT MEETING CATEGORY
         // ==========================================
 
         private async void MeetingCategoriesListControl_EditClicked(object? sender, MeetingCategoryItem item)
@@ -161,6 +164,76 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
                 MessageBox.Show(
                     ex.Message,
                     "Unable to Load Meeting Category",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        // ==========================================
+        // CREATE / UPDATE GIVING CATEGORY
+        // ==========================================
+
+        private async void CreateGivingCategoryControl_ActionClicked(object? sender, EventArgs e)
+        {
+            string categoryName =
+                CreateGivingCategoryControl.CategoryName.Trim();
+
+            try
+            {
+                if (_editingGivingCategoryId == null)
+                {
+                    // CREATE
+                    await _givingCategoryService.CreateAsync(categoryName);
+
+                    MessageBox.Show(
+                        "Giving category created successfully.",
+                        "Giving Category",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
+                else
+                {
+                    // UPDATE
+                    //await _givingCategoryService.UpdateAsync(_editingGivingCategoryId.Value, categoryName);
+
+                    //MessageBox.Show(
+                    //    "Giving category updated successfully.",
+                    //    "Giving Category",
+                    //    MessageBoxButton.OK,
+                    //    MessageBoxImage.Information);
+                }
+
+
+                // Reset form
+
+                CreateGivingCategoryControl.CategoryName =
+                    string.Empty;
+
+                CreateGivingCategoryControl.ButtonText =
+                    "Create";
+
+                CreateGivingCategoryControl.ButtonIcon =
+                    PackIconKind.Plus;
+
+                _editingGivingCategoryId = null;
+
+                // Refresh list
+
+                //await GivingCategoriesListControl.LoadAsync();
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show(
+                    "Unable to connect to the server.",
+                    "Connection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Giving Category",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
