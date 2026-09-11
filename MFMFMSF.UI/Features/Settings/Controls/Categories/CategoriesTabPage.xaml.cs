@@ -40,6 +40,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
             Loaded -= CategoriesTabPage_Loaded;
 
             await MeetingCategoriesListControl.LoadAsync();
+            await GivingCategoriesListControl.LoadAsync();
         }
 
 
@@ -191,13 +192,13 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
                 else
                 {
                     // UPDATE
-                    //await _givingCategoryService.UpdateAsync(_editingGivingCategoryId.Value, categoryName);
+                    await _givingCategoryService.UpdateAsync(_editingGivingCategoryId.Value, categoryName);
 
-                    //MessageBox.Show(
-                    //    "Giving category updated successfully.",
-                    //    "Giving Category",
-                    //    MessageBoxButton.OK,
-                    //    MessageBoxImage.Information);
+                    MessageBox.Show(
+                        "Giving category updated successfully.",
+                        "Giving Category",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
                 }
 
 
@@ -216,7 +217,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
 
                 // Refresh list
 
-                //await GivingCategoriesListControl.LoadAsync();
+                await GivingCategoriesListControl.LoadAsync();
             }
             catch (HttpRequestException)
             {

@@ -81,14 +81,14 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories.GivingCategories
         // EDIT
         // ==========================================
 
-        //private void EditGivingButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (sender is Button button &&
-        //        button.Tag is GivingCategoryItem item)
-        //    {
-        //        EditGivingClicked?.Invoke(this, item);
-        //    }
-        //}
+        private void EditGivingButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button &&
+                button.Tag is GivingCategoryItem item)
+            {
+                EditGivingClicked?.Invoke(this, item);
+            }
+        }
 
 
         // ==========================================

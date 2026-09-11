@@ -71,9 +71,29 @@ namespace MFMFMSF.Infrastructure.Service
 
             return category;
         }
+
+        public async Task UpdateAsync(Guid id, string name)
+        {
+            var request = new UpdateGivingCategoryRequest
+            {
+                Name = name
+            };
+
+            var response =
+                await _httpClient.PutAsJsonAsync(
+                    $"{Endpoint}/{id}",
+                    request);
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 
     internal class CreateGivingCategoryRequest
+    {
+        public string Name { get; set; } = string.Empty;
+    }
+
+    internal class UpdateGivingCategoryRequest
     {
         public string Name { get; set; } = string.Empty;
     }
