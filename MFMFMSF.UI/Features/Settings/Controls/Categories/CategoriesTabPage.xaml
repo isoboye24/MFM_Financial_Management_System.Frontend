@@ -126,7 +126,7 @@
 
                             <lvc2:GivingCategoriesList
                                 x:Name="GivingCategoriesListControl"
-                                 EditGivingClicked="GivingCategoriesListControl_EditGivingClicked"/>
+                                 EditGivingClicked="GivingCategoriesListControl_EditClicked"/>
 
                         </Border>
 

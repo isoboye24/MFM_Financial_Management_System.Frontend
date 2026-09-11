@@ -6,5 +6,6 @@ namespace MFMFMSF.Core.Interfaces
     {
         Task CreateAsync(string name);
         Task<IReadOnlyList<GivingCategoryListItem>> GetAllAsync();
+        Task<GivingCategoryDetail> GetByIdAsync(Guid id);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.GivingCategories;
+using MFMFMSF.Core.Models.MeetingCategories;
 using System.Net.Http.Json;
 
 namespace MFMFMSF.Infrastructure.Service
@@ -45,6 +46,30 @@ namespace MFMFMSF.Infrastructure.Service
                     List<GivingCategoryListItem>>();
 
             return categories ?? [];
+        }
+
+        // ==========================================
+        // GET BY ID
+        // ==========================================
+        public async Task<GivingCategoryDetail> GetByIdAsync(Guid id)
+        {
+            var response =
+                await _httpClient.GetAsync(
+                    $"{Endpoint}/{id}");
+
+            response.EnsureSuccessStatusCode();
+
+            var category =
+                await response.Content
+                    .ReadFromJsonAsync<GivingCategoryDetail>();
+
+            if (category == null)
+            {
+                throw new InvalidOperationException(
+                    "The giving category could not be loaded.");
+            }
+
+            return category;
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Settings.Controls.Categories.GivingCategories;
 using MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories;
 using System.Net.Http;
 using System.Windows;
@@ -34,7 +35,6 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
         // ==========================================
         // LOAD CATEGORIES
         // ==========================================
-
         private async void CategoriesTabPage_Loaded(object sender, RoutedEventArgs e)
         {
             Loaded -= CategoriesTabPage_Loaded;
@@ -46,7 +46,6 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
         // ==========================================
         // CREATE / UPDATE MEETING CATEGORY
         // ==========================================
-
         private async void CreateMeetingCategoryControl_ActionClicked(object? sender, EventArgs e)
         {
             string categoryName =
@@ -121,7 +120,6 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
         // ==========================================
         // EDIT MEETING CATEGORY
         // ==========================================
-
         private async void MeetingCategoriesListControl_EditClicked(object? sender, MeetingCategoryItem item)
         {
             try
@@ -172,7 +170,6 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
         // ==========================================
         // CREATE / UPDATE GIVING CATEGORY
         // ==========================================
-
         private async void CreateGivingCategoryControl_ActionClicked(object? sender, EventArgs e)
         {
             string categoryName =
@@ -234,6 +231,52 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
                 MessageBox.Show(
                     ex.Message,
                     "Giving Category",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        // ==========================================
+        // EDIT GIVING CATEGORY
+        // ==========================================
+        private async void GivingCategoriesListControl_EditClicked(object? sender, GivingCategoryItem item)
+        {
+            try
+            {
+                var category =
+                    await _givingCategoryService
+                        .GetByIdAsync(item.Id);
+
+
+                // Put category name into the form
+
+                CreateGivingCategoryControl.CategoryName = category.Name;
+
+
+                // Change button to UPDATE
+
+                CreateGivingCategoryControl.ButtonText = "Update";
+
+                CreateGivingCategoryControl.ButtonIcon = PackIconKind.Check;
+
+
+                // Remember which category we are editing
+
+                _editingGivingCategoryId = category.Id;
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show(
+                    "Unable to connect to the server.",
+                    "Connection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Unable to Load Giving Category",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
