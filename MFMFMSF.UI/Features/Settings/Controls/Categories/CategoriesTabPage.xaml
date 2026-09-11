@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories" 
              xmlns:lvc2="clr-namespace:MFMFMSF.UI.Features.Settings.Controls.Categories.GivingCategories"
              xmlns:lvc1="clr-namespace:MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories"
              mc:Ignorable="d" 
@@ -125,9 +124,9 @@
                             CornerRadius="10"
                             Margin="0,0,0,10">
 
-                            <!--<lvc2:GivingCategoriesList
+                            <lvc2:GivingCategoriesList
                                 x:Name="GivingCategoriesListControl"
-                                 EditClicked="GivingCategoriesListControl_EditClicked"/>-->
+                                 EditGivingClicked="GivingCategoriesListControl_EditGivingClicked"/>
 
                         </Border>
 

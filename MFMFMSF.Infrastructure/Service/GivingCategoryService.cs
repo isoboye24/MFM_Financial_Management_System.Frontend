@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.GivingCategories;
 using System.Net.Http.Json;
 
 namespace MFMFMSF.Infrastructure.Service
@@ -27,6 +28,23 @@ namespace MFMFMSF.Infrastructure.Service
             var response = await _httpClient.PostAsJsonAsync(Endpoint, request);
 
             response.EnsureSuccessStatusCode();
+        }
+
+        // ==========================================
+        // GET ALL
+        // ==========================================
+        public async Task<IReadOnlyList<GivingCategoryListItem>> GetAllAsync()
+        {
+            var response = await _httpClient.GetAsync(
+                $"{Endpoint}?Page=1&RecordsPerPage=100");
+
+            response.EnsureSuccessStatusCode();
+
+            var categories =
+                await response.Content.ReadFromJsonAsync<
+                    List<GivingCategoryListItem>>();
+
+            return categories ?? [];
         }
     }
 
