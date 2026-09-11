@@ -19,8 +19,10 @@
     <Folder Include="Assets\Images\" />
     <Folder Include="Features\Expenditures\ViewModels\" />
     <Folder Include="Features\Expenditures\Resources\" />
+    <Folder Include="Features\Givings\Controls\" />
+    <Folder Include="Features\Givings\ViewModels\" />
+    <Folder Include="Features\Givings\Resources\" />
     <Folder Include="Features\Meetings\Resources\" />
-    <Folder Include="Features\Givings\" />
     <Folder Include="Features\Reports\Resources\" />
     <Folder Include="Features\Reports\ViewModels\" />
     <Folder Include="Features\Settings\Resources\" />

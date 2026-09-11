@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MFMFMSF.UI.Features.Meetings.Controls.ViewMeeting
+namespace MFMFMSF.UI.Features.Givings.Views
 {
     /// <summary>
-    /// Interaction logic for ViewMeetingGivingsTable.xaml
+    /// Interaction logic for GivingView.xaml
     /// </summary>
-    public partial class ViewMeetingGivingsTable : UserControl
+    public partial class GivingView : UserControl
     {
-        public ViewMeetingGivingsTable()
+        public GivingView()
         {
             InitializeComponent();
         }
