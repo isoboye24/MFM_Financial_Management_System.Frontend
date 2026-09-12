@@ -63,19 +63,19 @@
                     CornerRadius="15">
 
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                        <Border Grid.Row="0">
+                        <Border Grid.Column="0">
 
                             <lvc2:ViewMeetingData/>
 
                         </Border>
 
-                        <Border Grid.Row="2">
+                        <Border Grid.Column="2">
 
                             <lvc3:GivingView/>
 

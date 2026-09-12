@@ -86,7 +86,7 @@
 
                     <TextBlock
                         Text="Service Date"
-                        FontSize="9"
+                        FontSize="12"
                         Foreground="#8A90A6"
                         HorizontalAlignment="Right"/>
 
@@ -161,7 +161,7 @@
 
                     <TextBlock
                         Text="Minister"
-                        FontSize="9"
+                        FontSize="14"
                         Foreground="#8A90A6"/>
 
                     <TextBlock
@@ -183,7 +183,7 @@
             <TextBlock
                 Grid.Row="3"
                 Text="Service Summary"
-                FontSize="13"
+                FontSize="14"
                 FontWeight="SemiBold"
                 Foreground="#303653"
                 Margin="0,0,0,10"/>
@@ -204,7 +204,7 @@
 
                 <TextBlock
                     Text="{Binding Meeting.Summary}"
-                    FontSize="11"
+                    FontSize="12"
                     Foreground="#68708A"
                     TextWrapping="Wrap"
                     LineHeight="20"/>

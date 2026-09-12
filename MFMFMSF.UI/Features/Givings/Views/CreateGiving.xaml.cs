@@ -56,7 +56,7 @@ namespace MFMFMSF.UI.Features.Givings.Views
             DependencyProperty.Register(
                 nameof(NavigationService),
                 typeof(INavigationService),
-                typeof(CreateMeeting),
+                typeof(CreateGiving),
                 new PropertyMetadata(null));
     }
 }
