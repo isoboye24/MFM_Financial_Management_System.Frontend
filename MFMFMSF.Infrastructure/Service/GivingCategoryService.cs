@@ -9,7 +9,7 @@ namespace MFMFMSF.Infrastructure.Service
     {
         private readonly HttpClient _httpClient;
 
-        private const string Endpoint = "api/givings";
+        private const string Endpoint = "api/categories";
 
         public GivingCategoryService(HttpClient httpClient)
         {

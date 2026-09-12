@@ -27,6 +27,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Categories
             _givingCategoryService = givingCategoryService;
 
             MeetingCategoriesListControl.SetService(_meetingCategoryService);
+            GivingCategoriesListControl.SetService(_givingCategoryService);
 
             Loaded += CategoriesTabPage_Loaded;
         }
