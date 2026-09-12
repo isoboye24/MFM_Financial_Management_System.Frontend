@@ -61,6 +61,8 @@
                 <Border Grid.Column="0"
                     Height="Auto"
                     CornerRadius="15">
+                    
+                   
 
                     <lvc3:GivingView/>
 
