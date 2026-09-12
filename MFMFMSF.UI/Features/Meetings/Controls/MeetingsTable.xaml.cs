@@ -107,12 +107,48 @@ namespace MFMFMSF.UI.Features.Meetings.Controls
 
 
         // =====================================================
+        // GIVING CATEGORY SERVICE
+        // =====================================================
+
+        public IGivingCategoryService? GivingCategoryService
+        {
+            get => (IGivingCategoryService?)GetValue(GivingCategoryServiceProperty);
+            set => SetValue(GivingCategoryServiceProperty, value);
+        }
+
+        public static readonly DependencyProperty GivingCategoryServiceProperty =
+            DependencyProperty.Register(
+                nameof(GivingCategoryService),
+                typeof(IGivingCategoryService),
+                typeof(MeetingsTable),
+                new PropertyMetadata(null));
+
+
+        // =====================================================
+        // GIVING SERVICE
+        // =====================================================
+
+        public IGivingService? GivingService
+        {
+            get => (IGivingService?)GetValue(GivingServiceProperty);
+            set => SetValue(GivingServiceProperty, value);
+        }
+
+        public static readonly DependencyProperty GivingServiceProperty =
+            DependencyProperty.Register(
+                nameof(GivingService),
+                typeof(IGivingService),
+                typeof(MeetingsTable),
+                new PropertyMetadata(null));
+
+
+        // =====================================================
         // ACTIONS
         // =====================================================
 
         private void ViewMeeting(MeetingListItem meeting)
         {
-            if (NavigationService == null || MeetingService == null)
+            if (NavigationService == null || MeetingService == null || GivingCategoryService == null || GivingService == null)
             {
                 MessageBox.Show(
                     "Navigation services are not configured.",
@@ -123,7 +159,7 @@ namespace MFMFMSF.UI.Features.Meetings.Controls
                 return;
             }
 
-            NavigationService.Navigate(new ViewMeetingPage(meeting.Id, NavigationService, MeetingService));
+            NavigationService.Navigate(new ViewMeetingPage(meeting.Id, NavigationService, MeetingService, GivingCategoryService, GivingService));
         }
 
 

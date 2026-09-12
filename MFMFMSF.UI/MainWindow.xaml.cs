@@ -20,7 +20,7 @@ namespace MFMFMSF.UI
 
             DataContext = new MainViewModel(_navigation);
 
-            SidebarControl.SetNavigationService(_navigation, App.MeetingCategoryService, App.MeetingService);
+            SidebarControl.SetNavigationService(_navigation, App.MeetingCategoryService, App.MeetingService, App.GivingCategoryService, App.GivingService);
         }
 
         private void TopBar_MinimizeRequested(object? sender, EventArgs e)

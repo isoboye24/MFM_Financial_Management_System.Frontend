@@ -10,14 +10,18 @@ namespace MFMFMSF.UI.Features.Meetings.Views
     {
         private readonly ViewMeetingViewModel _viewModel;
 
-        public ViewMeeting(Guid meetingId, INavigationService navigationService, IMeetingService meetingService)
+        public ViewMeeting(Guid meetingId, 
+            INavigationService navigationService, 
+            IMeetingService meetingService, 
+            IGivingCategoryService givingCategoryService, 
+            IGivingService givingService)
         {
             InitializeComponent();
 
             NavigationService = navigationService;
 
             // Create the ViewModel
-            _viewModel = new ViewMeetingViewModel(meetingId, meetingService);
+            _viewModel = new ViewMeetingViewModel(meetingId, navigationService, meetingService, givingCategoryService, givingService);
 
             // Set the ViewModel as DataContext
             DataContext = _viewModel;

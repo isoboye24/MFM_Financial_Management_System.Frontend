@@ -67,7 +67,11 @@
                         MeetingCategoryService="{Binding DataContext.MeetingCategoryService,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
                         MeetingService="{Binding DataContext.MeetingService,
-                                                  RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                                                  RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        GivingCategoryService="{Binding DataContext.GivingCategoryService,
+                                RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        GivingService="{Binding DataContext.GivingService,
+                         RelativeSource={RelativeSource AncestorType=UserControl}}"/>
                 </Border>
                 
                 <Border Grid.Column="2"

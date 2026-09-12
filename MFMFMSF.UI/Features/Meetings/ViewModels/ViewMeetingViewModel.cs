@@ -1,13 +1,22 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Meetings;
+using MFMFMSF.UI.Commands;
+using MFMFMSF.UI.Features.Givings.Views;
+using MFMFMSF.UI.Navigation;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Meetings.ViewModels
 {
     public class ViewMeetingViewModel : INotifyPropertyChanged
     {
         private readonly IMeetingService _meetingService;
+        private readonly INavigationService _navigationService;
+        private readonly IGivingCategoryService _givingCategoryService;
+        private readonly IGivingService _givingService;
+
+        public ICommand AddGivingCommand { get; }
 
         public Guid MeetingId { get; }
 
@@ -23,15 +32,41 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             }
         }
 
-        public ViewMeetingViewModel(Guid meetingId, IMeetingService meetingService)
+        public ViewMeetingViewModel(
+            Guid meetingId,
+            INavigationService navigationService,
+            IMeetingService meetingService,
+            IGivingCategoryService givingCategoryService,
+            IGivingService givingService)
         {
             MeetingId = meetingId;
+
+            _navigationService = navigationService;
             _meetingService = meetingService;
+            _givingCategoryService = givingCategoryService;
+            _givingService = givingService;
+
+            AddGivingCommand = new RelayCommand(_ => AddGiving());
         }
+
 
         public async Task LoadAsync()
         {
             Meeting = await _meetingService.GetByIdAsync(MeetingId);
+        }
+
+        // =====================================================
+        // ADD GIVING
+        // =====================================================
+
+        private void AddGiving()
+        {
+            _navigationService.Navigate(
+                new CreateGiving(
+                    MeetingId,
+                    _navigationService,
+                    _givingCategoryService,
+                    _givingService));
         }
 
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)

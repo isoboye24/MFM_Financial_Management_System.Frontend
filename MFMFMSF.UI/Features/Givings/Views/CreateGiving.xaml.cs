@@ -1,19 +1,22 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.UI.Features.Meetings.ViewModels;
+using MFMFMSF.UI.Features.Givings.ViewModels;
+using MFMFMSF.UI.Features.Meetings.Views;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MFMFMSF.UI.Features.Meetings.Views
+namespace MFMFMSF.UI.Features.Givings.Views
 {
-    public partial class CreateMeeting : UserControl
+    /// <summary>
+    /// Interaction logic for CreateGiving.xaml
+    /// </summary>
+    public partial class CreateGiving : UserControl
     {
-        private readonly CreateMeetingViewModel _viewModel;
+        private readonly CreateGivingViewModel _viewModel;
 
-        public CreateMeeting(
+        public CreateGiving(
+            Guid meetingId,
             INavigationService navigationService,
-            IMeetingCategoryService meetingCategoryService,
-            IMeetingService meetingService,
             IGivingCategoryService givingCategoryService,
             IGivingService givingService)
         {
@@ -21,22 +24,22 @@ namespace MFMFMSF.UI.Features.Meetings.Views
 
             NavigationService = navigationService;
 
-            _viewModel = new CreateMeetingViewModel(
-                meetingCategoryService,
-                meetingService);
+            _viewModel = new CreateGivingViewModel(
+                meetingId,
+                givingCategoryService,
+                givingService);
 
             DataContext = _viewModel;
 
-            Loaded += CreateMeeting_Loaded;
+            Loaded += CreateGiving_Loaded;
         }
 
-        private async void CreateMeeting_Loaded(
+        private async void CreateGiving_Loaded(
             object sender,
             RoutedEventArgs e)
         {
-            Loaded -= CreateMeeting_Loaded;
-
-            await _viewModel.LoadMeetingCategoriesAsync();
+            Loaded -= CreateGiving_Loaded;
+            await _viewModel.LoadGivingCategoriesAsync();
         }
 
         // =====================================================

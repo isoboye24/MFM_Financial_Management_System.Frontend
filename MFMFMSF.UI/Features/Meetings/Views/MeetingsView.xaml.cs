@@ -10,11 +10,12 @@ namespace MFMFMSF.UI.Features.Meetings.Views
     {
         private readonly MeetingsViewModel _viewModel;
 
-        public MeetingsView(INavigationService navigationService, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService)
+        public MeetingsView(INavigationService navigationService, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
+            IGivingCategoryService givingCategoryService, IGivingService givingService)
         {
             InitializeComponent();
 
-            _viewModel = new MeetingsViewModel(navigationService, meetingCategoryService, meetingService);
+            _viewModel = new MeetingsViewModel(navigationService, meetingCategoryService, meetingService, givingCategoryService, givingService);
 
             DataContext = _viewModel;
 
