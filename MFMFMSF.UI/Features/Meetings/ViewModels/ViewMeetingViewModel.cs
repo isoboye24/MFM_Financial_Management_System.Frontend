@@ -1,8 +1,10 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.Core.Models.Meetings;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Givings.Views;
 using MFMFMSF.UI.Navigation;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -17,6 +19,8 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         private readonly IGivingService _givingService;
 
         public ICommand AddGivingCommand { get; }
+
+        public ObservableCollection<GivingListItem> Givings { get; } = new();
 
         public Guid MeetingId { get; }
 
@@ -53,6 +57,15 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         public async Task LoadAsync()
         {
             Meeting = await _meetingService.GetByIdAsync(MeetingId);
+
+            var givings = await _givingService.GetByMeetingIdAsync(MeetingId);
+
+            Givings.Clear();
+
+            foreach (var giving in givings)
+            {
+                Givings.Add(giving);
+            }
         }
 
         // =====================================================

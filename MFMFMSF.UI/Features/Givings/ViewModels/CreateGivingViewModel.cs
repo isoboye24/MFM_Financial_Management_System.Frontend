@@ -4,24 +4,31 @@ using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.UI.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Givings.ViewModels
 {
-    class CreateGivingViewModel : INotifyPropertyChanged
+    public class CreateGivingViewModel : INotifyPropertyChanged
     {
         private readonly IGivingCategoryService _givingCategoryService;
         private readonly IGivingService _givingService;
 
+        // =====================================================
+        // MEETING
+        // =====================================================
+
         public Guid MeetingId { get; }
+
 
         // =====================================================
         // FORM DATA
         // =====================================================
 
         private DateTime? _date;
+
         public DateTime? Date
         {
             get => _date;
@@ -30,6 +37,7 @@ namespace MFMFMSF.UI.Features.Givings.ViewModels
 
 
         private string _summary = string.Empty;
+
         public string Summary
         {
             get => _summary;
@@ -37,8 +45,9 @@ namespace MFMFMSF.UI.Features.Givings.ViewModels
         }
 
 
-        private int _amount;
-        public int Amount
+        private decimal _amount;
+
+        public decimal Amount
         {
             get => _amount;
             set => SetProperty(ref _amount, value);
@@ -54,31 +63,40 @@ namespace MFMFMSF.UI.Features.Givings.ViewModels
 
 
         private GivingCategoryListItem? _selectedGivingCategory;
+
         public GivingCategoryListItem? SelectedGivingCategory
         {
             get => _selectedGivingCategory;
-            set => SetProperty(ref _selectedGivingCategory, value);
+            set => SetProperty(
+                ref _selectedGivingCategory,
+                value);
         }
 
 
         // =====================================================
-        // COMMANDS
+        // COMMAND
         // =====================================================
 
-        public ICommand SaveGivingingCommand { get; }
+        public ICommand SaveGivingCommand { get; }
 
 
         // =====================================================
         // CONSTRUCTOR
         // =====================================================
 
-        public CreateGivingViewModel(Guid meetingId, IGivingCategoryService givingCategoryService, IGivingService givingService)
+        public CreateGivingViewModel(
+            Guid meetingId,
+            IGivingCategoryService givingCategoryService,
+            IGivingService givingService)
         {
             MeetingId = meetingId;
+
             _givingCategoryService = givingCategoryService;
             _givingService = givingService;
 
-            SaveGivingingCommand = new RelayCommand(async _ => await SaveGivingAsync());
+            SaveGivingCommand =
+                new RelayCommand(
+                    async _ => await SaveGivingAsync());
         }
 
 
@@ -106,6 +124,7 @@ namespace MFMFMSF.UI.Features.Givings.ViewModels
 
         private async Task SaveGivingAsync()
         {
+            // DATE
             if (Date == null)
             {
                 MessageBox.Show(
@@ -117,10 +136,12 @@ namespace MFMFMSF.UI.Features.Givings.ViewModels
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(Amount.ToString()))
+
+            // AMOUNT
+            if (Amount <= 0)
             {
                 MessageBox.Show(
-                    "Please enter the amount.",
+                    "Please enter an amount greater than zero.",
                     "Validation",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
@@ -128,6 +149,21 @@ namespace MFMFMSF.UI.Features.Givings.ViewModels
                 return;
             }
 
+
+            // SUMMARY
+            if (string.IsNullOrWhiteSpace(Summary))
+            {
+                MessageBox.Show(
+                    "Please enter a summary for the giving.",
+                    "Validation",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                return;
+            }
+
+
+            // CATEGORY
             if (SelectedGivingCategory == null)
             {
                 MessageBox.Show(
@@ -139,24 +175,49 @@ namespace MFMFMSF.UI.Features.Givings.ViewModels
                 return;
             }
 
-            var request = new CreateGivingRequest
+
+            try
             {
-                Date = Date.Value,
-                Summary = string.IsNullOrWhiteSpace(Summary) ? null : Summary.Trim(),
-                Amount = Amount,
-                GivingCategoryId = SelectedGivingCategory.Id,
-                MeetingId = Guid.NewGuid() // Replace with actual meeting ID if applicable
-            };
+                var request = new CreateGivingRequest
+                {
+                    Amount = Amount,
+                    Date = Date.Value,
+                    Summary = Summary.Trim(),
+                    MeetingId = MeetingId,
+                    CategoryId = SelectedGivingCategory.Id
+                };
 
-            await _givingService.CreateAsync(request);
 
-            MessageBox.Show(
-                "Church service created successfully.",
-                "Success",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information);
+                await _givingService.CreateAsync(request);
 
-            ClearForm();
+
+                MessageBox.Show(
+                    "Giving created successfully.",
+                    "Success",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+
+
+                ClearForm();
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show(
+        $"Giving could not be created.\n\n" +
+        $"Message: {ex.Message}\n" +
+        $"Status Code: {ex.StatusCode}",
+        "Create Giving Failed",
+        MessageBoxButton.OK,
+        MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Unable to Create Giving",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
 
 
@@ -177,14 +238,19 @@ namespace MFMFMSF.UI.Features.Givings.ViewModels
         // PROPERTY CHANGED
         // =====================================================
 
-        private void SetProperty<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
+        private void SetProperty<T>(
+            ref T field,
+            T value,
+            [CallerMemberName] string? propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(field, value))
                 return;
 
             field = value;
 
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(
+                this,
+                new PropertyChangedEventArgs(propertyName));
         }
 
 

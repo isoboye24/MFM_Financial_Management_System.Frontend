@@ -6,6 +6,6 @@
         public required DateTime Date { get; set; }
         public required string Summary { get; set; }
         public required Guid MeetingId { get; set; }
-        public required Guid GivingCategoryId { get; set; }
+        public required Guid CategoryId { get; set; }
     }
 }

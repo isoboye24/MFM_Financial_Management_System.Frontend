@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MFMFMSF.Core.Models.Givings;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Givings.Views
 {
@@ -24,5 +14,21 @@ namespace MFMFMSF.UI.Features.Givings.Views
         {
             InitializeComponent();
         }
+
+        public ObservableCollection<GivingListItem> Givings
+        {
+            get => (ObservableCollection<GivingListItem>)
+                GetValue(GivingsProperty);
+
+            set => SetValue(GivingsProperty, value);
+        }
+
+
+        public static readonly DependencyProperty GivingsProperty =
+            DependencyProperty.Register(
+                nameof(Givings),
+                typeof(ObservableCollection<GivingListItem>),
+                typeof(GivingView),
+                new PropertyMetadata(null));
     }
 }
