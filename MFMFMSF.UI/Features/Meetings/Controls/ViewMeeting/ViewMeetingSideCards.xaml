@@ -9,56 +9,48 @@
       VerticalAlignment="Stretch">
 
             <!-- TOTAL MALE -->
-            <controls:SummaryCard
-             Margin="8"
-             Title="Total Male"
-             Amount="€ 1,050"
-             Percentage="12.5%"
-             Comparison="vs Apr 1 – Apr 30"
-             TrendArrow="↑"
-             TrendForeground="#0DAA68"
-             Icon="HumanMaleMale"
-             IconBackground="#EEE7FF"
-             IconForeground="#6941E8"/>
+             <controls:PlainSideCard
+                Margin="8"
+                Title="Total Male"
+                Amount="{Binding Meeting.NoOfMaleAttendance,
+                                 RelativeSource={RelativeSource AncestorType=UserControl}}"
+                Icon="HumanMaleMale"
+                IconBackground="#EEE7FF"
+                IconForeground="#6941E8"/>
 
 
             <!-- TOTAL FEMALE -->
-            <controls:SummaryCard
+            <controls:PlainSideCard
              Margin="8"
              Title="Total Female"
-             Amount="€ 650"
-             Percentage="10.3%"
-             Comparison="vs Apr 1 – Apr 30"
-             TrendArrow="↑"
-             TrendForeground="#0DAA68"
+              Amount="{Binding Meeting.NoOfFemaleAttendance,
+                                 RelativeSource={RelativeSource AncestorType=UserControl},
+                                 StringFormat={}{0}}"
+            
              Icon="HumanFemaleFemale"
              IconBackground="#E2EEFF"
              IconForeground="#3478E5"/>
 
 
             <!-- TOTAL CHILDREN -->
-            <controls:SummaryCard
+            <controls:PlainSideCard
              Margin="8"
              Title="Total Children"
-             Amount="€ 300"
-             Percentage="8.7%"
-             Comparison="vs Apr 1 – Apr 30"
-             TrendArrow="↑"
-             TrendForeground="#0DAA68"
+             Amount="{Binding Meeting.NoOfChildrenAttendance,
+                                 RelativeSource={RelativeSource AncestorType=UserControl},
+                                 StringFormat={}{0}}"
              Icon="HumanChild"
              IconBackground="#E1F5EC"
              IconForeground="#42A979"/>
 
 
             <!-- TOTAL ATTENDANCE -->
-            <controls:SummaryCard
+            <controls:PlainSideCard
              Margin="8"
              Title="Total Attendance"
-             Amount="3"
-             Percentage="5.2%"
-             Comparison="vs Apr 1 – Apr 30"
-             TrendArrow="↑"
-             TrendForeground="#0DAA68"
+              Amount="{Binding Meeting.TotalAttendance,
+                                 RelativeSource={RelativeSource AncestorType=UserControl},
+                                 StringFormat={}{0}}"
              Icon="PersonMultiple"
              IconBackground="#FFE9C7"
              IconForeground="#FF9D20"/>

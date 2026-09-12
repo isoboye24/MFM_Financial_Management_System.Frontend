@@ -23,9 +23,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             }
         }
 
-        public ViewMeetingViewModel(
-            Guid meetingId,
-            IMeetingService meetingService)
+        public ViewMeetingViewModel(Guid meetingId, IMeetingService meetingService)
         {
             MeetingId = meetingId;
             _meetingService = meetingService;
@@ -36,12 +34,9 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             Meeting = await _meetingService.GetByIdAsync(MeetingId);
         }
 
-        private void OnPropertyChanged(
-            [CallerMemberName] string? propertyName = null)
+        private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
-            PropertyChanged?.Invoke(
-                this,
-                new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

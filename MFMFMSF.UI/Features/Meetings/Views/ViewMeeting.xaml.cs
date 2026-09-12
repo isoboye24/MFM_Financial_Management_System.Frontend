@@ -8,7 +8,7 @@ namespace MFMFMSF.UI.Features.Meetings.Views
 {
     public partial class ViewMeeting : UserControl
     {
-        private readonly ViewMeetingViewModel? _viewModel;
+        private readonly ViewMeetingViewModel _viewModel;
 
         public ViewMeeting(Guid meetingId, INavigationService navigationService, IMeetingService meetingService)
         {
@@ -16,6 +16,10 @@ namespace MFMFMSF.UI.Features.Meetings.Views
 
             NavigationService = navigationService;
 
+            // Create the ViewModel
+            _viewModel = new ViewMeetingViewModel(meetingId, meetingService);
+
+            // Set the ViewModel as DataContext
             DataContext = _viewModel;
 
             Loaded += ViewMeeting_Loaded;
@@ -28,8 +32,12 @@ namespace MFMFMSF.UI.Features.Meetings.Views
 
         public INavigationService? NavigationService
         {
-            get => (INavigationService?)GetValue(NavigationServiceProperty);
-            set => SetValue(NavigationServiceProperty, value);
+            get => (INavigationService?)GetValue(
+                NavigationServiceProperty);
+
+            set => SetValue(
+                NavigationServiceProperty,
+                value);
         }
 
         public static readonly DependencyProperty NavigationServiceProperty =
@@ -43,6 +51,7 @@ namespace MFMFMSF.UI.Features.Meetings.Views
         // =========================================================
         // Load Meeting Data
         // =========================================================
+
         private async void ViewMeeting_Loaded(object sender, RoutedEventArgs e)
         {
             Loaded -= ViewMeeting_Loaded;
@@ -61,5 +70,4 @@ namespace MFMFMSF.UI.Features.Meetings.Views
             }
         }
     }
-
 }

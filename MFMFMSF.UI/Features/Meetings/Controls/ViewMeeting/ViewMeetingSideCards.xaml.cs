@@ -1,28 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MFMFMSF.Core.Models;
+using MFMFMSF.Core.Models.Meetings;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Meetings.Controls.ViewMeeting
 {
-    /// <summary>
-    /// Interaction logic for ViewMeetingSideCards.xaml
-    /// </summary>
     public partial class ViewMeetingSideCards : UserControl
     {
         public ViewMeetingSideCards()
         {
             InitializeComponent();
         }
+
+
+        // =====================================================
+        // MEETING
+        // =====================================================
+
+        public MeetingDetail? Meeting
+        {
+            get => (MeetingDetail?)GetValue(MeetingProperty);
+            set => SetValue(MeetingProperty, value);
+        }
+
+        public static readonly DependencyProperty MeetingProperty =
+            DependencyProperty.Register(
+                nameof(Meeting),
+                typeof(MeetingDetail),
+                typeof(ViewMeetingSideCards),
+                new PropertyMetadata(null));
     }
 }

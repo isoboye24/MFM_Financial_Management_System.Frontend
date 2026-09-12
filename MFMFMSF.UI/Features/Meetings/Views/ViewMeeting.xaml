@@ -61,18 +61,34 @@
                 <Border Grid.Column="0"
                     Height="Auto"
                     CornerRadius="15">
-                    
-                   
 
-                    <lvc3:GivingView/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
+                        <Border Grid.Row="0">
+
+                            <lvc2:ViewMeetingData/>
+
+                        </Border>
+
+                        <Border Grid.Row="2">
+
+                            <lvc3:GivingView/>
+
+                        </Border>
+                    </Grid>
                 </Border>
 
                 <Border Grid.Column="2"
                     Height="Auto"
                     CornerRadius="15">
 
-                    <lvc2:ViewMeetingSideCards/>
+                    <lvc2:ViewMeetingSideCards
+                         Meeting="{Binding Meeting}"/>
 
                 </Border>
             </Grid>

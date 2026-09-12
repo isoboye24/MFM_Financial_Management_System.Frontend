@@ -26,10 +26,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         public IMeetingService MeetingService => _meetingService;
 
 
-        public MeetingsViewModel(
-            INavigationService navigationService,
-            IMeetingCategoryService meetingCategoryService,
-            IMeetingService meetingService)
+        public MeetingsViewModel(INavigationService navigationService, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService)
         {
             _navigationService = navigationService;
             _meetingCategoryService = meetingCategoryService;
