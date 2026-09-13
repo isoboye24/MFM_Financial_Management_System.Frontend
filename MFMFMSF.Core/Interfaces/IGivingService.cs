@@ -6,5 +6,7 @@ namespace MFMFMSF.Core.Interfaces
     {
         Task CreateAsync(CreateGivingRequest request);
         Task<IReadOnlyList<GivingListItem>> GetByMeetingIdAsync(Guid meetingId);
+        Task<GivingDetail> GetByIdAsync(Guid id);
+        Task UpdateAsync(Guid id, UpdateGivingRequest request);
     }
 }

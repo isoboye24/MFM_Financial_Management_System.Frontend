@@ -230,9 +230,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             };
 
 
-            await _meetingService.UpdateAsync(
-                MeetingId,
-                request);
+            await _meetingService.UpdateAsync(MeetingId, request);
 
 
             MessageBox.Show(

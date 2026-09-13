@@ -12,6 +12,10 @@ namespace MFMFMSF.UI.Navigation
 
         public bool CanGoBack => _navigationStack.Count > 0;
 
+        public UserControl? CurrentPage => _currentPage;
+
+        public UserControl? PreviousPage => _navigationStack.Count > 0 ? _navigationStack.Peek() : null;
+
         public void Navigate(UserControl page)
         {
             if (_currentPage != null)

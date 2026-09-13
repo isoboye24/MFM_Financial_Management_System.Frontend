@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-    xmlns:lv1="clr-namespace:MFMFMSF.UI.Converters">
+    xmlns:lv1="clr-namespace:MFMFMSF.UI.Converters"
+    xmlns:lv2="clr-namespace:MFMFMSF.UI.Features.Givings.Views">
 
     <!-- ========================================================= -->
     <!-- RESOURCES -->
@@ -379,14 +380,14 @@
                                         Width="14"
                                         Height="14"/>
 
-                                        </Button>
+                                        </Button>-->
 
 
-                                        --><!-- EDIT --><!--
+                                        <!--EDIT-->
 
                                         <Button Style="{StaticResource TableActionButtonStyle}"
-                                        Command="{Binding DataContext.EditGivingCommand,
-                                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        Command="{Binding EditGivingCommand,
+                                                          RelativeSource={RelativeSource AncestorType={x:Type lv2:GivingView}}}"
                                         CommandParameter="{Binding}"
                                         ToolTip="Edit">
 
@@ -398,9 +399,9 @@
                                         </Button>
 
 
-                                        --><!-- DELETE --><!--
+                                         <!--DELETE-->
 
-                                        <Button Style="{StaticResource DeleteActionButtonStyle}"
+                                        <!--<Button Style="{StaticResource DeleteActionButtonStyle}"
                                         Command="{Binding DataContext.DeleteGivingCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
                                         CommandParameter="{Binding}"

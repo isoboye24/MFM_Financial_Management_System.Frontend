@@ -23,12 +23,25 @@ namespace MFMFMSF.Infrastructure.Service
         }
 
 
-        public async Task<IReadOnlyList<GivingListItem>> GetByMeetingIdAsync(
-            Guid meetingId)
+        public async Task<IReadOnlyList<GivingListItem>> GetByMeetingIdAsync(Guid meetingId)
         {
             var givings = await _httpClient.GetFromJsonAsync<List<GivingListItem>>($"{Endpoint}?Page=1&RecordsPerPage=100&MeetingId={meetingId}");
 
             return givings ?? [];
+        }
+
+        public async Task<GivingDetail> GetByIdAsync(Guid id)
+        {
+            var giving = await _httpClient.GetFromJsonAsync<GivingDetail>($"{Endpoint}/{id}");
+
+            return giving ?? throw new InvalidOperationException("Giving not found.");
+        }
+
+        public async Task UpdateAsync(Guid id, UpdateGivingRequest request)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"{Endpoint}/{id}", request);
+
+            response.EnsureSuccessStatusCode();
         }
     }
 }

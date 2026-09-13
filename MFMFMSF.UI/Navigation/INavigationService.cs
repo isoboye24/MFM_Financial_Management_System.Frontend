@@ -9,6 +9,8 @@ namespace MFMFMSF.UI.Navigation
         void GoBack();
 
         bool CanGoBack { get; }
+        UserControl? CurrentPage { get; }
+        UserControl? PreviousPage { get; }
 
         event Action<UserControl>? PageChanged;
     }
