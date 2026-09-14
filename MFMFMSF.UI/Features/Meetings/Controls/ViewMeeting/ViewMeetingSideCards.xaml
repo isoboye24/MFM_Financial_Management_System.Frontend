@@ -11,7 +11,7 @@
             <!-- TOTAL MALE -->
              <controls:PlainSideCard
                 Margin="8"
-                Title="Total Male"
+                Title="Male"
                 Amount="{Binding Meeting.NoOfMaleAttendance,
                                  RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Icon="HumanMaleMale"
@@ -22,7 +22,7 @@
             <!-- TOTAL FEMALE -->
             <controls:PlainSideCard
              Margin="8"
-             Title="Total Female"
+             Title="Female"
               Amount="{Binding Meeting.NoOfFemaleAttendance,
                                  RelativeSource={RelativeSource AncestorType=UserControl},
                                  StringFormat={}{0}}"
@@ -35,7 +35,7 @@
             <!-- TOTAL CHILDREN -->
             <controls:PlainSideCard
              Margin="8"
-             Title="Total Children"
+             Title="Children"
              Amount="{Binding Meeting.NoOfChildrenAttendance,
                                  RelativeSource={RelativeSource AncestorType=UserControl},
                                  StringFormat={}{0}}"

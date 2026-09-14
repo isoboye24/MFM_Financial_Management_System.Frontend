@@ -4,14 +4,14 @@
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
                 xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"> 
     <Grid>
-        <UniformGrid Columns="5"
+        <UniformGrid Columns="4"
           HorizontalAlignment="Stretch"
           VerticalAlignment="Stretch">
 
             <!-- TOTAL TITHES -->
             <controls:SummaryCard
                  Margin="8"
-                 Title="Total Tithes"
+                 Title="Tithes"
                  Amount= "{Binding TotalTithes, StringFormat={}€ {0:N2}}"
                  Percentage="12.5%"
                  Comparison="vs Apr 1 – Apr 30"
@@ -25,7 +25,7 @@
             <!-- TOTAL OFFERINGS -->
             <controls:SummaryCard
                  Margin="8"
-                 Title="Total Offerings"
+                 Title="Offerings"
                  Amount="{Binding TotalOfferings, StringFormat={}€ {0:N2}}"
                  Percentage="10.3%"
                  Comparison="vs Apr 1 – Apr 30"
@@ -39,7 +39,7 @@
             <!-- TOTAL SEEDS -->
             <controls:SummaryCard
                  Margin="8"
-                 Title="Total Seeds"
+                 Title="Seeds"
                  Amount="{Binding TotalSeeds, StringFormat={}€ {0:N2}}"
                  Percentage="8.7%"
                  Comparison="vs Apr 1 – Apr 30"
@@ -53,7 +53,7 @@
             <!-- TOTAL OTHER INCOME -->
             <controls:SummaryCard
                  Margin="8"
-                 Title="Total Other Income"
+                 Title="Other Income"
                  Amount="{Binding TotalOtherIncome, StringFormat={}€ {0:N2}}"
                  Percentage="5.2%"
                  Comparison="vs Apr 1 – Apr 30"

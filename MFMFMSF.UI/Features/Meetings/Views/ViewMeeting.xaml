@@ -54,7 +54,7 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
@@ -65,18 +65,20 @@
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.Column="0">
+                        <Border Grid.Column="0"
+                                Height="Auto">
 
                             <lvc2:ViewMeetingData/>
 
                         </Border>
 
-                        <Border Grid.Column="2">
+                        <Border Grid.Column="2"
+                                Height="Auto">
 
                             <lvc3:GivingView
                                  Givings="{Binding Givings}"
