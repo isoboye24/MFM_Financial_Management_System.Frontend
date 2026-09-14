@@ -11,5 +11,9 @@
         public required string CategoryName { get; set; }
         public required string MessageTitle { get; set; }
         public required string Minister { get; set; }
+        public int NoOfMaleAttendance { get; set; }
+        public int NoOfFemaleAttendance { get; set; }
+        public int NoOfChildrenAttendance { get; set; }
+        public int TotalAttendance => NoOfMaleAttendance + NoOfFemaleAttendance + NoOfChildrenAttendance;
     }
 }

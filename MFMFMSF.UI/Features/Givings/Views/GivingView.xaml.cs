@@ -16,6 +16,7 @@ namespace MFMFMSF.UI.Features.Givings.Views
     {
         public ICommand EditGivingCommand { get; }
         public ICommand DeleteGivingCommand { get; }
+        public ICommand ViewGivingCommand { get; }
 
         public GivingView()
         {
@@ -23,6 +24,7 @@ namespace MFMFMSF.UI.Features.Givings.Views
 
             EditGivingCommand =new RelayCommandGeneric<GivingListItem>(EditGiving);
             DeleteGivingCommand = new RelayCommandGeneric<GivingListItem>(DeleteGiving);
+            ViewGivingCommand = new RelayCommandGeneric<GivingListItem>(ViewSingleGiving);
         }
 
         public ObservableCollection<GivingListItem> Givings
@@ -137,6 +139,22 @@ namespace MFMFMSF.UI.Features.Givings.Views
             {
                 MessageBox.Show($"The giving could not be deleted.\n\n{ex.Message}", "Delete Failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void ViewSingleGiving(GivingListItem giving)
+        {
+            if (NavigationService == null || GivingService == null || GivingCategoryService == null)
+            {
+                MessageBox.Show(
+                    "Navigation services are not configured.",
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return;
+            }
+
+            NavigationService.Navigate(new ViewSingleGiving(giving.Id, NavigationService, GivingCategoryService, GivingService));
         }
 
     }

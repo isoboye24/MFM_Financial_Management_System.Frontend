@@ -61,7 +61,7 @@
                 <TextBlock
                     Text="{Binding Title,
                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    FontSize="10"
+                    FontSize="16"
                     Foreground="#303653"
                     VerticalAlignment="Center"/>
 
@@ -71,7 +71,7 @@
                 <TextBlock
                     Text="{Binding Amount,
                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    FontSize="17"
+                    FontSize="20"
                     FontWeight="SemiBold"
                     Foreground="#101432"
                     Margin="0,5,0,0"/>

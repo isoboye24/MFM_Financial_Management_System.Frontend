@@ -4,7 +4,7 @@
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls">
     <Grid>
-        <UniformGrid Rows="5"
+        <UniformGrid Rows="4"
       HorizontalAlignment="Stretch"
       VerticalAlignment="Stretch">
 

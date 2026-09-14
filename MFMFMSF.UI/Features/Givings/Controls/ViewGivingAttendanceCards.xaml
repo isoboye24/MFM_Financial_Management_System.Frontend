@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Givings.Controls.ViewGivingAttendanceCards"
+                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:controls="clr-namespace:MFMFMSF.UI.Controls">
+    <Grid>
+        <UniformGrid Columns="4"
+  HorizontalAlignment="Stretch"
+  VerticalAlignment="Stretch">
+
+            <!-- TOTAL MALE -->
+            <controls:PlainSideCard
+            Margin="8"
+            Title="Total Male"
+            Amount="{Binding Giving.NoOfMaleAttendance}"
+            Icon="HumanMaleMale"
+            IconBackground="#EEE7FF"
+            IconForeground="#6941E8"/>
+
+
+            <!-- TOTAL FEMALE -->
+            <controls:PlainSideCard
+         Margin="8"
+         Title="Total Female"
+          Amount="{Binding Giving.NoOfFemaleAttendance}"
+        
+         Icon="HumanFemaleFemale"
+         IconBackground="#E2EEFF"
+         IconForeground="#3478E5"/>
+
+
+            <!-- TOTAL CHILDREN -->
+            <controls:PlainSideCard
+         Margin="8"
+         Title="Total Children"
+         Amount="{Binding Giving.NoOfChildrenAttendance}"
+         Icon="HumanChild"
+         IconBackground="#E1F5EC"
+         IconForeground="#42A979"/>
+
+
+            <!-- TOTAL ATTENDANCE -->
+            <controls:PlainSideCard
+         Margin="8"
+         Title="Total Attendance"
+         Amount="{Binding Giving.TotalAttendance}"
+         Icon="PersonMultiple"
+         IconBackground="#FFE9C7"
+         IconForeground="#FF9D20"/>
+
+
+
+
+        </UniformGrid>
+    </Grid>
+</UserControl>

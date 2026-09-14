@@ -22,7 +22,8 @@
              Height="Auto"
              Background="White"
              CornerRadius="15"
-             Margin="0,0,0,20">
+             Margin="0,0,0,20"
+                Padding="20">
 
             <lvc1:PageTitleBarWithCreateButton
                 BreadcrumbText="Church Service"
