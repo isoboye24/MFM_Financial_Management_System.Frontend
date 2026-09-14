@@ -78,12 +78,13 @@
                         <Border Grid.Column="2">
 
                             <lvc3:GivingView
-    NavigationService="{Binding NavigationService,
-                                RelativeSource={RelativeSource AncestorType={x:Type local:ViewMeeting}}}"
-    GivingCategoryService="{Binding GivingCategoryService,
-                                    RelativeSource={RelativeSource AncestorType={x:Type local:ViewMeeting}}}"
-    GivingService="{Binding GivingService,
-                            RelativeSource={RelativeSource AncestorType={x:Type local:ViewMeeting}}}"/>
+                                 Givings="{Binding Givings}"
+                                NavigationService="{Binding NavigationService,
+                                                            RelativeSource={RelativeSource AncestorType={x:Type local:ViewMeeting}}}"
+                                GivingCategoryService="{Binding GivingCategoryService,
+                                                                RelativeSource={RelativeSource AncestorType={x:Type local:ViewMeeting}}}"
+                                GivingService="{Binding GivingService,
+                                                        RelativeSource={RelativeSource AncestorType={x:Type local:ViewMeeting}}}"/>
 
                         </Border>
                     </Grid>

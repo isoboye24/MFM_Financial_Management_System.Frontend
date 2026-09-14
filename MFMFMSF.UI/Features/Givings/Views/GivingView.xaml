@@ -401,8 +401,8 @@
 
                                          <!--DELETE-->
 
-                                        <!--<Button Style="{StaticResource DeleteActionButtonStyle}"
-                                        Command="{Binding DataContext.DeleteGivingCommand,
+                                        <Button Style="{StaticResource DeleteActionButtonStyle}"
+                                        Command="{Binding DeleteGivingCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
                                         CommandParameter="{Binding}"
                                         ToolTip="Delete">
@@ -412,7 +412,7 @@
                                         Width="14"
                                         Height="14"/>
 
-                                        </Button>-->
+                                        </Button>
 
                                     </StackPanel>
 

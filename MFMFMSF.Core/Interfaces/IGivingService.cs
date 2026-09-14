@@ -8,5 +8,6 @@ namespace MFMFMSF.Core.Interfaces
         Task<IReadOnlyList<GivingListItem>> GetByMeetingIdAsync(Guid meetingId);
         Task<GivingDetail> GetByIdAsync(Guid id);
         Task UpdateAsync(Guid id, UpdateGivingRequest request);
+        Task DeleteAsync(Guid id);
     }
 }

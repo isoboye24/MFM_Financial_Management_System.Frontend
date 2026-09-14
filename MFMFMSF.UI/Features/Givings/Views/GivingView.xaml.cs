@@ -15,11 +15,14 @@ namespace MFMFMSF.UI.Features.Givings.Views
     public partial class GivingView : UserControl
     {
         public ICommand EditGivingCommand { get; }
+        public ICommand DeleteGivingCommand { get; }
+
         public GivingView()
         {
             InitializeComponent();
 
             EditGivingCommand =new RelayCommandGeneric<GivingListItem>(EditGiving);
+            DeleteGivingCommand = new RelayCommandGeneric<GivingListItem>(DeleteGiving);
         }
 
         public ObservableCollection<GivingListItem> Givings
@@ -107,6 +110,33 @@ namespace MFMFMSF.UI.Features.Givings.Views
             }
 
             NavigationService.Navigate(new EditGiving(giving.Id, NavigationService, GivingCategoryService, GivingService));
+        }
+
+
+        private async void DeleteGiving(GivingListItem giving)
+        {
+            var result = MessageBox.Show($"Are you sure you want to delete '{giving.MessageTitle}'?", "Delete Church Service", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            try
+            {
+                if (GivingService == null)
+                {
+                    MessageBox.Show("Giving service is not configured.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                await GivingService.DeleteAsync(giving.Id);
+                Givings.Remove(giving);
+
+                MessageBox.Show("Giving deleted successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"The giving could not be deleted.\n\n{ex.Message}", "Delete Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
     }
