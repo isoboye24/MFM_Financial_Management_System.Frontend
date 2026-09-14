@@ -5,6 +5,7 @@ using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Givings.Views;
 using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -51,9 +52,26 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             _givingService = givingService;
 
             AddGivingCommand = new RelayCommand(_ => AddGiving());
+
+            Givings.CollectionChanged += Givings_CollectionChanged;
         }
 
 
+
+        // =========================================================
+        // GIVING TOTALS
+        // =========================================================
+
+        public decimal TotalTithes => Givings.Where(x => string.Equals(x.CategoryName,"Tithe", StringComparison.OrdinalIgnoreCase)).Sum(x => x.Amount);
+        public decimal TotalOfferings => Givings.Where(x => string.Equals(x.CategoryName, "Offering", StringComparison.OrdinalIgnoreCase)).Sum(x => x.Amount);
+        public decimal TotalSeeds => Givings.Where(x => string.Equals(x.CategoryName, "Seed", StringComparison.OrdinalIgnoreCase)).Sum(x => x.Amount);
+        public decimal TotalOtherIncome => Givings.Where(x => string.Equals(x.CategoryName, "Other Income", StringComparison.OrdinalIgnoreCase)).Sum(x => x.Amount);
+
+
+
+        // =========================================================
+        // LOAD MEETING DATA
+        // =========================================================
         public async Task LoadAsync()
         {
             Meeting = await _meetingService.GetByIdAsync(MeetingId);
@@ -66,6 +84,22 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             {
                 Givings.Add(giving);
             }
+        }
+
+
+
+        // =========================================================
+        // GIVINGS COLLECTION CHANGED
+        // =========================================================
+
+        private void Givings_CollectionChanged(
+            object? sender,
+            NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(TotalTithes));
+            OnPropertyChanged(nameof(TotalOfferings));
+            OnPropertyChanged(nameof(TotalSeeds));
+            OnPropertyChanged(nameof(TotalOtherIncome));
         }
 
         // =========================================================

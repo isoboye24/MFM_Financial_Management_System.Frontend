@@ -12,7 +12,7 @@
             <controls:SummaryCard
                  Margin="8"
                  Title="Total Tithes"
-                 Amount="€ 1,050"
+                 Amount= "{Binding TotalTithes, StringFormat={}€ {0:N2}}"
                  Percentage="12.5%"
                  Comparison="vs Apr 1 – Apr 30"
                  TrendArrow="↑"
@@ -26,7 +26,7 @@
             <controls:SummaryCard
                  Margin="8"
                  Title="Total Offerings"
-                 Amount="€ 650"
+                 Amount="{Binding TotalOfferings, StringFormat={}€ {0:N2}}"
                  Percentage="10.3%"
                  Comparison="vs Apr 1 – Apr 30"
                  TrendArrow="↑"
@@ -40,7 +40,7 @@
             <controls:SummaryCard
                  Margin="8"
                  Title="Total Seeds"
-                 Amount="€ 300"
+                 Amount="{Binding TotalSeeds, StringFormat={}€ {0:N2}}"
                  Percentage="8.7%"
                  Comparison="vs Apr 1 – Apr 30"
                  TrendArrow="↑"
@@ -50,32 +50,19 @@
                  IconForeground="#42A979"/>
 
 
-            <!-- TOTAL NEWCOMMERS -->
+            <!-- TOTAL OTHER INCOME -->
             <controls:SummaryCard
                  Margin="8"
-                 Title="Total Newcommers"
-                 Amount="3"
+                 Title="Total Other Income"
+                 Amount="{Binding TotalOtherIncome, StringFormat={}€ {0:N2}}"
                  Percentage="5.2%"
                  Comparison="vs Apr 1 – Apr 30"
                  TrendArrow="↑"
                  TrendForeground="#0DAA68"
-                 Icon="Human"
+                 Icon="Dollar"
                  IconBackground="#FFE9C7"
                  IconForeground="#FF9D20"/>
 
-
-            <!-- TOTAL WORKERS -->
-            <controls:SummaryCard
-                 Margin="3"
-                 Title="Total Workers"
-                 Amount="3"
-                 Percentage="9.1%"
-                 Comparison="vs Apr 1 – Apr 30"
-                 TrendArrow="↑"
-                 TrendForeground="#0DAA68"
-                 Icon="People"
-                 IconBackground="#FFE5EE"
-                 IconForeground="#E65B89"/>
 
         </UniformGrid>
     </Grid>
