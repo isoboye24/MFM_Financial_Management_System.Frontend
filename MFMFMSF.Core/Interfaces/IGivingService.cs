@@ -9,5 +9,6 @@ namespace MFMFMSF.Core.Interfaces
         Task<GivingDetail> GetByIdAsync(Guid id);
         Task UpdateAsync(Guid id, UpdateGivingRequest request);
         Task DeleteAsync(Guid id);
+        Task<GivingStatistics> GetStatisticsAsync();
     }
 }

@@ -1,14 +1,17 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.Core.Models.Meetings;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Meetings.Views;
 using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Meetings.ViewModels
 {
-    public class MeetingsViewModel
+    public class MeetingsViewModel : INotifyPropertyChanged
     {
         private readonly INavigationService _navigationService;
         private readonly IMeetingCategoryService _meetingCategoryService;
@@ -59,6 +62,35 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             {
                 Meetings.Add(meeting);
             }
+
+            GivingStatistics = await _givingService.GetStatisticsAsync();
         }
+
+
+
+        // =====================================================
+        // STATISTICS
+        // =====================================================
+        private GivingStatistics _givingStatistics = new();
+
+        public GivingStatistics GivingStatistics
+        {
+            get => _givingStatistics;
+            private set
+            {
+                _givingStatistics = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            PropertyChanged?.Invoke(
+                this,
+                new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

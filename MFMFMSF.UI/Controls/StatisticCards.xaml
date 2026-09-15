@@ -10,72 +10,72 @@
 
             <!-- TOTAL OFFERINGS -->
             <controls:SummaryCard
-        Margin="8"
-        Title="Total Offerings"
-        Amount="$28,450.00"
-        Percentage="12.5%"
-        Comparison="vs Apr 1 – Apr 30"
-        TrendArrow="↑"
-        TrendForeground="#0DAA68"
-        Icon="Gift"
-        IconBackground="#EEE7FF"
-        IconForeground="#6941E8"/>
+                Margin="8"
+                Title="Total Offerings"
+                Amount="{Binding GivingStatistics.TotalOfferings, StringFormat={}€ {0:N2}}"
+                Percentage="12.5%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="Gift"
+                IconBackground="#EEE7FF"
+                IconForeground="#6941E8"/>
 
 
             <!-- TITHES -->
             <controls:SummaryCard
-        Margin="8"
-        Title="Tithes"
-        Amount="$18,620.00"
-        Percentage="10.3%"
-        Comparison="vs Apr 1 – Apr 30"
-        TrendArrow="↑"
-        TrendForeground="#0DAA68"
-        Icon="Heart"
-        IconBackground="#E2EEFF"
-        IconForeground="#3478E5"/>
+                Margin="8"
+                Title="Tithes"
+                Amount="{Binding GivingStatistics.TotalTithes, StringFormat={}€ {0:N2}}"
+                Percentage="10.3%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="Heart"
+                IconBackground="#E2EEFF"
+                IconForeground="#3478E5"/>
 
 
             <!-- SEEDS -->
             <controls:SummaryCard
-        Margin="8"
-        Title="Seeds (Faith Promise)"
-        Amount="$6,870.00"
-        Percentage="8.7%"
-        Comparison="vs Apr 1 – Apr 30"
-        TrendArrow="↑"
-        TrendForeground="#0DAA68"
-        Icon="Sprout"
-        IconBackground="#E1F5EC"
-        IconForeground="#42A979"/>
+                Margin="8"
+                Title="Seeds (Faith Promise)"
+                Amount="{Binding GivingStatistics.TotalSeeds, StringFormat={}€ {0:N2}}"
+                Percentage="8.7%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="Sprout"
+                IconBackground="#E1F5EC"
+                IconForeground="#42A979"/>
+            
 
-
-            <!-- SPECIAL OFFERINGS -->
+            <!-- OTHER OFFERINGS -->
             <controls:SummaryCard
-        Margin="8"
-        Title="Other Income"
-        Amount="$2,960.00"
-        Percentage="5.2%"
-        Comparison="vs Apr 1 – Apr 30"
-        TrendArrow="↑"
-        TrendForeground="#0DAA68"
-        Icon="Cash"
-        IconBackground="#FFE9C7"
-        IconForeground="#FF9D20"/>
+                Margin="8"
+                Title="Other Income"
+                Amount="{Binding GivingStatistics.TotalOtherIncome, StringFormat={}€ {0:N2}}"
+                Percentage="5.2%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="Cash"
+                IconBackground="#FFE9C7"
+                IconForeground="#FF9D20"/>
 
 
-            <!-- TOTAL TRANSACTIONS -->
-            <controls:SummaryCard
-        Margin="8"
-        Title="Total Expenditures"
-        Amount="$2,960.00"
-        Percentage="9.1%"
-        Comparison="vs Apr 1 – Apr 30"
-        TrendArrow="↑"
-        TrendForeground="#0DAA68"
-        Icon="AccountMultiple"
-        IconBackground="#FFE5EE"
-        IconForeground="#E65B89"/>
+            <!-- TOTAL EXPENDITURES -->
+                <controls:SummaryCard
+                Margin="8"
+                Title="Total Expenditures"
+                Amount="€ 960.00"
+                Percentage="9.1%"
+                Comparison="vs Apr 1 – Apr 30"
+                TrendArrow="↑"
+                TrendForeground="#0DAA68"
+                Icon="AccountMultiple"
+                IconBackground="#FFE5EE"
+                IconForeground="#E65B89"/>  
 
         </UniformGrid>
     </Grid>

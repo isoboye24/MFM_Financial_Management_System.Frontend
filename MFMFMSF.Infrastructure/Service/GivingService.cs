@@ -50,5 +50,12 @@ namespace MFMFMSF.Infrastructure.Service
 
             response.EnsureSuccessStatusCode();
         }
+
+        public async Task<GivingStatistics> GetStatisticsAsync()
+        {
+            var statistics = await _httpClient.GetFromJsonAsync<GivingStatistics>($"{Endpoint}/statistics");
+
+            return statistics ?? new GivingStatistics();
+        }
     }
 }
