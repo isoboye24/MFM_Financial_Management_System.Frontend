@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Dashboard.ViewModels;
+using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Dashboard.Views
 {
@@ -20,9 +11,21 @@ namespace MFMFMSF.UI.Features.Dashboard.Views
     /// </summary>
     public partial class DashboardView : UserControl
     {
-        public DashboardView()
+        private readonly DashboardViewModel _viewModel;
+        public DashboardView(INavigationService navigationService, IGivingService givingService)
         {
             InitializeComponent();
+
+            _viewModel = new DashboardViewModel(navigationService, givingService);
+
+            DataContext = _viewModel;
+
+            Loaded += DashboardView_Loaded;
+        }
+
+        private async void DashboardView_Loaded(object sender, RoutedEventArgs e)
+        {
+            await _viewModel.LoadDashboardDataAsync();
         }
     }
 }

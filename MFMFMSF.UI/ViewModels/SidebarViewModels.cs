@@ -47,7 +47,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             _givingService = givingService;
 
 
-            NavigateDashboardCommand = new RelayCommand(_ =>  _navigation.Navigate(new DashboardView()));
+            NavigateDashboardCommand = new RelayCommand(_ =>  _navigation.Navigate(new DashboardView(_navigation, _givingService)));
 
             NavigateMeetingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new MeetingsView(_navigation, _meetingCategoryService, _meetingService, 
                 _givingCategoryService, _givingService)));
