@@ -1,6 +1,6 @@
 ﻿namespace MFMFMSF.Core.Models.Givings
 {
-    public class GivingStatistics
+    public class TotalGivingStatistics
     {
         public decimal TotalTithes { get; set; }
         public decimal TotalOfferings { get; set; }

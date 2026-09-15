@@ -51,11 +51,25 @@ namespace MFMFMSF.Infrastructure.Service
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task<GivingStatistics> GetStatisticsAsync()
+        public async Task<MonthlyGivingStatistics> GetMonthlyStatisticsAsync(int month, int year)
         {
-            var statistics = await _httpClient.GetFromJsonAsync<GivingStatistics>($"{Endpoint}/statistics");
+            var statistics = await _httpClient.GetFromJsonAsync<MonthlyGivingStatistics>($"{Endpoint}/monthly/statistics?month={month}&year={year}");
 
-            return statistics ?? new GivingStatistics();
+            return statistics ?? new MonthlyGivingStatistics();
+        }
+
+        public async Task<AnnualGivingStatistics> GetAnnualStatisticsAsync(int year)
+        {
+            var statistics = await _httpClient.GetFromJsonAsync<AnnualGivingStatistics>($"{Endpoint}/annual/statistics?year={year}");
+
+            return statistics ?? new AnnualGivingStatistics();
+        }
+
+        public async Task<TotalGivingStatistics> GetTotalStatisticsAsync()
+        {
+            var statistics = await _httpClient.GetFromJsonAsync<TotalGivingStatistics>($"{Endpoint}/total/statistics");
+
+            return statistics ?? new TotalGivingStatistics();
         }
     }
 }

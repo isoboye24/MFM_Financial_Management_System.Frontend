@@ -11,8 +11,8 @@
             <!-- TOTAL OFFERINGS -->
             <controls:SummaryCard
                 Margin="8"
-                Title="Total Offerings"
-                Amount="{Binding GivingStatistics.TotalOfferings, StringFormat={}€ {0:N2}}"
+                Title="Offerings"
+                Amount="{Binding MonthlyGivingStatistics.MonthlyOfferings, StringFormat={}€ {0:N2}}"
                 Percentage="12.5%"
                 Comparison="vs Apr 1 – Apr 30"
                 TrendArrow="↑"
@@ -26,7 +26,7 @@
             <controls:SummaryCard
                 Margin="8"
                 Title="Tithes"
-                Amount="{Binding GivingStatistics.TotalTithes, StringFormat={}€ {0:N2}}"
+                Amount="{Binding MonthlyGivingStatistics.MonthlyTithes, StringFormat={}€ {0:N2}}"
                 Percentage="10.3%"
                 Comparison="vs Apr 1 – Apr 30"
                 TrendArrow="↑"
@@ -40,7 +40,7 @@
             <controls:SummaryCard
                 Margin="8"
                 Title="Seeds (Faith Promise)"
-                Amount="{Binding GivingStatistics.TotalSeeds, StringFormat={}€ {0:N2}}"
+                Amount="{Binding MonthlyGivingStatistics.MonthlySeeds, StringFormat={}€ {0:N2}}"
                 Percentage="8.7%"
                 Comparison="vs Apr 1 – Apr 30"
                 TrendArrow="↑"
@@ -54,7 +54,7 @@
             <controls:SummaryCard
                 Margin="8"
                 Title="Other Income"
-                Amount="{Binding GivingStatistics.TotalOtherIncome, StringFormat={}€ {0:N2}}"
+                Amount="{Binding MonthlyGivingStatistics.MonthlyOtherIncome, StringFormat={}€ {0:N2}}"
                 Percentage="5.2%"
                 Comparison="vs Apr 1 – Apr 30"
                 TrendArrow="↑"

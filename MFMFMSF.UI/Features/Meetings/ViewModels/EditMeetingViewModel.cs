@@ -37,9 +37,9 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         // FORM PROPERTIES
         // =====================================================
 
-        private DateTime? _date;
+        private DateOnly? _date;
 
-        public DateTime? Date
+        public DateOnly? Date
         {
             get => _date;
             set => SetProperty(ref _date, value);
@@ -212,7 +212,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             {
                 MessageTitle = MessageTitle.Trim(),
 
-                Date = Date.Value,
+                Date =  Date.Value.ToDateTime(TimeOnly.MinValue),
 
                 Summary = string.IsNullOrWhiteSpace(Summary)
                     ? null

@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Dashboard.Controls;
 using MFMFMSF.UI.Features.Dashboard.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
@@ -20,12 +21,19 @@ namespace MFMFMSF.UI.Features.Dashboard.Views
 
             DataContext = _viewModel;
 
+            DashboardTopWelcomeBar.PeriodChanged += DashboardTopWelcomeBar_PeriodChanged;
+
             Loaded += DashboardView_Loaded;
         }
 
         private async void DashboardView_Loaded(object sender, RoutedEventArgs e)
         {
             await _viewModel.LoadDashboardDataAsync();
+        }
+
+        private async void DashboardTopWelcomeBar_PeriodChanged(object? sender, PeriodChangedEventArgs e)
+        {
+            await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
         }
     }
 }

@@ -44,6 +44,9 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             _givingService = givingService;
 
             AddMeetingCommand =  new RelayCommand(_ => AddMeeting());
+
+            SelectedMonth = DateTime.Now.Month;
+            SelectedYear = DateTime.Now.Year;
         }
 
 
@@ -63,24 +66,78 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
                 Meetings.Add(meeting);
             }
 
-            GivingStatistics = await _givingService.GetStatisticsAsync();
+            MonthlyGivingStatistics = await _givingService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
         }
 
 
 
         // =====================================================
-        // STATISTICS
+        // SELECTED PERIOD
         // =====================================================
-        private GivingStatistics _givingStatistics = new();
 
-        public GivingStatistics GivingStatistics
+        private int _selectedMonth;
+        public int SelectedMonth
         {
-            get => _givingStatistics;
+            get => _selectedMonth;
             private set
             {
-                _givingStatistics = value;
+                if (_selectedMonth == value)
+                    return;
+
+                _selectedMonth = value;
                 OnPropertyChanged();
             }
+        }
+
+        private int _selectedYear;
+        public int SelectedYear
+        {
+            get => _selectedYear;
+            private set
+            {
+                if (_selectedYear == value)
+                    return;
+
+                _selectedYear = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+        // =====================================================
+        // MONTHLY STATISTICS
+        // =====================================================
+        private MonthlyGivingStatistics _monthlyGivingStatistics = new();
+
+        public MonthlyGivingStatistics MonthlyGivingStatistics
+        {
+            get => _monthlyGivingStatistics;
+            private set
+            {
+                _monthlyGivingStatistics = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+        // =====================================================
+        // CHANGE PERIOD
+        // =====================================================
+
+        public async Task SetSelectedPeriodAsync(int month, int year)
+        {
+            if (month < 1 || month > 12)
+                throw new ArgumentOutOfRangeException(nameof(month));
+
+            if (year < 1)
+                throw new ArgumentOutOfRangeException(nameof(year));
+
+            SelectedMonth = month;
+            SelectedYear = year;
+
+            await LoadMeetingsAsync();
         }
 
 
