@@ -1,5 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.UI.Features.Dashboard.Controls;
+using MFMFMSF.UI.Controls;
 using MFMFMSF.UI.Features.Dashboard.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
@@ -7,12 +7,10 @@ using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Dashboard.Views
 {
-    /// <summary>
-    /// Interaction logic for DashboardView.xaml
-    /// </summary>
     public partial class DashboardView : UserControl
     {
         private readonly DashboardViewModel _viewModel;
+
         public DashboardView(INavigationService navigationService, IGivingService givingService)
         {
             InitializeComponent();

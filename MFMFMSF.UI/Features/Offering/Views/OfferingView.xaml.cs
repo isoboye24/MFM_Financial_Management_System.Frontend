@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Offering.ViewModels;
+using MFMFMSF.UI.Navigation;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Offering.Views
 {
@@ -20,9 +10,14 @@ namespace MFMFMSF.UI.Features.Offering.Views
     /// </summary>
     public partial class OfferingView : UserControl
     {
-        public OfferingView()
+        private readonly OfferingViewModel _viewModel;
+        public OfferingView(INavigationService navigationService, IGivingService givingService)
         {
             InitializeComponent();
+
+            _viewModel = new OfferingViewModel(navigationService, givingService);
+
+            DataContext = _viewModel;
         }
     }
 }

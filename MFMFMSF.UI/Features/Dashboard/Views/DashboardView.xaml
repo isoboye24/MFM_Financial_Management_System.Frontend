@@ -26,10 +26,10 @@
             <!-- ================= TOP BAR ================= -->
 
             <Border Grid.Row="0"
-                    Height="60"
+                    Height="Auto"
                     Background="White"
                     CornerRadius="15"
-                    Padding="2"
+                    Padding="20"
                     Margin="0,0,0,20">
 
                 <lvc:TopWelcomeBar x:Name="DashboardTopWelcomeBar"/>

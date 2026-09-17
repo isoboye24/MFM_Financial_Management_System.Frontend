@@ -52,7 +52,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             NavigateMeetingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new MeetingsView(_navigation, _meetingCategoryService, _meetingService, 
                 _givingCategoryService, _givingService)));
             
-            NavigateOfferingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new OfferingView()));
+            NavigateOfferingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new OfferingView(_navigation, _givingService)));
 
             NavigateTithesCommand = new RelayCommand(_ =>  _navigation.Navigate(new TithesView()));
 

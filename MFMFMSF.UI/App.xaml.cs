@@ -18,7 +18,7 @@ namespace MFMFMSF.UI
         {
             return new HttpClient
             {
-                BaseAddress = new Uri("https://localhost:7002/")
+                BaseAddress = new Uri("http://192.168.0.195:7200/")
             };
         }
     }
