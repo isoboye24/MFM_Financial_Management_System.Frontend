@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace MFMFMSF.UI.Features.Offering.ViewModels
 {
-    public class OfferingViewModel
+    public class OfferingViewModel : INotifyPropertyChanged
     {
         private readonly INavigationService _navigationService;
         private readonly IGivingService _givingService;
@@ -15,6 +15,9 @@ namespace MFMFMSF.UI.Features.Offering.ViewModels
         {
             _navigationService = navigationService;
             _givingService = givingService;
+
+            SelectedMonth = DateTime.Now.Month;
+            SelectedYear = DateTime.Now.Year;
         }
 
         public async Task LoadDataAsync()
