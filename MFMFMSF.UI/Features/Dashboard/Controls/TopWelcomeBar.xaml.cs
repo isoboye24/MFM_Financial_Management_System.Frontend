@@ -1,5 +1,4 @@
 ﻿using MFMFMSF.UI.Controls;
-using System;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Dashboard.Controls
@@ -13,9 +12,7 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
             InitializeComponent();
         }
 
-        private void MonthYearPicker_PeriodChanged(
-            object? sender,
-            PeriodChangedEventArgs e)
+        private void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
             PeriodChanged?.Invoke(this, e);
         }

@@ -6,9 +6,16 @@ namespace MFMFMSF.UI.Controls
 {
     public partial class PageTopBar : UserControl
     {
+        public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
+
         public PageTopBar()
         {
             InitializeComponent();
+        }
+
+        private void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
+        {
+            PeriodChanged?.Invoke(this, e);
         }
 
 

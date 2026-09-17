@@ -23,7 +23,7 @@
             CornerRadius="15"
             Margin="0,0,0,20">
 
-            <lvc1:PageTopBar
+            <lvc1:PageTopBar x:Name="MeetingPageTopBar"
                 PageTitle="Church Services"
                 PageDescription="View and manage all services of the church."
                 DateRangeText="May 1 – May 31, 2025"
