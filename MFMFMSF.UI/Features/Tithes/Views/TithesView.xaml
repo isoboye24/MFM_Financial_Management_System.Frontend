@@ -15,23 +15,18 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Row="0"
-                Height="Auto"
-                Background="White"
-                CornerRadius="15"
-                Margin="0,0,0,20">
+        <Border Grid.Row="0"
+            Height="Auto"
+            Background="White"
+            CornerRadius="15"
+                    Padding="10"
+            Margin="0,0,0,20">
 
-                <lvc1:PageTopBar
-                    PageTitle="Tithe"
-                    PageDescription="View and manage all tithes given to the church."
-                    DateRangeText="May 1 – May 31, 2025"
-                    ActionText="Add Tithe"
-                    ActionCommand="{Binding AddTitleCommand}"
-                    DateRangeCommand="{Binding SelectDateRangeCommand}"/>
+            <lvc2:TithesTopBar x:Name="TithesTopBar"/>
 
-            </Border>
+        </Border>
 
-            <Border Grid.Row="1"
+        <Border Grid.Row="1"
                 Height="Auto"
                 CornerRadius="15"
                 Padding="2"

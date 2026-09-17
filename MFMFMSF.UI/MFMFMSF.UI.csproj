@@ -35,7 +35,6 @@
     <Folder Include="Features\Seeds\ViewModels\" />
     <Folder Include="Features\Seeds\Resources\" />
     <Folder Include="Features\Tithes\Resources\" />
-    <Folder Include="Features\Tithes\ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
