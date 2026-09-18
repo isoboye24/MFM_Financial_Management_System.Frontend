@@ -38,30 +38,14 @@
 
         <Border Grid.Row="2">
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Border Grid.Column="0"
+            <Border
                 Height="Auto"
                 CornerRadius="15"
                 Padding="2">
 
-                    <lvc2:TitheTable/>
+                <lvc2:TitheTable/>
 
-                </Border>
-
-                <Border Grid.Column="1"
-                Height="Auto"
-                CornerRadius="15"
-                Padding="2">
-
-                    <lvc2:TitheSideCards/>
-
-                </Border>
-            </Grid>
+            </Border>
         </Border>
 
     </Grid>
