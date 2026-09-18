@@ -41,66 +41,14 @@
 
         <Border Grid.Row="2">
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <Border
+Height="Auto"
+CornerRadius="15"
+Padding="2">
 
-                <Border Grid.Column="0"
-                Height="Auto"
-                CornerRadius="15"
-                Padding="2">
+                <lvc2:OtherIncomeTable/>
 
-                    <lvc2:OtherIncomeTable/>
-
-                </Border>
-
-                <Border Grid.Column="1" Padding="20,0,0,0">
-
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="250"/>
-                            <RowDefinition Height="Auto"/>                            
-                        </Grid.RowDefinitions>
-
-                        <Border Grid.Row="0"
-                        Height="Auto"
-                        CornerRadius="15"
-                        Padding="2"
-                        Margin="0,0,0,20">
-
-                            <lvc2:OtherIncomeSideCards/>
-
-                        </Border>
-
-
-                        <Border Grid.Row="1"
-                        Height="Auto"
-                        CornerRadius="15"
-                         Margin="0,0,0,20">
-
-                            <lvc2:OtherIncomeQuickActionCards/>
-
-                        </Border>
-                        
-                        <Border Grid.Row="2"
-                        Height="Auto"
-                        CornerRadius="15"
-                        Margin="0,0,0,20">
-
-                            <lvc2:OtherIncomeProgressBars/>
-
-                        </Border>
-                        
-                       
-
-                    </Grid>
-                </Border>
-
-                
-            </Grid>
+            </Border>
         </Border>
 
         <Border Grid.Row="3"

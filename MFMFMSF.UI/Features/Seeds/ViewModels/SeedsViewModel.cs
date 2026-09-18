@@ -24,6 +24,8 @@ namespace MFMFMSF.UI.Features.Seeds.ViewModels
         public async Task LoadDataAsync()
         {
             MonthlyGivingStatistics = await _givingService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
+
+            Givings = await _givingService.GetByMonthAndYearAsync(SelectedMonth, SelectedYear, "Seed", 1, 10);
         }
 
 
@@ -94,6 +96,21 @@ namespace MFMFMSF.UI.Features.Seeds.ViewModels
             await LoadDataAsync();
         }
 
+
+        // =====================================================
+        // SEED LIST
+        // =====================================================
+        private IReadOnlyList<GivingByMonthAndYear> _givings = [];
+
+        public IReadOnlyList<GivingByMonthAndYear> Givings
+        {
+            get => _givings;
+            private set
+            {
+                _givings = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)

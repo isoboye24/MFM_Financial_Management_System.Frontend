@@ -13,28 +13,28 @@
         <!-- ================================================= -->
 
         <SolidColorBrush x:Key="PrimaryText"
-                  Color="#172033"/>
+                         Color="#172033"/>
 
         <SolidColorBrush x:Key="SecondaryText"
-                  Color="#667085"/>
+                         Color="#667085"/>
 
         <SolidColorBrush x:Key="BorderColor"
-                  Color="#EAECF0"/>
+                         Color="#EAECF0"/>
 
         <SolidColorBrush x:Key="LightBackground"
-                  Color="#F8F9FB"/>
+                         Color="#F8F9FB"/>
 
         <SolidColorBrush x:Key="Purple"
-                  Color="#5B4BDB"/>
+                         Color="#5B4BDB"/>
 
         <SolidColorBrush x:Key="Green"
-                  Color="#16A36A"/>
+                         Color="#16A36A"/>
 
         <SolidColorBrush x:Key="Blue"
-                  Color="#3182E8"/>
+                         Color="#3182E8"/>
 
         <SolidColorBrush x:Key="Orange"
-                  Color="#FF9D2E"/>
+                         Color="#FF9D2E"/>
 
 
         <!-- ================================================= -->
@@ -42,10 +42,10 @@
         <!-- ================================================= -->
 
         <DropShadowEffect x:Key="CardShadow"
-                   BlurRadius="12"
-                   ShadowDepth="1"
-                   Opacity="0.06"
-                   Color="#000000"/>
+                          BlurRadius="12"
+                          ShadowDepth="1"
+                          Opacity="0.06"
+                          Color="#000000"/>
 
 
         <!-- ================================================= -->
@@ -53,22 +53,22 @@
         <!-- ================================================= -->
 
         <Style x:Key="SearchBoxStyle"
-        TargetType="Border">
+               TargetType="Border">
 
             <Setter Property="Background"
-             Value="#FFFFFF"/>
+                    Value="#FFFFFF"/>
 
             <Setter Property="BorderBrush"
-             Value="#E5E7EB"/>
+                    Value="#E5E7EB"/>
 
             <Setter Property="BorderThickness"
-             Value="1"/>
+                    Value="1"/>
 
             <Setter Property="CornerRadius"
-             Value="7"/>
+                    Value="7"/>
 
             <Setter Property="Height"
-             Value="38"/>
+                    Value="38"/>
 
         </Style>
 
@@ -78,31 +78,31 @@
         <!-- ================================================= -->
 
         <Style x:Key="FilterButtonStyle"
-        TargetType="Button">
+               TargetType="Button">
 
             <Setter Property="Background"
-             Value="#FFFFFF"/>
+                    Value="#FFFFFF"/>
 
             <Setter Property="BorderBrush"
-             Value="#E5E7EB"/>
+                    Value="#E5E7EB"/>
 
             <Setter Property="BorderThickness"
-             Value="1"/>
+                    Value="1"/>
 
             <Setter Property="Foreground"
-             Value="{StaticResource PrimaryText}"/>
+                    Value="{StaticResource PrimaryText}"/>
 
             <Setter Property="FontFamily"
-             Value="Segoe UI"/>
+                    Value="Segoe UI"/>
 
             <Setter Property="FontSize"
-             Value="10"/>
+                    Value="10"/>
 
             <Setter Property="Height"
-             Value="38"/>
+                    Value="38"/>
 
             <Setter Property="Padding"
-             Value="12,0"/>
+                    Value="12,0"/>
 
             <Setter Property="Template">
 
@@ -111,13 +111,13 @@
                     <ControlTemplate TargetType="Button">
 
                         <Border Background="{TemplateBinding Background}"
-                         BorderBrush="{TemplateBinding BorderBrush}"
-                         BorderThickness="{TemplateBinding BorderThickness}"
-                         CornerRadius="7">
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="7">
 
                             <ContentPresenter
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"/>
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
 
                         </Border>
 
@@ -129,28 +129,94 @@
 
         </Style>
 
+        <!-- ===================================================== -->
+        <!-- TABLE ACTION BUTTON -->
+        <!-- ===================================================== -->
+
+        <Style x:Key="TableActionButtonStyle"
+TargetType="Button">
+
+            <Setter Property="Width"
+     Value="28"/>
+
+            <Setter Property="Height"
+     Value="28"/>
+
+            <Setter Property="Background"
+     Value="#F5F6FC"/>
+
+            <Setter Property="Foreground"
+     Value="#5B4CF3"/>
+
+            <Setter Property="BorderThickness"
+     Value="0"/>
+
+            <Setter Property="Padding"
+     Value="0"/>
+
+            <Setter Property="Cursor"
+     Value="Hand"/>
+
+            <Setter Property="Margin"
+     Value="2,0"/>
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+
+                        <Border Background="{TemplateBinding Background}"
+                 CornerRadius="5">
+
+                            <ContentPresenter
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"/>
+
+                        </Border>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver"
+          Value="True">
+
+                    <Setter Property="Background"
+             Value="#EAE7FF"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
 
         <!-- ================================================= -->
         <!-- TYPE BADGES -->
         <!-- ================================================= -->
 
         <Style x:Key="BadgeText"
-        TargetType="TextBlock">
+               TargetType="TextBlock">
 
             <Setter Property="FontFamily"
-             Value="Segoe UI"/>
+                    Value="Segoe UI"/>
 
             <Setter Property="FontSize"
-             Value="9"/>
+                    Value="9"/>
 
             <Setter Property="FontWeight"
-             Value="SemiBold"/>
+                    Value="SemiBold"/>
 
             <Setter Property="HorizontalAlignment"
-             Value="Center"/>
+                    Value="Center"/>
 
             <Setter Property="VerticalAlignment"
-             Value="Center"/>
+                    Value="Center"/>
 
         </Style>
 
@@ -160,32 +226,32 @@
         <!-- ================================================= -->
 
         <Style x:Key="TableText"
-        TargetType="TextBlock">
+               TargetType="TextBlock">
 
             <Setter Property="FontFamily"
-             Value="Segoe UI"/>
+                    Value="Segoe UI"/>
 
             <Setter Property="FontSize"
-             Value="9"/>
+                    Value="16"/>
 
             <Setter Property="Foreground"
-             Value="{StaticResource PrimaryText}"/>
+                    Value="{StaticResource PrimaryText}"/>
 
             <Setter Property="VerticalAlignment"
-             Value="Center"/>
+                    Value="Center"/>
 
         </Style>
 
 
         <Style x:Key="TableSecondaryText"
-        TargetType="TextBlock"
-        BasedOn="{StaticResource TableText}">
+               TargetType="TextBlock"
+               BasedOn="{StaticResource TableText}">
 
             <Setter Property="Foreground"
-             Value="{StaticResource SecondaryText}"/>
+                    Value="{StaticResource SecondaryText}"/>
 
             <Setter Property="FontSize"
-             Value="8"/>
+                    Value="14"/>
 
         </Style>
 
@@ -195,31 +261,31 @@
         <!-- ================================================= -->
 
         <Style x:Key="PageButtonStyle"
-        TargetType="Button">
+               TargetType="Button">
 
             <Setter Property="Width"
-             Value="28"/>
+                    Value="28"/>
 
             <Setter Property="Height"
-             Value="28"/>
+                    Value="28"/>
 
             <Setter Property="Background"
-             Value="Transparent"/>
+                    Value="Transparent"/>
 
             <Setter Property="BorderThickness"
-             Value="0"/>
+                    Value="0"/>
 
             <Setter Property="Foreground"
-             Value="{StaticResource PrimaryText}"/>
+                    Value="{StaticResource PrimaryText}"/>
 
             <Setter Property="FontFamily"
-             Value="Segoe UI"/>
+                    Value="Segoe UI"/>
 
             <Setter Property="FontSize"
-             Value="9"/>
+                    Value="12"/>
 
             <Setter Property="Padding"
-             Value="0"/>
+                    Value="0"/>
 
         </Style>
 
@@ -231,10 +297,10 @@
     <!-- ===================================================== -->
 
     <Border Background="White"
-     BorderBrush="{StaticResource BorderColor}"
-     BorderThickness="1"
-     CornerRadius="9"
-     Effect="{StaticResource CardShadow}">
+        BorderBrush="{StaticResource BorderColor}"
+        BorderThickness="1"
+        CornerRadius="9"
+        Effect="{StaticResource CardShadow}">
 
         <Grid>
 
@@ -260,7 +326,7 @@
             <!-- ================================================= -->
 
             <Grid Grid.Row="0"
-           Margin="12,8,12,8">
+              Margin="12,8,12,8">
 
                 <Grid.ColumnDefinitions>
 
@@ -276,8 +342,8 @@
                 <!-- SEARCH -->
 
                 <Border Grid.Column="0"
-                 Style="{StaticResource SearchBoxStyle}"
-                 Margin="0,0,8,0">
+                    Style="{StaticResource SearchBoxStyle}"
+                    Margin="0,0,8,0">
 
                     <Grid>
 
@@ -289,23 +355,23 @@
                         </Grid.ColumnDefinitions>
 
                         <materialDesign:PackIcon
-                     Grid.Column="0"
-                     Kind="Magnify"
-                     Width="17"
-                     Height="17"
-                     Foreground="#667085"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center"/>
+                        Grid.Column="0"
+                        Kind="Magnify"
+                        Width="17"
+                        Height="17"
+                        Foreground="#667085"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
 
                         <TextBox Grid.Column="1"
-                          Text="Search transactions..."
-                          FontFamily="Segoe UI"
-                          FontSize="9"
-                          Foreground="#98A2B3"
-                          BorderThickness="0"
-                          Background="Transparent"
-                          VerticalContentAlignment="Center"
-                          Padding="0"/>
+                             Text="Search transactions..."
+                             FontFamily="Segoe UI"
+                             FontSize="9"
+                             Foreground="#98A2B3"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             VerticalContentAlignment="Center"
+                             Padding="0"/>
 
                     </Grid>
 
@@ -315,20 +381,20 @@
                 <!-- TYPE -->
 
                 <Button Grid.Column="1"
-                 Style="{StaticResource FilterButtonStyle}"
-                 Margin="0,0,8,0">
+                    Style="{StaticResource FilterButtonStyle}"
+                    Margin="0,0,8,0">
 
                     <Grid Width="105">
 
                         <TextBlock Text="All Types"
-                            VerticalAlignment="Center"/>
+                               VerticalAlignment="Center"/>
 
                         <materialDesign:PackIcon
-                     Kind="ChevronDown"
-                     Width="15"
-                     Height="15"
-                     HorizontalAlignment="Right"
-                     VerticalAlignment="Center"/>
+                        Kind="ChevronDown"
+                        Width="15"
+                        Height="15"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"/>
 
                     </Grid>
 
@@ -338,20 +404,20 @@
                 <!-- METHOD -->
 
                 <Button Grid.Column="2"
-                 Style="{StaticResource FilterButtonStyle}"
-                 Margin="0,0,8,0">
+                    Style="{StaticResource FilterButtonStyle}"
+                    Margin="0,0,8,0">
 
                     <Grid Width="105">
 
                         <TextBlock Text="All Methods"
-                            VerticalAlignment="Center"/>
+                               VerticalAlignment="Center"/>
 
                         <materialDesign:PackIcon
-                     Kind="ChevronDown"
-                     Width="15"
-                     Height="15"
-                     HorizontalAlignment="Right"
-                     VerticalAlignment="Center"/>
+                        Kind="ChevronDown"
+                        Width="15"
+                        Height="15"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"/>
 
                     </Grid>
 
@@ -361,20 +427,20 @@
                 <!-- FILTERS -->
 
                 <Button Grid.Column="3"
-                 Style="{StaticResource FilterButtonStyle}"
-                 Margin="0,0,8,0"
-                 Foreground="{StaticResource Purple}">
+                    Style="{StaticResource FilterButtonStyle}"
+                    Margin="0,0,8,0"
+                    Foreground="{StaticResource Purple}">
 
                     <StackPanel Orientation="Horizontal">
 
                         <materialDesign:PackIcon
-                     Kind="FilterVariant"
-                     Width="15"
-                     Height="15"
-                     Margin="0,0,6,0"/>
+                        Kind="FilterVariant"
+                        Width="15"
+                        Height="15"
+                        Margin="0,0,6,0"/>
 
                         <TextBlock Text="Filters"
-                            VerticalAlignment="Center"/>
+                               VerticalAlignment="Center"/>
 
                     </StackPanel>
 
@@ -384,18 +450,18 @@
                 <!-- EXPORT -->
 
                 <Button Grid.Column="4"
-                 Style="{StaticResource FilterButtonStyle}">
+                    Style="{StaticResource FilterButtonStyle}">
 
                     <StackPanel Orientation="Horizontal">
 
                         <materialDesign:PackIcon
-                     Kind="DownloadOutline"
-                     Width="15"
-                     Height="15"
-                     Margin="0,0,6,0"/>
+                        Kind="DownloadOutline"
+                        Width="15"
+                        Height="15"
+                        Margin="0,0,6,0"/>
 
                         <TextBlock Text="Export"
-                            VerticalAlignment="Center"/>
+                               VerticalAlignment="Center"/>
 
                     </StackPanel>
 
@@ -409,9 +475,9 @@
             <!-- ================================================= -->
 
             <Border Grid.Row="1"
-             Background="#F9FAFB"
-             BorderBrush="#F0F1F3"
-             BorderThickness="0,1,0,1">
+                Background="#F9FAFB"
+                BorderBrush="#F0F1F3"
+                BorderThickness="0,1,0,1">
 
                 <Grid Margin="12,0,12,0">
 
@@ -423,52 +489,46 @@
                         <ColumnDefinition Width="1.25*"/>
                         <ColumnDefinition Width="0.9*"/>
                         <ColumnDefinition Width="1.15*"/>
-                        <ColumnDefinition Width="0.55*"/>
 
                     </Grid.ColumnDefinitions>
 
 
                     <TextBlock Grid.Column="0"
-                        Text="Date"
-                        Style="{StaticResource TableSecondaryText}"
-                        FontWeight="SemiBold"
-                        VerticalAlignment="Center"/>
+                           Text="Date"
+                           Style="{StaticResource TableSecondaryText}"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
 
                     <TextBlock Grid.Column="1"
-                        Text="Name / Member ID"
-                        Style="{StaticResource TableSecondaryText}"
-                        FontWeight="SemiBold"
-                        VerticalAlignment="Center"/>
+                           Text="Message Title"
+                           Style="{StaticResource TableSecondaryText}"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
 
                     <TextBlock Grid.Column="2"
-                        Text="Type"
-                        Style="{StaticResource TableSecondaryText}"
-                        FontWeight="SemiBold"
-                        VerticalAlignment="Center"/>
+                           Text="Amount"
+                           Style="{StaticResource TableSecondaryText}"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
 
                     <TextBlock Grid.Column="3"
-                        Text="Method"
-                        Style="{StaticResource TableSecondaryText}"
-                        FontWeight="SemiBold"
-                        VerticalAlignment="Center"/>
+                           Text="Minister"
+                           Style="{StaticResource TableSecondaryText}"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
 
                     <TextBlock Grid.Column="4"
-                        Text="Amount"
-                        Style="{StaticResource TableSecondaryText}"
-                        FontWeight="SemiBold"
-                        VerticalAlignment="Center"/>
+                           Text="Service Type"
+                           Style="{StaticResource TableSecondaryText}"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
 
                     <TextBlock Grid.Column="5"
-                        Text="Payment Ref"
-                        Style="{StaticResource TableSecondaryText}"
-                        FontWeight="SemiBold"
-                        VerticalAlignment="Center"/>
-
-                    <TextBlock Grid.Column="6"
-                        Text="Actions"
-                        Style="{StaticResource TableSecondaryText}"
-                        FontWeight="SemiBold"
-                        VerticalAlignment="Center"/>
+                           Text="Actions"
+                           Style="{StaticResource TableSecondaryText}"
+                           FontWeight="SemiBold"
+                            HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
 
                 </Grid>
 
@@ -480,1111 +540,142 @@
             <!-- ================================================= -->
 
             <ScrollViewer Grid.Row="2"
-                   VerticalScrollBarVisibility="Hidden"
-                   HorizontalScrollBarVisibility="Disabled">
+          VerticalScrollBarVisibility="Hidden"
+          HorizontalScrollBarVisibility="Disabled">
 
-                <StackPanel>
+                <ItemsControl ItemsSource="{Binding DataContext.Givings,
+                            RelativeSource={RelativeSource AncestorType=UserControl}}"
+              AlternationCount="2">
 
+                    <ItemsControl.ItemTemplate>
 
-                    <!-- ========================================= -->
-                    <!-- ROW 1 -->
-                    <!-- ========================================= -->
+                        <DataTemplate>
 
-                    <Grid Height="59"
-                   Margin="12,0">
+                            <Border Height="59"
+                            BorderBrush="#EAECF0"
+                            BorderThickness="0,0,0,1">
 
-                        <Grid.ColumnDefinitions>
+                                <Border.Style>
+                                    <Style TargetType="Border">
 
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
+                                        <!-- Normal row -->
+                                        <Setter Property="Background"
+                                        Value="White"/>
 
-                        </Grid.ColumnDefinitions>
+                                        <!-- Stripe every second row -->
+                                        <Style.Triggers>
 
+                                            <DataTrigger
+                                            Binding="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                              Path=(ItemsControl.AlternationIndex)}"
+                                            Value="1">
 
-                        <!-- DATE -->
+                                                <Setter Property="Background"
+                                                Value="#F8F9FB"/>
 
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
+                                            </DataTrigger>
 
-                            <TextBlock Text="May 31, 2025"
-                                Style="{StaticResource TableText}"/>
+                                        </Style.Triggers>
 
-                            <TextBlock Text="10:30 AM"
-                                Style="{StaticResource TableSecondaryText}"
-                                Margin="0,2,0,0"/>
+                                    </Style>
+                                </Border.Style>
 
-                        </StackPanel>
 
+                                <Grid Margin="12,0">
 
-                        <!-- MEMBER -->
+                                    <Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="1"
-                             VerticalAlignment="Center">
+                                        <ColumnDefinition Width="1.15*"/>
+                                        <ColumnDefinition Width="1.7*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1.25*"/>
+                                        <ColumnDefinition Width="0.9*"/>
+                                        <ColumnDefinition Width="1.15*"/>
 
-                            <TextBlock Text="John Doe"
-                                Style="{StaticResource TableText}"/>
+                                    </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="MEM-00023"
-                                Style="{StaticResource TableSecondaryText}"
-                                Margin="0,2,0,0"/>
 
-                        </StackPanel>
+                                    <!-- DATE -->
 
+                                    <TextBlock Grid.Column="0"
+                                    Text="{Binding Date, StringFormat='{}{0:MMM dd, yyyy}'}"
+                                    Style="{StaticResource TableText}"/>
 
-                        <!-- TYPE -->
 
-                        <Border Grid.Column="2"
-                         Width="45"
-                         Height="21"
-                         Background="#E7F0FF"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
+                                    <!-- MESSAGE TITLE -->
 
-                            <TextBlock Text="Tithe"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#3182E8"/>
+                                    <TextBlock Grid.Column="1"
+                   Text="{Binding MessageTitle}"
+                   Style="{StaticResource TableText}"
+                   TextTrimming="CharacterEllipsis"
+                   VerticalAlignment="Center"/>
 
-                        </Border>
 
+                                    <!-- AMOUNT -->
 
-                        <!-- METHOD -->
+                                    <Border Grid.Column="2"
+                Width="70"
+                Height="21"
+                Background="#E7F0FF"
+                CornerRadius="7"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
 
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
+                                        <TextBlock
+                Text="{Binding Amount, StringFormat=€ {0:N2}}"
+                Style="{StaticResource BadgeText}"
+                Foreground="#3182E8"
+                FontSize="16"/>
 
-                            <materialDesign:PackIcon
-                         Kind="Cash"
-                         Width="17"
-                         Height="17"
-                         Foreground="#35A779"
-                         Margin="0,0,7,0"/>
+                                    </Border>
 
-                            <TextBlock Text="Cash"
-                                Style="{StaticResource TableText}"/>
 
-                        </StackPanel>
+                                    <!-- MINISTER -->
 
+                                    <TextBlock Grid.Column="3"
+                   Text="{Binding Minister}"
+                   Style="{StaticResource TableText}"
+                   VerticalAlignment="Center"
+                   TextTrimming="CharacterEllipsis"/>
 
-                        <!-- AMOUNT -->
 
-                        <TextBlock Grid.Column="4"
-                            Text="$200.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
+                                    <!-- SERVICE TYPE -->
 
+                                    <TextBlock Grid.Column="4"
+                   Text="{Binding MeetingCategoryName}"
+                   Style="{StaticResource TableSecondaryText}"
+                   VerticalAlignment="Center"
+                   TextTrimming="CharacterEllipsis"/>
 
-                        <!-- REF -->
 
-                        <TextBlock Grid.Column="5"
-                            Text="—"
-                            Style="{StaticResource TableSecondaryText}"
-                            VerticalAlignment="Center"/>
+                                    <!-- ACTION -->
 
+                                    <StackPanel Grid.Column="5"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
 
-                        <!-- ACTION -->
+                                        <Button Style="{StaticResource TableActionButtonStyle}"
+                    CommandParameter="{Binding}"
+                    ToolTip="View">
 
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0"
-                         VerticalAlignment="Center">
+                                            <materialDesign:PackIcon
+                    Kind="EyeOutline"
+                    Width="14"
+                    Height="14"/>
 
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
+                                        </Button>
 
-                        </Button>
+                                    </StackPanel>
 
-                    </Grid>
+                                </Grid>
 
+                            </Border>
 
-                    <!-- ========================================= -->
-                    <!-- ROW 2 -->
-                    <!-- ========================================= -->
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
 
-                    <Border Height="1"
-                     Background="#F0F1F3"/>
-
-                    <Grid Height="59"
-                   Margin="12,0">
-
-                        <Grid.ColumnDefinitions>
-
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
-
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="May 31, 2025"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="09:15 AM"
-                                Style="{StaticResource TableSecondaryText}"
-                                Margin="0,2,0,0"/>
-
-                        </StackPanel>
-
-
-                        <StackPanel Grid.Column="1"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="Mary Smith"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="MEM-00045"
-                                Style="{StaticResource TableSecondaryText}"
-                                Margin="0,2,0,0"/>
-
-                        </StackPanel>
-
-
-                        <Border Grid.Column="2"
-                         Width="55"
-                         Height="21"
-                         Background="#F0E9FF"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-
-                            <TextBlock Text="Offering"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#6845D8"/>
-
-                        </Border>
-
-
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                         Kind="Bank"
-                         Width="17"
-                         Height="17"
-                         Foreground="#3182E8"
-                         Margin="0,0,7,0"/>
-
-                            <TextBlock Text="Transfer"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="4"
-                            Text="$150.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
-
-
-                        <TextBlock Grid.Column="5"
-                            Text="TRX123456"
-                            Style="{StaticResource TableSecondaryText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0">
-
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
-
-                        </Button>
-
-                    </Grid>
-
-
-                    <!-- ========================================= -->
-                    <!-- ROW 3 -->
-                    <!-- ========================================= -->
-
-                    <Border Height="1"
-                     Background="#F0F1F3"/>
-
-                    <Grid Height="59"
-                   Margin="12,0">
-
-                        <Grid.ColumnDefinitions>
-
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
-
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="May 31, 2025"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="09:02 AM"
-                                Style="{StaticResource TableSecondaryText}"
-                                Margin="0,2,0,0"/>
-
-                        </StackPanel>
-
-
-                        <StackPanel Grid.Column="1"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="Faith Promise"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="MEM-00067"
-                                Style="{StaticResource TableSecondaryText}"
-                                Margin="0,2,0,0"/>
-
-                        </StackPanel>
-
-
-                        <Border Grid.Column="2"
-                         Width="43"
-                         Height="21"
-                         Background="#DDF5EA"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-
-                            <TextBlock Text="Seed"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#229B68"/>
-
-                        </Border>
-
-
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                         Kind="Cellphone"
-                         Width="17"
-                         Height="17"
-                         Foreground="#FF9D2E"
-                         Margin="0,0,7,0"/>
-
-                            <TextBlock Text="Mobile Money"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="4"
-                            Text="$100.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
-
-
-                        <TextBlock Grid.Column="5"
-                            Text="MM789012"
-                            Style="{StaticResource TableSecondaryText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0">
-
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
-
-                        </Button>
-
-                    </Grid>
-
-
-                    <!-- ========================================= -->
-                    <!-- ROW 4 -->
-                    <!-- ========================================= -->
-
-                    <Border Height="1"
-                     Background="#F0F1F3"/>
-
-                    <Grid Height="59"
-                   Margin="12,0">
-
-                        <Grid.ColumnDefinitions>
-
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
-
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="May 30, 2025"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="07:45 PM"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <StackPanel Grid.Column="1"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="Anonymous"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <Border Grid.Column="2"
-                         Width="55"
-                         Height="21"
-                         Background="#F0E9FF"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-
-                            <TextBlock Text="Offering"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#6845D8"/>
-
-                        </Border>
-
-
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                         Kind="Cash"
-                         Width="17"
-                         Height="17"
-                         Foreground="#35A779"
-                         Margin="0,0,7,0"/>
-
-                            <TextBlock Text="Cash"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="4"
-                            Text="$50.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
-
-
-                        <TextBlock Grid.Column="5"
-                            Text="—"
-                            Style="{StaticResource TableSecondaryText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0">
-
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
-
-                        </Button>
-
-                    </Grid>
-
-
-                    <!-- ========================================= -->
-                    <!-- ROW 5 -->
-                    <!-- ========================================= -->
-
-                    <Border Height="1"
-                     Background="#F0F1F3"/>
-
-                    <Grid Height="59"
-                   Margin="12,0">
-
-                        <Grid.ColumnDefinitions>
-
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
-
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="May 30, 2025"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="06:20 PM"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <StackPanel Grid.Column="1"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="David Johnson"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="MEM-00012"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <Border Grid.Column="2"
-                         Width="45"
-                         Height="21"
-                         Background="#E7F0FF"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-
-                            <TextBlock Text="Tithe"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#3182E8"/>
-
-                        </Border>
-
-
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                         Kind="Bank"
-                         Width="17"
-                         Height="17"
-                         Foreground="#3182E8"
-                         Margin="0,0,7,0"/>
-
-                            <TextBlock Text="Transfer"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="4"
-                            Text="$500.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
-
-
-                        <TextBlock Grid.Column="5"
-                            Text="TRX987654"
-                            Style="{StaticResource TableSecondaryText}"/>
-
-
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0">
-
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
-
-                        </Button>
-
-                    </Grid>
-
-
-                    <!-- ========================================= -->
-                    <!-- ROW 6 -->
-                    <!-- ========================================= -->
-
-                    <Border Height="1"
-                     Background="#F0F1F3"/>
-
-                    <Grid Height="59"
-                   Margin="12,0">
-
-                        <Grid.ColumnDefinitions>
-
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
-
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="May 30, 2025"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="11:05 AM"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <StackPanel Grid.Column="1"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="Sarah Williams"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="MEM-00033"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <Border Grid.Column="2"
-                         Width="43"
-                         Height="21"
-                         Background="#DDF5EA"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-
-                            <TextBlock Text="Seed"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#229B68"/>
-
-                        </Border>
-
-
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                         Kind="CreditCardOutline"
-                         Width="17"
-                         Height="17"
-                         Foreground="#6845D8"
-                         Margin="0,0,7,0"/>
-
-                            <TextBlock Text="Card"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="4"
-                            Text="$250.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
-
-
-                        <TextBlock Grid.Column="5"
-                            Text="CARD3456"
-                            Style="{StaticResource TableSecondaryText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0">
-
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
-
-                        </Button>
-
-                    </Grid>
-
-
-                    <!-- ========================================= -->
-                    <!-- ROW 7 -->
-                    <!-- ========================================= -->
-
-                    <Border Height="1"
-                     Background="#F0F1F3"/>
-
-                    <Grid Height="59"
-                   Margin="12,0">
-
-                        <Grid.ColumnDefinitions>
-
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
-
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="May 29, 2025"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="08:30 PM"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="1"
-                            Text="Youth Ministry"
-                            Style="{StaticResource TableText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Border Grid.Column="2"
-                         Width="50"
-                         Height="21"
-                         Background="#FFF0DC"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-
-                            <TextBlock Text="Special"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#E88717"/>
-
-                        </Border>
-
-
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                         Kind="Cash"
-                         Width="17"
-                         Height="17"
-                         Foreground="#35A779"
-                         Margin="0,0,7,0"/>
-
-                            <TextBlock Text="Cash"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="4"
-                            Text="$300.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
-
-
-                        <TextBlock Grid.Column="5"
-                            Text="—"
-                            Style="{StaticResource TableSecondaryText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0">
-
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
-
-                        </Button>
-
-                    </Grid>
-
-
-                    <!-- ========================================= -->
-                    <!-- ROW 8 -->
-                    <!-- ========================================= -->
-
-                    <Border Height="1"
-                     Background="#F0F1F3"/>
-
-                    <Grid Height="59"
-                   Margin="12,0">
-
-                        <Grid.ColumnDefinitions>
-
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
-
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="May 29, 2025"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="07:15 PM"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <StackPanel Grid.Column="1"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="Peter Brown"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="MEM-00056"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <Border Grid.Column="2"
-                         Width="45"
-                         Height="21"
-                         Background="#E7F0FF"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-
-                            <TextBlock Text="Tithe"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#3182E8"/>
-
-                        </Border>
-
-
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                         Kind="Bank"
-                         Width="17"
-                         Height="17"
-                         Foreground="#3182E8"
-                         Margin="0,0,7,0"/>
-
-                            <TextBlock Text="Transfer"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="4"
-                            Text="$120.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
-
-
-                        <TextBlock Grid.Column="5"
-                            Text="TRX112233"
-                            Style="{StaticResource TableSecondaryText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0">
-
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
-
-                        </Button>
-
-                    </Grid>
-
-
-                    <!-- ========================================= -->
-                    <!-- ROW 9 -->
-                    <!-- ========================================= -->
-
-                    <Border Height="1"
-                     Background="#F0F1F3"/>
-
-                    <Grid Height="59"
-                   Margin="12,0">
-
-                        <Grid.ColumnDefinitions>
-
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
-
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="May 29, 2025"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="06:40 PM"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <StackPanel Grid.Column="1"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="Grace Women"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <Border Grid.Column="2"
-                         Width="55"
-                         Height="21"
-                         Background="#F0E9FF"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-
-                            <TextBlock Text="Offering"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#6845D8"/>
-
-                        </Border>
-
-
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                         Kind="Cellphone"
-                         Width="17"
-                         Height="17"
-                         Foreground="#FF9D2E"
-                         Margin="0,0,7,0"/>
-
-                            <TextBlock Text="Mobile Money"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="4"
-                            Text="$75.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
-
-
-                        <TextBlock Grid.Column="5"
-                            Text="MM556677"
-                            Style="{StaticResource TableSecondaryText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0">
-
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
-
-                        </Button>
-
-                    </Grid>
-
-
-                    <!-- ========================================= -->
-                    <!-- ROW 10 -->
-                    <!-- ========================================= -->
-
-                    <Border Height="1"
-                     Background="#F0F1F3"/>
-
-                    <Grid Height="59"
-                   Margin="12,0">
-
-                        <Grid.ColumnDefinitions>
-
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="0.55*"/>
-
-                        </Grid.ColumnDefinitions>
-
-
-                        <StackPanel Grid.Column="0"
-                             VerticalAlignment="Center">
-
-                            <TextBlock Text="May 29, 2025"
-                                Style="{StaticResource TableText}"/>
-
-                            <TextBlock Text="05:10 PM"
-                                Style="{StaticResource TableSecondaryText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="1"
-                            Text="Anonymous"
-                            Style="{StaticResource TableText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Border Grid.Column="2"
-                         Width="43"
-                         Height="21"
-                         Background="#DDF5EA"
-                         CornerRadius="7"
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
-
-                            <TextBlock Text="Seed"
-                                Style="{StaticResource BadgeText}"
-                                Foreground="#229B68"/>
-
-                        </Border>
-
-
-                        <StackPanel Grid.Column="3"
-                             Orientation="Horizontal"
-                             VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                         Kind="Cash"
-                         Width="17"
-                         Height="17"
-                         Foreground="#35A779"
-                         Margin="0,0,7,0"/>
-
-                            <TextBlock Text="Cash"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
-
-
-                        <TextBlock Grid.Column="4"
-                            Text="$50.00"
-                            Foreground="{StaticResource Green}"
-                            FontWeight="SemiBold"
-                            FontSize="9"
-                            VerticalAlignment="Center"/>
-
-
-                        <TextBlock Grid.Column="5"
-                            Text="—"
-                            Style="{StaticResource TableSecondaryText}"
-                            VerticalAlignment="Center"/>
-
-
-                        <Button Grid.Column="6"
-                         Width="28"
-                         Height="28"
-                         Background="Transparent"
-                         BorderThickness="0">
-
-                            <materialDesign:PackIcon
-                         Kind="DotsVertical"
-                         Width="17"
-                         Height="17"
-                         Foreground="#667085"/>
-
-                        </Button>
-
-                    </Grid>
-
-                </StackPanel>
+                </ItemsControl>
 
             </ScrollViewer>
 
@@ -1594,8 +685,8 @@
             <!-- ================================================= -->
 
             <Border Grid.Row="3"
-             BorderBrush="#F0F1F3"
-             BorderThickness="0,1,0,0">
+                BorderBrush="#F0F1F3"
+                BorderThickness="0,1,0,0">
 
                 <Grid Margin="12,0">
 
@@ -1610,16 +701,16 @@
                     <!-- ENTRY COUNT -->
 
                     <TextBlock Grid.Column="0"
-                        Text="Showing 1 to 10 of 215 entries"
-                        Style="{StaticResource TableSecondaryText}"
-                        VerticalAlignment="Center"/>
+                           Text="Showing 1 to 10 of 215 entries"
+                           Style="{StaticResource TableSecondaryText}"
+                           VerticalAlignment="Center"/>
 
 
                     <!-- PAGINATION -->
 
                     <StackPanel Grid.Column="1"
-                         Orientation="Horizontal"
-                         VerticalAlignment="Center">
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center">
 
 
                         <!-- PREVIOUS -->
@@ -1627,9 +718,9 @@
                         <Button Style="{StaticResource PageButtonStyle}">
 
                             <materialDesign:PackIcon
-                         Kind="ChevronLeft"
-                         Width="15"
-                         Height="15"/>
+                            Kind="ChevronLeft"
+                            Width="15"
+                            Height="15"/>
 
                         </Button>
 
@@ -1637,51 +728,51 @@
                         <!-- PAGE 1 -->
 
                         <Button Style="{StaticResource PageButtonStyle}"
-                         Background="{StaticResource Purple}"
-                         Foreground="White"
-                         Content="1"
-                         Margin="2,0"/>
+                            Background="{StaticResource Purple}"
+                            Foreground="White"
+                            Content="1"
+                            Margin="2,0"/>
 
 
                         <!-- PAGE 2 -->
 
                         <Button Style="{StaticResource PageButtonStyle}"
-                         Content="2"/>
+                            Content="2"/>
 
 
                         <!-- PAGE 3 -->
 
                         <Button Style="{StaticResource PageButtonStyle}"
-                         Content="3"/>
+                            Content="3"/>
 
 
                         <!-- PAGE 4 -->
 
                         <Button Style="{StaticResource PageButtonStyle}"
-                         Content="4"/>
+                            Content="4"/>
 
 
                         <!-- PAGE 5 -->
 
                         <Button Style="{StaticResource PageButtonStyle}"
-                         Content="5"/>
+                            Content="5"/>
 
 
                         <!-- DOTS -->
 
                         <TextBlock Text="..."
-                            Width="28"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Foreground="{StaticResource SecondaryText}"
-                            FontSize="9"
-                            TextAlignment="Center"/>
+                               Width="28"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="{StaticResource SecondaryText}"
+                               FontSize="9"
+                               TextAlignment="Center"/>
 
 
                         <!-- PAGE 22 -->
 
                         <Button Style="{StaticResource PageButtonStyle}"
-                         Content="22"/>
+                            Content="22"/>
 
 
                         <!-- NEXT -->
@@ -1689,9 +780,9 @@
                         <Button Style="{StaticResource PageButtonStyle}">
 
                             <materialDesign:PackIcon
-                         Kind="ChevronRight"
-                         Width="15"
-                         Height="15"/>
+                            Kind="ChevronRight"
+                            Width="15"
+                            Height="15"/>
 
                         </Button>
 
