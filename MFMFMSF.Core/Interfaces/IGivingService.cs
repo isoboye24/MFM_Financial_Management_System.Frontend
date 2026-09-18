@@ -12,5 +12,6 @@ namespace MFMFMSF.Core.Interfaces
         Task<MonthlyGivingStatistics> GetMonthlyStatisticsAsync(int month, int year);
         Task<AnnualGivingStatistics> GetAnnualStatisticsAsync(int year);
         Task<TotalGivingStatistics> GetTotalStatisticsAsync();
+        Task<IReadOnlyList<GivingByMonthAndYear>> GetByMonthAndYearAsync(int month, int year, string? categoryName, int page, int recordsPerPage);
     }
 }

@@ -41,30 +41,14 @@
 
             <Border Grid.Row="2">
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Border Grid.Column="0"
+                <Border Grid.Column="0"
                     Height="Auto"
                     CornerRadius="15"
                     Padding="2">
 
-                        <lvc:OfferingTable/>
+                    <lvc:OfferingTable/>
 
-                    </Border>
-                    
-                    <Border Grid.Column="1"
-                    Height="Auto"
-                    CornerRadius="15"
-                    Padding="20,0,0,0">
-
-                        <lvc:OfferingSideCards/>                       
-
-                    </Border>
-                </Grid>
+                </Border>
             </Border>
         </Grid>
         

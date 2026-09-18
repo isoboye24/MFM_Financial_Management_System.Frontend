@@ -132,6 +132,72 @@
 
         </Style>
 
+        <!-- ===================================================== -->
+        <!-- TABLE ACTION BUTTON -->
+        <!-- ===================================================== -->
+
+        <Style x:Key="TableActionButtonStyle"
+TargetType="Button">
+
+            <Setter Property="Width"
+     Value="28"/>
+
+            <Setter Property="Height"
+     Value="28"/>
+
+            <Setter Property="Background"
+     Value="#F5F6FC"/>
+
+            <Setter Property="Foreground"
+     Value="#5B4CF3"/>
+
+            <Setter Property="BorderThickness"
+     Value="0"/>
+
+            <Setter Property="Padding"
+     Value="0"/>
+
+            <Setter Property="Cursor"
+     Value="Hand"/>
+
+            <Setter Property="Margin"
+     Value="2,0"/>
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+
+                        <Border Background="{TemplateBinding Background}"
+                 CornerRadius="5">
+
+                            <ContentPresenter
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"/>
+
+                        </Border>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver"
+          Value="True">
+
+                    <Setter Property="Background"
+             Value="#EAE7FF"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+
 
         <!-- ================================================= -->
         <!-- TYPE BADGES -->
@@ -455,7 +521,7 @@
                                VerticalAlignment="Center"/>
 
                     <TextBlock Grid.Column="4"
-                               Text="Category"
+                               Text="Service Type"
                                Style="{StaticResource TableSecondaryText}"
                                FontWeight="SemiBold"
                                VerticalAlignment="Center"/>
@@ -464,6 +530,7 @@
                                Text="Actions"
                                Style="{StaticResource TableSecondaryText}"
                                FontWeight="SemiBold"
+                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
 
                 </Grid>
@@ -476,110 +543,142 @@
             <!-- ================================================= -->
 
             <ScrollViewer Grid.Row="2"
-                          VerticalScrollBarVisibility="Hidden"
-                          HorizontalScrollBarVisibility="Disabled">
+              VerticalScrollBarVisibility="Hidden"
+              HorizontalScrollBarVisibility="Disabled">
 
-                <StackPanel>
+                <ItemsControl ItemsSource="{Binding DataContext.Givings,
+                                RelativeSource={RelativeSource AncestorType=UserControl}}"
+                  AlternationCount="2">
 
+                    <ItemsControl.ItemTemplate>
 
-                    <!-- ========================================= -->
-                    <!-- ROW 1 -->
-                    <!-- ========================================= -->
+                        <DataTemplate>
 
-                    <Grid Height="59"
-                          Margin="12,0">
+                            <Border Height="59"
+                                BorderBrush="#EAECF0"
+                                BorderThickness="0,0,0,1">
 
-                        <Grid.ColumnDefinitions>
+                                <Border.Style>
+                                    <Style TargetType="Border">
 
-                            <ColumnDefinition Width="1.15*"/>
-                            <ColumnDefinition Width="1.7*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1.25*"/>
-                            <ColumnDefinition Width="0.9*"/>
-                            <ColumnDefinition Width="1.15*"/>
+                                        <!-- Normal row -->
+                                        <Setter Property="Background"
+                                            Value="White"/>
 
-                        </Grid.ColumnDefinitions>
+                                        <!-- Stripe every second row -->
+                                        <Style.Triggers>
 
+                                            <DataTrigger
+                                                Binding="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                                  Path=(ItemsControl.AlternationIndex)}"
+                                                Value="1">
 
-                        <!-- DATE -->
+                                                <Setter Property="Background"
+                                                    Value="#F8F9FB"/>
 
-                        <StackPanel Grid.Column="0"
-                                    VerticalAlignment="Center">
+                                            </DataTrigger>
 
-                            <TextBlock Text="May 31, 2025"
-                                       Style="{StaticResource TableText}"/>
+                                        </Style.Triggers>
 
-                        </StackPanel>
-
-
-                        <!-- MESSAGE TITLE -->
-
-                        <StackPanel Grid.Column="1"
-                                    VerticalAlignment="Center">
-
-                            <TextBlock Text="Bless the Lord Oh my soul"
-                                       Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
+                                    </Style>
+                                </Border.Style>
 
 
-                        <!-- AMOUNT -->
+                                <Grid Margin="12,0">
 
-                        <Border Grid.Column="2"
-                                Width="45"
-                                Height="21"
-                                Background="#E7F0FF"
-                                CornerRadius="7"                                
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
 
-                            <TextBlock Text="€ 230.00"
-                                       Style="{StaticResource BadgeText}"
-                                       Foreground="#3182E8"
-                                       FontSize="16"/>
+                                        <ColumnDefinition Width="1.15*"/>
+                                        <ColumnDefinition Width="1.7*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1.25*"/>
+                                        <ColumnDefinition Width="0.9*"/>
+                                        <ColumnDefinition Width="1.15*"/>
 
-                        </Border>
+                                    </Grid.ColumnDefinitions>
 
 
-                        <!-- MINISTER -->
+                                    <!-- DATE -->
 
-                        <StackPanel Grid.Column="3"
-                            VerticalAlignment="Center">
-
-                            <TextBlock Text="John Doe"
-                                Style="{StaticResource TableText}"/>
-
-                        </StackPanel>
+                                    <TextBlock Grid.Column="0"
+                                        Text="{Binding Date, StringFormat='{}{0:MMM dd, yyyy}'}"
+                                        Style="{StaticResource TableText}"/>
 
 
-                        <!-- CATEGORY -->
+                                    <!-- MESSAGE TITLE -->
 
-                        <TextBlock Grid.Column="4"
-                                   Text="Sunday Service"
-                                   Style="{StaticResource TableSecondaryText}"
-                                   VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1"
+                       Text="{Binding MessageTitle}"
+                       Style="{StaticResource TableText}"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Center"/>
 
 
-                        <!-- ACTION -->
+                                    <!-- AMOUNT -->
 
-                        <Button Grid.Column="5"
-                                Width="28"
-                                Height="28"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                VerticalAlignment="Center">
+                                    <Border Grid.Column="2"
+                    Width="70"
+                    Height="21"
+                    Background="#E7F0FF"
+                    CornerRadius="7"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center">
 
-                            <materialDesign:PackIcon
-                                Kind="DotsVertical"
-                                Width="17"
-                                Height="17"
-                                Foreground="#667085"/>
+                                        <TextBlock
+                    Text="{Binding Amount, StringFormat=€ {0:N2}}"
+                    Style="{StaticResource BadgeText}"
+                    Foreground="#3182E8"
+                    FontSize="16"/>
 
-                        </Button>
+                                    </Border>
 
-                    </Grid>
 
-                </StackPanel>
+                                    <!-- MINISTER -->
+
+                                    <TextBlock Grid.Column="3"
+                       Text="{Binding Minister}"
+                       Style="{StaticResource TableText}"
+                       VerticalAlignment="Center"
+                       TextTrimming="CharacterEllipsis"/>
+
+
+                                    <!-- SERVICE TYPE -->
+
+                                    <TextBlock Grid.Column="4"
+                       Text="{Binding MeetingCategoryName}"
+                       Style="{StaticResource TableSecondaryText}"
+                       VerticalAlignment="Center"
+                       TextTrimming="CharacterEllipsis"/>
+
+
+                                    <!-- ACTION -->
+
+                                    <StackPanel Grid.Column="5"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                                        <Button Style="{StaticResource TableActionButtonStyle}"
+                        CommandParameter="{Binding}"
+                        ToolTip="View">
+
+                                            <materialDesign:PackIcon
+                        Kind="EyeOutline"
+                        Width="14"
+                        Height="14"/>
+
+                                        </Button>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
 
             </ScrollViewer>
 

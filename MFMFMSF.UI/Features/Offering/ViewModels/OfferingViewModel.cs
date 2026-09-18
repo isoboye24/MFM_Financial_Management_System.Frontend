@@ -23,6 +23,8 @@ namespace MFMFMSF.UI.Features.Offering.ViewModels
         public async Task LoadDataAsync()
         {
             MonthlyGivingStatistics = await _givingService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
+
+            Givings = await _givingService.GetByMonthAndYearAsync(SelectedMonth, SelectedYear, "Offering", 1, 10);
         }
 
 
@@ -91,6 +93,22 @@ namespace MFMFMSF.UI.Features.Offering.ViewModels
             SelectedYear = year;
 
             await LoadDataAsync();
+        }
+
+
+        // =====================================================
+        // OFFERING LIST
+        // =====================================================
+        private IReadOnlyList<GivingByMonthAndYear> _givings = [];
+
+        public IReadOnlyList<GivingByMonthAndYear> Givings
+        {
+            get => _givings;
+            private set
+            {
+                _givings = value;
+                OnPropertyChanged();
+            }
         }
 
 

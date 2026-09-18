@@ -71,5 +71,19 @@ namespace MFMFMSF.Infrastructure.Service
 
             return statistics ?? new TotalGivingStatistics();
         }
+
+        public async Task<IReadOnlyList<GivingByMonthAndYear>> GetByMonthAndYearAsync(int month, int year, string? categoryName, int page, int recordsPerPage)
+        {
+            var url = $"{Endpoint}/by-month-year" + $"?month={month}" + $"&year={year}" + $"&page={page}" + $"&recordsPerPage={recordsPerPage}";
+
+            if (!string.IsNullOrWhiteSpace(categoryName))
+            {
+                url += $"&categoryName={Uri.EscapeDataString(categoryName)}";
+            }
+
+            var givings = await _httpClient.GetFromJsonAsync<List<GivingByMonthAndYear>>(url);
+
+            return givings ?? [];
+        }
     }
 }
