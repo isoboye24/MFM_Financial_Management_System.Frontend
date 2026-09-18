@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Seeds.Views" xmlns:lvc1="clr-namespace:MFMFMSF.UI.Controls" xmlns:lvc2="clr-namespace:MFMFMSF.UI.Features.Seeds.Controls"
+             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Seeds.Views" 
+             xmlns:lvc1="clr-namespace:MFMFMSF.UI.Controls" 
+             xmlns:lvc2="clr-namespace:MFMFMSF.UI.Features.Seeds.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800">
@@ -20,15 +22,10 @@
                 Height="Auto"
                 Background="White"
                 CornerRadius="15"
+                        Padding="10"
                 Margin="0,0,0,20">
 
-                <lvc1:PageTopBar
-                    PageTitle="Seed"
-                    PageDescription="Manage all Faith Promise (Seed) commitments and contributions."
-                    DateRangeText="May 1 – May 31, 2025"
-                    ActionText="Add Seed"
-                    ActionCommand="{Binding AddTitleCommand}"
-                    DateRangeCommand="{Binding SelectDateRangeCommand}"/>
+                <lvc2:SeedsTopBar x:Name="SeedsTopBar"/>
 
             </Border>
 
