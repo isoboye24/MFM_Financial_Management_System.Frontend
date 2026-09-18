@@ -22,15 +22,10 @@
             Height="Auto"
             Background="White"
             CornerRadius="15"
+                    Padding="10"
             Margin="0,0,0,20">
 
-            <lvc1:PageTopBar
-                PageTitle="Other Income"
-                PageDescription="View and manage all other income received by the church."
-                DateRangeText="May 1 – May 31, 2025"
-                ActionText="Add Other Income"
-                ActionCommand="{Binding AddTitleCommand}"
-                DateRangeCommand="{Binding SelectDateRangeCommand}"/>
+            <lvc2:OtherIncomeTopBar x:Name="OtherIncomeTopBar"/>
 
         </Border>
 

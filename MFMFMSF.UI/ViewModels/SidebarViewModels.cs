@@ -58,7 +58,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 
             NavigateSeedsCommand = new RelayCommand(_ =>  _navigation.Navigate(new SeedsView(_navigation, _givingService)));
 
-            NavigateOtherIncomeCommand = new RelayCommand(_ =>  _navigation.Navigate(new OtherIncomeView()));
+            NavigateOtherIncomeCommand = new RelayCommand(_ =>  _navigation.Navigate(new OtherIncomeView(_navigation, _givingService)));
 
             NavigateExpendituresCommand = new RelayCommand(_ =>  _navigation.Navigate(new ExpendituresView()));
 

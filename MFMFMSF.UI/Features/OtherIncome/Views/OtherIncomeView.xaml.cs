@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Controls;
+using MFMFMSF.UI.Features.OtherIncome.ViewModels;
+using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.OtherIncome.Views
 {
@@ -20,9 +12,30 @@ namespace MFMFMSF.UI.Features.OtherIncome.Views
     /// </summary>
     public partial class OtherIncomeView : UserControl
     {
-        public OtherIncomeView()
+        private readonly OtherIncomeViewModel _viewModel;
+        public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
+
+        public OtherIncomeView(INavigationService navigationService, IGivingService givingService)
         {
             InitializeComponent();
+
+            _viewModel = new OtherIncomeViewModel(navigationService, givingService);
+
+            DataContext = _viewModel;
+
+            OtherIncomeTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
+            Loaded += OtherIncomeView_Loaded;
+        }
+
+        private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
+        {
+            await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+            PeriodChanged?.Invoke(this, e);
+        }
+
+        private async void OtherIncomeView_Loaded(object sender, RoutedEventArgs e)
+        {
+            await _viewModel.LoadDataAsync();
         }
     }
 }
