@@ -13,6 +13,7 @@ namespace MFMFMSF.UI
         public static IMeetingService MeetingService { get; } = new MeetingService(HttpClient);
         public static IGivingCategoryService GivingCategoryService { get; } = new GivingCategoryService(HttpClient);
         public static IGivingService GivingService { get; } = new GivingService(HttpClient);
+        public static IExpenditureService ExpenditureService { get; } = new ExpenditureService(HttpClient);
 
         private static HttpClient CreateHttpClient()
         {

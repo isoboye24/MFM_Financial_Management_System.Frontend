@@ -12,6 +12,7 @@ namespace MFMFMSF.UI
         private readonly IMeetingCategoryService _meetingCategoryService;
         private readonly IMeetingService _meetingService;
         private readonly IGivingCategoryService _givingCategoryService;
+        private readonly IExpenditureService _expenditureService;
 
 
         public MainWindow()
@@ -28,11 +29,12 @@ namespace MFMFMSF.UI
             _meetingCategoryService = App.MeetingCategoryService;
             _meetingService = App.MeetingService;
             _givingCategoryService = App.GivingCategoryService;
+            _expenditureService = App.ExpenditureService;
 
 
             DataContext = new MainViewModel(_navigation, _givingService);
 
-            SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService);
+            SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, _expenditureService);
         }
 
         private void TopBar_MinimizeRequested(object? sender, EventArgs e)

@@ -23,6 +23,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         private readonly IMeetingService _meetingService;
         private readonly IGivingCategoryService _givingCategoryService;
         private readonly IGivingService _givingService;
+        private readonly IExpenditureService _expenditureService;
 
         public ICommand NavigateDashboardCommand { get; }
         public ICommand NavigateMeetingsCommand { get; }
@@ -38,14 +39,14 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 
 
         public SidebarViewModel(INavigationService navigation, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
-            IGivingCategoryService givingCategoryService, IGivingService givingService)
+            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService)
         {
             _navigation = navigation;
             _meetingCategoryService = meetingCategoryService;
             _meetingService = meetingService;
             _givingCategoryService = givingCategoryService;
             _givingService = givingService;
-
+            _expenditureService = expenditureService;
 
             NavigateDashboardCommand = new RelayCommand(_ =>  _navigation.Navigate(new DashboardView(_navigation, _givingService)));
 
@@ -60,7 +61,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 
             NavigateOtherIncomeCommand = new RelayCommand(_ =>  _navigation.Navigate(new OtherIncomeView(_navigation, _givingService)));
 
-            NavigateExpendituresCommand = new RelayCommand(_ =>  _navigation.Navigate(new ExpendituresView()));
+            NavigateExpendituresCommand = new RelayCommand(_ =>  _navigation.Navigate(new ExpendituresView(_navigation, _expenditureService)));
 
             NavigateProjectsCommand = new RelayCommand(_ =>  _navigation.Navigate(new ProjectsView()));
 

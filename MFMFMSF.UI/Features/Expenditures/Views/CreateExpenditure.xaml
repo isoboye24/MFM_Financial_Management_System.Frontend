@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Expenditures.Views.CreateExpenditure"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Expenditures.Views" 
+             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls" 
+             xmlns:controls2="clr-namespace:MFMFMSF.UI.Features.Expenditures.Controls.Form"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="#F5F7FB" Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+        Margin="0,0,0,20">
+
+            <controls:FormTitle
+        BreadcrumbText="Church Expenditure"
+        CurrentPageText="Create Expenditure"
+        Title="Create Expenditure"
+        Description="Create a new church expenditure to track and manage reports."
+        NavigationService="{Binding NavigationService,
+                                   RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+        </Border>
+
+        <Border Grid.Row="1"
+        Margin="0,0,0,20">
+
+            <controls2:ExpenditureForm
+        ExpenditureDate="{Binding Date, Mode=TwoWay}"
+        Amount="{Binding Amount, Mode=TwoWay}"
+        Summary="{Binding Summary, Mode=TwoWay}"/>
+
+        </Border>
+
+        <Border Grid.Row="2"
+        Margin="0,0,0,20">
+
+            <controls:SendFormButton
+        Text="Save Church Expenditure"
+        Icon="ContentSave"
+        Command="{Binding SaveExpenditureCommand}"/>
+
+        </Border>
+
+    </Grid>
+</UserControl>

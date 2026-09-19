@@ -1,37 +1,29 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.UI.Features.Givings.ViewModels;
-using MFMFMSF.UI.Features.Meetings.Views;
+using MFMFMSF.UI.Features.Expenditures.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MFMFMSF.UI.Features.Givings.Views
+namespace MFMFMSF.UI.Features.Expenditures.Views
 {
     /// <summary>
-    /// Interaction logic for CreateGiving.xaml
+    /// Interaction logic for CreateExpenditure.xaml
     /// </summary>
-    public partial class CreateGiving : UserControl
+    public partial class CreateExpenditure : UserControl
     {
-        private readonly CreateGivingViewModel _viewModel;
+        private readonly CreateExpenditureViewModel _viewModel;
 
-        public CreateGiving(Guid meetingId, INavigationService navigationService, IGivingCategoryService givingCategoryService, IGivingService givingService)
+        public CreateExpenditure(INavigationService navigationService, IExpenditureService expenditureService)
         {
             InitializeComponent();
 
             NavigationService = navigationService;
 
-            _viewModel = new CreateGivingViewModel(meetingId, givingCategoryService, givingService);
+            _viewModel = new CreateExpenditureViewModel(expenditureService);
 
             DataContext = _viewModel;
-
-            Loaded += CreateGiving_Loaded;
         }
 
-        private async void CreateGiving_Loaded(object sender, RoutedEventArgs e)
-        {
-            Loaded -= CreateGiving_Loaded;
-            await _viewModel.LoadGivingCategoriesAsync();
-        }
 
         // =====================================================
         // Navigation Service
@@ -47,7 +39,7 @@ namespace MFMFMSF.UI.Features.Givings.Views
             DependencyProperty.Register(
                 nameof(NavigationService),
                 typeof(INavigationService),
-                typeof(CreateGiving),
+                typeof(CreateExpenditure),
                 new PropertyMetadata(null));
     }
 }

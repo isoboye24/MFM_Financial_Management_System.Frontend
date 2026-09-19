@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Controls;
+using MFMFMSF.UI.Features.Expenditures.ViewModels;
+using MFMFMSF.UI.Navigation;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Expenditures.Views
 {
@@ -20,9 +11,19 @@ namespace MFMFMSF.UI.Features.Expenditures.Views
     /// </summary>
     public partial class ExpendituresView : UserControl
     {
-        public ExpendituresView()
+        private readonly ExpendituresViewModel _viewModel;
+        public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
+        public ExpendituresView(INavigationService navigationService, IExpenditureService expenditureService)
         {
             InitializeComponent();
+            _viewModel = new ExpendituresViewModel(navigationService, expenditureService);
+            DataContext = _viewModel;
         }
+
+        //private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
+        //{
+        //    await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+        //    PeriodChanged?.Invoke(this, e);
+        //}
     }
 }
