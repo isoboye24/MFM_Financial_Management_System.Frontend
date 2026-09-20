@@ -106,15 +106,4 @@ namespace MFMFMSF.Infrastructure.Service
             response.EnsureSuccessStatusCode();
         }
     }
-
-
-    internal class CreateMeetingCategoryRequest
-    {
-        public string Name { get; set; } = string.Empty;
-    }
-
-    internal class UpdateMeetingCategoryRequest
-    {
-        public string Name { get; set; } = string.Empty;
-    }
 }

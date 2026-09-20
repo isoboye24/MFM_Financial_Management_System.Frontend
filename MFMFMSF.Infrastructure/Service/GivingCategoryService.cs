@@ -98,13 +98,4 @@ namespace MFMFMSF.Infrastructure.Service
         }
     }
 
-    internal class CreateGivingCategoryRequest
-    {
-        public string Name { get; set; } = string.Empty;
-    }
-
-    internal class UpdateGivingCategoryRequest
-    {
-        public string Name { get; set; } = string.Empty;
-    }
 }

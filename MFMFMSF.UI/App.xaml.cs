@@ -14,6 +14,7 @@ namespace MFMFMSF.UI
         public static IGivingCategoryService GivingCategoryService { get; } = new GivingCategoryService(HttpClient);
         public static IGivingService GivingService { get; } = new GivingService(HttpClient);
         public static IExpenditureService ExpenditureService { get; } = new ExpenditureService(HttpClient);
+        public static IPositionService PositionService { get; } = new PositionService(HttpClient);
 
         private static HttpClient CreateHttpClient()
         {

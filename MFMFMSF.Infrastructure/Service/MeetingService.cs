@@ -1,6 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Meetings;
-using System.Net.Http;
 using System.Net.Http.Json;
 
 namespace MFMFMSF.Infrastructure.Service

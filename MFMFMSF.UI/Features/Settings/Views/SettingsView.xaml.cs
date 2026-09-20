@@ -1,8 +1,9 @@
 ﻿using MFMFMSF.UI.Features.Settings.Controls;
-using MFMFMSF.UI.Features.Settings.Controls.General;
 using MFMFMSF.UI.Features.Settings.Controls.Categories;
-using System.Windows.Controls;
 using MFMFMSF.UI.Features.Settings.Controls.DeletedData;
+using MFMFMSF.UI.Features.Settings.Controls.General;
+using MFMFMSF.UI.Features.Settings.Controls.Members;
+using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Settings.Views
 {
@@ -16,9 +17,7 @@ namespace MFMFMSF.UI.Features.Settings.Views
         }
 
 
-        private void SettingsPageTabs_TabChanged(
-            object? sender,
-            SettingsTabChangedEventArgs e)
+        private void SettingsPageTabs_TabChanged(object? sender, SettingsTabChangedEventArgs e)
         {
             switch (e.SelectedIndex)
             {
@@ -29,8 +28,12 @@ namespace MFMFMSF.UI.Features.Settings.Views
                 case 1:
                     SettingsContent.Content = new CategoriesTabPage(App.MeetingCategoryService, App.GivingCategoryService);
                     break;
-               
+                
                 case 2:
+                    SettingsContent.Content = new MembersTabPage(App.PositionService);
+                    break;
+               
+                case 3:
                     SettingsContent.Content = new DeletedDataTabPage();
                     break;
             }

@@ -75,7 +75,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls
             if (SettingsActiveIndicator == null)
                 return;
 
-            if (index < 0 || index > 2)
+            if (index < 0 || index > 3)
                 index = 0;
 
             Grid.SetColumn(SettingsActiveIndicator, index);
