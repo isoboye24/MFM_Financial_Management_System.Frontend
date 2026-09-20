@@ -3,13 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MFMFMSF.UI"
              StartupUri="MainWindow.xaml">
+
     <Application.Resources>
+
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
 
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml"/>
+                <!-- ======================================== -->
+                <!-- Material Design                          -->
+                <!-- ======================================== -->
 
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml"/>
+
+
+                <!-- ======================================== -->
+                <!-- MFMFMSF Global Design System             -->
+                <!-- ======================================== -->
+
+                <!-- 1. Colors -->
+                <ResourceDictionary
+                    Source="/MFMFMSF.UI;component/Themes/Colors.xaml"/>
+
+                <!-- 2. Shadows -->
+                <ResourceDictionary
+                    Source="/MFMFMSF.UI;component/Themes/Shadows.xaml"/>
+
+                <!-- 3. Typography -->
+                <ResourceDictionary
+                    Source="/MFMFMSF.UI;component/Themes/Typography.xaml"/>
+
+                <!-- 4. Inputs -->
+                <ResourceDictionary
+                    Source="/MFMFMSF.UI;component/Themes/Inputs.xaml"/>
+                <!-- 5. Buttons -->
+                <ResourceDictionary
+                    Source="/MFMFMSF.UI;component/Themes/Buttons.xaml"/>
+
+                <!-- 6. Cards -->
+                <ResourceDictionary
+                    Source="/MFMFMSF.UI;component/Themes/Cards.xaml"/>
+                <!-- 7. Tables -->
+                <ResourceDictionary
+                    Source="/MFMFMSF.UI;component/Themes/Tables.xaml"/>
+
+                <!-- 8. Icons -->
+                <ResourceDictionary
+                    Source="/MFMFMSF.UI;component/Themes/Icons.xaml"/>
+
+                <!-- 9. General Styles -->
+                <ResourceDictionary
+                    Source="/MFMFMSF.UI;component/Themes/GeneralStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
         </ResourceDictionary>
+
     </Application.Resources>
+
 </Application>
