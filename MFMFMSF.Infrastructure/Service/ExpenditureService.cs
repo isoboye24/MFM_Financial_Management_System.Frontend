@@ -21,5 +21,10 @@ namespace MFMFMSF.Infrastructure.Service
 
             response.EnsureSuccessStatusCode();
         }
+
+        public Task<IReadOnlyList<ExpenditureListItem>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
