@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.MeetingCategories;
 using MFMFMSF.Core.Models.Positions;
 using System.Net.Http.Json;
 
@@ -19,6 +20,17 @@ namespace MFMFMSF.Infrastructure.Service
         {
             var response = await _httpClient.PostAsJsonAsync(Endpoint, request);
             response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<IReadOnlyList<PositionListItem>> GetAllAsync()
+        {
+            var response = await _httpClient.GetAsync($"{Endpoint}?Page=1&RecordsPerPage=100");
+
+            response.EnsureSuccessStatusCode();
+
+            var positions = await response.Content.ReadFromJsonAsync<List<PositionListItem>>();
+
+            return positions ?? [];
         }
     }
 }

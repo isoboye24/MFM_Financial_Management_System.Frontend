@@ -20,7 +20,12 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Members
         public MembersTabPage(IPositionService positionService)
         {
             InitializeComponent();
+
             _positionService = positionService;
+
+            PositionsListControl.SetService(_positionService);
+
+            Loaded += PositionsTabPage_Loaded;
         }
 
         // ==========================================
@@ -93,6 +98,17 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Members
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
+        }
+
+
+        // ==========================================
+        // LOAD POSITIONS
+        // ==========================================
+        private async void PositionsTabPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= PositionsTabPage_Loaded;
+
+            await PositionsListControl.LoadAsync();
         }
     }
 }
