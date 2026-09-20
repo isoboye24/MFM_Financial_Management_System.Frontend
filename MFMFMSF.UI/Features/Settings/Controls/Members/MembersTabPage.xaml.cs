@@ -55,16 +55,19 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Members
                 }
                 else
                 {
-                    //// UPDATE
-                    //await _positionService.UpdateAsync(
-                    //    _editingPositionId.Value,
-                    //    positionName);
+                    // UPDATE
+                    var request = new UpdatePositionRequest
+                    {
+                        Name = PositionControl.PositionName.Trim()
+                    };
 
-                    //MessageBox.Show(
-                    //    "Position updated successfully.",
-                    //    "Position",
-                    //    MessageBoxButton.OK,
-                    //    MessageBoxImage.Information);
+                    await _positionService.UpdateAsync(_editingPositionId.Value, request);
+
+                    MessageBox.Show(
+                        "Position updated successfully.",
+                        "Position",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
                 }
 
 
@@ -83,7 +86,7 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Members
 
                 // Refresh list
 
-                //await MeetingCategoriesListControl.LoadAsync();
+                await PositionsListControl.LoadAsync();
             }
             catch (HttpRequestException)
             {

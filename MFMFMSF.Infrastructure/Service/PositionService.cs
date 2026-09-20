@@ -38,5 +38,12 @@ namespace MFMFMSF.Infrastructure.Service
 
             return position ?? throw new InvalidOperationException("Position not found.");
         }
+
+        public async Task UpdateAsync(Guid id, UpdatePositionRequest request)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"{Endpoint}/{id}", request);
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 }
