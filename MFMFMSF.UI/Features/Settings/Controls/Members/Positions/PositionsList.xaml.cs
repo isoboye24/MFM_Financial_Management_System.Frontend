@@ -89,6 +89,80 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Members.Positions
             }
         }
 
+
+        // ==========================================
+        // DELETE
+        // ==========================================
+
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is not Button button ||
+                button.Tag is not PositionItem item)
+            {
+                return;
+            }
+
+            var result = MessageBox.Show(
+                $"Are you sure you want to delete '{item.Name}'?",
+                "Delete Position",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            if (_positionService == null)
+            {
+                MessageBox.Show(
+                    "Position service has not been configured.",
+                    "Delete Position",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return;
+            }
+
+            try
+            {
+                await _positionService.DeleteAsync(item.Id);
+
+                Positions.Remove(item);
+
+                RenumberPositions();
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show(
+                    "Unable to connect to the server.",
+                    "Connection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Unable to Delete Position",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        private void RenumberPositions()
+        {
+            int number = 1;
+
+            foreach (var position in Positions)
+            {
+                position.Number = number++;
+            }
+        }
+
+
+        // ==========================================
+        // EVENTS
+        // ==========================================
+
         public event EventHandler<PositionItem>? EditClicked;
     }
 }

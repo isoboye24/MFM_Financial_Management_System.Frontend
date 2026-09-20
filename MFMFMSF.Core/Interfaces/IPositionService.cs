@@ -8,6 +8,6 @@ namespace MFMFMSF.Core.Interfaces
         Task<IReadOnlyList<PositionListItem>> GetAllAsync();
         Task<PositionDetail> GetByIdAsync(Guid id);
         Task UpdateAsync(Guid id, UpdatePositionRequest request);
-        //Task DeleteAsync(Guid id);
+        Task DeleteAsync(Guid id);
     }
 }
