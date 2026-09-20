@@ -213,7 +213,7 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center">
 
-                                        <!--<Button Style="{StaticResource ActionButtonStyle}"
+                                        <Button Style="{StaticResource ActionButtonStyle}"
                                         ToolTip="Edit"
                                         Click="EditButton_Click"
                                         Tag="{Binding}">
@@ -223,7 +223,7 @@
                                             Width="15"
                                             Height="15"/>
 
-                                        </Button>-->
+                                        </Button>
 
 
                                         <!--<Button Style="{StaticResource DeleteButtonStyle}"

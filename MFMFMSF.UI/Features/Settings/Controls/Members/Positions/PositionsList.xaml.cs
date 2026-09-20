@@ -74,5 +74,21 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Members.Positions
                     MessageBoxImage.Error);
             }
         }
+
+
+        // ==========================================
+        // EDIT
+        // ==========================================
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button &&
+                button.Tag is PositionItem item)
+            {
+                EditClicked?.Invoke(this, item);
+            }
+        }
+
+        public event EventHandler<PositionItem>? EditClicked;
     }
 }

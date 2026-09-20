@@ -1,6 +1,9 @@
 ﻿using MaterialDesignThemes.Wpf;
 using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Positions;
+using MFMFMSF.Infrastructure.Service;
+using MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories;
+using MFMFMSF.UI.Features.Settings.Controls.Members.Positions;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
@@ -110,5 +113,46 @@ namespace MFMFMSF.UI.Features.Settings.Controls.Members
 
             await PositionsListControl.LoadAsync();
         }
+
+
+        // ==========================================
+        // EDIT POSITION
+        // ==========================================
+        private async void PositionsListControl_EditClicked(object? sender, PositionItem item)
+        {
+            try
+            {
+                var position = await _positionService.GetByIdAsync(item.Id);
+
+
+                // Put category name into the form
+                PositionControl.PositionName = position.Name;
+
+                // Change button to UPDATE
+                PositionControl.ButtonText = "Update";
+
+                PositionControl.ButtonIcon = PackIconKind.Check;
+
+                // Remember which position we are editing
+                _editingPositionId = position.Id;
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show(
+                    "Unable to connect to the server.",
+                    "Connection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Unable to Load Position",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
     }
 }

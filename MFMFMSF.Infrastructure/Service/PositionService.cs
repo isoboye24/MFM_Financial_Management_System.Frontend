@@ -1,5 +1,4 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.Core.Models.MeetingCategories;
 using MFMFMSF.Core.Models.Positions;
 using System.Net.Http.Json;
 
@@ -31,6 +30,13 @@ namespace MFMFMSF.Infrastructure.Service
             var positions = await response.Content.ReadFromJsonAsync<List<PositionListItem>>();
 
             return positions ?? [];
+        }
+
+        public async Task<PositionDetail> GetByIdAsync(Guid id)
+        {
+            var position = await _httpClient.GetFromJsonAsync<PositionDetail>($"{Endpoint}/{id}");
+
+            return position ?? throw new InvalidOperationException("Position not found.");
         }
     }
 }
