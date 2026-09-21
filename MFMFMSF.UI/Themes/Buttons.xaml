@@ -193,14 +193,14 @@
     </Style>
 
     <!-- ===================================================== -->
-    <!-- DATE/PERIOD PICKER BUTTON -->
+    <!-- PERIOD PICKER BUTTON -->
     <!-- ===================================================== -->
 
     <Style x:Key="PeriodPickerButton"
        TargetType="Button">
 
         <Setter Property="Height"
-            Value="44"/>
+            Value="46"/>
 
         <Setter Property="Width"
             Value="220"/>
@@ -220,12 +220,6 @@
         <Setter Property="BorderThickness"
             Value="1"/>
 
-        <Setter Property="FontFamily"
-            Value="Segoe UI"/>
-
-        <Setter Property="FontSize"
-            Value="11"/>
-
         <Setter Property="Cursor"
             Value="Hand"/>
 
@@ -236,16 +230,56 @@
                 <ControlTemplate TargetType="Button">
 
                     <Border
+                    x:Name="ButtonBorder"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="8">
 
                         <ContentPresenter
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"/>
 
                     </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                             Value="True">
+
+                            <Setter
+                            TargetName="ButtonBorder"
+                            Property="Background"
+                            Value="{DynamicResource SurfaceBrush}"/>
+
+                            <Setter
+                            TargetName="ButtonBorder"
+                            Property="BorderBrush"
+                            Value="{DynamicResource PrimaryBrush}"/>
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed"
+                             Value="True">
+
+                            <Setter
+                            TargetName="ButtonBorder"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled"
+                             Value="False">
+
+                            <Setter
+                            TargetName="ButtonBorder"
+                            Property="Opacity"
+                            Value="0.5"/>
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
 
                 </ControlTemplate>
 
@@ -263,23 +297,23 @@
     <Style x:Key="PeriodMonthButton"
        TargetType="Button">
 
+        <Setter Property="Width"
+            Value="70"/>
+
         <Setter Property="Height"
             Value="34"/>
 
         <Setter Property="Margin"
-            Value="2"/>
+            Value="3"/>
+
+        <Setter Property="Padding"
+            Value="0"/>
 
         <Setter Property="Background"
             Value="Transparent"/>
 
         <Setter Property="Foreground"
             Value="{DynamicResource PrimaryTextBrush}"/>
-
-        <Setter Property="BorderBrush"
-            Value="Transparent"/>
-
-        <Setter Property="BorderThickness"
-            Value="0"/>
 
         <Setter Property="FontFamily"
             Value="Segoe UI"/>
@@ -290,6 +324,9 @@
         <Setter Property="Cursor"
             Value="Hand"/>
 
+        <Setter Property="BorderThickness"
+            Value="0"/>
+
         <Setter Property="Template">
 
             <Setter.Value>
@@ -299,8 +336,6 @@
                     <Border
                     x:Name="MonthBorder"
                     Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="6">
 
                         <ContentPresenter
@@ -316,47 +351,36 @@
                         <Trigger Property="IsMouseOver"
                              Value="True">
 
-                            <Setter TargetName="MonthBorder"
-                                Property="Background"
-                                Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
-
-                            <Setter Property="Foreground"
-                                Value="{DynamicResource PrimaryBrush}"/>
-
-                            <Setter Property="FontWeight"
-                                Value="SemiBold"/>
+                            <Setter
+                            TargetName="MonthBorder"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
 
                         </Trigger>
 
 
-                        <!-- PRESSED -->
+                        <!-- SELECTED -->
 
-                        <Trigger Property="IsPressed"
-                             Value="True">
+                        <DataTrigger
+                        Binding="{Binding
+                            RelativeSource={RelativeSource Self},
+                            Path=(local:MonthYearPicker.IsMonthSelected)}"
+                        Value="True">
 
-                            <Setter TargetName="MonthBorder"
-                                Property="Background"
-                                Value="{DynamicResource PrimaryPressedBackgroundBrush}"/>
+                            <Setter
+                            TargetName="MonthBorder"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
 
-                        </Trigger>
+                            <Setter
+                            Property="Foreground"
+                            Value="{DynamicResource PrimaryBrush}"/>
 
+                            <Setter
+                            Property="FontWeight"
+                            Value="SemiBold"/>
 
-                        <!-- SELECTED MONTH -->
-
-                        <Trigger Property="local:MonthYearPicker.IsMonthSelected"
-                             Value="True">
-
-                            <Setter TargetName="MonthBorder"
-                                Property="Background"
-                                Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
-
-                            <Setter Property="Foreground"
-                                Value="{DynamicResource PrimaryBrush}"/>
-
-                            <Setter Property="FontWeight"
-                                Value="SemiBold"/>
-
-                        </Trigger>
+                        </DataTrigger>
 
                     </ControlTemplate.Triggers>
 
@@ -369,6 +393,10 @@
     </Style>
 
 
+    <!-- ===================================================== -->
+    <!-- QUICK ACTION BUTTON -->
+    <!-- ===================================================== -->
+    
     <Style x:Key="QuickActionButton"
        TargetType="Button">
 
@@ -470,7 +498,10 @@
     </Style>
 
 
-
+    <!-- ===================================================== -->
+    <!-- SEND FORM BUTTON -->
+    <!-- ===================================================== -->
+    
     <Style x:Key="SendFormButton"
        TargetType="Button">
 
@@ -608,6 +639,276 @@
                             TargetName="ButtonBorder"
                             Property="Opacity"
                             Value="0.5"/>
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- ===================================================== -->
+    <!-- PERIOD APPLY BUTTON -->
+    <!-- ===================================================== -->
+
+    <Style x:Key="PeriodApplyButton"
+       TargetType="Button">
+
+        <Setter Property="Height"
+            Value="34"/>
+
+        <Setter Property="MinWidth"
+            Value="65"/>
+
+        <Setter Property="Padding"
+            Value="14,0"/>
+
+        <Setter Property="Background"
+            Value="{DynamicResource PrimaryBrush}"/>
+
+        <Setter Property="Foreground"
+            Value="White"/>
+
+        <Setter Property="BorderThickness"
+            Value="0"/>
+
+        <Setter Property="FontFamily"
+            Value="Segoe UI"/>
+
+        <Setter Property="FontSize"
+            Value="12"/>
+
+        <Setter Property="FontWeight"
+            Value="SemiBold"/>
+
+        <Setter Property="Cursor"
+            Value="Hand"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                    x:Name="ApplyBorder"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="6">
+
+                        <ContentPresenter
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                             Value="True">
+
+                            <Setter
+                            TargetName="ApplyBorder"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryHoverBrush}"/>
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed"
+                             Value="True">
+
+                            <Setter
+                            TargetName="ApplyBorder"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryPressedBrush}"/>
+
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled"
+                             Value="False">
+
+                            <Setter
+                            TargetName="ApplyBorder"
+                            Property="Opacity"
+                            Value="0.5"/>
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- ===================================================== -->
+    <!-- PERIOD CANCEL BUTTON -->
+    <!-- ===================================================== -->
+
+    <Style x:Key="PeriodCancelButton"
+       TargetType="Button">
+
+        <Setter Property="Height"
+            Value="34"/>
+
+        <Setter Property="MinWidth"
+            Value="65"/>
+
+        <Setter Property="Padding"
+            Value="12,0"/>
+
+        <Setter Property="Background"
+            Value="Transparent"/>
+
+        <Setter Property="Foreground"
+            Value="{DynamicResource PrimaryTextBrush}"/>
+
+        <Setter Property="BorderThickness"
+            Value="0"/>
+
+        <Setter Property="FontFamily"
+            Value="Segoe UI"/>
+
+        <Setter Property="FontSize"
+            Value="12"/>
+
+        <Setter Property="Cursor"
+            Value="Hand"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                    x:Name="CancelBorder"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="6">
+
+                        <ContentPresenter
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                             Value="True">
+
+                            <Setter
+                            TargetName="CancelBorder"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+
+                            <Setter
+                            Property="Foreground"
+                            Value="{DynamicResource PrimaryBrush}"/>
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed"
+                             Value="True">
+
+                            <Setter
+                            TargetName="CancelBorder"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryPressedBackgroundBrush}"/>
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- ===================================================== -->
+    <!-- PERIOD NAVIGATION BUTTON -->
+    <!-- ===================================================== -->
+
+    <Style x:Key="PeriodNavigationButton"
+       TargetType="Button">
+
+        <Setter Property="Width"
+            Value="40"/>
+
+        <Setter Property="Height"
+            Value="34"/>
+
+        <Setter Property="Background"
+            Value="Transparent"/>
+
+        <Setter Property="Foreground"
+            Value="{DynamicResource PrimaryTextBrush}"/>
+
+        <Setter Property="BorderThickness"
+            Value="0"/>
+
+        <Setter Property="FontFamily"
+            Value="Segoe UI"/>
+
+        <Setter Property="FontSize"
+            Value="18"/>
+
+        <Setter Property="Cursor"
+            Value="Hand"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                    x:Name="NavigationBorder"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="6">
+
+                        <ContentPresenter
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                             Value="True">
+
+                            <Setter
+                            TargetName="NavigationBorder"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+
+                            <Setter
+                            Property="Foreground"
+                            Value="{DynamicResource PrimaryBrush}"/>
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed"
+                             Value="True">
+
+                            <Setter
+                            TargetName="NavigationBorder"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryPressedBackgroundBrush}"/>
 
                         </Trigger>
 

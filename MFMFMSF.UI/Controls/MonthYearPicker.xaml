@@ -8,12 +8,13 @@
     <Grid>
 
         <!-- ================================================= -->
-        <!-- DATE BUTTON + POPUP -->
+        <!-- DATE BUTTON -->
         <!-- ================================================= -->
 
-        <Button x:Name="DateButton"
-                Style="{StaticResource PeriodPickerButton}"
-                Click="DateButton_Click">
+        <Button
+            x:Name="DateButton"
+            Style="{StaticResource PeriodPickerButton}"
+            Click="DateButton_Click">
 
             <Grid>
 
@@ -24,15 +25,12 @@
                 </Grid.ColumnDefinitions>
 
 
-                <!-- CALENDAR -->
+                <!-- CALENDAR ICON -->
 
                 <materialDesign:PackIcon
                     Grid.Column="0"
                     Kind="CalendarMonthOutline"
-                    Width="18"
-                    Height="18"
-                    Style="{StaticResource Icon}"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource PeriodPickerIcon}"/>
 
 
                 <!-- SELECTED PERIOD -->
@@ -41,10 +39,7 @@
                     Grid.Column="1"
                     Text="{Binding SelectedPeriodText,
                                    ElementName=Root}"
-                    FontFamily="Segoe UI"
-                    FontSize="11"
-                    Foreground="{DynamicResource PrimaryTextBrush}"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource PeriodText}"/>
 
 
                 <!-- ARROW -->
@@ -52,11 +47,7 @@
                 <materialDesign:PackIcon
                     Grid.Column="2"
                     Kind="ChevronDown"
-                    Width="16"
-                    Height="16"
-                    Foreground="{DynamicResource SecondaryTextBrush}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"/>
+                    Style="{StaticResource PeriodPickerArrowIcon}"/>
 
             </Grid>
 
@@ -67,21 +58,26 @@
         <!-- POPUP -->
         <!-- ================================================= -->
 
-        <Popup x:Name="PeriodPopup"
-               PlacementTarget="{Binding ElementName=DateButton}"
-               Placement="Bottom"
-               StaysOpen="False"
-               AllowsTransparency="True"
-               PopupAnimation="Fade">
+        <Popup
+            x:Name="PeriodPopup"
+            PlacementTarget="{Binding ElementName=DateButton}"
+            Placement="Bottom"
+            HorizontalOffset="0"
+            VerticalOffset="8"
+            StaysOpen="False"
+            AllowsTransparency="True"
+            PopupAnimation="Fade"
+            HorizontalAlignment="Left">
 
             <Border
+                Width="280"
+                Margin="0,8,0,0"
+                Padding="16"
                 Background="{DynamicResource SurfaceBrush}"
                 BorderBrush="{DynamicResource BorderBrush}"
                 BorderThickness="1"
                 CornerRadius="12"
-                Padding="16"
-                Margin="0,8,0,0"
-                Width="280">
+                Effect="{DynamicResource CardShadow}">
 
                 <StackPanel>
 
@@ -99,34 +95,29 @@
                         </Grid.ColumnDefinitions>
 
 
+                        <!-- PREVIOUS YEAR -->
+
                         <Button
                             Grid.Column="0"
                             Content="‹"
-                            FontSize="18"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Cursor="Hand"
+                            Style="{StaticResource PeriodNavigationButton}"
                             Click="PreviousYear_Click"/>
 
+
+                        <!-- YEAR -->
 
                         <TextBlock
                             Grid.Column="1"
                             x:Name="YearText"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Segoe UI"
-                            FontSize="15"
-                            FontWeight="SemiBold"
-                            Foreground="{DynamicResource PrimaryTextBrush}"/>
+                            Style="{StaticResource PeriodYear}"/>
 
+
+                        <!-- NEXT YEAR -->
 
                         <Button
                             Grid.Column="2"
                             Content="›"
-                            FontSize="18"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Cursor="Hand"
+                            Style="{StaticResource PeriodNavigationButton}"
                             Click="NextYear_Click"/>
 
                     </Grid>
@@ -141,71 +132,84 @@
                         Columns="3"
                         Rows="4">
 
-                        <Button Content="Jan"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="1"
-                                Click="Month_Click"/>
 
-                        <Button Content="Feb"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="2"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Jan"
+                            Tag="1"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="Mar"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="3"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Feb"
+                            Tag="2"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="Apr"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="4"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Mar"
+                            Tag="3"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="May"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="5"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Apr"
+                            Tag="4"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="Jun"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="6"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="May"
+                            Tag="5"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="Jul"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="7"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Jun"
+                            Tag="6"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="Aug"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="8"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Jul"
+                            Tag="7"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="Sep"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="9"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Aug"
+                            Tag="8"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="Oct"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="10"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Sep"
+                            Tag="9"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="Nov"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="11"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Oct"
+                            Tag="10"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
-                        <Button Content="Dec"
-                                Style="{StaticResource PeriodMonthButton}"
-                                Tag="12"
-                                Click="Month_Click"/>
+                        <Button
+                            Content="Nov"
+                            Tag="11"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
+
+                        <Button
+                            Content="Dec"
+                            Tag="12"
+                            Style="{StaticResource PeriodMonthButton}"
+                            Click="Month_Click"/>
 
                     </UniformGrid>
 
 
                     <!-- ========================================= -->
-                    <!-- ACTIONS -->
+                    <!-- ACTION BUTTONS -->
                     <!-- ========================================= -->
 
                     <StackPanel
@@ -213,20 +217,20 @@
                         HorizontalAlignment="Right"
                         Margin="0,15,0,0">
 
+
+                        <!-- CANCEL -->
+
                         <Button
                             Content="Cancel"
-                            Style="{StaticResource SecondaryButton}"
-                            MinWidth="0"
-                            Height="34"
-                            Padding="12,0"
+                            Style="{StaticResource PeriodCancelButton}"
                             Click="Cancel_Click"/>
+
+
+                        <!-- APPLY -->
 
                         <Button
                             Content="Apply"
-                            Style="{StaticResource PrimaryButton}"
-                            MinWidth="0"
-                            Height="34"
-                            Padding="14,0"
+                            Style="{StaticResource PeriodApplyButton}"
                             Margin="8,0,0,0"
                             Click="Apply_Click"/>
 
