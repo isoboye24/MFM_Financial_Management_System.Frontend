@@ -1,12 +1,16 @@
 ﻿<Application x:Class="MFMFMSF.UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:MFMFMSF.UI.Converters"
              xmlns:local="clr-namespace:MFMFMSF.UI"
              StartupUri="MainWindow.xaml">
 
     <Application.Resources>
 
         <ResourceDictionary>
+
+            <converters:TruncateTextConverter x:Key="TruncateTextConverter"/>
+            <converters:RowNumberConverter x:Key="RowNumberConverter"/>
 
             <ResourceDictionary.MergedDictionaries>
 

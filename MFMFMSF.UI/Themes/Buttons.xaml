@@ -106,6 +106,41 @@
             </Setter.Value>
         </Setter>
 
+        <Style.Triggers>
+
+            <!-- MOUSE ENTER -->
+
+            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+
+                        <ColorAnimation
+                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                        To="#EEE9FF"
+                        Duration="0:0:0.12"/>
+
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+
+            <!-- MOUSE LEAVE -->
+
+            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+
+                        <ColorAnimation
+                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                        To="#FFFFFF"
+                        Duration="0:0:0.12"/>
+
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+        </Style.Triggers>
+
     </Style>
 
 

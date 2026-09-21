@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <!-- TEXT BOX -->
 
@@ -180,6 +181,124 @@
 
         <Setter Property="Margin"
                 Value="2,6,0,0"/>
+
+    </Style>
+
+
+    <!-- ===================================================== -->
+    <!-- TABLE SEARCH BOX -->
+    <!-- ===================================================== -->
+
+    <Style x:Key="TableSearchBox"
+       TargetType="TextBox">
+
+        <Setter Property="Height"
+            Value="38"/>
+
+        <Setter Property="MinHeight"
+            Value="38"/>
+
+        <Setter Property="Padding"
+            Value="34,0,12,0"/>
+
+        <Setter Property="FontFamily"
+            Value="Segoe UI"/>
+
+        <Setter Property="FontSize"
+            Value="11"/>
+
+        <Setter Property="Foreground"
+            Value="{DynamicResource PrimaryTextBrush}"/>
+
+        <Setter Property="Background"
+            Value="{DynamicResource SurfaceBrush}"/>
+
+        <Setter Property="BorderBrush"
+            Value="{DynamicResource BorderBrush}"/>
+
+        <Setter Property="BorderThickness"
+            Value="1"/>
+
+        <Setter Property="VerticalContentAlignment"
+            Value="Center"/>
+
+        <Setter Property="HorizontalContentAlignment"
+            Value="Left"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="TextBox">
+
+                    <Border
+                    x:Name="SearchBorder"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="8">
+
+                        <Grid>
+
+                            <!-- SEARCH ICON -->
+
+                            <materialDesign:PackIcon
+                            Kind="Magnify"
+                            Width="16"
+                            Height="16"
+                            Margin="12,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource MutedTextBrush}"
+                            IsHitTestVisible="False"/>
+
+
+                            <!-- TEXT -->
+
+                            <ScrollViewer
+                            x:Name="PART_ContentHost"
+                            Margin="0"
+                            VerticalAlignment="Center"/>
+
+                        </Grid>
+
+                    </Border>
+
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- FOCUS -->
+
+                        <Trigger Property="IsKeyboardFocusWithin"
+                             Value="True">
+
+                            <Setter
+                            TargetName="SearchBorder"
+                            Property="BorderBrush"
+                            Value="{DynamicResource PrimaryBrush}"/>
+
+                        </Trigger>
+
+
+                        <!-- DISABLED -->
+
+                        <Trigger Property="IsEnabled"
+                             Value="False">
+
+                            <Setter
+                            TargetName="SearchBorder"
+                            Property="Opacity"
+                            Value="0.6"/>
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
 
     </Style>
 
