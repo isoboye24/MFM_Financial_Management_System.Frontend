@@ -199,7 +199,7 @@
                             Style="{StaticResource FormLabel}"/>
 
                             <DatePicker
-                            SelectedDate="{Binding GivingDate,
+                            SelectedDate="{Binding ExpenditureDate,
                                                     RelativeSource={RelativeSource AncestorType=UserControl}}"
                              Style="{StaticResource FormDatePicker}"/>
 

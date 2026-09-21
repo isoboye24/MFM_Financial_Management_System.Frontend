@@ -38,7 +38,7 @@
                     VerticalAlignment="Top"
                     Cursor="Hand"
                     Click="BackButton_Click"
-                    Style="{StaticResource BackButton}"
+                    Style="{DynamicResource  BackButton}"
                     ToolTip="Back">
 
                 <materialDesign:PackIcon

@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Expenditures.ViewModels
 {
-    public class CreateExpenditureViewModel
+    public class CreateExpenditureViewModel : INotifyPropertyChanged
     {
         private readonly IExpenditureService _expenditureService;
 
@@ -65,7 +65,7 @@ namespace MFMFMSF.UI.Features.Expenditures.ViewModels
 
 
         // =====================================================
-        // SAVE GIVING
+        // SAVE EXPENDITURE
         // =====================================================
 
         private async Task SaveExpenditureAsync()
