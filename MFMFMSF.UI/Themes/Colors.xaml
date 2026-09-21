@@ -26,4 +26,22 @@
     <SolidColorBrush x:Key="WarningOrange"
                      Color="#FF9D2E"/>
 
+
+    <!-- Sidebar -->
+    <SolidColorBrush x:Key="SidebarBackgroundBrush"
+                 Color="#171B45"/>
+
+    <SolidColorBrush x:Key="SidebarTextBrush"
+                 Color="#FFFFFF"/>
+
+    <SolidColorBrush x:Key="SidebarIconBrush"
+                 Color="#FFFFFF"/>
+
+    <SolidColorBrush x:Key="SidebarActiveBrush"
+                 Color="#5B4CF3"/>
+
+
+    <SolidColorBrush x:Key="SidebarHoverBrush"
+                 Color="#2A2F63"/>
+
 </ResourceDictionary>

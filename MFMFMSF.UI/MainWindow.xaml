@@ -6,7 +6,7 @@
     ResizeMode="CanResize"
     WindowState="Normal"
     WindowStartupLocation="CenterScreen"
-    Background="#F5F7FB">
+    Background="{DynamicResource AppBackgroundBrush}">
 
     <Grid>
 

@@ -3,11 +3,12 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Background="#171B45">
+             Background="{DynamicResource SidebarBackgroundBrush}">
 
     <Grid>
 
         <Grid.RowDefinitions>
+
             <!-- Logo -->
             <RowDefinition Height="90"/>
 
@@ -16,129 +17,186 @@
 
             <!-- User -->
             <RowDefinition Height="90"/>
+
         </Grid.RowDefinitions>
 
-        <!-- ========================= -->
-        <!-- Church Name -->
-        <!-- ========================= -->
 
-        <StackPanel Grid.Row="0"
-                    Orientation="Horizontal"
-                    VerticalAlignment="Center"
-                    Margin="20">
+        <!-- ===================================================== -->
+        <!-- CHURCH HEADER -->
+        <!-- ===================================================== -->
 
-            <Border Width="45"
-                    Height="45"
-                    Background="White"
-                    CornerRadius="10">
+        <StackPanel
+            Grid.Row="0"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            Margin="20">
 
-                <TextBlock Text="✝"
-                           FontSize="24"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
+            <!-- CHURCH LOGO -->
+
+            <Border
+                Width="45"
+                Height="45"
+                Background="{DynamicResource SurfaceBrush}"
+                CornerRadius="10">
+
+                <TextBlock
+                    Text="✝"
+                    FontSize="24"
+                    Foreground="{DynamicResource PrimaryTextBrush}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
 
             </Border>
 
-            <StackPanel Margin="15,0,0,0"
-                        VerticalAlignment="Center">
 
-                <TextBlock Text="Mountain of "
-                           Foreground="White"
-                           FontWeight="Bold"
-                           FontSize="18"/>
+            <!-- CHURCH NAME -->
 
-                <TextBlock Text="Fire Ministries"
-                           Foreground="White"
-                           FontSize="18"/>
+            <StackPanel
+                Margin="15,0,0,0"
+                VerticalAlignment="Center">
+
+                <TextBlock
+                    Text="Mountain of "
+                    Foreground="{DynamicResource SidebarTextBrush}"
+                    FontWeight="Bold"
+                    FontSize="18"/>
+
+                <TextBlock
+                    Text="Fire Ministries"
+                    Foreground="{DynamicResource SidebarTextBrush}"
+                    FontSize="18"/>
 
             </StackPanel>
 
         </StackPanel>
 
-        <!-- Navigations -->
 
-        <ScrollViewer Grid.Row="1"
-              VerticalScrollBarVisibility="Auto"
-              HorizontalScrollBarVisibility="Disabled"
-              CanContentScroll="True">
+        <!-- ===================================================== -->
+        <!-- NAVIGATION -->
+        <!-- ===================================================== -->
 
-            <StackPanel x:Name="NavigationMenu"
+        <ScrollViewer
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled"
+            CanContentScroll="True">
+
+            <StackPanel
+                x:Name="NavigationMenu"
                 Margin="0,20,0,20">
 
-                <controls:SidebarMenuItem
-            Title="Dashboard"
-            Icon="ViewDashboard"
-            Command="{Binding NavigateDashboardCommand}"
-            IsSelected="True"
-            Click="SidebarMenuItem_Click"/>
+
+                <!-- DASHBOARD -->
 
                 <controls:SidebarMenuItem
-            Title="Church Services"
-            Icon="MonitorAccount"
-            Command="{Binding NavigateMeetingsCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Dashboard"
+                    Icon="ViewDashboard"
+                    Command="{Binding NavigateDashboardCommand}"
+                    IsSelected="True"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- CHURCH SERVICES -->
 
                 <controls:SidebarMenuItem
-            Title="Offerings"
-            Icon="Gift"
-            Command="{Binding NavigateOfferingsCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Church Services"
+                    Icon="MonitorAccount"
+                    Command="{Binding NavigateMeetingsCommand}"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- OFFERINGS -->
 
                 <controls:SidebarMenuItem
-            Title="Tithes"
-            Icon="HeartOutline"
-            Command="{Binding NavigateTithesCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Offerings"
+                    Icon="Gift"
+                    Command="{Binding NavigateOfferingsCommand}"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- TITHES -->
 
                 <controls:SidebarMenuItem
-            Title="Seeds"
-            Icon="Sprout"
-            Command="{Binding NavigateSeedsCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Tithes"
+                    Icon="HeartOutline"
+                    Command="{Binding NavigateTithesCommand}"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- SEEDS -->
 
                 <controls:SidebarMenuItem
-            Title="Other Income"
-            Icon="CashPlus"
-            Command="{Binding NavigateOtherIncomeCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Seeds"
+                    Icon="Sprout"
+                    Command="{Binding NavigateSeedsCommand}"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- OTHER INCOME -->
 
                 <controls:SidebarMenuItem
-            Title="Expenditures"
-            Icon="CashMinus"
-            Command="{Binding NavigateExpendituresCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Other Income"
+                    Icon="CashPlus"
+                    Command="{Binding NavigateOtherIncomeCommand}"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- EXPENDITURES -->
 
                 <controls:SidebarMenuItem
-            Title="Projects"
-            Icon="OfficeBuilding"
-            Command="{Binding NavigateProjectsCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Expenditures"
+                    Icon="CashMinus"
+                    Command="{Binding NavigateExpendituresCommand}"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- PROJECTS -->
 
                 <controls:SidebarMenuItem
-            Title="Workers"
-            Icon="AccountGroup"
-            Command="{Binding NavigateWorkersCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Projects"
+                    Icon="OfficeBuilding"
+                    Command="{Binding NavigateProjectsCommand}"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- WORKERS -->
 
                 <controls:SidebarMenuItem
-            Title="Reports"
-            Icon="ChartBar"
-            Command="{Binding NavigateReportsCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Workers"
+                    Icon="AccountGroup"
+                    Command="{Binding NavigateWorkersCommand}"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- REPORTS -->
 
                 <controls:SidebarMenuItem
-            Title="Settings"
-            Icon="Cog"
-                     Command="{Binding NavigateSettingsCommand}"
-            Click="SidebarMenuItem_Click"/>
+                    Title="Reports"
+                    Icon="ChartBar"
+                    Command="{Binding NavigateReportsCommand}"
+                    Click="SidebarMenuItem_Click"/>
+
+
+                <!-- SETTINGS -->
+
+                <controls:SidebarMenuItem
+                    Title="Settings"
+                    Icon="Cog"
+                    Command="{Binding NavigateSettingsCommand}"
+                    Click="SidebarMenuItem_Click"/>
 
             </StackPanel>
 
         </ScrollViewer>
 
-        <!-- User Profile will go here -->
 
-        <Border Grid.Row="2"/>
+        <!-- ===================================================== -->
+        <!-- USER PROFILE -->
+        <!-- ===================================================== -->
+
+        <Border
+            Grid.Row="2"
+            Background="Transparent"/>
 
     </Grid>
 

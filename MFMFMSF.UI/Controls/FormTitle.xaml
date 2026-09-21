@@ -19,65 +19,21 @@
         <Button Grid.Column="0"
                 Width="34"
                 Height="34"
+                MinWidth="34"
                 Margin="0,0,15,0"
+                Padding="0"
                 VerticalAlignment="Top"
                 Cursor="Hand"
                 Command="{Binding BackCommand,
                                   RelativeSource={RelativeSource AncestorType=UserControl}}"
-                Background="White"
-                Foreground="#303653"
-                BorderBrush="#E8EAF2"
-                BorderThickness="1"
+                Style="{StaticResource SecondaryButton}"
                 ToolTip="Back">
 
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-
-                    <Border x:Name="BackBorder"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="8">
-
-                        <materialDesign:PackIcon
-                            Kind="ArrowLeft"
-                            Width="17"
-                            Height="17"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>
-
-                    </Border>
-
-                    <ControlTemplate.Triggers>
-
-                        <!-- Hover -->
-                        <Trigger Property="IsMouseOver"
-                                 Value="True">
-
-                            <Setter TargetName="BackBorder"
-                                    Property="Background"
-                                    Value="#F1F0FF"/>
-
-                            <Setter TargetName="BackBorder"
-                                    Property="BorderBrush"
-                                    Value="#5B4CF3"/>
-
-                        </Trigger>
-
-                        <!-- Pressed -->
-                        <Trigger Property="IsPressed"
-                                 Value="True">
-
-                            <Setter TargetName="BackBorder"
-                                    Property="Background"
-                                    Value="#E4E1FF"/>
-
-                        </Trigger>
-
-                    </ControlTemplate.Triggers>
-
-                </ControlTemplate>
-            </Button.Template>
+            <materialDesign:PackIcon
+                Kind="ArrowLeft"
+                Width="17"
+                Height="17"
+                Style="{StaticResource Icon}"/>
 
         </Button>
 
@@ -88,7 +44,10 @@
 
         <StackPanel Grid.Column="1">
 
+
+            <!-- ================================================= -->
             <!-- BREADCRUMB -->
+            <!-- ================================================= -->
 
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center">
@@ -96,46 +55,41 @@
                 <TextBlock
                     Text="{Binding BreadcrumbText,
                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    FontSize="10"
-                    Foreground="#8A90A6"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource FormBreadcrumb}"/>
 
                 <TextBlock
                     Text="›"
+                    Style="{StaticResource FormBreadcrumb}"
                     FontSize="15"
-                    Foreground="#8A90A6"
-                    Margin="7,-1,7,0"
-                    VerticalAlignment="Center"/>
+                    Margin="7,-1,7,0"/>
 
                 <TextBlock
                     Text="{Binding CurrentPageText,
                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    FontSize="10"
-                    FontWeight="SemiBold"
-                    Foreground="#151936"
-                    VerticalAlignment="Center"/>
+                    Style="{StaticResource FormBreadcrumbCurrent}"/>
 
             </StackPanel>
 
 
+            <!-- ================================================= -->
             <!-- FORM TITLE -->
+            <!-- ================================================= -->
 
             <TextBlock
                 Text="{Binding Title,
                                RelativeSource={RelativeSource AncestorType=UserControl}}"
-                FontSize="20"
-                FontWeight="SemiBold"
-                Foreground="#101432"
+                Style="{StaticResource FormTitle}"
                 Margin="0,8,0,0"/>
 
 
+            <!-- ================================================= -->
             <!-- DESCRIPTION -->
+            <!-- ================================================= -->
 
             <TextBlock
                 Text="{Binding Description,
                                RelativeSource={RelativeSource AncestorType=UserControl}}"
-                FontSize="10"
-                Foreground="#68708A"
+                Style="{StaticResource FormDescription}"
                 Margin="0,4,0,0"/>
 
         </StackPanel>

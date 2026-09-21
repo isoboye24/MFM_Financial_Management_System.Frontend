@@ -3,12 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
-    <Border Background="White"
-            BorderBrush="#E8EAF2"
-            BorderThickness="1"
-            CornerRadius="7"
-            Cursor="Hand"
-            Padding="5">
+    <Border Style="{StaticResource QuickActionCardWithoutBackground}">
 
         <Grid>
 
@@ -23,9 +18,9 @@
             <materialDesign:PackIcon
                 Grid.Row="0"
                 Kind="{Binding Icon,
-                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Foreground="{Binding IconForeground,
-                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                     RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Width="18"
                 Height="18"
                 HorizontalAlignment="Center"
@@ -37,9 +32,10 @@
             <TextBlock
                 Grid.Row="1"
                 Text="{Binding Title,
-                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                FontFamily="Segoe UI"
                 FontSize="10"
-                Foreground="#151936"
+                Foreground="{DynamicResource PrimaryTextBrush}"
                 HorizontalAlignment="Center"
                 TextAlignment="Center"
                 TextWrapping="Wrap"

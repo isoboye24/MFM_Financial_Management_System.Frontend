@@ -4,10 +4,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Background="Transparent">
 
-    <Border Background="White"
-            BorderBrush="#E8EAF2"
-            BorderThickness="1"
-            CornerRadius="8">
+    <Border Style="{StaticResource SmallCard}">
 
         <Grid>
 
@@ -22,7 +19,7 @@
             <!-- ================================================= -->
 
             <Border Grid.Row="0"
-                    Background="#F4F0FF"
+                    Background="{DynamicResource PrimaryHoverBackgroundBrush}"
                     CornerRadius="8,8,0,0">
 
                 <Grid Margin="12,8">
@@ -56,28 +53,31 @@
                                 Margin="10,0,0,0"
                                 VerticalAlignment="Center">
 
-                        <TextBlock Text="{Binding FullName,
-                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                   FontSize="12"
-                                   FontWeight="SemiBold"
-                                   Foreground="#151936"/>
+                        <TextBlock
+                            Text="{Binding FullName,
+                                   RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            Style="{StaticResource CardTitle}"
+                            FontSize="12"/>
 
-                        <TextBlock Text="{Binding MemberId,
-                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                   Margin="0,2,0,0"
-                                   FontSize="8"
-                                   Foreground="#5B4CF3"/>
+                        <TextBlock
+                            Text="{Binding MemberId,
+                                   RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            Margin="0,2,0,0"
+                            FontSize="8"
+                            Foreground="{DynamicResource PrimaryBrush}"/>
 
-                        <Border Background="#DDF5EA"
-                                CornerRadius="5"
-                                Padding="6,2"
-                                HorizontalAlignment="Left"
-                                Margin="0,3,0,0">
+                        <Border
+                            Background="{DynamicResource PrimaryPressedBackgroundBrush}"
+                            CornerRadius="5"
+                            Padding="6,2"
+                            HorizontalAlignment="Left"
+                            Margin="0,3,0,0">
 
-                            <TextBlock Text="{Binding Status,
-                                        RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                       FontSize="7"
-                                       Foreground="#0DAA68"/>
+                            <TextBlock
+                                Text="{Binding Status,
+                                       RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                FontSize="7"
+                                Foreground="{DynamicResource SuccessBrush}"/>
 
                         </Border>
 
@@ -117,26 +117,26 @@
                     <materialDesign:PackIcon
                         Grid.Column="0"
                         Kind="PhoneOutline"
-                        Width="13"
-                        Height="13"
-                        Foreground="#68708A"
+                        Style="{StaticResource SmallIcon}"
                         VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="1"
-                               Text="{Binding Phone,
-                                   RelativeSource={RelativeSource AncestorType=UserControl}}"
-                               FontSize="8"
-                               Foreground="#303552"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Left"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Text="{Binding Phone,
+                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Style="{StaticResource TableText}"
+                        FontSize="8"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
 
-                    <TextBlock Grid.Column="2"
-                               Text="{Binding PhoneLabel,
-                                   RelativeSource={RelativeSource AncestorType=UserControl}}"
-                               FontSize="8"
-                               Foreground="#68708A"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Right"/>
+                    <TextBlock
+                        Grid.Column="2"
+                        Text="{Binding PhoneLabel,
+                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Style="{StaticResource TableSecondaryText}"
+                        FontSize="8"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"/>
 
                 </Grid>
 
@@ -153,18 +153,17 @@
                     <materialDesign:PackIcon
                         Grid.Column="0"
                         Kind="EmailOutline"
-                        Width="13"
-                        Height="13"
-                        Foreground="#68708A"
+                        Style="{StaticResource SmallIcon}"
                         VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="1"
-                               Text="{Binding Email,
-                                   RelativeSource={RelativeSource AncestorType=UserControl}}"
-                               FontSize="8"
-                               Foreground="#303552"
-                               VerticalAlignment="Center"
-                               TextTrimming="CharacterEllipsis"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Text="{Binding Email,
+                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Style="{StaticResource TableText}"
+                        FontSize="8"
+                        VerticalAlignment="Center"
+                        TextTrimming="CharacterEllipsis"/>
 
                 </Grid>
 
@@ -182,25 +181,25 @@
                     <materialDesign:PackIcon
                         Grid.Column="0"
                         Kind="CalendarOutline"
-                        Width="13"
-                        Height="13"
-                        Foreground="#68708A"
+                        Style="{StaticResource SmallIcon}"
                         VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="1"
-                               Text="{Binding JoinedDate,
-                                   RelativeSource={RelativeSource AncestorType=UserControl}}"
-                               FontSize="8"
-                               Foreground="#303552"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Left"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Text="{Binding JoinedDate,
+                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Style="{StaticResource TableText}"
+                        FontSize="8"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
 
-                    <TextBlock Grid.Column="2"
-                               Text="Joined Date"
-                               FontSize="8"
-                               Foreground="#68708A"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Right"/>
+                    <TextBlock
+                        Grid.Column="2"
+                        Text="Joined Date"
+                        Style="{StaticResource TableSecondaryText}"
+                        FontSize="8"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"/>
 
                 </Grid>
 
@@ -218,27 +217,29 @@
                     <materialDesign:PackIcon
                         Grid.Column="0"
                         Kind="MapMarkerOutline"
-                        Width="13"
-                        Height="13"
-                        Foreground="#68708A"
+                        Style="{StaticResource SmallIcon}"
                         VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="1"
-                               Text="{Binding Address,
-                                   RelativeSource={RelativeSource AncestorType=UserControl}}"
-                               FontSize="8"
-                               Foreground="#303552"
-                               VerticalAlignment="Center"
-                               TextTrimming="CharacterEllipsis"
-                               HorizontalAlignment="Left"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Text="{Binding Address,
+                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Style="{StaticResource TableText}"
+                        FontSize="8"
+                        VerticalAlignment="Center"
+                        TextTrimming="CharacterEllipsis"
+                        HorizontalAlignment="Left"/>
 
-                    <TextBlock Grid.Column="2"
-                               Text="Address"
-                               FontSize="8"
-                               Foreground="#68708A"
-                               VerticalAlignment="Center"/>
+                    <TextBlock
+                        Grid.Column="2"
+                        Text="Address"
+                        Style="{StaticResource TableSecondaryText}"
+                        FontSize="8"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"/>
 
                 </Grid>
+
 
                 <!-- MARITAL STATUS -->
 
@@ -253,25 +254,25 @@
                     <materialDesign:PackIcon
                         Grid.Column="0"
                         Kind="CardsHeartOutline"
-                        Width="13"
-                        Height="13"
-                        Foreground="#68708A"
+                        Style="{StaticResource SmallIcon}"
                         VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="1"
-                       Text="{Binding MaritalStatus,
-                           RelativeSource={RelativeSource AncestorType=UserControl}}"
-                       FontSize="8"
-                       Foreground="#303552"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Text="{Binding MaritalStatus,
+                               RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Style="{StaticResource TableText}"
+                        FontSize="8"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
 
-                    <TextBlock Grid.Column="2"
-                       Text="Marital Status"
-                       FontSize="8"
-                       Foreground="#68708A"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Right"/>
+                    <TextBlock
+                        Grid.Column="2"
+                        Text="Marital Status"
+                        Style="{StaticResource TableSecondaryText}"
+                        FontSize="8"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"/>
 
                 </Grid>
 

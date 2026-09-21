@@ -12,22 +12,17 @@
 
         <!-- ================= TITLE ================= -->
 
-        <TextBlock Text="{Binding Title,
-                                  ElementName=Root}"
-                   FontFamily="Segoe UI"
-                   FontSize="28"
-                   FontWeight="SemiBold"
-                   Foreground="#101828"/>
+        <TextBlock
+            Text="{Binding Title, ElementName=Root}"
+            Style="{StaticResource PageTitle}"/>
 
 
         <!-- ================= DESCRIPTION ================= -->
 
-        <TextBlock Text="{Binding Description,
-                                  ElementName=Root}"
-                   Margin="0,8,0,0"
-                   FontFamily="Segoe UI"
-                   FontSize="14"
-                   Foreground="#667085"/>
+        <TextBlock
+            Text="{Binding Description, ElementName=Root}"
+            Style="{StaticResource PageDescription}"
+            Margin="0,8,0,0"/>
 
     </StackPanel>
 

@@ -6,60 +6,109 @@
              Cursor="Hand"
              Height="55">
 
-    <Border x:Name="MenuBorder"
+    <Border
+        x:Name="MenuBorder"
         Margin="12,4"
         CornerRadius="10"
         MouseLeftButtonUp="MenuBorder_MouseLeftButtonUp">
 
         <Border.Style>
+
             <Style TargetType="Border">
-                <Setter Property="Background" Value="Transparent"/>
+
+                <!-- Normal -->
+
+                <Setter
+                    Property="Background"
+                    Value="Transparent"/>
+
 
                 <Style.Triggers>
 
-                    <!-- Hover -->
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#2A2F63"/>
+                    <!-- ========================= -->
+                    <!-- HOVER -->
+                    <!-- ========================= -->
+
+                    <Trigger
+                        Property="IsMouseOver"
+                        Value="True">
+
+                        <Setter
+                            Property="Background"
+                            Value="{DynamicResource SidebarHoverBrush}"/>
+
                     </Trigger>
 
-                    <!-- Selected -->
-                    <DataTrigger Binding="{Binding IsSelected, ElementName=Root}"
-                             Value="True">
-                        <Setter Property="Background" Value="#5B4CF3"/>
+
+                    <!-- ========================= -->
+                    <!-- SELECTED -->
+                    <!-- ========================= -->
+
+                    <DataTrigger
+                        Binding="{Binding IsSelected,
+                                          ElementName=Root}"
+                        Value="True">
+
+                        <Setter
+                            Property="Background"
+                            Value="{DynamicResource SidebarActiveBrush}"/>
+
                     </DataTrigger>
 
                 </Style.Triggers>
+
             </Style>
+
         </Border.Style>
+
+
+        <!-- ========================= -->
+        <!-- CONTENT -->
+        <!-- ========================= -->
 
         <Grid Margin="15,0">
 
             <Grid.ColumnDefinitions>
+
                 <ColumnDefinition Width="30"/>
+
                 <ColumnDefinition Width="*"/>
+
             </Grid.ColumnDefinitions>
 
-            <!-- Icon -->
+
+            <!-- ========================= -->
+            <!-- ICON -->
+            <!-- ========================= -->
+
             <materialDesign:PackIcon
                 Grid.Column="0"
                 Width="22"
                 Height="22"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Foreground="White"
-                Kind="{Binding Icon, ElementName=Root}" />
+                Foreground="{DynamicResource SidebarIconBrush}"
+                Kind="{Binding Icon,
+                               ElementName=Root}"/>
 
-            <!-- Title -->
+
+            <!-- ========================= -->
+            <!-- TITLE -->
+            <!-- ========================= -->
+
             <TextBlock
                 Grid.Column="1"
                 Margin="15,0,0,0"
                 VerticalAlignment="Center"
+                FontFamily="Segoe UI"
                 FontSize="16"
                 FontWeight="SemiBold"
-                Foreground="White"
-                Text="{Binding Title, ElementName=Root}" />
+                Foreground="{DynamicResource SidebarTextBrush}"
+                Text="{Binding Title,
+                               ElementName=Root}"/>
 
         </Grid>
 
     </Border>
+
 </UserControl>
