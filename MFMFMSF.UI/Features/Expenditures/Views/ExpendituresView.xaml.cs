@@ -20,6 +20,7 @@ namespace MFMFMSF.UI.Features.Expenditures.Views
             InitializeComponent();
 
             _viewModel = new ExpendituresViewModel(navigationService, expenditureService);
+
             DataContext = _viewModel;
 
             //ExpendituresTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;

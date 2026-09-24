@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MFMFMSF.Core.Models.Expenditures;
+using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Expenditures.Controls
 {
@@ -24,5 +14,40 @@ namespace MFMFMSF.UI.Features.Expenditures.Controls
         {
             InitializeComponent();
         }
+
+        // =====================================================
+        // EXPENDITURES
+        // =====================================================
+
+        public IReadOnlyList<ExpendituresByMonthAndYear>? Expenditures
+        {
+            get => (IReadOnlyList<ExpendituresByMonthAndYear>?)GetValue(ExpendituresProperty);
+            set => SetValue(ExpendituresProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpendituresProperty =
+            DependencyProperty.Register(
+                nameof(Expenditures),
+                typeof(IReadOnlyList<ExpendituresByMonthAndYear>),
+                typeof(ExpendituresTable),
+                new PropertyMetadata(null));
+
+
+        // =====================================================
+        // NAVIGATION SERVICE
+        // =====================================================
+
+        public INavigationService? NavigationService
+        {
+            get => (INavigationService?)GetValue(NavigationServiceProperty);
+            set => SetValue(NavigationServiceProperty, value);
+        }
+
+        public static readonly DependencyProperty NavigationServiceProperty =
+            DependencyProperty.Register(
+                nameof(NavigationService),
+                typeof(INavigationService),
+                typeof(ExpendituresTable),
+                new PropertyMetadata(null));
     }
 }

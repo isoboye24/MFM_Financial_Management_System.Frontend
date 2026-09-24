@@ -55,7 +55,9 @@
                     Height="Auto"                       
                     CornerRadius="15">
 
-                    <lvc2:ExpendituresTable/>
+                    <lvc2:ExpendituresTable
+                        Expenditures="{Binding Expenditures}"
+                        NavigationService="{Binding NavigationService}"/>
 
                 </Border>
 

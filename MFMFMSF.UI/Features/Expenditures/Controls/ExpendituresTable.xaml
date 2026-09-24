@@ -1,5 +1,5 @@
 ﻿<UserControl x:Class="MFMFMSF.UI.Features.Expenditures.Controls.ExpendituresTable"
-         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
@@ -26,7 +26,7 @@
             <!-- ================================================= -->
 
             <Grid Grid.Row="0"
-                Margin="0,0,0,12">
+            Margin="0,0,0,12">
 
                 <Grid.ColumnDefinitions>
 
@@ -44,53 +44,53 @@
                 <!-- ================================================ -->
 
                 <Grid Grid.Column="0"
-                    Width="400"
-                    Height="38"
-                    HorizontalAlignment="Left">
+      Width="400"
+      Height="38"
+      HorizontalAlignment="Left">
 
                     <Border
-                        Background="{DynamicResource SurfaceBrush}"
-                        BorderBrush="{DynamicResource BorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="8">
+        Background="{DynamicResource SurfaceBrush}"
+        BorderBrush="{DynamicResource BorderBrush}"
+        BorderThickness="1"
+        CornerRadius="8">
 
                         <Grid>
 
                             <!-- SEARCH ICON -->
 
                             <materialDesign:PackIcon
-                                Kind="Magnify"
-                                Width="16"
-                                Height="16"
-                                Margin="12,0,0,0"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Foreground="{DynamicResource MutedTextBrush}"
-                                IsHitTestVisible="False"/>
+                Kind="Magnify"
+                Width="16"
+                Height="16"
+                Margin="12,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Foreground="{DynamicResource MutedTextBrush}"
+                IsHitTestVisible="False"/>
 
 
                             <!-- SEARCH TEXTBOX -->
 
                             <TextBox
-                                Padding="34,0,12,0"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                FontFamily="Segoe UI"
-                                FontSize="11"
-                                Foreground="{DynamicResource PrimaryTextBrush}"
-                                VerticalContentAlignment="Center"/>
+                Padding="34,0,12,0"
+                Background="Transparent"
+                BorderThickness="0"
+                FontFamily="Segoe UI"
+                FontSize="11"
+                Foreground="{DynamicResource PrimaryTextBrush}"
+                VerticalContentAlignment="Center"/>
 
 
                             <!-- PLACEHOLDER -->
 
                             <TextBlock
-                                Text="Search transactions..."
-                                Margin="36,0,12,0"
-                                VerticalAlignment="Center"
-                                Foreground="{DynamicResource MutedTextBrush}"
-                                FontFamily="Segoe UI"
-                                FontSize="11"
-                                IsHitTestVisible="False"/>
+                Text="Search expenditure..."
+                Margin="36,0,12,0"
+                VerticalAlignment="Center"
+                Foreground="{DynamicResource MutedTextBrush}"
+                FontFamily="Segoe UI"
+                FontSize="11"
+                IsHitTestVisible="False"/>
 
                         </Grid>
 
@@ -104,13 +104,13 @@
                 <!-- ================================================ -->
 
                 <Button
-                    Grid.Column="1"
-                    Width="90"
-                    Height="38"
-                    Margin="8,0,0,0"
-                    Content="Clear"
-                    Style="{StaticResource SecondaryButton}"
-                    Padding="12,0"/>
+    Grid.Column="1"
+    Width="90"
+    Height="38"
+    Margin="8,0,0,0"
+    Content="Clear"
+    Style="{StaticResource SecondaryButton}"
+    Padding="12,0"/>
 
             </Grid>
 
@@ -130,15 +130,14 @@
                         <!-- NUMBER -->
                         <ColumnDefinition Width="45"/>
 
-                        <!-- Amount -->
+                        <!-- AMOUNT -->
                         <ColumnDefinition Width="1.5*"/>
 
-                        <!-- Summary -->
+                        <!-- SUMMARY -->
                         <ColumnDefinition Width="2.5*"/>
 
-                        <!-- Date -->
+                        <!-- DATE -->
                         <ColumnDefinition Width="1.3*"/>
-
 
                         <!-- ACTIONS -->
                         <ColumnDefinition Width="1.2*"/>
@@ -149,46 +148,46 @@
                     <!-- NUMBER -->
 
                     <TextBlock
-                        Grid.Column="0"
-                        Text="#"
-                        Style="{StaticResource TableHeader}"
-                        HorizontalAlignment="Center"/>
+                    Grid.Column="0"
+                    Text="#"
+                    Style="{StaticResource TableHeader}"
+                    HorizontalAlignment="Center"/>
 
 
                     <!-- AMOUNT -->
 
                     <TextBlock
-                        Grid.Column="1"
-                        Text="Amount"
-                        Style="{StaticResource TableHeader}"
-                        Margin="8,0"/>
+                    Grid.Column="1"
+                    Text="Amount"
+                    Style="{StaticResource TableHeader}"
+                    Margin="8,0"/>
 
 
                     <!-- SUMMARY -->
 
                     <TextBlock
-                        Grid.Column="2"
-                        Text="Summary"
-                        Style="{StaticResource TableHeader}"
-                        Margin="8,0"/>
+                    Grid.Column="2"
+                    Text="Summary"
+                    Style="{StaticResource TableHeader}"
+                    Margin="8,0"/>
 
-
+                    
                     <!-- DATE -->
 
                     <TextBlock
-                        Grid.Column="3"
-                        Text="Date"
-                        Style="{StaticResource TableHeader}"
-                        HorizontalAlignment="Center"/>
+                    Grid.Column="3"
+                    Text="Date"
+                    Style="{StaticResource TableHeader}"
+                    HorizontalAlignment="Center"/>
 
 
                     <!-- ACTIONS -->
 
                     <TextBlock
-                        Grid.Column="4"
-                        Text="Actions"
-                        Style="{StaticResource TableHeader}"
-                        HorizontalAlignment="Center"/>
+                    Grid.Column="4"
+                    Text="Actions"
+                    Style="{StaticResource TableHeader}"
+                    HorizontalAlignment="Center"/>
 
                 </Grid>
 
@@ -222,15 +221,14 @@
                                         <!-- NUMBER -->
                                         <ColumnDefinition Width="45"/>
 
-                                        <!-- Amount -->
+                                        <!-- AMOUNT -->
                                         <ColumnDefinition Width="1.5*"/>
 
-                                        <!-- Summary -->
+                                        <!-- SUMMARY -->
                                         <ColumnDefinition Width="2.5*"/>
 
-                                        <!-- Date -->
+                                        <!-- DATE -->
                                         <ColumnDefinition Width="1.3*"/>
-
 
                                         <!-- ACTIONS -->
                                         <ColumnDefinition Width="1.2*"/>
@@ -252,68 +250,34 @@
 
 
                                     <!-- ================================= -->
-                                    <!-- CATEGORY -->
+                                    <!-- AMOUNT -->
                                     <!-- ================================= -->
 
                                     <TextBlock
                                     Grid.Column="1"
-                                    Text="{Binding MeetingCategory}"
+                                    Text="{Binding Amount}"
                                     Style="{StaticResource TableText}"
                                     Margin="8,0"/>
 
 
                                     <!-- ================================= -->
-                                    <!-- TITLE -->
+                                    <!-- SUMMARY -->
                                     <!-- ================================= -->
 
                                     <TextBlock
                                     Grid.Column="2"
-                                    Text="{Binding MessageTitle,
+                                    Text="{Binding Summary,
                                                    Converter={StaticResource TruncateTextConverter},
                                                    ConverterParameter=25}"
                                     Style="{StaticResource TableText}"
                                     Margin="8,0"/>
-
-
-                                    <!-- ================================= -->
-                                    <!-- MALE -->
-                                    <!-- ================================= -->
-
-                                    <TextBlock
-                                    Grid.Column="3"
-                                    Text="{Binding NoOfMaleAttendance}"
-                                    Style="{StaticResource TableText}"
-                                    HorizontalAlignment="Center"/>
-
-
-                                    <!-- ================================= -->
-                                    <!-- FEMALE -->
-                                    <!-- ================================= -->
-
-                                    <TextBlock
-                                    Grid.Column="4"
-                                    Text="{Binding NoOfFemaleAttendance}"
-                                    Style="{StaticResource TableText}"
-                                    HorizontalAlignment="Center"/>
-
-
-                                    <!-- ================================= -->
-                                    <!-- CHILDREN -->
-                                    <!-- ================================= -->
-
-                                    <TextBlock
-                                    Grid.Column="5"
-                                    Text="{Binding NoOfChildrenAttendance}"
-                                    Style="{StaticResource TableText}"
-                                    HorizontalAlignment="Center"/>
-
 
                                     <!-- ================================= -->
                                     <!-- DATE -->
                                     <!-- ================================= -->
 
                                     <TextBlock
-                                    Grid.Column="6"
+                                    Grid.Column="3"
                                     Text="{Binding Date}"
                                     Style="{StaticResource TableText}"
                                     HorizontalAlignment="Center"/>
@@ -324,7 +288,7 @@
                                     <!-- ================================= -->
 
                                     <StackPanel
-                                    Grid.Column="7"
+                                    Grid.Column="4"
                                     Orientation="Horizontal"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center">
@@ -332,7 +296,7 @@
 
                                         <!-- VIEW -->
 
-                                        <Button
+                                        <!--<Button
                                         Style="{DynamicResource TableActionButton}"
                                         Command="{Binding DataContext.ViewMeetingCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
@@ -344,12 +308,12 @@
                                             Width="14"
                                             Height="14"/>
 
-                                        </Button>
+                                        </Button>-->
 
 
                                         <!-- EDIT -->
 
-                                        <Button
+                                        <!--<Button
                                         Style="{DynamicResource TableActionButton}"
                                         Command="{Binding DataContext.EditMeetingCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
@@ -361,12 +325,12 @@
                                             Width="14"
                                             Height="14"/>
 
-                                        </Button>
+                                        </Button>-->
 
 
                                         <!-- DELETE -->
 
-                                        <Button
+                                        <!--<Button
                                         Style="{DynamicResource TableDeleteActionButton}"
                                         Command="{Binding DataContext.DeleteMeetingCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
@@ -378,7 +342,7 @@
                                             Width="14"
                                             Height="14"/>
 
-                                        </Button>
+                                        </Button>-->
 
                                     </StackPanel>
 
@@ -397,5 +361,6 @@
         </Grid>
 
     </Border>
+
 
 </UserControl>

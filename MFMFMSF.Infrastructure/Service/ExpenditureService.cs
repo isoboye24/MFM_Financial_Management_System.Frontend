@@ -33,7 +33,9 @@ namespace MFMFMSF.Infrastructure.Service
 
         public async Task<IReadOnlyList<ExpendituresByMonthAndYear>> GetByMonthAndYearAsync(int month, int year, int page, int recordsPerPage)
         {
-            var statistics = await _httpClient.GetFromJsonAsync<List<ExpendituresByMonthAndYear>>($"{Endpoint}/monthly/statistics?month={month}&year={year}");
+            var url = $"{Endpoint}/by-month-year" + $"?month={month}" + $"&year={year}" + $"&page={page}" + $"&recordsPerPage={recordsPerPage}";
+
+            var statistics = await _httpClient.GetFromJsonAsync<List<ExpendituresByMonthAndYear>>(url);
 
             return statistics ?? new List<ExpendituresByMonthAndYear>();
         }

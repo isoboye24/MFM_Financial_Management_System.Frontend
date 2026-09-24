@@ -5,7 +5,9 @@ using MFMFMSF.UI.Features.Expenditures.Views;
 using MFMFMSF.UI.Navigation;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Input;
+using static SkiaSharp.HarfBuzz.SKShaper;
 
 namespace MFMFMSF.UI.Features.Expenditures.ViewModels
 {
@@ -38,9 +40,18 @@ namespace MFMFMSF.UI.Features.Expenditures.ViewModels
         }
 
         public async Task LoadExpendituresAsync()
-        {            
-            //MonthlyExpendituresSatistics = await _expenditureService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
-            Expenditures = await _expenditureService.GetByMonthAndYearAsync(SelectedMonth, SelectedYear, 1, 10);
+        {
+            var result = await _expenditureService
+        .GetByMonthAndYearAsync(
+            SelectedMonth,
+            SelectedYear,
+            1,
+            10);
+
+    //MessageBox.Show(
+    //    $"Records received by WPF: {result.Count}");
+
+    Expenditures = result;
         }
 
 
