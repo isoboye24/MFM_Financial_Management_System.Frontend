@@ -6,5 +6,6 @@ namespace MFMFMSF.Core.Interfaces
     {
         Task CreateAsync(CreateExpenditureRequest request);
         Task<IReadOnlyList<ExpenditureListItem>> GetAllAsync();
+        Task<IReadOnlyList<ExpendituresByMonthAndYear>> GetByMonthAndYearAsync(int month, int year, int page, int recordsPerPage);
     }
 }

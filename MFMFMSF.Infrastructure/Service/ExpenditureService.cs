@@ -1,5 +1,7 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Expenditures;
+using MFMFMSF.Core.Models.Givings;
+using MFMFMSF.Core.Models.Meetings;
 using System.Net.Http.Json;
 
 namespace MFMFMSF.Infrastructure.Service
@@ -22,9 +24,18 @@ namespace MFMFMSF.Infrastructure.Service
             response.EnsureSuccessStatusCode();
         }
 
-        public Task<IReadOnlyList<ExpenditureListItem>> GetAllAsync()
+        public async Task<IReadOnlyList<ExpenditureListItem>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var expenditures = await _httpClient.GetFromJsonAsync<List<ExpenditureListItem>>($"{Endpoint}?Page=1&RecordsPerPage=100");
+
+            return expenditures ?? [];
+        }
+
+        public async Task<IReadOnlyList<ExpendituresByMonthAndYear>> GetByMonthAndYearAsync(int month, int year, int page, int recordsPerPage)
+        {
+            var statistics = await _httpClient.GetFromJsonAsync<List<ExpendituresByMonthAndYear>>($"{Endpoint}/monthly/statistics?month={month}&year={year}");
+
+            return statistics ?? new List<ExpendituresByMonthAndYear>();
         }
     }
 }
