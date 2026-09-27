@@ -278,7 +278,7 @@
 
                                     <TextBlock
                                     Grid.Column="3"
-                                    Text="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}"
+                                    Text="{Binding Date, StringFormat={}{0:MMM d, yyyy}}"
                                     Style="{StaticResource TableText}"
                                     HorizontalAlignment="Center"/>
 

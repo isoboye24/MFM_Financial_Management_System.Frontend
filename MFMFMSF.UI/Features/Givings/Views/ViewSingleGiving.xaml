@@ -130,7 +130,7 @@
                         Foreground="#68708A"/>
 
                     <TextBlock
-                        Text="{Binding Giving.Date, StringFormat={}{0:dd/MM/yyyy}}"
+                        Text="{Binding Giving.Date, StringFormat={}{0:MMM d, yyyy}}"
                         FontSize="16"
                         Foreground="#303653"
                         Margin="0,5,0,0"/>

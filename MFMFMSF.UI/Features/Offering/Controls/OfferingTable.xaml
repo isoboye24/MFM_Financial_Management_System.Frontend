@@ -601,7 +601,7 @@ TargetType="Button">
                                     <!-- DATE -->
 
                                     <TextBlock Grid.Column="0"
-                                        Text="{Binding Date, StringFormat='{}{0:MMM dd, yyyy}'}"
+                                        Text="{Binding Date, StringFormat='{}{0:MMM d, yyyy}'}"
                                         Style="{StaticResource TableText}"/>
 
 
