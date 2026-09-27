@@ -15,11 +15,11 @@ namespace MFMFMSF.UI.Features.OtherIncome.Views
         private readonly OtherIncomeViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public OtherIncomeView(INavigationService navigationService, IGivingService givingService)
+        public OtherIncomeView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
 
-            _viewModel = new OtherIncomeViewModel(navigationService, givingService);
+            _viewModel = new OtherIncomeViewModel(navigationService, givingService, expenditureService);
 
             DataContext = _viewModel;
 

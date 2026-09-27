@@ -13,11 +13,11 @@ namespace MFMFMSF.UI.Features.Meetings.Views
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
         public MeetingsView(INavigationService navigationService, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
-            IGivingCategoryService givingCategoryService, IGivingService givingService)
+            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
 
-            _viewModel = new MeetingsViewModel(navigationService, meetingCategoryService, meetingService, givingCategoryService, givingService);
+            _viewModel = new MeetingsViewModel(navigationService, meetingCategoryService, meetingService, givingCategoryService, givingService, expenditureService);
 
             DataContext = _viewModel;
 

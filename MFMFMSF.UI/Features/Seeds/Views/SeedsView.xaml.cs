@@ -16,12 +16,11 @@ namespace MFMFMSF.UI.Features.Seeds.Views
         private readonly SeedsViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public SeedsView(INavigationService navigationService, IGivingService givingService)
+        public SeedsView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
 
-            _viewModel = new SeedsViewModel(navigationService, givingService);
-
+            _viewModel = new SeedsViewModel(navigationService, givingService, expenditureService);
             DataContext = _viewModel;
 
             SeedsTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;

@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Expenditures;
 using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.UI.Navigation;
 using System.ComponentModel;
@@ -10,11 +11,13 @@ namespace MFMFMSF.UI.Features.Offering.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IGivingService _givingService;
+        private readonly IExpenditureService _expenditureService;
 
-        public OfferingViewModel(INavigationService navigationService, IGivingService givingService)
+        public OfferingViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             _navigationService = navigationService;
             _givingService = givingService;
+            _expenditureService = expenditureService;
 
             SelectedMonth = DateTime.Now.Month;
             SelectedYear = DateTime.Now.Year;
@@ -23,6 +26,7 @@ namespace MFMFMSF.UI.Features.Offering.ViewModels
         public async Task LoadDataAsync()
         {
             MonthlyGivingStatistics = await _givingService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
+            MonthlyExpendituresStatistics = await _expenditureService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
 
             Givings = await _givingService.GetByMonthAndYearAsync(SelectedMonth, SelectedYear, "Offering", 1, 10);
         }
@@ -76,6 +80,19 @@ namespace MFMFMSF.UI.Features.Offering.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private MonthlyExpendituresSatistics _monthlyExpendituresStatistics = new();
+
+        public MonthlyExpendituresSatistics MonthlyExpendituresStatistics
+        {
+            get => _monthlyExpendituresStatistics;
+            private set
+            {
+                _monthlyExpendituresStatistics = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         // =====================================================
         // CHANGE PERIOD

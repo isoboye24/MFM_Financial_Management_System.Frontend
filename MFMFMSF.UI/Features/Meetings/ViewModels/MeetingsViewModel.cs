@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Expenditures;
 using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.Core.Models.Meetings;
 using MFMFMSF.UI.Commands;
@@ -18,6 +19,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         private readonly IMeetingService _meetingService;
         private readonly IGivingCategoryService _givingCategoryService;
         private readonly IGivingService _givingService;
+        private readonly IExpenditureService _expenditureService;
 
         public ObservableCollection<MeetingListItem> Meetings { get; } = new();
 
@@ -31,17 +33,19 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         public IMeetingService MeetingService => _meetingService;
         public IGivingCategoryService GivingCategoryService => _givingCategoryService;
         public IGivingService GivingService => _givingService;
+        public IExpenditureService ExpenditureService => _expenditureService;
 
 
 
         public MeetingsViewModel(INavigationService navigationService, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
-            IGivingCategoryService givingCategoryService, IGivingService givingService)
+            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService)
         {
             _navigationService = navigationService;
             _meetingCategoryService = meetingCategoryService;
             _meetingService = meetingService;
             _givingCategoryService = givingCategoryService;
             _givingService = givingService;
+            _expenditureService = expenditureService;
 
             AddMeetingCommand =  new RelayCommand(_ => AddMeeting());
 
@@ -67,6 +71,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             }
 
             MonthlyGivingStatistics = await _givingService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
+            MonthlyExpendituresStatistics = await _expenditureService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
         }
 
 
@@ -116,6 +121,18 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
             private set
             {
                 _monthlyGivingStatistics = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        private MonthlyExpendituresSatistics _monthlyExpendituresStatistics = new();
+
+        public MonthlyExpendituresSatistics MonthlyExpendituresStatistics
+        {
+            get => _monthlyExpendituresStatistics;
+            private set
+            {
+                _monthlyExpendituresStatistics = value;
                 OnPropertyChanged();
             }
         }

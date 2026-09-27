@@ -15,11 +15,11 @@ namespace MFMFMSF.UI.Features.Tithes.Views
         private readonly TithesViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public TithesView(INavigationService navigationService, IGivingService givingService)
+        public TithesView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
 
-            _viewModel = new TithesViewModel(navigationService, givingService);
+            _viewModel = new TithesViewModel(navigationService, givingService, expenditureService);
 
             DataContext = _viewModel;
 

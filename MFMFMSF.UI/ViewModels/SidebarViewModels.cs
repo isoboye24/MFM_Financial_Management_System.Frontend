@@ -51,15 +51,15 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             NavigateDashboardCommand = new RelayCommand(_ =>  _navigation.Navigate(new DashboardView(_navigation, _givingService, _expenditureService)));
 
             NavigateMeetingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new MeetingsView(_navigation, _meetingCategoryService, _meetingService, 
-                _givingCategoryService, _givingService)));
+                _givingCategoryService, _givingService, _expenditureService)));
             
-            NavigateOfferingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new OfferingView(_navigation, _givingService)));
+            NavigateOfferingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new OfferingView(_navigation, _givingService, _expenditureService)));
 
-            NavigateTithesCommand = new RelayCommand(_ =>  _navigation.Navigate(new TithesView(_navigation, _givingService)));
+            NavigateTithesCommand = new RelayCommand(_ =>  _navigation.Navigate(new TithesView(_navigation, _givingService, _expenditureService)));
 
-            NavigateSeedsCommand = new RelayCommand(_ =>  _navigation.Navigate(new SeedsView(_navigation, _givingService)));
+            NavigateSeedsCommand = new RelayCommand(_ =>  _navigation.Navigate(new SeedsView(_navigation, _givingService, _expenditureService)));
 
-            NavigateOtherIncomeCommand = new RelayCommand(_ =>  _navigation.Navigate(new OtherIncomeView(_navigation, _givingService)));
+            NavigateOtherIncomeCommand = new RelayCommand(_ =>  _navigation.Navigate(new OtherIncomeView(_navigation, _givingService, _expenditureService)));
 
             NavigateExpendituresCommand = new RelayCommand(_ =>  _navigation.Navigate(new ExpendituresView(_navigation, _expenditureService)));
 

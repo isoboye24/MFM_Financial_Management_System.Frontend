@@ -15,11 +15,11 @@ namespace MFMFMSF.UI.Features.Offering.Views
         private readonly OfferingViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public OfferingView(INavigationService navigationService, IGivingService givingService)
+        public OfferingView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
 
-            _viewModel = new OfferingViewModel(navigationService, givingService);
+            _viewModel = new OfferingViewModel(navigationService, givingService, expenditureService);
 
             DataContext = _viewModel;
 
