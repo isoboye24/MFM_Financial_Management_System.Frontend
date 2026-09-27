@@ -1,7 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Expenditures;
-using MFMFMSF.Core.Models.Givings;
-using MFMFMSF.Core.Models.Meetings;
 using System.Net.Http.Json;
 
 namespace MFMFMSF.Infrastructure.Service
@@ -38,6 +36,13 @@ namespace MFMFMSF.Infrastructure.Service
             var statistics = await _httpClient.GetFromJsonAsync<List<ExpendituresByMonthAndYear>>(url);
 
             return statistics ?? new List<ExpendituresByMonthAndYear>();
+        }
+
+        public async Task<MonthlyExpendituresSatistics> GetMonthlyStatisticsAsync(int month, int year)
+        {
+            var statistics = await _httpClient.GetFromJsonAsync<MonthlyExpendituresSatistics>($"{Endpoint}/monthly/statistics?month={month}&year={year}");
+
+            return statistics ?? new MonthlyExpendituresSatistics();
         }
     }
 }

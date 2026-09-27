@@ -32,7 +32,7 @@ namespace MFMFMSF.UI
             _expenditureService = App.ExpenditureService;
 
 
-            DataContext = new MainViewModel(_navigation, _givingService);
+            DataContext = new MainViewModel(_navigation, _givingService, _expenditureService);
 
             SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, _expenditureService);
         }

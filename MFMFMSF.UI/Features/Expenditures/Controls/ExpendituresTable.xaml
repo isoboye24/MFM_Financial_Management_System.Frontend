@@ -199,9 +199,9 @@
             <!-- ================================================= -->
 
             <ScrollViewer
-            Grid.Row="2"
-            VerticalScrollBarVisibility="Auto"
-            HorizontalScrollBarVisibility="Disabled">
+                Grid.Row="2"
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Disabled">
 
                 <ItemsControl
                 ItemsSource="{Binding Expenditures}"

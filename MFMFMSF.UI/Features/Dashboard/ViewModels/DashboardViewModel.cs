@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Expenditures;
 using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.UI.Navigation;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IGivingService _givingService;
+        private readonly IExpenditureService _expenditureService;
 
 
 
@@ -18,12 +20,14 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         // =====================================================
         public INavigationService NavigationService => _navigationService;
         public IGivingService GivingService => _givingService;
+        public IExpenditureService ExpenditureService => _expenditureService;
 
 
-        public DashboardViewModel(INavigationService navigationService, IGivingService givingService)
+        public DashboardViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             _navigationService = navigationService;
             _givingService = givingService;
+            _expenditureService = expenditureService;
 
             SelectedMonth = DateTime.Now.Month;
             SelectedYear = DateTime.Now.Year;
@@ -32,6 +36,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         public async Task LoadDashboardDataAsync()
         {
             MonthlyGivingStatistics = await _givingService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
+            MonthlyExpendituresStatistics = await _expenditureService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
         }
 
 
@@ -72,7 +77,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         // =====================================================
         // MONTHLY STATISTICS
         // =====================================================
-        private MonthlyGivingStatistics _monthlyGivingStatistics = new();
+        private MonthlyGivingStatistics _monthlyGivingStatistics = new();        
 
         public MonthlyGivingStatistics MonthlyGivingStatistics
         {
@@ -83,6 +88,18 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private MonthlyExpendituresSatistics _monthlyExpendituresStatistics = new();
+        public MonthlyExpendituresSatistics MonthlyExpendituresStatistics
+        {
+            get => _monthlyExpendituresStatistics;
+            private set
+            {
+                _monthlyExpendituresStatistics = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         // =====================================================
         // CHANGE PERIOD

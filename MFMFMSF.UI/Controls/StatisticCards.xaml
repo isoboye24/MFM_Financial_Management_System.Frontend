@@ -68,7 +68,7 @@
                 <controls:SummaryCard
                 Margin="8"
                 Title="Total Expenditures"
-                Amount="€ 960.00"
+                Amount="{Binding MonthlyExpendituresStatistics.MonthlyExpenditures, StringFormat={}€ {0:N2}}"
                 Percentage="9.1%"
                 Comparison="vs Apr 1 – Apr 30"
                 TrendArrow="↑"

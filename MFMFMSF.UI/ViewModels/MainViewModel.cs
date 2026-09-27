@@ -24,14 +24,14 @@ namespace MFMFMSF.UI.ViewModels
         }
 
 
-        public MainViewModel(INavigationService navigationService, IGivingService givingService)
+        public MainViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             _navigation = navigationService;
 
             _navigation.PageChanged += OnPageChanged;
 
             // Initial page
-            CurrentView = new DashboardView(navigationService, givingService);
+            CurrentView = new DashboardView(navigationService, givingService, expenditureService);
         }
 
 

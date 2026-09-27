@@ -11,12 +11,11 @@ namespace MFMFMSF.UI.Features.Dashboard.Views
     {
         private readonly DashboardViewModel _viewModel;
 
-        public DashboardView(INavigationService navigationService, IGivingService givingService)
+        public DashboardView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
 
-            _viewModel = new DashboardViewModel(navigationService, givingService);
-
+            _viewModel = new DashboardViewModel(navigationService, givingService, expenditureService);
             DataContext = _viewModel;
 
             DashboardTopWelcomeBar.PeriodChanged += DashboardTopWelcomeBar_PeriodChanged;
