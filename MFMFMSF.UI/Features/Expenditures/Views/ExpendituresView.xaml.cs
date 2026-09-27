@@ -15,15 +15,15 @@ namespace MFMFMSF.UI.Features.Expenditures.Views
         private readonly ExpendituresViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public ExpendituresView(INavigationService navigationService, IExpenditureService expenditureService)
+        public ExpendituresView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
 
-            _viewModel = new ExpendituresViewModel(navigationService, expenditureService);
+            _viewModel = new ExpendituresViewModel(navigationService, givingService, expenditureService);
 
             DataContext = _viewModel;
 
-            //ExpendituresTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
+            ExpenditurePageTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
 
             Loaded += ExpendituresView_Loaded;
         }

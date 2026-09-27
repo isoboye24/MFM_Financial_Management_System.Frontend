@@ -1,31 +1,33 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Expenditures;
+using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Expenditures.Views;
 using MFMFMSF.UI.Navigation;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Input;
-using static SkiaSharp.HarfBuzz.SKShaper;
 
 namespace MFMFMSF.UI.Features.Expenditures.ViewModels
 {
-    public class ExpendituresViewModel
+    public class ExpendituresViewModel : INotifyPropertyChanged
     {
         private readonly INavigationService _navigationService;
+        private readonly IGivingService _givingService;
         private readonly IExpenditureService _expenditureService;
 
         public ICommand AddExpenditureCommand { get; }
 
 
         public INavigationService NavigationService => _navigationService;
+        public IGivingService GivingService => _givingService;
         public IExpenditureService ExpenditureService => _expenditureService;
 
 
-        public ExpendituresViewModel(INavigationService navigationService, IExpenditureService expenditureService)
+        public ExpendituresViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             _navigationService = navigationService;
+            _givingService = givingService;
             _expenditureService = expenditureService;
 
             AddExpenditureCommand = new RelayCommand(_ => AddExpenditure());
@@ -41,17 +43,10 @@ namespace MFMFMSF.UI.Features.Expenditures.ViewModels
 
         public async Task LoadExpendituresAsync()
         {
-            var result = await _expenditureService
-        .GetByMonthAndYearAsync(
-            SelectedMonth,
-            SelectedYear,
-            1,
-            10);
+            MonthlyGivingStatistics = await _givingService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
+            MonthlyExpendituresStatistics = await _expenditureService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
 
-    //MessageBox.Show(
-    //    $"Records received by WPF: {result.Count}");
-
-    Expenditures = result;
+            Expenditures = await _expenditureService.GetByMonthAndYearAsync(SelectedMonth, SelectedYear, 1, 10);
         }
 
 
@@ -93,17 +88,29 @@ namespace MFMFMSF.UI.Features.Expenditures.ViewModels
         // =====================================================
         // MONTHLY STATISTICS
         // =====================================================
-        //private MonthlyExpendituresSatistics _monthlyExpendituresSatistics = new();
+        private MonthlyGivingStatistics _monthlyGivingStatistics = new();
 
-        //public MonthlyExpendituresSatistics MonthlyExpendituresSatistics
-        //{
-        //    get => _monthlyExpendituresSatistics;
-        //    private set
-        //    {
-        //        _monthlyExpendituresSatistics = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        public MonthlyGivingStatistics MonthlyGivingStatistics
+        {
+            get => _monthlyGivingStatistics;
+            private set
+            {
+                _monthlyGivingStatistics = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private MonthlyExpendituresSatistics _monthlyExpendituresStatistics = new();
+
+        public MonthlyExpendituresSatistics MonthlyExpendituresStatistics
+        {
+            get => _monthlyExpendituresStatistics;
+            private set
+            {
+                _monthlyExpendituresStatistics = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         // =====================================================
