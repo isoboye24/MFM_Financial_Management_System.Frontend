@@ -1,7 +1,13 @@
-﻿using MFMFMSF.Core.Models.Expenditures;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Expenditures;
+using MFMFMSF.Core.Models.Meetings;
+using MFMFMSF.Infrastructure.Service;
+using MFMFMSF.UI.Commands;
+using MFMFMSF.UI.Features.Expenditures.Views;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Expenditures.Controls
 {
@@ -10,9 +16,13 @@ namespace MFMFMSF.UI.Features.Expenditures.Controls
     /// </summary>
     public partial class ExpendituresTable : UserControl
     {
+        public ICommand EditExpenditureCommand { get; }
+
         public ExpendituresTable()
         {
             InitializeComponent();
+
+            EditExpenditureCommand = new RelayCommandGeneric<ExpendituresByMonthAndYear>(EditExpenditure);
         }
 
         // =====================================================
@@ -49,5 +59,40 @@ namespace MFMFMSF.UI.Features.Expenditures.Controls
                 typeof(INavigationService),
                 typeof(ExpendituresTable),
                 new PropertyMetadata(null));
+       
+        
+        // =====================================================
+        // EXPENDITURE SERVICE
+        // =====================================================
+
+        public IExpenditureService? ExpenditureService
+        {
+            get => (IExpenditureService?)GetValue(ExpenditureServiceProperty);
+            set => SetValue(ExpenditureServiceProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpenditureServiceProperty =
+            DependencyProperty.Register(
+                nameof(ExpenditureService),
+                typeof(IExpenditureService),
+                typeof(ExpendituresTable),
+                new PropertyMetadata(null));
+
+
+
+        // =====================================================
+        // ACTIONS
+        // =====================================================
+
+        private void EditExpenditure(ExpendituresByMonthAndYear expenditure)
+        {
+            if (NavigationService == null || ExpenditureService == null)
+            {
+                MessageBox.Show("Navigation services are not configured.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            NavigationService.Navigate(new EditExpenditure(expenditure.Id, ExpenditureService, NavigationService));
+        }
     }
 }

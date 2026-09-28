@@ -57,7 +57,8 @@
 
                     <lvc2:ExpendituresTable
                         Expenditures="{Binding Expenditures}"
-                        NavigationService="{Binding NavigationService}"/>
+                        NavigationService="{Binding NavigationService}"
+                        ExpenditureService="{Binding ExpenditureService}"/>
 
                 </Border>
 

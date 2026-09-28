@@ -44,5 +44,19 @@ namespace MFMFMSF.Infrastructure.Service
 
             return statistics ?? new MonthlyExpendituresSatistics();
         }
+
+        public async Task UpdateAsync(Guid id, UpdateExpenditureRequest request)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"{Endpoint}/{id}", request);
+
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<ExpenditureDetail> GetByIdAsync(Guid id)
+        {
+            var giving = await _httpClient.GetFromJsonAsync<ExpenditureDetail>($"{Endpoint}/{id}");
+
+            return giving ?? throw new InvalidOperationException("Giving not found.");
+        }
     }
 }

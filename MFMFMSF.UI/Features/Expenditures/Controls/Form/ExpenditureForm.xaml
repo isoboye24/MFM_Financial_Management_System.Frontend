@@ -135,43 +135,6 @@
 
         <Grid>
 
-            <Grid.RowDefinitions>
-
-                <!-- TITLE -->
-                <RowDefinition Height="Auto"/>
-
-                <!-- FORM -->
-                <RowDefinition Height="Auto"/>
-
-            </Grid.RowDefinitions>
-
-
-            <!-- ================================================= -->
-            <!-- HEADER -->
-            <!-- ================================================= -->
-
-            <StackPanel Grid.Row="0"
-                Margin="0,0,0,15">
-
-                <TextBlock Text="Create New Expenditure"
-                   FontSize="16"
-                   FontWeight="SemiBold"
-                   Foreground="#151936"/>
-
-                <TextBlock Text="Enter the details of the expenditure."
-                   FontSize="12"
-                   Foreground="#68708A"
-                   Margin="0,4,0,0"/>
-
-            </StackPanel>
-
-
-            <!-- ================================================= -->
-            <!-- FORM -->
-            <!-- ================================================= -->
-
-            <Grid Grid.Row="1">
-
                 <Grid.RowDefinitions>
 
                     <RowDefinition Height="Auto"/>
@@ -273,8 +236,6 @@
 
                 </StackPanel>
 
-
-            </Grid>
 
         </Grid>
 
