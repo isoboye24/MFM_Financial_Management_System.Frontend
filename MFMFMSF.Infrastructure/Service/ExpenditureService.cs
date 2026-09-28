@@ -58,5 +58,12 @@ namespace MFMFMSF.Infrastructure.Service
 
             return giving ?? throw new InvalidOperationException("Giving not found.");
         }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var response = await _httpClient.DeleteAsync($"{Endpoint}/{id}");
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 }

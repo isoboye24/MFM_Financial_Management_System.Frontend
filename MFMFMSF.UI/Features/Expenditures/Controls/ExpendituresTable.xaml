@@ -331,9 +331,9 @@
 
                                         <!-- DELETE -->
 
-                                        <!--<Button
+                                        <Button
                                         Style="{DynamicResource TableDeleteActionButton}"
-                                        Command="{Binding DataContext.DeleteMeetingCommand,
+                                        Command="{Binding DeleteExpenditureCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
                                         CommandParameter="{Binding}"
                                         ToolTip="Delete">
@@ -343,7 +343,7 @@
                                             Width="14"
                                             Height="14"/>
 
-                                        </Button>-->
+                                        </Button>
 
                                     </StackPanel>
 

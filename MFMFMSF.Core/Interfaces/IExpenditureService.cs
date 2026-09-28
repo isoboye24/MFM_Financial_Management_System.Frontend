@@ -11,5 +11,6 @@ namespace MFMFMSF.Core.Interfaces
 
         Task<ExpenditureDetail> GetByIdAsync(Guid id);
         Task UpdateAsync(Guid id, UpdateExpenditureRequest request);
+        Task DeleteAsync(Guid id);
     }
 }

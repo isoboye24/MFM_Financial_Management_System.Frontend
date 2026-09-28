@@ -4,6 +4,7 @@ using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Expenditures.Views;
 using MFMFMSF.UI.Navigation;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -46,7 +47,14 @@ namespace MFMFMSF.UI.Features.Expenditures.ViewModels
             MonthlyGivingStatistics = await _givingService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
             MonthlyExpendituresStatistics = await _expenditureService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
 
-            Expenditures = await _expenditureService.GetByMonthAndYearAsync(SelectedMonth, SelectedYear, 1, 10);
+            var expenditures = await _expenditureService.GetByMonthAndYearAsync(SelectedMonth, SelectedYear, 1, 10);
+
+            Expenditures.Clear();
+
+            foreach (var expenditure in expenditures)
+            {
+                Expenditures.Add(expenditure);
+            }
         }
 
 
@@ -135,9 +143,9 @@ namespace MFMFMSF.UI.Features.Expenditures.ViewModels
         // =====================================================
         // EXPENDITURE LIST
         // =====================================================
-        private IReadOnlyList<ExpendituresByMonthAndYear> _expenditures = [];
+        private ObservableCollection<ExpendituresByMonthAndYear> _expenditures = [];
 
-        public IReadOnlyList<ExpendituresByMonthAndYear> Expenditures
+        public ObservableCollection<ExpendituresByMonthAndYear> Expenditures
         {
             get => _expenditures;
             private set
