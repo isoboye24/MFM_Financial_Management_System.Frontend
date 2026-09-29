@@ -1,20 +1,47 @@
-﻿using MFMFMSF.UI.Features.Reports.Controls;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Controls;
+using MFMFMSF.UI.Features.Meetings.ViewModels;
+using MFMFMSF.UI.Features.Reports.Controls;
 using MFMFMSF.UI.Features.Reports.Controls.ExpenditureReports;
 using MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports;
 using MFMFMSF.UI.Features.Reports.Controls.IncomeReports;
 using MFMFMSF.UI.Features.Reports.Controls.ProjectReports;
+using MFMFMSF.UI.Features.Reports.ViewModels;
+using MFMFMSF.UI.Navigation;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Reports.Views
 {
     public partial class ReportsView : UserControl
     {
-        public ReportsView()
+        private readonly ReportsViewModel _viewModel;
+        public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
+        public ReportsView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
 
+            _viewModel = new ReportsViewModel(navigationService, givingService, expenditureService);
+
+            DataContext = _viewModel;
+
+            ReportsPageTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
+
+            Loaded += ReportsView_Loaded;
+
             // Show the first report when the page opens
-            ReportContent.Content = new FinancialSummaryTabPage();
+            ReportContent.Content = new FinancialSummaryTabPage(); 
+        }
+
+        private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
+        {
+            await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+            PeriodChanged?.Invoke(this, e);
+        }
+
+        private async void ReportsView_Loaded(object sender, RoutedEventArgs e)
+        {
+            await _viewModel.LoadReportsAsync();
         }
 
 

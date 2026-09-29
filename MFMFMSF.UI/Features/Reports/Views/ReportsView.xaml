@@ -27,7 +27,7 @@
                 CornerRadius="15"
                 Margin="0,0,0,20">
 
-            <lvc1:PageTopBar
+            <lvc1:PageTopBar x:Name="ReportsPageTopBar"
                 PageTitle="Reports"
                 PageDescription="View and analyse church financial reports."
                 DateRangeText="May 1 – May 31, 2025"

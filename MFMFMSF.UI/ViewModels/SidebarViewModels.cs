@@ -67,7 +67,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 
             NavigateWorkersCommand = new RelayCommand(_ =>  _navigation.Navigate(new WorkersView()));
 
-            NavigateReportsCommand = new RelayCommand(_ =>  _navigation.Navigate(new ReportsView()));
+            NavigateReportsCommand = new RelayCommand(_ =>  _navigation.Navigate(new ReportsView(_navigation, _givingService, _expenditureService)));
 
             NavigateSettingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new SettingsView()));
         }
