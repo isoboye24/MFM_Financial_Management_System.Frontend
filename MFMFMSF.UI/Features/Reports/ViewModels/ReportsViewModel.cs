@@ -1,9 +1,12 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Expenditures;
 using MFMFMSF.Core.Models.Givings;
+using MFMFMSF.UI.Commands;
+using MFMFMSF.UI.Features.Reports.Views;
 using MFMFMSF.UI.Navigation;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Reports.ViewModels
 {
@@ -13,6 +16,7 @@ namespace MFMFMSF.UI.Features.Reports.ViewModels
         private readonly IExpenditureService _expenditureService;
         private readonly IGivingService _givingService;
 
+        public ICommand AddReportCommand { get; }
 
         public INavigationService NavigationService => _navigationService; 
         public IGivingService GivingService => _givingService;
@@ -24,8 +28,15 @@ namespace MFMFMSF.UI.Features.Reports.ViewModels
             _givingService = givingService;
             _expenditureService = expenditureService;
 
+            AddReportCommand = new RelayCommand(_ => AddReport());
+
             SelectedMonth = DateTime.Now.Month;
             SelectedYear = DateTime.Now.Year;
+        }
+
+        private void AddReport()
+        {
+            _navigationService.Navigate(new CreateFinancialSummaryReport(_navigationService));
         }
 
 

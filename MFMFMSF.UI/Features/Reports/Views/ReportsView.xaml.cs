@@ -17,6 +17,7 @@ namespace MFMFMSF.UI.Features.Reports.Views
     {
         private readonly ReportsViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
+
         public ReportsView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();

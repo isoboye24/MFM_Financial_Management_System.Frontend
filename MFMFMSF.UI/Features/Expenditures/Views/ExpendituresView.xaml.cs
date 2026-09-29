@@ -18,7 +18,7 @@ namespace MFMFMSF.UI.Features.Expenditures.Views
         public ExpendituresView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
-
+             
             _viewModel = new ExpendituresViewModel(navigationService, givingService, expenditureService);
 
             DataContext = _viewModel;

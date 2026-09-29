@@ -30,9 +30,9 @@
             <lvc1:PageTopBar x:Name="ReportsPageTopBar"
                 PageTitle="Reports"
                 PageDescription="View and analyse church financial reports."
-                DateRangeText="May 1 – May 31, 2025"
-                ActionText="Add Custom Reports"
-                ActionCommand="{Binding AddTitleCommand}"
+                DateRangeText=""
+                ActionText="Add Report"
+                ActionCommand="{Binding AddReportCommand}"
                 DateRangeCommand="{Binding SelectDateRangeCommand}"/>
 
         </Border>

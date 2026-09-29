@@ -27,7 +27,7 @@
             <lvc1:PageTopBar x:Name="ExpenditurePageTopBar"
             PageTitle="Church Expenditures"
             PageDescription="Track and manage all church expenses and payments."
-            DateRangeText="May 1 – May 31, 2025"
+            DateRangeText=""
             ActionText="Add Expenditures"
             ActionCommand="{Binding AddExpenditureCommand}"
             DateRangeCommand="{Binding SelectDateRangeCommand}"/>
