@@ -15,17 +15,13 @@ namespace MFMFMSF.Infrastructure.Service
             _httpClient = httpClient;
         }
 
-        public async Task<Guid> CreateAsync(CreateMonthlyReportRequest request)
+        public async Task CreateAsync(CreateMonthlyReportRequest request)
         {
             var response = await _httpClient.PostAsJsonAsync(
                 Endpoint,
                 request);
 
             response.EnsureSuccessStatusCode();
-
-            var id = await response.Content.ReadFromJsonAsync<Guid>();
-
-            return id;
         }
     }
 }

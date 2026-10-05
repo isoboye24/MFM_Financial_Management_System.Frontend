@@ -15,18 +15,21 @@ namespace MFMFMSF.UI.Features.Reports.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IExpenditureService _expenditureService;
         private readonly IGivingService _givingService;
+        private readonly IReportService _reportService;
 
         public ICommand AddReportCommand { get; }
 
         public INavigationService NavigationService => _navigationService; 
         public IGivingService GivingService => _givingService;
         public IExpenditureService ExpenditureService => _expenditureService;
+        public IReportService ReportService => _reportService;
 
-        public ReportsViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public ReportsViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService)
         {
             _navigationService = navigationService;
             _givingService = givingService;
             _expenditureService = expenditureService;
+            _reportService = reportService;
 
             AddReportCommand = new RelayCommand(_ => AddReport());
 
@@ -36,7 +39,7 @@ namespace MFMFMSF.UI.Features.Reports.ViewModels
 
         private void AddReport()
         {
-            _navigationService.Navigate(new CreateFinancialSummaryReport(_navigationService));
+            _navigationService.Navigate(new CreateFinancialSummaryReport(_reportService, _navigationService));
         }
 
 

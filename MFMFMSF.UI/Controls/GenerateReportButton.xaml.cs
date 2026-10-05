@@ -1,5 +1,4 @@
-﻿using MaterialDesignThemes.Wpf;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -7,30 +6,12 @@ using System.Windows.Media.Animation;
 
 namespace MFMFMSF.UI.Controls
 {
-    public partial class SendFormButton : UserControl
+    public partial class GenerateReportButton : UserControl
     {
-        public SendFormButton()
+        public GenerateReportButton()
         {
             InitializeComponent();
         }
-
-
-        // =====================================================
-        // TEXT
-        // =====================================================
-
-        public string Text
-        {
-            get => (string)GetValue(TextProperty);
-            set => SetValue(TextProperty, value);
-        }
-
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register(
-                nameof(Text),
-                typeof(string),
-                typeof(SendFormButton),
-                new PropertyMetadata("Save"));
 
 
         // =====================================================
@@ -47,44 +28,8 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(Command),
                 typeof(ICommand),
-                typeof(SendFormButton),
+                typeof(GenerateReportButton),
                 new PropertyMetadata(null));
-
-
-        // =====================================================
-        // ICON
-        // =====================================================
-
-        public PackIconKind Icon
-        {
-            get => (PackIconKind)GetValue(IconProperty);
-            set => SetValue(IconProperty, value);
-        }
-
-        public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register(
-                nameof(Icon),
-                typeof(PackIconKind),
-                typeof(SendFormButton),
-                new PropertyMetadata(PackIconKind.ContentSave));
-
-
-        // =====================================================
-        // IS ENABLED
-        // =====================================================
-
-        public bool IsEnabled
-        {
-            get => (bool)GetValue(IsEnabledProperty);
-            set => SetValue(IsEnabledProperty, value);
-        }
-
-        public static readonly DependencyProperty IsEnabledProperty =
-            DependencyProperty.Register(
-                nameof(IsEnabled),
-                typeof(bool),
-                typeof(SendFormButton),
-                new PropertyMetadata(true));
 
 
         // =====================================================
@@ -101,7 +46,7 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(IsLoading),
                 typeof(bool),
-                typeof(SendFormButton),
+                typeof(GenerateReportButton),
                 new PropertyMetadata(false, OnIsLoadingChanged));
 
 
@@ -109,45 +54,43 @@ namespace MFMFMSF.UI.Controls
             DependencyObject d,
             DependencyPropertyChangedEventArgs e)
         {
-            var button = (SendFormButton)d;
-
-            button.Dispatcher.BeginInvoke(
-                new Action(button.UpdateLoadingState));
+            if (d is GenerateReportButton button)
+            {
+                button.UpdateLoadingState();
+            }
         }
 
+
+        // =====================================================
+        // UPDATE STATE
+        // =====================================================
 
         private void UpdateLoadingState()
         {
             if (IsLoading)
             {
-                // NORMAL → HIDE
                 NormalContent.Visibility = Visibility.Collapsed;
-
-                // LOADING → SHOW
                 LoadingContent.Visibility = Visibility.Visible;
 
-                // DISABLE
                 InnerButton.IsEnabled = false;
 
-                // ROTATE
                 StartGearAnimation();
             }
             else
             {
-                // STOP ROTATION
                 StopGearAnimation();
 
-                // LOADING → HIDE
                 LoadingContent.Visibility = Visibility.Collapsed;
-
-                // NORMAL → SHOW
                 NormalContent.Visibility = Visibility.Visible;
 
-                // ENABLE
-                InnerButton.IsEnabled = IsEnabled;
+                InnerButton.IsEnabled = true;
             }
         }
 
+
+        // =====================================================
+        // START ANIMATION
+        // =====================================================
 
         private void StartGearAnimation()
         {
@@ -164,6 +107,10 @@ namespace MFMFMSF.UI.Controls
                 animation);
         }
 
+
+        // =====================================================
+        // STOP ANIMATION
+        // =====================================================
 
         private void StopGearAnimation()
         {

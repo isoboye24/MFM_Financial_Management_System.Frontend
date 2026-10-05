@@ -19,6 +19,7 @@ namespace MFMFMSF.UI.Features.Reports.ViewModels
         // =====================================================
 
         private decimal? _openingBalance;
+
         public decimal? OpeningBalance
         {
             get => _openingBalance;
@@ -27,38 +28,54 @@ namespace MFMFMSF.UI.Features.Reports.ViewModels
 
 
         private int _month;
+
         public int Month
         {
             get => _month;
             set => SetProperty(ref _month, value);
         }
 
+
         private int _year;
+
         public int Year
         {
             get => _year;
             set => SetProperty(ref _year, value);
         }
 
+        private bool _isGenerating;
+
+        public bool IsGenerating
+        {
+            get => _isGenerating;
+            private set => SetProperty(ref _isGenerating, value);
+        }
+
+
         public ICommand GenerateReportCommand { get; }
 
-
-
-        public CreateReportViewModel(IReportService reportService, INavigationService navigationService)
+        public CreateReportViewModel(
+            IReportService reportService,
+            INavigationService navigationService)
         {
             _reportService = reportService;
             _navigationService = navigationService;
 
-            GenerateReportCommand = new RelayCommand(async _ => await GenerateReportAsync());
+            GenerateReportCommand =
+                new RelayCommand(async _ => await GenerateReportAsync());
         }
 
 
         // =====================================================
-        // GEENRATE REPORT
+        // GENERATE REPORT
         // =====================================================
 
         private async Task GenerateReportAsync()
         {
+            if (IsGenerating)
+                return;
+
             if (Month == 0)
             {
                 MessageBox.Show(
@@ -80,7 +97,7 @@ namespace MFMFMSF.UI.Features.Reports.ViewModels
 
                 return;
             }
-            
+
             if (OpeningBalance == null)
             {
                 MessageBox.Show(
@@ -93,22 +110,38 @@ namespace MFMFMSF.UI.Features.Reports.ViewModels
             }
 
 
-            var request = new CreateMonthlyReportRequest
+            try
             {
-                Month = Month,
-                Year = Year,
-                OpeningBalance = OpeningBalance.Value
-            };
+                IsGenerating = true;
 
-            await _reportService.CreateAsync(request);
+                var request = new CreateMonthlyReportRequest
+                {
+                    Month = Month,
+                    Year = Year,
+                    OpeningBalance = OpeningBalance.Value
+                };
 
-            MessageBox.Show(
-                "Monthly report generate successfully.",
-                "Success",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information);
+                await _reportService.CreateAsync(request);
 
-            _navigationService.GoBack();
+
+                // -------------------------------------------------
+                // SHOW GENERATING ANIMATION
+                // -------------------------------------------------
+
+                await Task.Delay(2000);
+
+                _navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                IsGenerating = false;
+
+                MessageBox.Show(
+                    ex.Message,
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
 
 

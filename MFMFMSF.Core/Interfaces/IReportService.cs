@@ -4,6 +4,6 @@ namespace MFMFMSF.Core.Interfaces
 {
     public interface IReportService
     {
-        Task<Guid> CreateAsync(CreateMonthlyReportRequest request);
+        Task CreateAsync(CreateMonthlyReportRequest request);
     }
 }

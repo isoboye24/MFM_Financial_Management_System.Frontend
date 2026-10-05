@@ -1,4 +1,6 @@
-﻿using MFMFMSF.UI.Navigation;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Reports.ViewModels;
+using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,11 +11,16 @@ namespace MFMFMSF.UI.Features.Reports.Views
     /// </summary>
     public partial class CreateFinancialSummaryReport : UserControl
     {
-        public CreateFinancialSummaryReport(INavigationService navigationService)
+        private readonly CreateReportViewModel _viewModel;
+        public CreateFinancialSummaryReport(IReportService reportService, INavigationService navigationService)
         {
             InitializeComponent();
 
             NavigationService = navigationService;
+
+            _viewModel = new CreateReportViewModel(reportService, navigationService);
+
+            DataContext = _viewModel;
         }
 
 

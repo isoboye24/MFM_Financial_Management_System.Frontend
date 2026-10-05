@@ -14,9 +14,9 @@ namespace MFMFMSF.UI.Controls
         }
 
         public void SetNavigationService(INavigationService navigation, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
-            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService)
+            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService)
         {
-            DataContext = new SidebarViewModel(navigation, meetingCategoryService, meetingService, givingCategoryService, givingService, expenditureService);
+            DataContext = new SidebarViewModel(navigation, meetingCategoryService, meetingService, givingCategoryService, givingService, expenditureService, reportService);
         }
 
         private void SidebarMenuItem_Click(object sender, RoutedEventArgs e)

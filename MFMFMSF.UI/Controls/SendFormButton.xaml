@@ -1,13 +1,70 @@
 ﻿<UserControl x:Class="MFMFMSF.UI.Controls.SendFormButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Background="Transparent">
 
     <Button
+        x:Name="InnerButton"
         Style="{StaticResource SendFormButton}"
         Command="{Binding Command,
-                          RelativeSource={RelativeSource AncestorType=UserControl}}"
-        IsEnabled="{Binding IsEnabled,
-                            RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                          RelativeSource={RelativeSource AncestorType=UserControl}}">
+
+        <Grid>
+
+            <!-- NORMAL -->
+            <StackPanel
+                x:Name="NormalContent"
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Visibility="Visible">
+
+                <materialDesign:PackIcon
+                    Kind="{Binding Icon,
+                                   RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Width="18"
+                    Height="18"
+                    Margin="0,0,8,0"/>
+
+                <TextBlock
+                    Text="{Binding Text,
+                                   RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+            </StackPanel>
+
+
+            <!-- LOADING -->
+            <StackPanel
+                x:Name="LoadingContent"
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Visibility="Collapsed">
+
+                <materialDesign:PackIcon
+                    Kind="Cog"
+                    Width="18"
+                    Height="18"
+                    Margin="0,0,8,0">
+
+                    <materialDesign:PackIcon.RenderTransform>
+                        <RotateTransform
+                            x:Name="GearRotation"
+                            CenterX="9"
+                            CenterY="9"/>
+                    </materialDesign:PackIcon.RenderTransform>
+
+                </materialDesign:PackIcon>
+
+                <TextBlock
+                    Text="Generating..."
+                    VerticalAlignment="Center"/>
+
+            </StackPanel>
+
+        </Grid>
+
+    </Button>
 
 </UserControl>

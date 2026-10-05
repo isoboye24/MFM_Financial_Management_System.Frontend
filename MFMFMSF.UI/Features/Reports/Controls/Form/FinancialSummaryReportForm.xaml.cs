@@ -1,51 +1,88 @@
-﻿using System.Windows;
+﻿using MFMFMSF.UI.Controls;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Reports.Controls.Form
 {
-    /// <summary>
-    /// Interaction logic for FinancialSummaryReportForm.xaml
-    /// </summary>
     public partial class FinancialSummaryReportForm : UserControl
     {
         public FinancialSummaryReportForm()
         {
             InitializeComponent();
+
+            MonthYearPicker.PeriodChanged += MonthYearPicker_PeriodChanged;
         }
 
+
         // =====================================================
-        // DATE
+        // SELECTED MONTH
         // =====================================================
 
-        public DateTime? ReportDate
+        public int SelectedMonth
         {
-            get => (DateTime?)GetValue(ReportDateProperty);
-            set => SetValue(ReportDateProperty, value);
+            get => (int)GetValue(SelectedMonthProperty);
+            set => SetValue(SelectedMonthProperty, value);
         }
 
-        public static readonly DependencyProperty ReportDateProperty =
+        public static readonly DependencyProperty SelectedMonthProperty =
             DependencyProperty.Register(
-                nameof(ReportDate),
-                typeof(DateTime?),
+                nameof(SelectedMonth),
+                typeof(int),
                 typeof(FinancialSummaryReportForm),
-                new PropertyMetadata(null));
+                new PropertyMetadata(0));
+
+
+        // =====================================================
+        // SELECTED YEAR
+        // =====================================================
+
+        public int SelectedYear
+        {
+            get => (int)GetValue(SelectedYearProperty);
+            set => SetValue(SelectedYearProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedYearProperty =
+            DependencyProperty.Register(
+                nameof(SelectedYear),
+                typeof(int),
+                typeof(FinancialSummaryReportForm),
+                new PropertyMetadata(0));
 
 
         // =====================================================
         // OPENING BALANCE
         // =====================================================
 
-        public string OpeningBalance
+        public decimal? OpeningBalance
         {
-            get => (string)GetValue(OpeningBalanceProperty);
+            get => (decimal?)GetValue(OpeningBalanceProperty);
             set => SetValue(OpeningBalanceProperty, value);
         }
 
         public static readonly DependencyProperty OpeningBalanceProperty =
             DependencyProperty.Register(
                 nameof(OpeningBalance),
-                typeof(string),
+                typeof(decimal?),
                 typeof(FinancialSummaryReportForm),
-                new PropertyMetadata(string.Empty));
+                new PropertyMetadata(null));
+
+
+        // =====================================================
+        // PERIOD CHANGED
+        // =====================================================
+
+        private void MonthYearPicker_PeriodChanged(
+            object? sender,
+            PeriodChangedEventArgs e)
+        {
+            SelectedMonth = e.Month;
+            SelectedYear = e.Year;
+
+            PeriodChanged?.Invoke(this, e);
+        }
+
+
+        public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
     }
 }

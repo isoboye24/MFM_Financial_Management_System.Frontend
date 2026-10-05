@@ -24,6 +24,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         private readonly IGivingCategoryService _givingCategoryService;
         private readonly IGivingService _givingService;
         private readonly IExpenditureService _expenditureService;
+        private readonly IReportService _reportService;
 
         public ICommand NavigateDashboardCommand { get; }
         public ICommand NavigateMeetingsCommand { get; }
@@ -39,12 +40,13 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 
 
         public SidebarViewModel(INavigationService navigation, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
-            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService)
+            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService)
         {
             _navigation = navigation;
             _meetingCategoryService = meetingCategoryService;
             _meetingService = meetingService;
             _givingCategoryService = givingCategoryService;
+            _reportService = reportService;
             _givingService = givingService;
             _expenditureService = expenditureService;
 
@@ -67,7 +69,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 
             NavigateWorkersCommand = new RelayCommand(_ =>  _navigation.Navigate(new WorkersView()));
 
-            NavigateReportsCommand = new RelayCommand(_ =>  _navigation.Navigate(new ReportsView(_navigation, _givingService, _expenditureService)));
+            NavigateReportsCommand = new RelayCommand(_ =>  _navigation.Navigate(new ReportsView(_navigation, _givingService, _expenditureService, _reportService)));
 
             NavigateSettingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new SettingsView()));
         }

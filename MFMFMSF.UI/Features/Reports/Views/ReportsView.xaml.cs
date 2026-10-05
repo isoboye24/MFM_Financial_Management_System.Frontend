@@ -1,6 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.UI.Controls;
-using MFMFMSF.UI.Features.Meetings.ViewModels;
 using MFMFMSF.UI.Features.Reports.Controls;
 using MFMFMSF.UI.Features.Reports.Controls.ExpenditureReports;
 using MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports;
@@ -18,11 +17,11 @@ namespace MFMFMSF.UI.Features.Reports.Views
         private readonly ReportsViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public ReportsView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public ReportsView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService)
         {
             InitializeComponent();
 
-            _viewModel = new ReportsViewModel(navigationService, givingService, expenditureService);
+            _viewModel = new ReportsViewModel(navigationService, givingService, expenditureService, reportService);
 
             DataContext = _viewModel;
 
