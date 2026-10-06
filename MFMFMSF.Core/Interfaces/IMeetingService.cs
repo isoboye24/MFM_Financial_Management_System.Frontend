@@ -9,5 +9,7 @@ namespace MFMFMSF.Core.Interfaces
         Task<MeetingDetail> GetByIdAsync(Guid id);
         Task UpdateAsync(Guid id, UpdateMeetingRequest request);
         Task DeleteAsync(Guid id);
+
+        Task<IReadOnlyList<MeetingsByMonthAndYear>> GetByMonthAndYearAsync(int month, int year, int page, int recordsPerPage);
     }
 }

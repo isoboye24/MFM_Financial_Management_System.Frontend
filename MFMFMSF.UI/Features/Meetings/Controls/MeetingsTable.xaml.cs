@@ -22,13 +22,13 @@ namespace MFMFMSF.UI.Features.Meetings.Controls
             InitializeComponent();
 
             ViewMeetingCommand =
-                new RelayCommandGeneric<MeetingListItem>(ViewMeeting);
+                new RelayCommandGeneric<MeetingsByMonthAndYear>(ViewMeeting);
 
             EditMeetingCommand =
-                new RelayCommandGeneric<MeetingListItem>(EditMeeting);
+                new RelayCommandGeneric<MeetingsByMonthAndYear>(EditMeeting);
 
             DeleteMeetingCommand =
-                new RelayCommandGeneric<MeetingListItem>(DeleteMeeting);
+                new RelayCommandGeneric<MeetingsByMonthAndYear>(DeleteMeeting);
 
             DataContext = this;
         }
@@ -38,16 +38,16 @@ namespace MFMFMSF.UI.Features.Meetings.Controls
         // MEETINGS
         // =====================================================
 
-        public ObservableCollection<MeetingListItem> Meetings
+        public ObservableCollection<MeetingsByMonthAndYear> Meetings
         {
-            get => (ObservableCollection<MeetingListItem>)GetValue(MeetingsProperty);
+            get => (ObservableCollection<MeetingsByMonthAndYear>)GetValue(MeetingsProperty);
             set => SetValue(MeetingsProperty, value);
         }
 
         public static readonly DependencyProperty MeetingsProperty =
             DependencyProperty.Register(
                 nameof(Meetings),
-                typeof(ObservableCollection<MeetingListItem>),
+                typeof(ObservableCollection<MeetingsByMonthAndYear>),
                 typeof(MeetingsTable),
                 new PropertyMetadata(null));
 
@@ -146,7 +146,7 @@ namespace MFMFMSF.UI.Features.Meetings.Controls
         // ACTIONS
         // =====================================================
 
-        private void ViewMeeting(MeetingListItem meeting)
+        private void ViewMeeting(MeetingsByMonthAndYear meeting)
         {
             if (NavigationService == null || MeetingService == null || GivingCategoryService == null || GivingService == null)
             {
@@ -163,7 +163,7 @@ namespace MFMFMSF.UI.Features.Meetings.Controls
         }
 
 
-        private void EditMeeting(MeetingListItem meeting)
+        private void EditMeeting(MeetingsByMonthAndYear meeting)
         {
             if (NavigationService == null || MeetingCategoryService == null || MeetingService == null)
             {
@@ -175,7 +175,7 @@ namespace MFMFMSF.UI.Features.Meetings.Controls
         }
 
 
-        private async void DeleteMeeting(MeetingListItem meeting)
+        private async void DeleteMeeting(MeetingsByMonthAndYear meeting)
         {
             var result = MessageBox.Show($"Are you sure you want to delete '{meeting.MessageTitle}'?", "Delete Church Service", MessageBoxButton.YesNo,  MessageBoxImage.Warning);
 

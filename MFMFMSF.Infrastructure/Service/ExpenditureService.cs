@@ -33,9 +33,9 @@ namespace MFMFMSF.Infrastructure.Service
         {
             var url = $"{Endpoint}/by-month-year" + $"?month={month}" + $"&year={year}" + $"&page={page}" + $"&recordsPerPage={recordsPerPage}";
 
-            var statistics = await _httpClient.GetFromJsonAsync<List<ExpendituresByMonthAndYear>>(url);
+            var expenditures = await _httpClient.GetFromJsonAsync<List<ExpendituresByMonthAndYear>>(url);
 
-            return statistics ?? new List<ExpendituresByMonthAndYear>();
+            return expenditures ?? new List<ExpendituresByMonthAndYear>();
         }
 
         public async Task<MonthlyExpendituresSatistics> GetMonthlyStatisticsAsync(int month, int year)

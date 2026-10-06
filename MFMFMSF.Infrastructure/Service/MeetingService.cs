@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Expenditures;
 using MFMFMSF.Core.Models.Meetings;
 using System.Net.Http.Json;
 
@@ -57,6 +58,15 @@ namespace MFMFMSF.Infrastructure.Service
                 $"{Endpoint}/{id}");
 
             response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<IReadOnlyList<MeetingsByMonthAndYear>> GetByMonthAndYearAsync(int month, int year, int page, int recordsPerPage)
+        {
+            var url = $"{Endpoint}/by-month-year" + $"?month={month}" + $"&year={year}" + $"&page={page}" + $"&recordsPerPage={recordsPerPage}";
+
+            var meetings = await _httpClient.GetFromJsonAsync<List<MeetingsByMonthAndYear>>(url);
+
+            return meetings ?? new List<MeetingsByMonthAndYear>();
         }
     }
 }

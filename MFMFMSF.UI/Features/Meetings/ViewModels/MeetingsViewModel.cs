@@ -21,7 +21,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
         private readonly IGivingService _givingService;
         private readonly IExpenditureService _expenditureService;
 
-        public ObservableCollection<MeetingListItem> Meetings { get; } = new();
+        public ObservableCollection<MeetingsByMonthAndYear> Meetings { get; } = new();
 
         public ICommand AddMeetingCommand { get; }
 
@@ -61,7 +61,7 @@ namespace MFMFMSF.UI.Features.Meetings.ViewModels
 
         public async Task LoadMeetingsAsync()
         {
-            var meetings = await _meetingService.GetAllAsync();
+            var meetings = await _meetingService.GetByMonthAndYearAsync(SelectedMonth, SelectedYear, 1, 1000);
 
             Meetings.Clear();
 
