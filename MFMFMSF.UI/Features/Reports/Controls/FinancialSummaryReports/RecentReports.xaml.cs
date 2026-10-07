@@ -1,4 +1,9 @@
-﻿using System.Windows.Controls;
+﻿using MFMFMSF.UI.Controls;
+using MFMFMSF.UI.Features.Reports.ViewModels;
+using MFMFMSF.UI.Navigation;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
 {
@@ -7,9 +12,16 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
     /// </summary>
     public partial class RecentReports : UserControl
     {
+        public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
+
         public RecentReports()
         {
             InitializeComponent();
+        }
+
+        public void Initialize(INavigationService navigationService)
+        {
+            DataContext = new RecentReportsViewModel(navigationService);
         }
     }
 }

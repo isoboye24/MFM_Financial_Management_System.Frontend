@@ -70,7 +70,7 @@
                      CornerRadius="15"
                      Margin="0,0,0,20">
 
-                    <lvc:RecentReports/>
+                    <lvc:RecentReports x:Name="RecentReportsControl" />
 
                 </Border>
             </Grid>           

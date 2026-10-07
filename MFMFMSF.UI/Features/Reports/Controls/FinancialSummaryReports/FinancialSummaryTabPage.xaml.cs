@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using MFMFMSF.UI.Navigation;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
 {
@@ -20,9 +8,11 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
     /// </summary>
     public partial class FinancialSummaryTabPage : UserControl
     {
-        public FinancialSummaryTabPage()
+        public FinancialSummaryTabPage(INavigationService navigationService)
         {
             InitializeComponent();
+
+            RecentReportsControl.Initialize(navigationService);
         }
     }
 }

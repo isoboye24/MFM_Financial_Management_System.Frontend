@@ -17,11 +17,20 @@ namespace MFMFMSF.UI.Features.Reports.Views
         private readonly ReportsViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
+        private readonly INavigationService _navigationService;
+        private readonly IGivingService _givingService;
+        private readonly IExpenditureService _expenditureService;
+        private readonly IReportService _reportService;
+
         public ReportsView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService)
         {
             InitializeComponent();
+            _navigationService = navigationService;
+            _givingService = givingService;
+            _expenditureService = expenditureService;
+            _reportService = reportService;
 
-            _viewModel = new ReportsViewModel(navigationService, givingService, expenditureService, reportService);
+            _viewModel = new ReportsViewModel(_navigationService, _givingService, _expenditureService, _reportService);
 
             DataContext = _viewModel;
 
@@ -30,7 +39,7 @@ namespace MFMFMSF.UI.Features.Reports.Views
             Loaded += ReportsView_Loaded;
 
             // Show the first report when the page opens
-            ReportContent.Content = new FinancialSummaryTabPage(); 
+            ReportContent.Content = new FinancialSummaryTabPage(_navigationService); 
         }
 
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
@@ -52,7 +61,7 @@ namespace MFMFMSF.UI.Features.Reports.Views
             switch (e.SelectedIndex)
             {
                 case 0:
-                    ReportContent.Content = new FinancialSummaryTabPage();
+                    ReportContent.Content = new FinancialSummaryTabPage(_navigationService);
                     break;
 
                 case 1:

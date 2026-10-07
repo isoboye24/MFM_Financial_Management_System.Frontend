@@ -4,7 +4,8 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports"
+             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports" 
+             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
              mc:Ignorable="d"
              d:DesignHeight="250"
              d:DesignWidth="320">
@@ -322,22 +323,22 @@
 
             </StackPanel>
 
-
             <!-- ========================================== -->
             <!-- FOOTER -->
             <!-- ========================================== -->
 
-            <Button Grid.Row="2"
-                    Content="View all reports history  →"
+            <Border Grid.Row="2"
                     Background="Transparent"
-                    BorderThickness="0"
-                    Foreground="#5B4CF3"
-                    FontSize="8"
-                    FontWeight="SemiBold"
-                    Padding="0"
-                    Cursor="Hand"
-                    HorizontalAlignment="Center"
-                    Margin="0,5,0,0"/>
+                    Height="Auto"
+                    Margin="0,10,0,0">
+
+                <controls:ViewAllButton
+                Text="View all reports  →"
+                Command="{Binding ViewAllReportsCommand}" />
+
+            </Border>
+
+
 
         </Grid>
 
