@@ -1,12 +1,441 @@
 ﻿<UserControl x:Class="MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports.ReportsTable"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Border Style="{StaticResource Card}">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <!-- FILTERS -->
+                <RowDefinition Height="Auto"/>
+
+                <!-- TABLE HEADER -->
+                <RowDefinition Height="38"/>
+
+                <!-- TABLE DATA -->
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+
+            <!-- ================================================= -->
+            <!-- FILTERS -->
+            <!-- ================================================= -->
+
+            <Grid Grid.Row="0"
+            Margin="0,0,0,12">
+
+                <Grid.ColumnDefinitions>
+
+                    <!-- SEARCH -->
+                    <ColumnDefinition Width="*"/>
+
+                    <!-- CLEAR -->
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <!-- ================================================ -->
+                <!-- SEARCH -->
+                <!-- ================================================ -->
+
+                <Grid Grid.Column="0"
+                  Width="400"
+                  Height="38"
+                  HorizontalAlignment="Left">
+
+                    <Border
+                    Background="{DynamicResource SurfaceBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+
+                        <Grid>
+
+                            <!-- SEARCH ICON -->
+
+                            <materialDesign:PackIcon
+                            Kind="Magnify"
+                            Width="16"
+                            Height="16"
+                            Margin="12,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource MutedTextBrush}"
+                            IsHitTestVisible="False"/>
+
+
+                            <!-- SEARCH TEXTBOX -->
+
+                            <TextBox
+                            Padding="34,0,12,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontFamily="Segoe UI"
+                            FontSize="11"
+                            Foreground="{DynamicResource PrimaryTextBrush}"
+                            VerticalContentAlignment="Center"/>
+
+
+                            <!-- PLACEHOLDER -->
+
+                            <TextBlock
+                            Text="Search meetings..."
+                            Margin="36,0,12,0"
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource MutedTextBrush}"
+                            FontFamily="Segoe UI"
+                            FontSize="11"
+                            IsHitTestVisible="False"/>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+
+                <!-- ================================================ -->
+                <!-- CLEAR -->
+                <!-- ================================================ -->
+
+                <Button
+                Grid.Column="1"
+                Width="90"
+                Height="38"
+                Margin="8,0,0,0"
+                Content="Clear"
+                Style="{StaticResource SecondaryButton}"
+                Padding="12,0"/>
+
+            </Grid>
+
+
+            <!-- ================================================= -->
+            <!-- TABLE HEADER -->
+            <!-- ================================================= -->
+
+            <Border
+            Grid.Row="1"
+            Style="{StaticResource TableHeaderContainer}">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+
+                        <!-- NUMBER -->
+                        <ColumnDefinition Width="45"/>
+
+                        <!-- MONTH -->
+                        <ColumnDefinition Width="1.3*"/>
+
+                        <!-- YEAR -->
+                        <ColumnDefinition Width="0.5*"/>
+
+                        <!-- OPENING BALANCE -->
+                        <ColumnDefinition Width="1.3*"/>
+
+                        <!-- TOTAL INCOME -->
+                        <ColumnDefinition Width="1.3*"/>
+
+                        <!-- TOTAL EXPENDITURE -->
+                        <ColumnDefinition Width="1.3*"/>
+
+                        <!-- CLOSING BALANCE -->
+                        <ColumnDefinition Width="1.3*"/>
+
+                        <!-- ACTIONS -->
+                        <ColumnDefinition Width="1.2*"/>
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- NUMBER -->
+
+                    <TextBlock
+                    Grid.Column="0"
+                    Text="#"
+                    Style="{StaticResource TableHeader}"
+                    HorizontalAlignment="Center"/>
+
+
+                    <!-- MONTH -->
+
+                    <TextBlock
+                    Grid.Column="1"
+                    Text="Month"
+                    Style="{StaticResource TableHeader}"
+                    Margin="8,0"/>
+
+
+                    <!-- YEAR -->
+
+                    <TextBlock
+                    Grid.Column="2"
+                    Text="Year"
+                    Style="{StaticResource TableHeader}"
+                    Margin="8,0"/>
+
+
+                    <!-- OPENING BALANCE -->
+
+                    <TextBlock
+                    Grid.Column="3"
+                    Text="Opening Balance"
+                    Style="{StaticResource TableHeader}"
+                    HorizontalAlignment="Center"/>
+
+
+                    <!-- TOTAL INCOME -->
+
+                    <TextBlock
+                    Grid.Column="4"
+                    Text="Total Income"
+                    Style="{StaticResource TableHeader}"
+                    HorizontalAlignment="Center"/>
+
+
+                    <!-- TOTAL EXPENDITURE -->
+
+                    <TextBlock
+                    Grid.Column="5"
+                    Text="Total Expenditure"
+                    Style="{StaticResource TableHeader}"
+                    HorizontalAlignment="Center"/>
+
+
+                    <!-- CLOSING BALANCE -->
+
+                    <TextBlock
+                    Grid.Column="6"
+                    Text="Closing Balance"
+                    Style="{StaticResource TableHeader}"
+                    HorizontalAlignment="Center"/>
+
+
+                    <!-- ACTIONS -->
+
+                    <TextBlock
+                    Grid.Column="7"
+                    Text="Actions"
+                    Style="{StaticResource TableHeader}"
+                    HorizontalAlignment="Center"/>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- TABLE DATA -->
+            <!-- ================================================= -->
+
+            <ScrollViewer
+            Grid.Row="2"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled">
+
+                <ItemsControl
+                ItemsSource="{Binding Meetings}"
+                AlternationCount="1000000">
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                            Style="{StaticResource TableStripedRow}">
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <!-- NUMBER -->
+                                        <ColumnDefinition Width="45"/>
+
+                                        <!-- MONTH -->
+                                        <ColumnDefinition Width="1.3*"/>
+
+                                        <!-- YEAR -->
+                                        <ColumnDefinition Width="0.5*"/>
+
+                                        <!-- OPENING BALANCE -->
+                                        <ColumnDefinition Width="1.3*"/>
+
+                                        <!-- TOTAL INCOME -->
+                                        <ColumnDefinition Width="1.3*"/>
+
+                                        <!-- TOTAL EXPENDITURE -->
+                                        <ColumnDefinition Width="1.3*"/>
+
+                                        <!-- CLOSING BALANCE -->
+                                        <ColumnDefinition Width="1.3*"/>
+
+                                        <!-- ACTIONS -->
+                                        <ColumnDefinition Width="1.2*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <!-- ================================= -->
+                                    <!-- NUMBER -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="0"
+                                    Style="{StaticResource TableSecondaryText}"
+                                    HorizontalAlignment="Center"
+                                    Text="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                   Path=(ItemsControl.AlternationIndex),
+                                                   Converter={StaticResource RowNumberConverter}}"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- MONTH -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="1"
+                                    Text="{Binding Month}"
+                                    Style="{StaticResource TableText}"
+                                    Margin="8,0"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- YEAR -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="2"
+                                    Text="{Binding Year}"                                                  
+                                    Style="{StaticResource TableText}"
+                                    Margin="8,0"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- OPENING BALANCE -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="3"
+                                    Text="{Binding OpeningBalance}"
+                                    Style="{StaticResource TableText}"
+                                    HorizontalAlignment="Center"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- TOTAL INCOME -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="4"
+                                    Text="{Binding TotalIncome}"
+                                    Style="{StaticResource TableText}"
+                                    HorizontalAlignment="Center"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- TOTAL EXPENDITURE -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="5"
+                                    Text="{Binding TotalExpenditure}"
+                                    Style="{StaticResource TableText}"
+                                    HorizontalAlignment="Center"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- CLOSING BALANCE -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="6"
+                                    Text="{Binding ClosingBalance}"
+                                    Style="{StaticResource TableText}"
+                                    HorizontalAlignment="Center"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- ACTIONS -->
+                                    <!-- ================================= -->
+
+                                    <StackPanel
+                                    Grid.Column="7"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+
+                                        <!-- VIEW -->
+
+                                        <!--<Button
+                                        Style="{DynamicResource TableActionButton}"
+                                        Command="{Binding DataContext.ViewReportCommand,
+                                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        CommandParameter="{Binding}"
+                                        ToolTip="View">
+
+                                            <materialDesign:PackIcon
+                                            Kind="EyeOutline"
+                                            Width="14"
+                                            Height="14"/>
+
+                                        </Button>-->
+
+
+                                        <!-- DOWNLOAD -->
+
+                                        <!--<Button
+                                        Style="{DynamicResource TableActionButton}"
+                                        Command="{Binding DataContext.DownloadReportCommand,
+                                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        CommandParameter="{Binding}"
+                                        ToolTip="Download">
+
+                                            <materialDesign:PackIcon
+                                            Kind="DownloadOutline"
+                                            Width="14"
+                                            Height="14"/>
+
+                                        </Button>-->
+
+
+                                        <!-- DELETE -->
+
+                                        <!--<Button
+                                        Style="{DynamicResource TableDeleteActionButton}"
+                                        Command="{Binding DataContext.DeleteReportCommand,
+                                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        CommandParameter="{Binding}"
+                                        ToolTip="Delete">
+
+                                            <materialDesign:PackIcon
+                                            Kind="DeleteOutline"
+                                            Width="14"
+                                            Height="14"/>
+
+                                        </Button>-->
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+            </ScrollViewer>
+
+        </Grid>
+
+    </Border>
 </UserControl>
