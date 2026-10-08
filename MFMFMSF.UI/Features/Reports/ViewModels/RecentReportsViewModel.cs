@@ -25,7 +25,7 @@ namespace MFMFMSF.UI.Features.Reports.ViewModels
 
         private void ViewAllReports()
         {
-            _navigationService.Navigate(new ViewAllFSReports());
+            _navigationService.Navigate(new ViewAllFSReports(_navigationService));
         }
 
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)

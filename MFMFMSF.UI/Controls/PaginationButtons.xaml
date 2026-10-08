@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Controls.PaginationButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="40"
+             d:DesignWidth="400">
+
+    <Grid Height="35">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!-- PREVIOUS -->
+
+        <Button Grid.Column="0"
+                Width="28"
+                Height="28"
+                Margin="0,0,5,0"
+                Padding="0"
+                Background="Transparent"
+                BorderThickness="0"
+                Cursor="Hand"
+                Click="PreviousButton_Click"
+                IsEnabled="{Binding CanGoPrevious,
+                            RelativeSource={RelativeSource AncestorType=UserControl}}">
+
+            <TextBlock Text="‹"
+                       FontSize="16"
+                       Foreground="#303653"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+
+        </Button>
+
+
+        <!-- PAGE NUMBERS -->
+
+        <ItemsControl Grid.Column="1"
+                      ItemsSource="{Binding PageNumbers,
+                                  RelativeSource={RelativeSource AncestorType=UserControl}}"
+                      HorizontalAlignment="Center">
+
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+
+                    <Button
+                        Content="{Binding}"
+                        Width="28"
+                        Height="28"
+                        Margin="2,0"
+                        Padding="0"
+                        Cursor="Hand"
+                        Click="PageButton_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+
+                                <Setter Property="Background"
+                                        Value="Transparent"/>
+
+                                <Setter Property="BorderThickness"
+                                        Value="0"/>
+
+                                <Setter Property="Foreground"
+                                        Value="#303653"/>
+
+                                <Setter Property="FontSize"
+                                        Value="8"/>
+
+                                <Setter Property="FontWeight"
+                                        Value="SemiBold"/>
+
+                                <Style.Triggers>
+
+                                    <DataTrigger
+                                        Binding="{Binding DataContext.CurrentPage,
+                                            RelativeSource={
+                                                RelativeSource AncestorType=ItemsControl}}"
+                                        Value="{Binding}">
+
+                                        <Setter Property="Background"
+                                                Value="#5B4CF3"/>
+
+                                        <Setter Property="Foreground"
+                                                Value="White"/>
+
+                                    </DataTrigger>
+
+                                </Style.Triggers>
+
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+        </ItemsControl>
+
+
+        <!-- NEXT -->
+
+        <Button Grid.Column="2"
+                Width="28"
+                Height="28"
+                Margin="5,0,0,0"
+                Padding="0"
+                Background="Transparent"
+                BorderThickness="0"
+                Cursor="Hand"
+                Click="NextButton_Click"
+                IsEnabled="{Binding CanGoNext,
+                            RelativeSource={RelativeSource AncestorType=UserControl}}">
+
+            <TextBlock Text="›"
+                       FontSize="16"
+                       Foreground="#303653"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+
+        </Button>
+
+    </Grid>
+
+</UserControl>

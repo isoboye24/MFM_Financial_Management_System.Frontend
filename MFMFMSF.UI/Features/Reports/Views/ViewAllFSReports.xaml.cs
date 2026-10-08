@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MFMFMSF.UI.Controls;
+using MFMFMSF.UI.Features.Expenditures.ViewModels;
+using MFMFMSF.UI.Features.Reports.ViewModels;
+using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Reports.Views
 {
@@ -20,9 +12,41 @@ namespace MFMFMSF.UI.Features.Reports.Views
     /// </summary>
     public partial class ViewAllFSReports : UserControl
     {
-        public ViewAllFSReports()
+        private readonly FSReportViewModel _viewModel;
+
+        public ViewAllFSReports(INavigationService navigationService)
         {
             InitializeComponent();
+
+            NavigationService = navigationService;
+
+            _viewModel = new FSReportViewModel();
+
+            DataContext = _viewModel;
         }
+
+
+        private async void Pagination_PageChanged(object sender, PageChangedEventArgs e)
+        {
+            await _viewModel.LoadReportsAsync(e.Page, e.PageSize);
+        }
+
+
+        // =====================================================
+        // Navigation Service
+        // =====================================================
+
+        public INavigationService? NavigationService
+        {
+            get => (INavigationService?)GetValue(NavigationServiceProperty);
+            set => SetValue(NavigationServiceProperty, value);
+        }
+
+        public static readonly DependencyProperty NavigationServiceProperty =
+            DependencyProperty.Register(
+                nameof(NavigationService),
+                typeof(INavigationService),
+                typeof(ViewAllFSReports),
+                new PropertyMetadata(null));
     }
 }
