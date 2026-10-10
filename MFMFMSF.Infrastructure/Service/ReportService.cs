@@ -25,6 +25,13 @@ namespace MFMFMSF.Infrastructure.Service
             response.EnsureSuccessStatusCode();
         }
 
+        public async Task DeleteAsync(Guid id)
+        {
+            var response = await _httpClient.DeleteAsync($"{Endpoint}/{id}/permanent");
+
+            response.EnsureSuccessStatusCode();
+        }
+
         public async Task<(IReadOnlyList<FinancialSummaryMonthlyReportListItem> Reports, int TotalItems)> GetAllAsync(int page, int recordsPerPage)
         {
             var response = await _httpClient.GetAsync($"{Endpoint}?page={page}&recordsPerPage={recordsPerPage}");

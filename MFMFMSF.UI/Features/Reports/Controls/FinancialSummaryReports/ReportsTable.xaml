@@ -240,7 +240,8 @@
             HorizontalScrollBarVisibility="Disabled">
 
                 <ItemsControl
-                ItemsSource="{Binding Reports}"
+                ItemsSource="{Binding Reports,
+                        RelativeSource={RelativeSource AncestorType=UserControl}}"
                 AlternationCount="1000000">
 
                     <ItemsControl.ItemTemplate>
@@ -409,7 +410,7 @@
 
                                         <Button
                                         Style="{DynamicResource TableDeleteActionButton}"
-                                        Command="{Binding DataContext.DeleteReportCommand,
+                                        Command="{Binding DeleteReportCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
                                         CommandParameter="{Binding}"
                                         ToolTip="Delete">

@@ -1,6 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.UI.Controls;
-using MFMFMSF.UI.Features.Expenditures.ViewModels;
 using MFMFMSF.UI.Features.Reports.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
@@ -13,13 +12,17 @@ namespace MFMFMSF.UI.Features.Reports.Views
     /// </summary>
     public partial class ViewAllFSReports : UserControl
     {
+        private readonly IReportService _reportService;
         private readonly FSReportViewModel _viewModel;
+
+        public IReportService ReportService => _reportService;
 
         public ViewAllFSReports(INavigationService navigationService, IReportService reportService)
         {
             InitializeComponent();
 
             NavigationService = navigationService;
+            _reportService = reportService;
 
             _viewModel = new FSReportViewModel(reportService);
 

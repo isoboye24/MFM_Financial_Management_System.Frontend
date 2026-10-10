@@ -7,5 +7,7 @@ namespace MFMFMSF.Core.Interfaces
     {
         Task CreateAsync(CreateMonthlyReportRequest request);
         Task<(IReadOnlyList<FinancialSummaryMonthlyReportListItem> Reports, int TotalItems)>GetAllAsync(int page, int recordsPerPage);
+
+        Task DeleteAsync(Guid id);
     }
 }

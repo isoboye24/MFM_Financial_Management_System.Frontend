@@ -32,7 +32,10 @@
 
         <Border Grid.Row="1"
                 Margin="0,0,0,20">
-            <Iv1:ReportsTable />
+            <Iv1:ReportsTable 
+                Reports="{Binding Reports}"
+                ReportService="{Binding ReportService,
+                RelativeSource={RelativeSource AncestorType={x:Type local:ViewAllFSReports}}}" />
         </Border>
 
 
