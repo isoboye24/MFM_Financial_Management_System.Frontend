@@ -1,4 +1,5 @@
-﻿using MFMFMSF.UI.Navigation;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Navigation;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
@@ -8,11 +9,11 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
     /// </summary>
     public partial class FinancialSummaryTabPage : UserControl
     {
-        public FinancialSummaryTabPage(INavigationService navigationService)
+        public FinancialSummaryTabPage(INavigationService navigationService, IReportService reportService)
         {
             InitializeComponent();
 
-            RecentReportsControl.Initialize(navigationService);
+            RecentReportsControl.Initialize(navigationService, reportService);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MFMFMSF.UI.Controls;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Controls;
 using MFMFMSF.UI.Features.Expenditures.ViewModels;
 using MFMFMSF.UI.Features.Reports.ViewModels;
 using MFMFMSF.UI.Navigation;
@@ -14,24 +15,30 @@ namespace MFMFMSF.UI.Features.Reports.Views
     {
         private readonly FSReportViewModel _viewModel;
 
-        public ViewAllFSReports(INavigationService navigationService)
+        public ViewAllFSReports(INavigationService navigationService, IReportService reportService)
         {
             InitializeComponent();
 
             NavigationService = navigationService;
 
-            _viewModel = new FSReportViewModel();
+            _viewModel = new FSReportViewModel(reportService);
 
             DataContext = _viewModel;
+
+            Loaded += ViewAllFSReports_Loaded;
         }
 
+        private async void ViewAllFSReports_Loaded(object sender, RoutedEventArgs e)
+        {
+            await _viewModel.LoadReportsAsync(1, 1000000);
+        }
 
         private async void Pagination_PageChanged(object sender, PageChangedEventArgs e)
         {
             await _viewModel.LoadReportsAsync(e.Page, e.PageSize);
         }
 
-
+        
         // =====================================================
         // Navigation Service
         // =====================================================

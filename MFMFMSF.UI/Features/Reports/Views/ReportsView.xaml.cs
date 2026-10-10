@@ -39,7 +39,7 @@ namespace MFMFMSF.UI.Features.Reports.Views
             Loaded += ReportsView_Loaded;
 
             // Show the first report when the page opens
-            ReportContent.Content = new FinancialSummaryTabPage(_navigationService); 
+            ReportContent.Content = new FinancialSummaryTabPage(_navigationService, _reportService); 
         }
 
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
@@ -61,7 +61,7 @@ namespace MFMFMSF.UI.Features.Reports.Views
             switch (e.SelectedIndex)
             {
                 case 0:
-                    ReportContent.Content = new FinancialSummaryTabPage(_navigationService);
+                    ReportContent.Content = new FinancialSummaryTabPage(_navigationService, _reportService);
                     break;
 
                 case 1:

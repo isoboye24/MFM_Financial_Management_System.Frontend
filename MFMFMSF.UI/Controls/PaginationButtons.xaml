@@ -68,33 +68,32 @@
                             <Style TargetType="Button">
 
                                 <Setter Property="Background"
-                                        Value="Transparent"/>
+                Value="Transparent"/>
 
                                 <Setter Property="BorderThickness"
-                                        Value="0"/>
+                Value="0"/>
 
                                 <Setter Property="Foreground"
-                                        Value="#303653"/>
+                Value="#303653"/>
 
                                 <Setter Property="FontSize"
-                                        Value="8"/>
+                Value="8"/>
 
                                 <Setter Property="FontWeight"
-                                        Value="SemiBold"/>
+                Value="SemiBold"/>
 
                                 <Style.Triggers>
 
                                     <DataTrigger
-                                        Binding="{Binding DataContext.CurrentPage,
-                                            RelativeSource={
-                                                RelativeSource AncestorType=ItemsControl}}"
-                                        Value="{Binding}">
+                Binding="{Binding RelativeSource={RelativeSource Self},
+                                  Path=Content}"
+                Value="1">
 
                                         <Setter Property="Background"
-                                                Value="#5B4CF3"/>
+                        Value="#5B4CF3"/>
 
                                         <Setter Property="Foreground"
-                                                Value="White"/>
+                        Value="White"/>
 
                                     </DataTrigger>
 

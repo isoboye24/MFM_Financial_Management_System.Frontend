@@ -1,24 +1,14 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Meetings;
+using MFMFMSF.Core.Models.Reports;
+using MFMFMSF.Infrastructure.Service;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Meetings.Controls;
-using MFMFMSF.UI.Features.Meetings.Views;
 using MFMFMSF.UI.Navigation;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
 {
@@ -27,28 +17,32 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
     /// </summary>
     public partial class ReportsTable : UserControl
     {
+        public ICommand DeleteReportCommand { get; }
 
         public ReportsTable()
         {
             InitializeComponent();
             
+            //DeleteReportCommand =  new RelayCommandGeneric<FinancialSummaryMonthlyReportListItem>(DeleteReport);
+
+            //DataContext = this;
         }
 
 
         //// =====================================================
-        //// REPORTS
+        //// REORTS
         //// =====================================================
 
-        //public ObservableCollection<MeetingsByMonthAndYear> Meetings
+        //public ObservableCollection<FinancialSummaryMonthlyReportListItem> Reports
         //{
-        //    get => (ObservableCollection<MeetingsByMonthAndYear>)GetValue(MeetingsProperty);
-        //    set => SetValue(MeetingsProperty, value);
+        //    get => (ObservableCollection<FinancialSummaryMonthlyReportListItem>)GetValue(ReportsProperty);
+        //    set => SetValue(ReportsProperty, value);
         //}
 
-        //public static readonly DependencyProperty MeetingsProperty =
+        //public static readonly DependencyProperty ReportsProperty =
         //    DependencyProperty.Register(
-        //        nameof(Meetings),
-        //        typeof(ObservableCollection<MeetingsByMonthAndYear>),
+        //        nameof(Reports),
+        //        typeof(ObservableCollection<FinancialSummaryMonthlyReportListItem>),
         //        typeof(ReportsTable),
         //        new PropertyMetadata(null));
 
@@ -70,5 +64,54 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
         //        typeof(ReportsTable),
         //        new PropertyMetadata(null));
         
+        
+        //// =====================================================
+        //// NAVIGATION SERVICE
+        //// =====================================================
+
+        //public IReportService? ReportService
+        //{
+        //    get => (IReportService?)GetValue(ReportServiceProperty);
+        //    set => SetValue(ReportServiceProperty, value);
+        //}
+
+        //public static readonly DependencyProperty ReportServiceProperty =
+        //    DependencyProperty.Register(
+        //        nameof(ReportService),
+        //        typeof(IReportService),
+        //        typeof(ReportsTable),
+        //        new PropertyMetadata(null));
+
+
+
+        //// =====================================================
+        //// ACTIONS
+        //// =====================================================
+
+        //private async void DeleteReport(FinancialSummaryMonthlyReportListItem report)
+        //{
+        //    var result = MessageBox.Show($"Are you sure you want to delete '{report.MonthName}'?", "Delete Church Service", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+        //    if (result != MessageBoxResult.Yes)
+        //        return;
+
+        //    try
+        //    {
+        //        if (ReportService == null)
+        //        {
+        //            MessageBox.Show("Report service is not configured.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //            return;
+        //        }
+
+        //        await ReportService.DeleteAsync(report.Id);
+        //        Reports.Remove(report);
+
+        //        MessageBox.Show("Report deleted successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"The report could not be deleted.\n\n{ex.Message}", "Delete Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
     }
 }

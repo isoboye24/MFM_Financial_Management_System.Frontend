@@ -1,4 +1,5 @@
-﻿using MFMFMSF.UI.Controls;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Controls;
 using MFMFMSF.UI.Features.Reports.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
@@ -19,9 +20,9 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
             InitializeComponent();
         }
 
-        public void Initialize(INavigationService navigationService)
+        public void Initialize(INavigationService navigationService, IReportService reportService)
         {
-            DataContext = new RecentReportsViewModel(navigationService);
+            DataContext = new RecentReportsViewModel(navigationService, reportService);
         }
     }
 }
