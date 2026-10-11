@@ -1,6 +1,7 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Reports;
 using MFMFMSF.Core.Models.Reports.Create;
+using MFMFMSF.Core.Models.Reports.PDF;
 using System.Net.Http.Json;
 
 namespace MFMFMSF.Infrastructure.Service
@@ -48,6 +49,26 @@ namespace MFMFMSF.Infrastructure.Service
             }
 
             return (reports, totalItems);
+        }
+
+        public async Task<FinancialSummaryMonthlyReportPDF> GetPDFDataAsync(Guid id)
+        {
+            var response = await _httpClient.GetAsync( $"{Endpoint}/{id}/pdf-data");
+
+            response.EnsureSuccessStatusCode();
+
+            var report = await response.Content.ReadFromJsonAsync<FinancialSummaryMonthlyReportPDF>();
+
+            return report ?? throw new InvalidOperationException("The API returned no PDF report data.");
+        }
+
+        public async Task<byte[]> GetPDFAsync(Guid id)
+        {
+            var response = await _httpClient.GetAsync($"{Endpoint}/{id}/pdf");
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsByteArrayAsync();
         }
     }
 }

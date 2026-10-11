@@ -4,6 +4,7 @@ using MFMFMSF.Core.Models.Reports;
 using MFMFMSF.Infrastructure.Service;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Meetings.Controls;
+using MFMFMSF.UI.Features.Reports.Views;
 using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -18,12 +19,14 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
     public partial class ReportsTable : UserControl
     {
         public ICommand DeleteReportCommand { get; }
+        public ICommand ViewReportCommand { get; }
 
         public ReportsTable()
         {
             InitializeComponent();
             
             DeleteReportCommand =  new RelayCommandGeneric<FinancialSummaryMonthlyReportListItem>(DeleteReport);
+            ViewReportCommand =  new RelayCommandGeneric<FinancialSummaryMonthlyReportListItem>(ViewReport);
         }
 
 
@@ -110,6 +113,22 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
             {
                 MessageBox.Show($"The report could not be deleted.\n\n{ex.Message}", "Delete Failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void ViewReport(FinancialSummaryMonthlyReportListItem report)
+        {
+            if (NavigationService == null || ReportService == null)
+            {
+                MessageBox.Show(
+                    "Navigation services are not configured.",
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return;
+            }
+
+            NavigationService.Navigate(new ReportPDFPreview(ReportService, report.Id));
         }
     }
 }

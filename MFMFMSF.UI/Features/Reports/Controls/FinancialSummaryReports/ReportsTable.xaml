@@ -374,9 +374,9 @@
 
                                         <!-- VIEW -->
 
-                                        <!--<Button
+                                        <Button
                                         Style="{DynamicResource TableActionButton}"
-                                        Command="{Binding DataContext.ViewReportCommand,
+                                        Command="{Binding ViewReportCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
                                         CommandParameter="{Binding}"
                                         ToolTip="View">
@@ -386,14 +386,14 @@
                                             Width="14"
                                             Height="14"/>
 
-                                        </Button>-->
+                                        </Button>
 
 
-                                        <!-- DOWNLOAD -->
+                                         <!--DOWNLOAD--> 
 
-                                        <!--<Button
+                                        <Button
                                         Style="{DynamicResource TableActionButton}"
-                                        Command="{Binding DataContext.DownloadReportCommand,
+                                        Command="{Binding DownloadReportCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
                                         CommandParameter="{Binding}"
                                         ToolTip="Download">
@@ -403,7 +403,7 @@
                                             Width="14"
                                             Height="14"/>
 
-                                        </Button>-->
+                                        </Button>
 
 
                                         <!-- DELETE -->
