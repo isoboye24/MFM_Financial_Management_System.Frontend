@@ -6,7 +6,9 @@ using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Meetings.Controls;
 using MFMFMSF.UI.Features.Reports.Views;
 using MFMFMSF.UI.Navigation;
+using Microsoft.Win32;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,6 +21,7 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
     public partial class ReportsTable : UserControl
     {
         public ICommand DeleteReportCommand { get; }
+        public ICommand DownloadReportCommand { get; }
         public ICommand ViewReportCommand { get; }
 
         public ReportsTable()
@@ -27,6 +30,7 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
             
             DeleteReportCommand =  new RelayCommandGeneric<FinancialSummaryMonthlyReportListItem>(DeleteReport);
             ViewReportCommand =  new RelayCommandGeneric<FinancialSummaryMonthlyReportListItem>(ViewReport);
+            DownloadReportCommand = new RelayCommandGeneric<FinancialSummaryMonthlyReportListItem>(DownloadReport);
         }
 
 
@@ -130,5 +134,59 @@ namespace MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports
 
             NavigationService.Navigate(new ReportPDFPreview(ReportService, report.Id));
         }
+
+
+        private async void DownloadReport(FinancialSummaryMonthlyReportListItem report)
+        {
+            if (ReportService == null)
+            {
+                MessageBox.Show(
+                    "Report service is not configured.",
+                    "Download Failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return;
+            }
+
+            var dialog = new SaveFileDialog
+            {
+                Title = "Download Monthly Service Report",
+                FileName = $"MFM_ServiceReport_{report.MonthName.Replace(" ", "_")}.pdf",
+                DefaultExt = ".pdf",
+                Filter = "PDF documents (*.pdf)|*.pdf",
+                AddExtension = true,
+                OverwritePrompt = true
+            };
+
+            if (dialog.ShowDialog() != true)
+                return;
+
+            try
+            {
+                byte[] pdfBytes = await ReportService.GetPDFAsync(report.Id);
+
+                if (pdfBytes.Length == 0)
+                    throw new InvalidOperationException(
+                        "The API returned an empty PDF file.");
+
+                await File.WriteAllBytesAsync(dialog.FileName, pdfBytes);
+
+                MessageBox.Show(
+                    $"Report downloaded successfully:\n{dialog.FileName}",
+                    "Download Complete",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to download the report.\n\n{ex.Message}",
+                    "Download Failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
     }
 }

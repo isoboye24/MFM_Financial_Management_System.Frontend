@@ -396,7 +396,7 @@
                                         Command="{Binding DownloadReportCommand,
                                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
                                         CommandParameter="{Binding}"
-                                        ToolTip="Download">
+                                        ToolTip="Download Report">
 
                                             <materialDesign:PackIcon
                                             Kind="DownloadOutline"

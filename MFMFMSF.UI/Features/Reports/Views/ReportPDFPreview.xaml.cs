@@ -1,9 +1,7 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.UI.Features.Reports.Controls.FinancialSummaryReports;
-using Microsoft.Web.WebView2.Core;
+using Microsoft.Win32;
 using System;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -63,13 +61,66 @@ namespace MFMFMSF.UI.Features.Reports.Views
             }
         }
 
-        private void ReportPDFPreview_Unloaded(
-            object sender,
-            RoutedEventArgs e)
+        private void ReportPDFPreview_Unloaded(object sender, RoutedEventArgs e)
         {
             // Keep the temporary PDF available for the viewer.
             // It will be reused if this page is opened again.
         }
+
+        private async void DownloadPdfButton_Click(object sender, RoutedEventArgs e)
+        {
+            await DownloadPdfAsync();
+        }
+
+
+        private async Task DownloadPdfAsync()
+        {
+            try
+            {
+                var dialog = new SaveFileDialog
+                {
+                    Title = "Download Church Service Report",
+                    FileName = $"MFM_ServiceReport_{_reportId:N}.pdf",
+                    DefaultExt = ".pdf",
+                    Filter = "PDF documents (*.pdf)|*.pdf",
+                    AddExtension = true,
+                    OverwritePrompt = true
+                };
+
+                if (dialog.ShowDialog() != true)
+                    return;
+
+                byte[] pdfBytes = await _reportService.GetPDFAsync(_reportId);
+
+                if (pdfBytes.Length == 0)
+                {
+                    MessageBox.Show(
+                        "The API returned an empty PDF file.",
+                        "Download Failed",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+
+                    return;
+                }
+
+                await File.WriteAllBytesAsync(dialog.FileName, pdfBytes);
+
+                MessageBox.Show(
+                    $"PDF saved successfully:\n{dialog.FileName}",
+                    "Download Complete",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to download the PDF.\n\n{ex.Message}",
+                    "Download Failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
 
 
         // =====================================================
