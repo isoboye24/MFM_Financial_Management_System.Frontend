@@ -3,398 +3,263 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.Dashboard.Controls"
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="800">
 
     <UserControl.Resources>
 
-        <!-- Main Text -->
-        <Style x:Key="TitleText"
-               TargetType="TextBlock">
-            <Setter Property="FontFamily"
-                    Value="Segoe UI"/>
-            <Setter Property="Foreground"
-                    Value="#172033"/>
+        <Style x:Key="ChartTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Lato"/>
+            <Setter Property="Foreground" Value="#303653"/>
         </Style>
 
-        <!-- Small gray text -->
-        <Style x:Key="SecondaryText"
-               TargetType="TextBlock">
-            <Setter Property="FontFamily"
-                    Value="Segoe UI"/>
-            <Setter Property="Foreground"
-                    Value="#667085"/>
+        <Style x:Key="ChartSecondaryTextStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Lato"/>
+            <Setter Property="Foreground" Value="#667085"/>
         </Style>
 
-        <!-- Card Shadow -->
-        <DropShadowEffect x:Key="CardShadow"
-                          BlurRadius="12"
-                          ShadowDepth="1"
-                          Opacity="0.08"
-                          Color="#000000"/>
-
-        <!-- Month ComboBox -->
-        <Style x:Key="MonthComboBox"
-               TargetType="ComboBox">
-
-            <Setter Property="FontFamily"
-                    Value="Segoe UI"/>
-
-            <Setter Property="FontSize"
-                    Value="11"/>
-
-            <Setter Property="Foreground"
-                    Value="#344054"/>
-
-            <Setter Property="Background"
-                    Value="#FFFFFF"/>
-
-            <Setter Property="BorderBrush"
-                    Value="#E4E7EC"/>
-
-            <Setter Property="BorderThickness"
-                    Value="1"/>
-
-            <Setter Property="Padding"
-                    Value="10,5"/>
-
-            <Setter Property="Height"
-                    Value="34"/>
-
-            <Setter Property="Width"
-                    Value="90"/>
-
+        <Style x:Key="ChartValueStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Lato"/>
+            <Setter Property="FontSize" Value="9"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#344054"/>
+            <Setter Property="TextAlignment" Value="Center"/>
         </Style>
 
     </UserControl.Resources>
 
-
-    <!-- MAIN CONTAINER -->
-    <Border Background="#FFFFFF"
-            CornerRadius="12"
-            BorderBrush="#EAECF0"
-            BorderThickness="1"
-            Padding="16"
-            Effect="{StaticResource CardShadow}">
+    <Border Background="White"
+            CornerRadius="18"
+            Padding="16">
 
         <Grid>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-
-            <!-- ================================================= -->
             <!-- HEADER -->
-            <!-- ================================================= -->
-
-            <Grid Grid.Row="0"
-                  Margin="0,0,0,12">
-
+            <Grid Grid.Row="0" Margin="0,0,0,14">
                 <TextBlock Text="Income vs Expenditure"
-                           Style="{StaticResource TitleText}"
+                           Style="{StaticResource ChartTitleStyle}"
                            FontSize="13"
                            FontWeight="SemiBold"
                            VerticalAlignment="Center"/>
 
-                <ComboBox HorizontalAlignment="Right"
+                <ComboBox x:Name="PeriodSelector"
+                          Width="120"
+                          Height="36"
+                          HorizontalAlignment="Right"
                           VerticalAlignment="Center"
-                          Style="{StaticResource MonthComboBox}"
-                          SelectedIndex="0">
+                          SelectedIndex="0"
+                          Style="{DynamicResource ComboBoxStyle}"
+                          SelectionChanged="PeriodSelector_SelectionChanged">
 
-                    <ComboBoxItem Content="This Month"/>
-                    <ComboBoxItem Content="Last Month"/>
-                    <ComboBoxItem Content="This Year"/>
+                    <ComboBoxItem Content="This Month" Tag="ThisMonth"/>
+                    <ComboBoxItem Content="Last Month" Tag="LastMonth"/>
+                    <ComboBoxItem Content="This Year" Tag="ThisYear"/>
 
                 </ComboBox>
-
             </Grid>
 
-
-            <!-- ================================================= -->
-            <!-- CONTENT -->
-            <!-- ================================================= -->
-
+            <!-- CHART AND SUMMARY -->
             <Grid Grid.Row="1">
-
                 <Grid.ColumnDefinitions>
-
-                    <!-- Chart -->
                     <ColumnDefinition Width="*"/>
-
-                    <!-- Gap -->
                     <ColumnDefinition Width="14"/>
-
-                    <!-- Statistics -->
                     <ColumnDefinition Width="160"/>
-
                 </Grid.ColumnDefinitions>
 
-
-                <!-- ================================================= -->
                 <!-- BAR CHART -->
-                <!-- ================================================= -->
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-                <Border Grid.Column="0"
-                        Background="#FFFFFF">
+                    <!-- Plot area -->
+                    <Grid Grid.Row="0" Margin="0,0,0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="34"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Grid>
+                        <!-- Dynamic horizontal axis labels and gridlines -->
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                        <!-- Chart grid -->
-                        <Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0"
+                                       Text="{Binding AxisLabel4}"
+                                       FontSize="9"
+                                       Foreground="#667085"
+                                       VerticalAlignment="Top"/>
 
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
+                            <TextBlock Grid.Row="1"
+                                       Text="{Binding AxisLabel3}"
+                                       FontSize="9"
+                                       Foreground="#667085"
+                                       VerticalAlignment="Center"/>
 
-                        </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="2"
+                                       Text="{Binding AxisLabel2}"
+                                       FontSize="9"
+                                       Foreground="#667085"
+                                       VerticalAlignment="Center"/>
 
+                            <TextBlock Grid.Row="3"
+                                       Text="{Binding AxisLabel1}"
+                                       FontSize="9"
+                                       Foreground="#667085"
+                                       VerticalAlignment="Center"/>
 
-                        <!-- =============================== -->
-                        <!-- CHART AREA -->
-                        <!-- =============================== -->
+                            <TextBlock Grid.Row="4"
+                                       Text="0"
+                                       FontSize="9"
+                                       Foreground="#667085"
+                                       VerticalAlignment="Bottom"/>
+                        </Grid>
 
-                        <Grid Grid.Row="0"
-                              Margin="0,0,0,4">
+                        <!-- Plot -->
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                            <!-- Horizontal grid lines -->
+                            <Border Grid.Row="0"
+                                    BorderBrush="#EAECF0"
+                                    BorderThickness="0,1,0,0"/>
+                            <Border Grid.Row="1"
+                                    BorderBrush="#EAECF0"
+                                    BorderThickness="0,1,0,0"/>
+                            <Border Grid.Row="2"
+                                    BorderBrush="#EAECF0"
+                                    BorderThickness="0,1,0,0"/>
+                            <Border Grid.Row="3"
+                                    BorderBrush="#EAECF0"
+                                    BorderThickness="0,1,0,0"/>
+                            <Border Grid.Row="4"
+                                    BorderBrush="#EAECF0"
+                                    BorderThickness="0,1,0,0"/>
 
-                            <Grid>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <Border Grid.Row="0"
-                                        BorderBrush="#EAECF0"
-                                        BorderThickness="0,1,0,0"/>
-
-                                <Border Grid.Row="1"
-                                        BorderBrush="#EAECF0"
-                                        BorderThickness="0,1,0,0"/>
-
-                                <Border Grid.Row="2"
-                                        BorderBrush="#EAECF0"
-                                        BorderThickness="0,1,0,0"/>
-
-                                <Border Grid.Row="3"
-                                        BorderBrush="#EAECF0"
-                                        BorderThickness="0,1,0,0"/>
-
-                                <Border Grid.Row="4"
-                                        BorderBrush="#EAECF0"
-                                        BorderThickness="0,1,0,0"/>
-
-                            </Grid>
-
-
-                            <!-- Y AXIS LABELS -->
-
-                            <StackPanel HorizontalAlignment="Left"
-                                        VerticalAlignment="Stretch"
-                                        Width="32"
-                                        IsHitTestVisible="False">
-
-                                <TextBlock Text="40K"
-                                           FontSize="9"
-                                           Foreground="#667085"/>
-
-                                <TextBlock Text="30K"
-                                           FontSize="9"
-                                           Foreground="#667085"
-                                           Margin="0,16,0,0"/>
-
-                                <TextBlock Text="20K"
-                                           FontSize="9"
-                                           Foreground="#667085"
-                                           Margin="0,16,0,0"/>
-
-                                <TextBlock Text="10K"
-                                           FontSize="9"
-                                           Foreground="#667085"
-                                           Margin="0,16,0,0"/>
-
-                                <TextBlock Text="0"
-                                           FontSize="9"
-                                           Foreground="#667085"
-                                           Margin="0,16,0,0"/>
-
-                            </StackPanel>
-
-
-                            <!-- =============================== -->
-                            <!-- BARS -->
-                            <!-- =============================== -->
-
-                            <Grid Margin="38,0,0,0">
-
+                            <!-- Bars and their value labels -->
+                            <Grid Grid.RowSpan="5">
                                 <Grid.ColumnDefinitions>
-
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-
                                 </Grid.ColumnDefinitions>
 
-
-                                <!-- ================= -->
-                                <!-- INCOME -->
-                                <!-- ================= -->
-
+                                <!-- Income -->
                                 <Grid Grid.Column="0">
-
                                     <Border Width="36"
-                                            Height="144"
+                                            Height="{Binding IncomeBarHeight}"
                                             VerticalAlignment="Bottom"
                                             HorizontalAlignment="Center"
                                             Background="#6654D9"
                                             CornerRadius="5,5,0,0"/>
 
-                                    <TextBlock Text="$56,900"
-                                               HorizontalAlignment="Center"
+                                    <TextBlock Text="{Binding TotalIncomeLabel}"
+                                               Style="{StaticResource ChartValueStyle}"
                                                VerticalAlignment="Bottom"
-                                               Margin="0,0,0,148"
-                                               FontSize="9"
-                                               FontWeight="SemiBold"
-                                               Foreground="#344054"/>
-
+                                               Margin="{Binding IncomeLabelMargin}"/>
                                 </Grid>
 
-
-                                <!-- ================= -->
-                                <!-- EXPENDITURE -->
-                                <!-- ================= -->
-
+                                <!-- Expenditure -->
                                 <Grid Grid.Column="1">
-
                                     <Border Width="36"
-                                            Height="62"
+                                            Height="{Binding ExpenditureBarHeight}"
                                             VerticalAlignment="Bottom"
                                             HorizontalAlignment="Center"
                                             Background="#EF5B83"
                                             CornerRadius="5,5,0,0"/>
 
-                                    <TextBlock Text="$15,320"
-                                               HorizontalAlignment="Center"
+                                    <TextBlock Text="{Binding TotalExpenditureLabel}"
+                                               Style="{StaticResource ChartValueStyle}"
                                                VerticalAlignment="Bottom"
-                                               Margin="0,0,0,66"
-                                               FontSize="9"
-                                               FontWeight="SemiBold"
-                                               Foreground="#344054"/>
-
+                                               Margin="{Binding ExpenditureLabelMargin}"/>
                                 </Grid>
 
-
-                                <!-- ================= -->
-                                <!-- BALANCE -->
-                                <!-- ================= -->
-
+                                <!-- Net balance -->
                                 <Grid Grid.Column="2">
-
                                     <Border Width="36"
-                                            Height="105"
+                                            Height="{Binding NetBalanceBarHeight}"
                                             VerticalAlignment="Bottom"
                                             HorizontalAlignment="Center"
                                             Background="#35B58C"
                                             CornerRadius="5,5,0,0"/>
 
-                                    <TextBlock Text="$41,580"
-                                               HorizontalAlignment="Center"
+                                    <TextBlock Text="{Binding NetBalanceLabel}"
+                                               Style="{StaticResource ChartValueStyle}"
                                                VerticalAlignment="Bottom"
-                                               Margin="0,0,0,109"
-                                               FontSize="9"
-                                               FontWeight="SemiBold"
-                                               Foreground="#344054"/>
-
+                                               Margin="{Binding NetBalanceLabelMargin}"/>
                                 </Grid>
-
                             </Grid>
-
                         </Grid>
-
-
-                        <!-- =============================== -->
-                        <!-- X AXIS LABELS -->
-                        <!-- =============================== -->
-
-                        <Grid Grid.Row="1"
-                              Margin="38,4,0,0">
-
-                            <Grid.ColumnDefinitions>
-
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0"
-                                       Text="Total Income"
-                                       HorizontalAlignment="Center"
-                                       FontSize="9"
-                                       Foreground="#667085"/>
-
-                            <TextBlock Grid.Column="1"
-                                       Text="Total Expenditure"
-                                       HorizontalAlignment="Center"
-                                       FontSize="9"
-                                       Foreground="#667085"/>
-
-                            <TextBlock Grid.Column="2"
-                                       Text="Net Balance"
-                                       HorizontalAlignment="Center"
-                                       FontSize="9"
-                                       Foreground="#667085"/>
-
-                        </Grid>
-
                     </Grid>
 
-                </Border>
+                    <!-- X-axis labels -->
+                    <Grid Grid.Row="1" Margin="34,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
+                        <TextBlock Grid.Column="0"
+                                   Text="Total Income"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   FontSize="9"
+                                   Foreground="#667085"/>
 
-                <!-- ================================================= -->
-                <!-- RIGHT STATISTICS -->
-                <!-- ================================================= -->
+                        <TextBlock Grid.Column="1"
+                                   Text="Total Expenditure"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   FontSize="9"
+                                   Foreground="#667085"/>
 
+                        <TextBlock Grid.Column="2"
+                                   Text="Net Balance"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   FontSize="9"
+                                   Foreground="#667085"/>
+                    </Grid>
+                </Grid>
+
+                <!-- RIGHT-HAND SUMMARY CARDS -->
                 <StackPanel Grid.Column="2">
 
-
-                    <!-- =============================== -->
-                    <!-- NET BALANCE CARD -->
-                    <!-- =============================== -->
-
-                    <Border Height="82"
-                            Background="#FFFFFF"
+                    <!-- NET BALANCE -->
+                    <Border MinHeight="82"
+                            Background="White"
                             BorderBrush="#EAECF0"
                             BorderThickness="1"
-                            CornerRadius="9"
-                            Padding="12">
+                            CornerRadius="10"
+                            Padding="11">
 
                         <Grid>
-
                             <Grid.ColumnDefinitions>
-
                                 <ColumnDefinition Width="38"/>
                                 <ColumnDefinition Width="*"/>
-
                             </Grid.ColumnDefinitions>
 
-
-                            <!-- Purple Icon -->
-
-                            <Border Grid.Column="0"
-                                    Width="32"
+                            <Border Width="32"
                                     Height="32"
                                     CornerRadius="16"
                                     Background="#6754D9"
-                                    HorizontalAlignment="Left"
                                     VerticalAlignment="Top">
 
                                 <TextBlock Text="↗"
@@ -402,160 +267,99 @@
                                            Foreground="White"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
-
                             </Border>
 
-
-                            <!-- Balance information -->
-
-                            <StackPanel Grid.Column="1"
-                                        Margin="7,0,0,0">
-
+                            <StackPanel Grid.Column="1" Margin="7,0,0,0">
                                 <TextBlock Text="Net Balance"
-                                           Style="{StaticResource SecondaryText}"
+                                           Style="{StaticResource ChartSecondaryTextStyle}"
                                            FontSize="9"/>
 
-                                <TextBlock Text="$41,580.00"
-                                           Style="{StaticResource TitleText}"
+                                <TextBlock Text="{Binding NetBalanceLabel}"
+                                           Style="{StaticResource ChartTitleStyle}"
                                            FontSize="15"
                                            FontWeight="SemiBold"
-                                           Margin="0,2,0,0"/>
+                                           Margin="0,3,0,0"
+                                           TextWrapping="Wrap"/>
 
-                                <StackPanel Orientation="Horizontal"
-                                            Margin="0,3,0,0">
-
-                                    <TextBlock Text="↑ 17.4%"
-                                               FontSize="9"
-                                               Foreground="#20A56B"
-                                               FontWeight="SemiBold"/>
-
-                                    <TextBlock Text="  vs Apr"
-                                               FontSize="9"
-                                               Foreground="#667085"/>
-
-                                </StackPanel>
-
+                                <TextBlock Text="{Binding BalanceStatus}"
+                                           FontSize="9"
+                                           Foreground="{Binding BalanceStatusBrush}"
+                                           Margin="0,3,0,0"
+                                           TextWrapping="Wrap"/>
                             </StackPanel>
-
                         </Grid>
-
                     </Border>
-
-
-                    <!-- SPACE -->
 
                     <Border Height="10"/>
 
-
-                    <!-- =============================== -->
-                    <!-- BUDGET REMAINING CARD -->
-                    <!-- =============================== -->
-
-                    <Border Height="108"
-                            Background="#FFFFFF"
+                    <!-- EXPENDITURE RATIO -->
+                    <Border MinHeight="108"
+                            Background="White"
                             BorderBrush="#EAECF0"
                             BorderThickness="1"
-                            CornerRadius="9"
-                            Padding="12">
+                            CornerRadius="10"
+                            Padding="11">
 
                         <Grid>
-
                             <Grid.RowDefinitions>
-
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
-
                             </Grid.RowDefinitions>
 
-
-                            <!-- ICON + TITLE -->
-
                             <Grid Grid.Row="0">
-
                                 <Grid.ColumnDefinitions>
-
                                     <ColumnDefinition Width="38"/>
                                     <ColumnDefinition Width="*"/>
-
                                 </Grid.ColumnDefinitions>
 
-
-                                <!-- Orange Icon -->
-
-                                <Border Grid.Column="0"
-                                        Width="32"
+                                <Border Width="32"
                                         Height="32"
                                         CornerRadius="16"
                                         Background="#FF9D2E"
-                                        HorizontalAlignment="Left">
+                                        VerticalAlignment="Top">
 
-                                    <TextBlock Text="▣"
+                                    <TextBlock Text="%"
                                                FontSize="16"
+                                               FontWeight="SemiBold"
                                                Foreground="White"
                                                HorizontalAlignment="Center"
                                                VerticalAlignment="Center"/>
-
                                 </Border>
 
-
-                                <StackPanel Grid.Column="1"
-                                            Margin="7,0,0,0">
-
-                                    <TextBlock Text="Budget Remaining"
-                                               Style="{StaticResource SecondaryText}"
+                                <StackPanel Grid.Column="1" Margin="7,0,0,0">
+                                    <TextBlock Text="Income Spent"
+                                               Style="{StaticResource ChartSecondaryTextStyle}"
                                                FontSize="9"/>
 
-                                    <TextBlock Text="$8,680.00"
-                                               Style="{StaticResource TitleText}"
+                                    <TextBlock Text="{Binding ExpenditureRatioLabel}"
+                                               Style="{StaticResource ChartTitleStyle}"
                                                FontSize="15"
                                                FontWeight="SemiBold"
-                                               Margin="0,2,0,0"/>
-
+                                               Margin="0,3,0,0"/>
                                 </StackPanel>
-
                             </Grid>
-
-
-                            <!-- PERCENTAGE -->
 
                             <TextBlock Grid.Row="1"
-                                       Text="23.7% of budget"
+                                       Text="{Binding ExpenditureRatioDescription}"
                                        FontSize="9"
                                        Foreground="#667085"
-                                       Margin="45,6,0,7"/>
+                                       Margin="45,7,0,8"
+                                       TextWrapping="Wrap"/>
 
-
-                            <!-- PROGRESS BAR -->
-
-                            <Grid Grid.Row="2"
-                                  Height="8"
-                                  Margin="45,0,0,0">
-
-                                <!-- Background -->
-
-                                <Border Background="#F0F2F5"
-                                        CornerRadius="4"/>
-
-                                <!-- Progress -->
-
-                                <Border Width="65"
-                                        HorizontalAlignment="Left"
-                                        Background="#FF9D2E"
-                                        CornerRadius="4"/>
-
-                            </Grid>
-
+                            <ProgressBar Grid.Row="2"
+                                 Height="7"
+                                 Margin="45,0,0,0"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding ExpenditureRatioProgress, Mode=OneWay}"
+                                 Background="#F0F2F5"
+                                 Foreground="#FF9D2E"
+                                 BorderThickness="0"/> 
                         </Grid>
-
                     </Border>
-
                 </StackPanel>
-
             </Grid>
-
         </Grid>
-
     </Border>
-
 </UserControl>

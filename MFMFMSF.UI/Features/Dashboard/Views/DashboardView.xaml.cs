@@ -12,21 +12,18 @@ namespace MFMFMSF.UI.Features.Dashboard.Views
     {
         private readonly DashboardViewModel _viewModel;
         private readonly IncomeChart _incomeChart;
+        private readonly IncomeVsExpenditure _incomeVsExpenditure;
 
-        public DashboardView(INavigationService navigationService,
-    IGivingService givingService,
-    IExpenditureService expenditureService,
-    IncomeChart incomeChart)
+        public DashboardView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService,
+    IncomeChart incomeChart, IncomeVsExpenditure incomeVsExpenditure)
         {
             InitializeComponent();
             _incomeChart = incomeChart;
-
+            _incomeVsExpenditure = incomeVsExpenditure;
             IncomeChartHost.Content = _incomeChart;
+            IncomeVsExpenditureHost.Content = _incomeVsExpenditure;
 
-            _viewModel = new DashboardViewModel(
-                navigationService,
-                givingService,
-                expenditureService);
+            _viewModel = new DashboardViewModel(navigationService, givingService, expenditureService);
 
             DataContext = _viewModel;
 
@@ -46,6 +43,8 @@ namespace MFMFMSF.UI.Features.Dashboard.Views
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
 
             await _incomeChart.SetSelectedPeriodAsync(e.Month, e.Year);
+
+            await _incomeVsExpenditure.SetSelectedPeriodAsync(e.Month, e.Year);
         }
     }
 }

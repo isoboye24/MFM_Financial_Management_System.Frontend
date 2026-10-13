@@ -41,7 +41,8 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 
 
         public SidebarViewModel(INavigationService navigation, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
-            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService, IncomeChart incomeChart)
+            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService, IncomeChart incomeChart,
+            IncomeVsExpenditure incomeVsExpenditure)
         {
             _navigation = navigation;
             _meetingCategoryService = meetingCategoryService;
@@ -51,7 +52,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             _givingService = givingService;
             _expenditureService = expenditureService;
 
-            NavigateDashboardCommand = new RelayCommand(_ =>  _navigation.Navigate(new DashboardView(_navigation, _givingService, _expenditureService, incomeChart)));
+            NavigateDashboardCommand = new RelayCommand(_ =>  _navigation.Navigate(new DashboardView(_navigation, _givingService, _expenditureService, incomeChart, incomeVsExpenditure)));
 
             NavigateMeetingsCommand = new RelayCommand(_ =>  _navigation.Navigate(new MeetingsView(_navigation, _meetingCategoryService, _meetingService, 
                 _givingCategoryService, _givingService, _expenditureService)));

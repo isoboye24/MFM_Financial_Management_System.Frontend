@@ -71,7 +71,7 @@
                         CornerRadius="18"
                         Padding="20">
 
-                    <lvc:IncomeVsExpenditure/>
+                    <ContentControl x:Name="IncomeVsExpenditureHost"/>
 
                 </Border>
 

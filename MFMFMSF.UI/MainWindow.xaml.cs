@@ -35,10 +35,11 @@ namespace MFMFMSF.UI
             _expenditureService = App.ExpenditureService;
             _reportService = App.ReportService;
             var incomeChart = new IncomeChart(_givingService);
+            var incomeVsExpenditure = new IncomeVsExpenditure(_givingService, _expenditureService);
 
-            DataContext = new MainViewModel(_navigation, _givingService, _expenditureService, incomeChart);
+            DataContext = new MainViewModel(_navigation, _givingService, _expenditureService, incomeChart, incomeVsExpenditure);
 
-            SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, _expenditureService, _reportService, incomeChart);
+            SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, _expenditureService, _reportService, incomeChart, incomeVsExpenditure);
         }
 
         private void TopBar_MinimizeRequested(object? sender, EventArgs e)
