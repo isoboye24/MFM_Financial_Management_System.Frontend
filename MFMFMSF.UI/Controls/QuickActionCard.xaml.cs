@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using MaterialDesignThemes.Wpf;
@@ -12,11 +13,7 @@ namespace MFMFMSF.UI.Controls
             InitializeComponent();
         }
 
-
-        // ==========================================
-        // TITLE
-        // ==========================================
-
+        // Title
         public string Title
         {
             get => (string)GetValue(TitleProperty);
@@ -30,11 +27,7 @@ namespace MFMFMSF.UI.Controls
                 typeof(QuickActionCard),
                 new PropertyMetadata(string.Empty));
 
-
-        // ==========================================
-        // ICON
-        // ==========================================
-
+        // Icon
         public PackIconKind Icon
         {
             get => (PackIconKind)GetValue(IconProperty);
@@ -48,11 +41,7 @@ namespace MFMFMSF.UI.Controls
                 typeof(QuickActionCard),
                 new PropertyMetadata(PackIconKind.None));
 
-
-        // ==========================================
-        // ICON BACKGROUND
-        // ==========================================
-
+        // Icon background
         public Brush IconBackground
         {
             get => (Brush)GetValue(IconBackgroundProperty);
@@ -66,5 +55,14 @@ namespace MFMFMSF.UI.Controls
                 typeof(QuickActionCard),
                 new PropertyMetadata(Brushes.Gray));
 
+        // Click event exposed to the parent control
+        public event RoutedEventHandler? Click;
+
+        private void QuickActionButton_Click(
+            object sender,
+            RoutedEventArgs e)
+        {
+            Click?.Invoke(this, e);
+        }
     }
 }

@@ -54,8 +54,7 @@
 
                 <Grid.RowDefinitions>
 
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="120"/>
 
                 </Grid.RowDefinitions>
 
@@ -73,69 +72,34 @@
                 <!-- ======================================== -->
 
 
-                <!-- Record Offering -->
+                
+<!-- Add Service -->
+<controls:QuickActionCard
+    x:Name="AddMeetingCard"
+    Grid.Row="0"
+    Grid.Column="0"
+    Title="Add Service"
+    Icon="CalendarPlus"
+    IconBackground="#6654D9"/>
 
-                <controls:QuickActionCard
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Title="Record Offering"
-                    Icon="GiftOutline"
-                    IconBackground="#6654D9"/>
+<!-- Add Expenditure -->
+<controls:QuickActionCard
+    x:Name="AddExpenditureCard"
+    Grid.Row="0"
+    Grid.Column="1"
+    Title="Add Expenditure"
+    Icon="ReceiptTextOutline"
+    IconBackground="#EF5B83"/>
 
+<!-- Generate Report -->
+<controls:QuickActionCard
+    x:Name="GenerateReportCard"
+    Grid.Row="0"
+    Grid.Column="2"
+    Title="Generate Report"
+    Icon="FileDocumentOutline"
+    IconBackground="#3182E8"/>
 
-                <!-- Record Tithe -->
-
-                <controls:QuickActionCard
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Title="Record Tithe"
-                    Icon="HeartOutline"
-                    IconBackground="#35B58C"/>
-
-
-                <!-- Record Seed -->
-
-                <controls:QuickActionCard
-                    Grid.Row="0"
-                    Grid.Column="2"
-                    Title="Record Seed"
-                    Icon="SproutOutline"
-                    IconBackground="#FF9D2E"/>
-
-
-                <!-- ======================================== -->
-                <!-- ROW 2 -->
-                <!-- ======================================== -->
-
-
-                <!-- Add Expenditure -->
-
-                <controls:QuickActionCard
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Title="Add Expenditure"
-                    Icon="ReceiptTextOutline"
-                    IconBackground="#EF5B83"/>
-
-
-                <!-- Generate Report -->
-
-                <controls:QuickActionCard
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Title="Generate Report"
-                    Icon="FileDocumentOutline"
-                    IconBackground="#3182E8"/>
-
-
-                <!-- View Projects -->
-
-                <controls:QuickActionCard
-                    Grid.Row="1"
-                    Grid.Column="2"
-                    Title="View Projects"
-                    Icon="OfficeBuildingOutline"
-                    IconBackground="#6754D9"/>
 
             </Grid>
 

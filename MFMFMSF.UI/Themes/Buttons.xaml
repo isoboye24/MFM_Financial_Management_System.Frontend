@@ -451,83 +451,55 @@
             Value="0"/>
 
         <Setter Property="Template">
-
             <Setter.Value>
-
                 <ControlTemplate TargetType="Button">
 
-                    <Border
-                    x:Name="Card"
+                    <Border x:Name="Card"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="5">
+                    CornerRadius="7"
+                    Padding="{TemplateBinding Padding}">
 
-                        <StackPanel
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Margin="18">
-
-                            <Border
-                            Width="54"
-                            Height="54"
-                            CornerRadius="27"
-                            Background="{Binding IconBackground,
-                                                 RelativeSource={RelativeSource AncestorType=UserControl}}"
-                            HorizontalAlignment="Center">
-
-                                <materialDesign:PackIcon
-                                Width="28"
-                                Height="28"
-                                Kind="{Binding IconKind,
-                                               RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Foreground="White"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-
-                            </Border>
-
-                            <TextBlock
-                            Margin="0,12,0,0"
-                            Text="{Binding Title,
-                                           RelativeSource={RelativeSource AncestorType=UserControl}}"
-                            FontFamily="Segoe UI"
-                            FontSize="13"
-                            FontWeight="SemiBold"
-                            Foreground="{DynamicResource PrimaryTextBrush}"
-                            HorizontalAlignment="Center"
-                            TextAlignment="Center"/>
-
-                        </StackPanel>
+                        <ContentPresenter
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    RecognizesAccessKey="True"/>
 
                     </Border>
 
                     <ControlTemplate.Triggers>
 
-                        <Trigger Property="IsMouseOver"
-                             Value="True">
-
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Card"
-                                Property="Background"
-                                Value="{DynamicResource TableAlternateRowBrush}"/>
-
+                            Property="Background"
+                            Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+                            <Setter TargetName="Card"
+                            Property="BorderBrush"
+                            Value="{DynamicResource PrimaryBrush}"/>
                         </Trigger>
 
-                        <Trigger Property="IsPressed"
-                             Value="True">
-
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Card"
-                                Property="Opacity"
-                                Value="0.85"/>
+                            Property="Opacity"
+                            Value="0.85"/>
+                        </Trigger>
 
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Card"
+                            Property="Opacity"
+                            Value="0.5"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
 
                 </ControlTemplate>
-
             </Setter.Value>
-
         </Setter>
 
     </Style>

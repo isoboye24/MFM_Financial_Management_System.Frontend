@@ -11,6 +11,12 @@ namespace MFMFMSF.UI.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly INavigationService _navigation;
+        private readonly IMeetingCategoryService _meetingCategoryService;
+        private readonly IMeetingService _meetingService;
+        private readonly IGivingCategoryService _givingCategoryService;
+        private readonly IGivingService _givingService;
+        private readonly IExpenditureService _expenditureService;
+        private readonly IReportService _reportService;
 
         private UserControl _currentView;
 
@@ -25,14 +31,23 @@ namespace MFMFMSF.UI.ViewModels
         }
 
 
-        public MainViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IncomeChart incomeChart, IncomeVsExpenditure incomeVsExpenditure)
+        public MainViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IncomeChart incomeChart, 
+            IncomeVsExpenditure incomeVsExpenditure, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
+            IGivingCategoryService givingCategoryService, IReportService reportService)
         {
             _navigation = navigationService;
+            _meetingCategoryService = meetingCategoryService;
+            _meetingService = meetingService;
+            _givingCategoryService = givingCategoryService;
+            _givingService = givingService;
+            _expenditureService = expenditureService;
+            _reportService = reportService;
 
             _navigation.PageChanged += OnPageChanged;
 
             // Initial page
-            CurrentView = new DashboardView(navigationService, givingService, expenditureService, incomeChart, incomeVsExpenditure);
+            CurrentView = new DashboardView(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, _expenditureService, incomeChart, 
+                incomeVsExpenditure, _reportService);
         }
 
 

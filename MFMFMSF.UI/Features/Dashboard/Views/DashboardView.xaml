@@ -101,7 +101,7 @@
             CornerRadius="18"
             Padding="20">
 
-                    <lvc:QuickActionCards/>
+                    <lvc:QuickActionCards x:Name="DashboardQuickActions"/>
 
                 </Border>
 

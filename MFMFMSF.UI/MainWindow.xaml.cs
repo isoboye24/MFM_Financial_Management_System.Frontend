@@ -37,7 +37,8 @@ namespace MFMFMSF.UI
             var incomeChart = new IncomeChart(_givingService);
             var incomeVsExpenditure = new IncomeVsExpenditure(_givingService, _expenditureService);
 
-            DataContext = new MainViewModel(_navigation, _givingService, _expenditureService, incomeChart, incomeVsExpenditure);
+            DataContext = new MainViewModel(_navigation, _givingService, _expenditureService, incomeChart, incomeVsExpenditure, _meetingCategoryService, 
+                _meetingService, _givingCategoryService, _reportService);
 
             SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, _expenditureService, _reportService, incomeChart, incomeVsExpenditure);
         }
