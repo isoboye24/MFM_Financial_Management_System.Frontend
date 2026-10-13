@@ -14,7 +14,7 @@
                TargetType="TextBlock">
 
             <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="9"/>
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Foreground"
                     Value="{DynamicResource SecondaryTextBrush}"/>
@@ -27,7 +27,7 @@
                TargetType="TextBlock">
 
             <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="9"/>
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground"
                     Value="{DynamicResource PrimaryTextBrush}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -53,7 +53,7 @@
             <Setter Property="Foreground"
                     Value="{DynamicResource PrimaryBrush}"/>
             <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontSize" Value="13"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Padding" Value="5"/>
 
@@ -88,7 +88,7 @@
 
             <!-- Column headers -->
             <Border Grid.Row="1"
-                    Style="{StaticResource TableHeaderContainer}">
+                    Style="{DynamicResource TableHeaderContainer}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -100,19 +100,19 @@
 
                     <TextBlock Grid.Column="0"
                                Text="Date"
-                               Style="{StaticResource RecentGivingHeaderText}"/>
+                               Style="{DynamicResource RecentGivingHeaderText}"/>
 
                     <TextBlock Grid.Column="1"
                                Text="Description"
-                               Style="{StaticResource RecentGivingHeaderText}"/>
+                               Style="{DynamicResource RecentGivingHeaderText}"/>
 
                     <TextBlock Grid.Column="2"
                                Text="Category"
-                               Style="{StaticResource RecentGivingHeaderText}"/>
+                               Style="{DynamicResource RecentGivingHeaderText}"/>
 
                     <TextBlock Grid.Column="3"
                                Text="Amount"
-                               Style="{StaticResource RecentGivingHeaderText}"
+                               Style="{DynamicResource RecentGivingHeaderText}"
                                HorizontalAlignment="Right"/>
                 </Grid>
 
@@ -128,7 +128,7 @@
                         <DataTemplate>
 
                             <Border Style="{StaticResource TableStripedRow}"
-                                    Padding="0,7">
+                                    Padding="5,7">
 
                                 <Grid MinHeight="20">
 
@@ -141,22 +141,25 @@
 
                                     <!-- Date -->
                                     <TextBlock Grid.Column="0"
-                                               Text="{Binding Date, StringFormat={}{0:MMM dd, yyyy}}"
-                                               Style="{StaticResource RecentGivingDataText}"/>
+                                               Text="{Binding Date, StringFormat='{}{0:MMM dd\\, yyyy}'}"
+                                               Style="{DynamicResource RecentGivingDataText}"/>
 
                                     <!-- Description -->
                                     <TextBlock Grid.Column="1"
-                                               Text="{Binding Summary}"
-                                               ToolTip="{Binding Summary}"
-                                               Margin="0,0,8,0"
-                                               Style="{StaticResource RecentGivingDataText}"/>
+                                       Text="{Binding Summary,
+                                                  Converter={StaticResource TruncateTextConverter},
+                                                  ConverterParameter=30}"
+                                       ToolTip="{Binding Summary}"
+                                       Style="{DynamicResource RecentGivingDataText}"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,8,0"/>
 
                                     <!-- Category -->
                                     <Border Grid.Column="2"
-                                            Style="{StaticResource RecentGivingCategoryBadge}">
+                                            Style="{DynamicResource RecentGivingCategoryBadge}">
 
                                         <TextBlock Text="{Binding CategoryName}"
-                                                   FontSize="8"
+                                                   FontSize="12"
                                                    Foreground="#5946D2"
                                                    VerticalAlignment="Center"/>
 
@@ -165,7 +168,7 @@
                                     <!-- Amount -->
                                     <TextBlock Grid.Column="3"
                                                Text="{Binding Amount, StringFormat={}{0:N2} €}"
-                                               Style="{StaticResource RecentGivingDataText}"
+                                               Style="{DynamicResource RecentGivingDataText}"
                                                HorizontalAlignment="Right"/>
 
                                 </Grid>

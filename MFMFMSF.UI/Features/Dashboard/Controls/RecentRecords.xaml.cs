@@ -78,6 +78,9 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
 
                 foreach (var giving in givings)
                 {
+                    System.Diagnostics.Debug.WriteLine(
+        $"ID: {giving.Id} | Summary: [{giving.Summary}]");
+
                     RecentGivings.Add(giving);
                 }
 
