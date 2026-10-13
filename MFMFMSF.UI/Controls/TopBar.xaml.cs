@@ -1,57 +1,110 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-
 namespace MFMFMSF.UI.Controls
 {
-    /// <summary>
-    /// Interaction logic for TopBar.xaml
-    /// </summary>
     public partial class TopBar : UserControl
     {
         public event EventHandler? MinimizeRequested;
         public event EventHandler? MaximizeRequested;
         public event EventHandler? CloseRequested;
 
+        private Window? _window;
+
         public TopBar()
         {
             InitializeComponent();
+
+            Loaded += TopBar_Loaded;
+            Unloaded += TopBar_Unloaded;
         }
 
-        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        private void TopBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            var window = Window.GetWindow(this);
+
+            if (window == null || ReferenceEquals(window, _window))
+                return;
+
+            if (_window != null)
+                _window.StateChanged -= Window_StateChanged;
+
+            _window = window;
+            _window.StateChanged += Window_StateChanged;
+
+            UpdateMaximizeButton();
+        }
+
+        private void TopBar_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (_window != null)
+            {
+                _window.StateChanged -= Window_StateChanged;
+                _window = null;
+            }
+        }
+
+        private void Window_StateChanged(object? sender, EventArgs e)
+        {
+            UpdateMaximizeButton();
+        }
+
+        private void UpdateMaximizeButton()
+        {
+            if (_window == null)
+                return;
+
+            if (_window.WindowState == WindowState.Maximized)
+            {
+                MaximizeIcon.Text = "\uE923";
+                MaximizeButton.ToolTip = "Restore";
+            }
+            else
+            {
+                MaximizeIcon.Text = "\uE922";
+                MaximizeButton.ToolTip = "Maximize";
+            }
+        }
+
+        private void MinimizeButton_Click(
+            object sender, RoutedEventArgs e)
         {
             MinimizeRequested?.Invoke(this, EventArgs.Empty);
         }
 
-        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        private void MaximizeButton_Click(
+            object sender, RoutedEventArgs e)
         {
             MaximizeRequested?.Invoke(this, EventArgs.Empty);
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(
+            object sender, RoutedEventArgs e)
         {
             CloseRequested?.Invoke(this, EventArgs.Empty);
         }
 
-        private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TitleBar_MouseLeftButtonDown(
+            object sender, MouseButtonEventArgs e)
         {
-            Window? window = Window.GetWindow(this);
+            if (e.ChangedButton != MouseButton.Left)
+                return;
+
+            var window = Window.GetWindow(this);
 
             if (window == null)
                 return;
 
             if (e.ClickCount == 2)
             {
-                window.WindowState =
-                    window.WindowState == WindowState.Maximized
-                    ? WindowState.Normal
-                    : WindowState.Maximized;
-
+                MaximizeRequested?.Invoke(this, EventArgs.Empty);
                 return;
             }
 
-            window.DragMove();
+            if (e.ButtonState == MouseButtonState.Pressed)
+                window.DragMove();
         }
     }
 }
