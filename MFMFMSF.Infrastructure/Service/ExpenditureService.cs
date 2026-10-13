@@ -1,5 +1,6 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Expenditures;
+using MFMFMSF.Core.Models.Givings;
 using System.Net.Http.Json;
 
 namespace MFMFMSF.Infrastructure.Service
@@ -64,6 +65,13 @@ namespace MFMFMSF.Infrastructure.Service
             var response = await _httpClient.DeleteAsync($"{Endpoint}/{id}");
 
             response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<AnnualExpendituresSatistics> GetAnnualStatisticsAsync(int year)
+        {
+            var statistics = await _httpClient.GetFromJsonAsync<AnnualExpendituresSatistics>($"{Endpoint}/annual/statistics?year={year}");
+
+            return statistics ?? new AnnualExpendituresSatistics();
         }
     }
 }

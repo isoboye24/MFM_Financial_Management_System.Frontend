@@ -8,6 +8,7 @@ namespace MFMFMSF.Core.Interfaces
         Task<IReadOnlyList<ExpenditureListItem>> GetAllAsync();
         Task<IReadOnlyList<ExpendituresByMonthAndYear>> GetByMonthAndYearAsync(int month, int year, int page, int recordsPerPage);
         Task<MonthlyExpendituresSatistics> GetMonthlyStatisticsAsync(int month, int year);
+        Task<AnnualExpendituresSatistics> GetAnnualStatisticsAsync(int year);
 
         Task<ExpenditureDetail> GetByIdAsync(Guid id);
         Task UpdateAsync(Guid id, UpdateExpenditureRequest request);
