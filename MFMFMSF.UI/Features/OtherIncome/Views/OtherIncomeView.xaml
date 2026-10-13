@@ -51,14 +51,14 @@ Padding="2">
             </Border>
         </Border>
 
-        <Border Grid.Row="3"
+        <!--<Border Grid.Row="3"
             Height="300"
             CornerRadius="15"
             Margin="0,20,0,20"> 
 
             <lvc2:OtherIncomeTrend/>
 
-        </Border>
+        </Border>-->
 
     </Grid>
 </UserControl>
