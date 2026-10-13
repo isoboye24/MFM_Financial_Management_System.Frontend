@@ -58,10 +58,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="0"
-                        Background="White"
-                        CornerRadius="18"
-                        Padding="10">
-                    <lvc:IncomeChart/>
+                    Background="White"
+                    CornerRadius="18"
+                    Padding="10">
+
+                    <ContentControl x:Name="IncomeChartHost"/>
+
                 </Border>
 
                 <Border Grid.Column="2"

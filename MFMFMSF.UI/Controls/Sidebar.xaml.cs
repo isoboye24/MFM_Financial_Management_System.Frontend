@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Dashboard.Controls;
 using MFMFMSF.UI.Features.Dashboard.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
@@ -14,9 +15,9 @@ namespace MFMFMSF.UI.Controls
         }
 
         public void SetNavigationService(INavigationService navigation, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
-            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService)
+            IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService, IncomeChart incomeChart)
         {
-            DataContext = new SidebarViewModel(navigation, meetingCategoryService, meetingService, givingCategoryService, givingService, expenditureService, reportService);
+            DataContext = new SidebarViewModel(navigation, meetingCategoryService, meetingService, givingCategoryService, givingService, expenditureService, reportService, incomeChart);
         }
 
         private void SidebarMenuItem_Click(object sender, RoutedEventArgs e)

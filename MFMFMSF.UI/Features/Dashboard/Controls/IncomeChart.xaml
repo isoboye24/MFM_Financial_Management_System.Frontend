@@ -33,14 +33,19 @@
                 FontSize="20"/>
 
                 <ComboBox
-                Grid.Column="1"
-                Width="120"
-                Height="35"
-                HorizontalAlignment="Right">
+    x:Name="PeriodSelector"
+    Grid.Column="1"
+    Width="120"
+    Height="36"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Top"
+    SelectedIndex="0"
+    Style="{DynamicResource ComboBoxStyle}"
+    SelectionChanged="PeriodSelector_SelectionChanged">
 
-                    <ComboBoxItem>This Month</ComboBoxItem>
-                    <ComboBoxItem>Last Month</ComboBoxItem>
-                    <ComboBoxItem>This Year</ComboBoxItem>
+                    <ComboBoxItem Content="This Month" Tag="ThisMonth"/>
+                    <ComboBoxItem Content="Last Month" Tag="LastMonth"/>
+                    <ComboBoxItem Content="This Year" Tag="ThisYear"/>
 
                 </ComboBox>
 

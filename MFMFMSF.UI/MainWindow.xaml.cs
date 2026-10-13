@@ -1,7 +1,9 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Dashboard.Controls;
 using MFMFMSF.UI.Navigation;
 using MFMFMSF.UI.ViewModels;
 using System.Windows;
+using MFMFMSF.UI.Controls;
 
 namespace MFMFMSF.UI
 {
@@ -32,10 +34,11 @@ namespace MFMFMSF.UI
             _givingCategoryService = App.GivingCategoryService;
             _expenditureService = App.ExpenditureService;
             _reportService = App.ReportService;
+            var incomeChart = new IncomeChart(_givingService);
 
-            DataContext = new MainViewModel(_navigation, _givingService, _expenditureService);
+            DataContext = new MainViewModel(_navigation, _givingService, _expenditureService, incomeChart);
 
-            SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, _expenditureService, _reportService);
+            SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, _expenditureService, _reportService, incomeChart);
         }
 
         private void TopBar_MinimizeRequested(object? sender, EventArgs e)

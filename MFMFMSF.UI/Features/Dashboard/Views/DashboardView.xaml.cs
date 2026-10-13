@@ -1,5 +1,6 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.UI.Controls;
+using MFMFMSF.UI.Features.Dashboard.Controls;
 using MFMFMSF.UI.Features.Dashboard.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
@@ -11,14 +12,24 @@ namespace MFMFMSF.UI.Features.Dashboard.Views
     {
         private readonly DashboardViewModel _viewModel;
 
-        public DashboardView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public DashboardView(INavigationService navigationService,
+    IGivingService givingService,
+    IExpenditureService expenditureService,
+    IncomeChart incomeChart)
         {
             InitializeComponent();
 
-            _viewModel = new DashboardViewModel(navigationService, givingService, expenditureService);
+            IncomeChartHost.Content = incomeChart;
+
+            _viewModel = new DashboardViewModel(
+                navigationService,
+                givingService,
+                expenditureService);
+
             DataContext = _viewModel;
 
-            DashboardTopWelcomeBar.PeriodChanged += DashboardTopWelcomeBar_PeriodChanged;
+            DashboardTopWelcomeBar.PeriodChanged +=
+                DashboardTopWelcomeBar_PeriodChanged;
 
             Loaded += DashboardView_Loaded;
         }

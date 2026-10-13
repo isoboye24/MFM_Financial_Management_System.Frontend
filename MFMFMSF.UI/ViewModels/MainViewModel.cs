@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Features.Dashboard.Controls;
 using MFMFMSF.UI.Features.Dashboard.Views;
 using MFMFMSF.UI.Navigation;
 using System.ComponentModel;
@@ -24,14 +25,14 @@ namespace MFMFMSF.UI.ViewModels
         }
 
 
-        public MainViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public MainViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IncomeChart incomeChart)
         {
             _navigation = navigationService;
 
             _navigation.PageChanged += OnPageChanged;
 
             // Initial page
-            CurrentView = new DashboardView(navigationService, givingService, expenditureService);
+            CurrentView = new DashboardView(navigationService, givingService, expenditureService, incomeChart);
         }
 
 
