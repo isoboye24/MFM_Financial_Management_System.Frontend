@@ -92,7 +92,7 @@
                         CornerRadius="18"
                         Padding="20">
 
-                    <lvc:RecentRecords/>
+                    <ContentControl x:Name="RecentRecordsHost"/>
 
                 </Border>
 
