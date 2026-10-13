@@ -11,6 +11,7 @@ namespace MFMFMSF.UI.Features.Dashboard.Views
     public partial class DashboardView : UserControl
     {
         private readonly DashboardViewModel _viewModel;
+        private readonly IncomeChart _incomeChart;
 
         public DashboardView(INavigationService navigationService,
     IGivingService givingService,
@@ -18,8 +19,9 @@ namespace MFMFMSF.UI.Features.Dashboard.Views
     IncomeChart incomeChart)
         {
             InitializeComponent();
+            _incomeChart = incomeChart;
 
-            IncomeChartHost.Content = incomeChart;
+            IncomeChartHost.Content = _incomeChart;
 
             _viewModel = new DashboardViewModel(
                 navigationService,
@@ -42,6 +44,8 @@ namespace MFMFMSF.UI.Features.Dashboard.Views
         private async void DashboardTopWelcomeBar_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+
+            await _incomeChart.SetSelectedPeriodAsync(e.Month, e.Year);
         }
     }
 }

@@ -74,6 +74,18 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
             Loaded += IncomeChart_Loaded;
         }
 
+        public async Task SetSelectedPeriodAsync(int month, int year)
+        {
+            var statistics = await _givingService
+                .GetMonthlyStatisticsAsync(month, year);
+
+            UpdateIncome(
+                statistics.MonthlyOfferings,
+                statistics.MonthlyTithes,
+                statistics.MonthlySeeds,
+                statistics.MonthlyOtherIncome);
+        }
+
         private async void IncomeChart_Loaded(
             object sender,
             RoutedEventArgs e)
