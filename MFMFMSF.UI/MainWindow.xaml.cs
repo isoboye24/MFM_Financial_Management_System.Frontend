@@ -3,7 +3,6 @@ using MFMFMSF.UI.Features.Dashboard.Controls;
 using MFMFMSF.UI.Navigation;
 using MFMFMSF.UI.ViewModels;
 using System.Windows;
-using MFMFMSF.UI.Controls;
 
 namespace MFMFMSF.UI
 {

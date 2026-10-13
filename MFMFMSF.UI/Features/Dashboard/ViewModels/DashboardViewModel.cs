@@ -2,8 +2,10 @@
 using MFMFMSF.Core.Models.Expenditures;
 using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.UI.Navigation;
+using MFMFMSF.UI.Utilities;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Media;
 
 namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 {
@@ -13,17 +15,14 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         private readonly IGivingService _givingService;
         private readonly IExpenditureService _expenditureService;
 
-
-
-        // =====================================================
-        // SERVICES
-        // =====================================================
         public INavigationService NavigationService => _navigationService;
         public IGivingService GivingService => _givingService;
         public IExpenditureService ExpenditureService => _expenditureService;
 
-
-        public DashboardViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public DashboardViewModel(
+            INavigationService navigationService,
+            IGivingService givingService,
+            IExpenditureService expenditureService)
         {
             _navigationService = navigationService;
             _givingService = givingService;
@@ -33,18 +32,12 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             SelectedYear = DateTime.Now.Year;
         }
 
-        public async Task LoadDashboardDataAsync()
-        {
-            MonthlyGivingStatistics = await _givingService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
-            MonthlyExpendituresStatistics = await _expenditureService.GetMonthlyStatisticsAsync(SelectedMonth, SelectedYear);
-        }
-
-
         // =====================================================
         // SELECTED PERIOD
         // =====================================================
 
         private int _selectedMonth;
+
         public int SelectedMonth
         {
             get => _selectedMonth;
@@ -59,6 +52,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         }
 
         private int _selectedYear;
+
         public int SelectedYear
         {
             get => _selectedYear;
@@ -72,12 +66,11 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             }
         }
 
-
-
         // =====================================================
-        // MONTHLY STATISTICS
+        // CURRENT MONTH STATISTICS
         // =====================================================
-        private MonthlyGivingStatistics _monthlyGivingStatistics = new();        
+
+        private MonthlyGivingStatistics _monthlyGivingStatistics = new();
 
         public MonthlyGivingStatistics MonthlyGivingStatistics
         {
@@ -90,6 +83,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         }
 
         private MonthlyExpendituresSatistics _monthlyExpendituresStatistics = new();
+
         public MonthlyExpendituresSatistics MonthlyExpendituresStatistics
         {
             get => _monthlyExpendituresStatistics;
@@ -100,6 +94,213 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             }
         }
 
+        // =====================================================
+        // PREVIOUS MONTH STATISTICS
+        // =====================================================
+
+        private MonthlyGivingStatistics _previousMonthGivingStatistics = new();
+
+        private MonthlyExpendituresSatistics _previousMonthExpendituresStatistics = new();
+
+        private string _comparisonText = string.Empty;
+
+        public string ComparisonText
+        {
+            get => _comparisonText;
+            private set
+            {
+                if (_comparisonText == value)
+                    return;
+
+                _comparisonText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // =====================================================
+        // TREND INDICATORS
+        // =====================================================
+
+        private TrendIndicator _offeringsTrend = new();
+        public TrendIndicator OfferingsTrend
+        {
+            get => _offeringsTrend;
+            private set
+            {
+                _offeringsTrend = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private TrendIndicator _tithesTrend = new();
+        public TrendIndicator TithesTrend
+        {
+            get => _tithesTrend;
+            private set
+            {
+                _tithesTrend = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private TrendIndicator _seedsTrend = new();
+        public TrendIndicator SeedsTrend
+        {
+            get => _seedsTrend;
+            private set
+            {
+                _seedsTrend = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private TrendIndicator _otherIncomeTrend = new();
+        public TrendIndicator OtherIncomeTrend
+        {
+            get => _otherIncomeTrend;
+            private set
+            {
+                _otherIncomeTrend = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private TrendIndicator _expendituresTrend = new();
+        public TrendIndicator ExpendituresTrend
+        {
+            get => _expendituresTrend;
+            private set
+            {
+                _expendituresTrend = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // =====================================================
+        // LOAD DASHBOARD DATA
+        // =====================================================
+
+        public async Task LoadDashboardDataAsync()
+        {
+            // Calculate the previous month, including January -> December.
+            var selectedDate = new DateTime(SelectedYear, SelectedMonth, 1);
+            var previousDate = selectedDate.AddMonths(-1);
+
+            // Request current and previous month statistics.
+            var currentGivingTask =
+                _givingService.GetMonthlyStatisticsAsync(
+                    SelectedMonth, SelectedYear);
+
+            var previousGivingTask =
+                _givingService.GetMonthlyStatisticsAsync(
+                    previousDate.Month, previousDate.Year);
+
+            var currentExpenditureTask =
+                _expenditureService.GetMonthlyStatisticsAsync(
+                    SelectedMonth, SelectedYear);
+
+            var previousExpenditureTask =
+                _expenditureService.GetMonthlyStatisticsAsync(
+                    previousDate.Month, previousDate.Year);
+
+            await Task.WhenAll(
+                currentGivingTask,
+                previousGivingTask,
+                currentExpenditureTask,
+                previousExpenditureTask);
+
+            MonthlyGivingStatistics = await currentGivingTask;
+            _previousMonthGivingStatistics = await previousGivingTask;
+
+            MonthlyExpendituresStatistics = await currentExpenditureTask;
+            _previousMonthExpendituresStatistics = await previousExpenditureTask;
+
+            ComparisonText = $"vs {previousDate.ToString("MMM yyyy")}";
+
+            // Income increases are positive; decreases are negative.
+            OfferingsTrend = CalculateTrend(
+                MonthlyGivingStatistics.MonthlyOfferings,
+                _previousMonthGivingStatistics.MonthlyOfferings,
+                higherIsBetter: true);
+
+            TithesTrend = CalculateTrend(
+                MonthlyGivingStatistics.MonthlyTithes,
+                _previousMonthGivingStatistics.MonthlyTithes,
+                higherIsBetter: true);
+
+            SeedsTrend = CalculateTrend(
+                MonthlyGivingStatistics.MonthlySeeds,
+                _previousMonthGivingStatistics.MonthlySeeds,
+                higherIsBetter: true);
+
+            OtherIncomeTrend = CalculateTrend(
+                MonthlyGivingStatistics.MonthlyOtherIncome,
+                _previousMonthGivingStatistics.MonthlyOtherIncome,
+                higherIsBetter: true);
+
+            // Increased expenditure is shown in red.
+            ExpendituresTrend = CalculateTrend(
+                MonthlyExpendituresStatistics.MonthlyExpenditures,
+                _previousMonthExpendituresStatistics.MonthlyExpenditures,
+                higherIsBetter: false);
+        }
+
+        // =====================================================
+        // CALCULATE MONTH-ON-MONTH CHANGE
+        // =====================================================
+
+        private static TrendIndicator CalculateTrend(
+            decimal current,
+            decimal previous,
+            bool higherIsBetter)
+        {
+            // Avoid division by zero.
+            if (previous == 0)
+            {
+                if (current == 0)
+                {
+                    return new TrendIndicator
+                    {
+                        Percentage = "0.0%",
+                        TrendArrow = "→",
+                        TrendForeground = Brushes.Gray
+                    };
+                }
+
+                return new TrendIndicator
+                {
+                    Percentage = "New",
+                    TrendArrow = "↑",
+                    TrendForeground = higherIsBetter
+                        ? Brushes.SeaGreen
+                        : Brushes.IndianRed
+                };
+            }
+
+            var change = ((current - previous) / previous) * 100m;
+
+            if (change == 0)
+            {
+                return new TrendIndicator
+                {
+                    Percentage = "0.0%",
+                    TrendArrow = "→",
+                    TrendForeground = Brushes.Gray
+                };
+            }
+
+            bool increased = change > 0;
+            bool positiveTrend = increased == higherIsBetter;
+
+            return new TrendIndicator
+            {
+                Percentage = $"{Math.Abs(change):0.0}%",
+                TrendArrow = increased ? "↑" : "↓",
+                TrendForeground = positiveTrend
+                    ? Brushes.SeaGreen
+                    : Brushes.IndianRed
+            };
+        }
 
         // =====================================================
         // CHANGE PERIOD
@@ -119,8 +320,8 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             await LoadDashboardDataAsync();
         }
 
-
-        private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        private void OnPropertyChanged(
+            [CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(
                 this,
@@ -130,4 +331,3 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }
-
