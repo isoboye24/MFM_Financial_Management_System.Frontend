@@ -29,9 +29,11 @@
 
     </UserControl.Resources>
 
-    <Border Background="White"
-            CornerRadius="18"
-            Padding="16">
+    <Border Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource TableBorderBrush}"
+            CornerRadius="12"
+            BorderThickness="1"
+            Padding="14">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -40,16 +42,16 @@
             </Grid.RowDefinitions>
 
             <!-- HEADER -->
-            <Grid Grid.Row="0" Margin="0,0,0,14">
+            <Grid Grid.Row="0" Margin="0,0,0,8">
                 <TextBlock Text="Income vs Expenditure"
                            Style="{StaticResource ChartTitleStyle}"
-                           FontSize="13"
+                           FontSize="14"
                            FontWeight="SemiBold"
                            VerticalAlignment="Center"/>
 
                 <ComboBox x:Name="PeriodSelector"
-                          Width="120"
-                          Height="36"
+                          Width="105"
+                          Height="28"
                           HorizontalAlignment="Right"
                           VerticalAlignment="Center"
                           SelectedIndex="0"

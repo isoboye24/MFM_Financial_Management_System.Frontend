@@ -1,4 +1,5 @@
-﻿using LiveChartsCore;
+﻿
+using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using MFMFMSF.Core.Interfaces;
@@ -17,6 +18,8 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
     public partial class IncomeChart : UserControl, INotifyPropertyChanged
     {
         private readonly IGivingService _givingService;
+        private bool _isInitialized;
+        private bool _isLoading;
 
         public ObservableCollection<IncomeVM> IncomeItems { get; } = [];
 
@@ -43,7 +46,8 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
         {
             InitializeComponent();
 
-            _givingService = givingService;
+            _givingService = givingService
+                ?? throw new ArgumentNullException(nameof(givingService));
 
             IncomeItems.Add(new IncomeVM
             {
@@ -76,14 +80,25 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
 
         public async Task SetSelectedPeriodAsync(int month, int year)
         {
-            var statistics = await _givingService
-                .GetMonthlyStatisticsAsync(month, year);
+            try
+            {
+                var statistics = await _givingService
+                    .GetMonthlyStatisticsAsync(month, year);
 
-            UpdateIncome(
-                statistics.MonthlyOfferings,
-                statistics.MonthlyTithes,
-                statistics.MonthlySeeds,
-                statistics.MonthlyOtherIncome);
+                UpdateIncome(
+                    statistics.MonthlyOfferings,
+                    statistics.MonthlyTithes,
+                    statistics.MonthlySeeds,
+                    statistics.MonthlyOtherIncome);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to load income statistics.\n\n{ex.Message}",
+                    "Income Overview",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
 
         private async void IncomeChart_Loaded(
@@ -91,6 +106,11 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
             RoutedEventArgs e)
         {
             Loaded -= IncomeChart_Loaded;
+
+            // Prevent the initial ComboBox selection event from
+            // triggering a second API request during initialization.
+            _isInitialized = true;
+
             await LoadSelectedPeriodAsync();
         }
 
@@ -98,60 +118,80 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
             object sender,
             SelectionChangedEventArgs e)
         {
-            if (!IsLoaded || PeriodSelector.SelectedItem is not ComboBoxItem)
+            if (!_isInitialized ||
+                !IsLoaded ||
+                PeriodSelector.SelectedItem is not ComboBoxItem)
+            {
                 return;
+            }
 
             await LoadSelectedPeriodAsync();
         }
 
         private async Task LoadSelectedPeriodAsync()
         {
+            if (_isLoading)
+                return;
+
+            _isLoading = true;
+
             try
             {
                 var now = DateTime.Now;
-                var selectedPeriod =
-                    (PeriodSelector.SelectedItem as ComboBoxItem)?.Tag?.ToString();
 
-                MonthlyGivingStatistics? monthly = null;
-                AnnualGivingStatistics? annual = null;
+                var selectedPeriod =
+                    (PeriodSelector.SelectedItem as ComboBoxItem)?
+                    .Tag?.ToString();
 
                 switch (selectedPeriod)
                 {
                     case "LastMonth":
-                        var previousMonth = now.AddMonths(-1);
+                        {
+                            var previousMonth = now.AddMonths(-1);
 
-                        monthly = await _givingService.GetMonthlyStatisticsAsync(
-                            previousMonth.Month,
-                            previousMonth.Year);
-                        break;
+                            var monthly = await _givingService
+                                .GetMonthlyStatisticsAsync(
+                                    previousMonth.Month,
+                                    previousMonth.Year);
+
+                            UpdateIncome(
+                                monthly.MonthlyOfferings,
+                                monthly.MonthlyTithes,
+                                monthly.MonthlySeeds,
+                                monthly.MonthlyOtherIncome);
+
+                            break;
+                        }
 
                     case "ThisYear":
-                        annual = await _givingService.GetAnnualStatisticsAsync(
-                            now.Year);
-                        break;
+                        {
+                            var annual = await _givingService
+                                .GetAnnualStatisticsAsync(now.Year);
+
+                            UpdateIncome(
+                                annual.AnnualOfferings,
+                                annual.AnnualTithes,
+                                annual.AnnualSeeds,
+                                annual.AnnualOtherIncome);
+
+                            break;
+                        }
 
                     default:
-                        monthly = await _givingService.GetMonthlyStatisticsAsync(
-                            now.Month,
-                            now.Year);
-                        break;
-                }
+                        {
+                            var monthly = await _givingService
+                                .GetMonthlyStatisticsAsync(
+                                    now.Month,
+                                    now.Year);
 
-                if (monthly != null)
-                {
-                    UpdateIncome(
-                        monthly.MonthlyOfferings,
-                        monthly.MonthlyTithes,
-                        monthly.MonthlySeeds,
-                        monthly.MonthlyOtherIncome);
-                }
-                else if (annual != null)
-                {
-                    UpdateIncome(
-                        annual.AnnualOfferings,
-                        annual.AnnualTithes,
-                        annual.AnnualSeeds,
-                        annual.AnnualOtherIncome);
+                            UpdateIncome(
+                                monthly.MonthlyOfferings,
+                                monthly.MonthlyTithes,
+                                monthly.MonthlySeeds,
+                                monthly.MonthlyOtherIncome);
+
+                            break;
+                        }
                 }
             }
             catch (Exception ex)
@@ -161,6 +201,10 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
                     "Income Overview",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
+            }
+            finally
+            {
+                _isLoading = false;
             }
         }
 
@@ -193,7 +237,8 @@ namespace MFMFMSF.UI.Features.Dashboard.Controls
                     Name = item.Name,
                     Values = new[] { (double)item.Amount },
                     Fill = new SolidColorPaint(ToSkColor(item.Color)),
-                    Stroke = null
+                    Stroke = null,
+                    InnerRadius = 45
                 });
             }
         }
