@@ -30,7 +30,7 @@
                     CornerRadius="15"
                     Margin="0,0,0,20">
 
-                    <lvc:IncomeVsExpenditureTrend/>
+                    <lvc:IncomeVsExpenditureTrend x:Name="IncomeVsExpenditureTrendControl"/>
                     
                 </Border>
                 

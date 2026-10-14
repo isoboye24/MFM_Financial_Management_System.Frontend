@@ -51,7 +51,8 @@
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal">
 
-                    <Button Content="Monthly"
+                    <Button x:Name="MonthlyButton"
+                            Content="Monthly"
                             Width="45"
                             Height="24"
                             FontSize="8"
@@ -59,9 +60,12 @@
                             Background="White"
                             BorderBrush="#B8AEFF"
                             BorderThickness="1"
-                            Padding="2"/>
+                            Padding="2"
+                            Cursor="Hand"
+                            Click="MonthlyButton_Click"/>
 
-                    <Button Content="Quarterly"
+                    <Button x:Name="YearlyButton" 
+                            Content="Yearly"
                             Width="45"
                             Height="24"
                             FontSize="8"
@@ -69,17 +73,10 @@
                             Background="White"
                             BorderBrush="#E8EAF2"
                             BorderThickness="1"
-                            Padding="2"/>
-
-                    <Button Content="Yearly"
-                            Width="45"
-                            Height="24"
-                            FontSize="8"
-                            Foreground="#303653"
-                            Background="White"
-                            BorderBrush="#E8EAF2"
-                            BorderThickness="1"
-                            Padding="2"/>
+                            Padding="2"
+                            Cursor="Hand"
+                            Margin="3,0,0,0"
+                            Click="YearlyButton_Click"/>
 
                 </StackPanel>
 
