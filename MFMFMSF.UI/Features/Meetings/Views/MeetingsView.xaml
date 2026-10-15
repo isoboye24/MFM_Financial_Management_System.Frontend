@@ -96,7 +96,7 @@
                         <Border Grid.Column="1"
                             Height="200"
                             Margin="0,0,20,0">
-                            <lv3:FemaleAttendanceTrend/>
+                            <lv3:FemaleAttendanceTrend x:Name="FemaleAttendanceTrendControl"/>
                         </Border>
 
                         <Border Grid.Column="2"

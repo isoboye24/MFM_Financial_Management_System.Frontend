@@ -25,6 +25,7 @@ namespace MFMFMSF.UI.Features.Meetings.Views
 
             // The chart uses the same registered meeting service.
             MaleAttendanceTrendControl.SetMeetingService(_meetingService);
+            FemaleAttendanceTrendControl.SetMeetingService(_meetingService);
 
             MeetingPageTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
 
@@ -35,6 +36,7 @@ namespace MFMFMSF.UI.Features.Meetings.Views
         {
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
             await MaleAttendanceTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
+            await FemaleAttendanceTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
 
             PeriodChanged?.Invoke(this, e);
         }
