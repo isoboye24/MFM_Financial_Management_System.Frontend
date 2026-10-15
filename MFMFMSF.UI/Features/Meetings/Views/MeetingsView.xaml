@@ -107,7 +107,7 @@
                         <Border Grid.Column="3"
                             Height="200"
                             Margin="0,0,0,0">
-                            <lv3:TotalAttendanceTrend/>
+                            <lv3:TotalAttendanceTrend x:Name="TotalAttendanceTrendControl"/>
                         </Border>
                         
                     </Grid>

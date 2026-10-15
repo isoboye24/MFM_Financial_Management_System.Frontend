@@ -27,6 +27,7 @@ namespace MFMFMSF.UI.Features.Meetings.Views
             MaleAttendanceTrendControl.SetMeetingService(_meetingService);
             FemaleAttendanceTrendControl.SetMeetingService(_meetingService);
             ChildrenAttendanceTrendControl.SetMeetingService(_meetingService);
+            TotalAttendanceTrendControl.SetMeetingService(_meetingService);
 
             MeetingPageTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
 
@@ -39,6 +40,7 @@ namespace MFMFMSF.UI.Features.Meetings.Views
             await MaleAttendanceTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
             await FemaleAttendanceTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
             await ChildrenAttendanceTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
+            await TotalAttendanceTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
 
             PeriodChanged?.Invoke(this, e);
         }
