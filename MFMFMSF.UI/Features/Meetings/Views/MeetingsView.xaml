@@ -102,7 +102,7 @@
                         <Border Grid.Column="2"
                             Height="200"
                             Margin="0,0,20,0">
-                            <lv3:ChildrenAttendanceTrend/>
+                            <lv3:ChildrenAttendanceTrend x:Name="ChildrenAttendanceTrendControl"/>
                         </Border>
                         <Border Grid.Column="3"
                             Height="200"
