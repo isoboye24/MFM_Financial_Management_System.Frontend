@@ -11,15 +11,20 @@ namespace MFMFMSF.UI.Features.Meetings.Views
     {
         private readonly MeetingsViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
+        private readonly IMeetingService _meetingService;
 
         public MeetingsView(INavigationService navigationService, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
             IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService)
         {
             InitializeComponent();
+            _meetingService = meetingService;
 
-            _viewModel = new MeetingsViewModel(navigationService, meetingCategoryService, meetingService, givingCategoryService, givingService, expenditureService);
+            _viewModel = new MeetingsViewModel(navigationService, meetingCategoryService, _meetingService, givingCategoryService, givingService, expenditureService);
 
             DataContext = _viewModel;
+
+            // The chart uses the same registered meeting service.
+            MaleAttendanceTrendControl.SetMeetingService(_meetingService);
 
             MeetingPageTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
 
@@ -29,6 +34,8 @@ namespace MFMFMSF.UI.Features.Meetings.Views
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+            await MaleAttendanceTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
+
             PeriodChanged?.Invoke(this, e);
         }
 

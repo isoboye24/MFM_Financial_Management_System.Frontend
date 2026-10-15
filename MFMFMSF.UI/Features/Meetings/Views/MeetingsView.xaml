@@ -50,16 +50,16 @@
             Margin="0,0,0,20">
 
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-                <Border Grid.Column="0"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0"
                     Height="Auto"                       
-                    CornerRadius="15">
-                    <lv2:MeetingsTable
+                    CornerRadius="15"
+                        Margin="0,0,0,40">
+                                    <lv2:MeetingsTable
                         Meetings="{Binding DataContext.Meetings,
                                            RelativeSource={RelativeSource AncestorType=UserControl}}"
                         NavigationService="{Binding DataContext.NavigationService,
@@ -72,26 +72,50 @@
                                 RelativeSource={RelativeSource AncestorType=UserControl}}"
                         GivingService="{Binding DataContext.GivingService,
                          RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-                </Border>
                 
-                <Border Grid.Column="2"
+                </Border>
+
+                <Border Grid.Row="1"
                     Height="Auto"                       
                     CornerRadius="15">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
 
-                        <Border Grid.Row="0"
-                                Height="200"
-                                Margin="0,0,0,20">
-                            <lv3:MaleAttendanceTrend/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0"
+                            Height="200"
+                            Margin="0,0,20,0"> 
+                            <lv3:MaleAttendanceTrend x:Name="MaleAttendanceTrendControl"/>
                         </Border>
+
+                        <Border Grid.Column="1"
+                            Height="200"
+                            Margin="0,0,20,0">
+                            <lv3:FemaleAttendanceTrend/>
+                        </Border>
+
+                        <Border Grid.Column="2"
+                            Height="200"
+                            Margin="0,0,20,0">
+                            <lv3:ChildrenAttendanceTrend/>
+                        </Border>
+                        <Border Grid.Column="3"
+                            Height="200"
+                            Margin="0,0,0,0">
+                            <lv3:TotalAttendanceTrend/>
+                        </Border>
+                        
                     </Grid>
+                    
                 </Border>
             </Grid>
+
+            
         </Border>
     </Grid>
 </UserControl>
