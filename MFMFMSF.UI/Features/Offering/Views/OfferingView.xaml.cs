@@ -15,13 +15,16 @@ namespace MFMFMSF.UI.Features.Offering.Views
         private readonly OfferingViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public OfferingView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public OfferingView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IGivingCategoryService givingCategoryService)
         {
             InitializeComponent();
 
-            _viewModel = new OfferingViewModel(navigationService, givingService, expenditureService);
-
+            _viewModel = new OfferingViewModel(navigationService, givingService, expenditureService, givingCategoryService);
             DataContext = _viewModel;
+
+            OfferingTableControl.NavigationService = navigationService;
+            OfferingTableControl.GivingService = givingService;
+            OfferingTableControl.GivingCategoryService = givingCategoryService;
 
             OfferingTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
 

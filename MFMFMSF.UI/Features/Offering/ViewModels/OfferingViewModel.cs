@@ -14,8 +14,9 @@ namespace MFMFMSF.UI.Features.Offering.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IGivingService _givingService;
         private readonly IExpenditureService _expenditureService;
+        private readonly IGivingCategoryService _givingCategoryService;
 
-        public OfferingViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public OfferingViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IGivingCategoryService givingCategoryService)
         {
             _navigationService = navigationService;
             _givingService = givingService;
@@ -23,6 +24,7 @@ namespace MFMFMSF.UI.Features.Offering.ViewModels
 
             SelectedMonth = DateTime.Now.Month;
             SelectedYear = DateTime.Now.Year;
+            _givingCategoryService = givingCategoryService;
         }
 
 

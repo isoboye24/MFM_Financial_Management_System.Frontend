@@ -654,18 +654,21 @@ TargetType="Button">
                                     <!-- ACTION -->
 
                                     <StackPanel Grid.Column="5"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
 
                                         <Button Style="{StaticResource TableActionButtonStyle}"
-                        CommandParameter="{Binding}"
-                        ToolTip="View">
+                                                Command="{Binding DataContext.ViewGivingCommand,
+                                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                    CommandParameter="{Binding}"
+                                                 Click="ViewGivingButton_Click"
+                                                    ToolTip="View">
 
                                             <materialDesign:PackIcon
-                        Kind="EyeOutline"
-                        Width="14"
-                        Height="14"/>
+                                                Kind="EyeOutline"
+                                                Width="14"
+                                                Height="14"/>
 
                                         </Button>
 

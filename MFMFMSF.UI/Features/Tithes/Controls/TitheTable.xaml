@@ -657,8 +657,9 @@ TargetType="Button">
                     VerticalAlignment="Center">
 
                                         <Button Style="{StaticResource TableActionButtonStyle}"
-                    CommandParameter="{Binding}"
-                    ToolTip="View">
+                                            CommandParameter="{Binding}"
+                                            Click="ViewGivingButton_Click"
+                                            ToolTip="View">
 
                                             <materialDesign:PackIcon
                     Kind="EyeOutline"

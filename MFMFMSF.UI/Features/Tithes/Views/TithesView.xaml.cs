@@ -15,13 +15,17 @@ namespace MFMFMSF.UI.Features.Tithes.Views
         private readonly TithesViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public TithesView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public TithesView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IGivingCategoryService givingCategoryService)
         {
             InitializeComponent();
 
-            _viewModel = new TithesViewModel(navigationService, givingService, expenditureService);
+            _viewModel = new TithesViewModel(navigationService, givingService, expenditureService, givingCategoryService);
 
             DataContext = _viewModel;
+
+            TitheTableControl.NavigationService = navigationService;
+            TitheTableControl.GivingService = givingService;
+            TitheTableControl.GivingCategoryService = givingCategoryService;
 
             TithesTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
             Loaded += TithesView_Loaded;

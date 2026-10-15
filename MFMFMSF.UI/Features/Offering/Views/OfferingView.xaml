@@ -45,9 +45,8 @@
                     Height="Auto"
                     CornerRadius="15"
                     Padding="2">
-
-                    <lvc:OfferingTable/>
-
+                    <lvc:OfferingTable x:Name="OfferingTableControl"/>
+                    
                 </Border>
             </Border>
         </Grid>

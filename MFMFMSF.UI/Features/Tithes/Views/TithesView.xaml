@@ -43,7 +43,7 @@
                 CornerRadius="15"
                 Padding="2">
 
-                <lvc2:TitheTable/>
+                <lvc2:TitheTable x:Name="TitheTableControl"/>
 
             </Border>
         </Border>
