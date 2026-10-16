@@ -114,7 +114,7 @@
                         Foreground="#68708A"/>
 
                     <TextBlock
-                        Text="{Binding Giving.Amount, StringFormat={}{0:N2}}"
+                        Text="{Binding Giving.Amount, StringFormat=€ {0:N2}}"
                         FontSize="20"
                         FontWeight="SemiBold"
                         Foreground="#5B4BEB"
@@ -194,6 +194,20 @@
                         Text="{Binding Giving.Minister}"
                         FontSize="16"
                         Foreground="#303653"
+                        Margin="0,5,0,30"/>
+                    
+                    <!-- SERVICE CATEGORY -->
+
+                    <TextBlock
+                        Text="Service Category"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Foreground="DimGray"/>
+
+                    <TextBlock
+                        Text="{Binding Giving.MeetingCategoryName}"
+                        FontSize="16"
+                        Foreground="DarkGoldenrod"
                         Margin="0,5,0,0"/>
 
                 </StackPanel>
