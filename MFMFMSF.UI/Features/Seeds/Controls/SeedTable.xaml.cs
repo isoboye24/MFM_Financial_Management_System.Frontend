@@ -2,7 +2,6 @@
 using MFMFMSF.Core.Models.Givings;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Givings.Views;
-using MFMFMSF.UI.Features.Tithes.Controls;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;

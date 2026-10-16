@@ -599,34 +599,34 @@ TargetType="Button">
                                     <!-- DATE -->
 
                                     <TextBlock Grid.Column="0"
-                                    Text="{Binding Date, StringFormat='{}{0:MMM d, yyyy}'}"
-                                    Style="{StaticResource TableText}"/>
+                                        Text="{Binding Date, StringFormat='{}{0:MMM d, yyyy}'}"
+                                        Style="{StaticResource TableText}"/>
 
 
                                     <!-- MESSAGE TITLE -->
 
                                     <TextBlock Grid.Column="1"
-                   Text="{Binding MessageTitle}"
-                   Style="{StaticResource TableText}"
-                   TextTrimming="CharacterEllipsis"
-                   VerticalAlignment="Center"/>
+                                       Text="{Binding MessageTitle}"
+                                       Style="{StaticResource TableText}"
+                                       TextTrimming="CharacterEllipsis"
+                                       VerticalAlignment="Center"/>
 
 
                                     <!-- AMOUNT -->
 
                                     <Border Grid.Column="2"
-                Width="70"
-                Height="21"
-                Background="#E7F0FF"
-                CornerRadius="7"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center">
+                                        Width="70"
+                                        Height="21"
+                                        Background="#E7F0FF"
+                                        CornerRadius="7"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center">
 
                                         <TextBlock
-                Text="{Binding Amount, StringFormat=€ {0:N2}}"
-                Style="{StaticResource BadgeText}"
-                Foreground="#3182E8"
-                FontSize="16"/>
+                                            Text="{Binding Amount, StringFormat=€ {0:N2}}"
+                                            Style="{StaticResource BadgeText}"
+                                            Foreground="#3182E8"
+                                            FontSize="16"/>
 
                                     </Border>
 
@@ -634,36 +634,37 @@ TargetType="Button">
                                     <!-- MINISTER -->
 
                                     <TextBlock Grid.Column="3"
-                   Text="{Binding Minister}"
-                   Style="{StaticResource TableText}"
-                   VerticalAlignment="Center"
-                   TextTrimming="CharacterEllipsis"/>
+                                       Text="{Binding Minister}"
+                                       Style="{StaticResource TableText}"
+                                       VerticalAlignment="Center"
+                                       TextTrimming="CharacterEllipsis"/>
 
 
                                     <!-- SERVICE TYPE -->
 
                                     <TextBlock Grid.Column="4"
-                   Text="{Binding MeetingCategoryName}"
-                   Style="{StaticResource TableSecondaryText}"
-                   VerticalAlignment="Center"
-                   TextTrimming="CharacterEllipsis"/>
+                                       Text="{Binding MeetingCategoryName}"
+                                       Style="{StaticResource TableSecondaryText}"
+                                       VerticalAlignment="Center"
+                                       TextTrimming="CharacterEllipsis"/>
 
 
                                     <!-- ACTION -->
 
                                     <StackPanel Grid.Column="5"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
 
                                         <Button Style="{StaticResource TableActionButtonStyle}"
-                    CommandParameter="{Binding}"
-                    ToolTip="View">
+                                            CommandParameter="{Binding}"
+                                            Click="ViewGivingButton_Click"
+                                            ToolTip="View">
 
                                             <materialDesign:PackIcon
-                    Kind="EyeOutline"
-                    Width="14"
-                    Height="14"/>
+                                                Kind="EyeOutline"
+                                                Width="14"
+                                                Height="14"/>
 
                                         </Button>
 

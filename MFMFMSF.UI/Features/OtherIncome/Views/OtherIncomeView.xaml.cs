@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Infrastructure.Service;
 using MFMFMSF.UI.Controls;
 using MFMFMSF.UI.Features.OtherIncome.ViewModels;
 using MFMFMSF.UI.Navigation;
@@ -15,13 +16,17 @@ namespace MFMFMSF.UI.Features.OtherIncome.Views
         private readonly OtherIncomeViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public OtherIncomeView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public OtherIncomeView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IGivingCategoryService givingCategoryService)
         {
             InitializeComponent();
 
-            _viewModel = new OtherIncomeViewModel(navigationService, givingService, expenditureService);
+            _viewModel = new OtherIncomeViewModel(navigationService, givingService, expenditureService, givingCategoryService);
 
             DataContext = _viewModel;
+
+            OtherIncomeTableControl.NavigationService = navigationService;
+            OtherIncomeTableControl.GivingService = givingService;
+            OtherIncomeTableControl.GivingCategoryService = givingCategoryService;
 
             OtherIncomeTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
             Loaded += OtherIncomeView_Loaded;

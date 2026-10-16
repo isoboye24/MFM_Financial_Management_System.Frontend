@@ -46,7 +46,7 @@ Height="Auto"
 CornerRadius="15"
 Padding="2">
 
-                <lvc2:OtherIncomeTable/>
+                <lvc2:OtherIncomeTable  x:Name="OtherIncomeTableControl"/>
 
             </Border>
         </Border>
