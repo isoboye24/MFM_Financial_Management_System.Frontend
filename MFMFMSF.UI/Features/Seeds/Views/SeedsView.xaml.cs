@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Infrastructure.Service;
 using MFMFMSF.UI.Controls;
 using MFMFMSF.UI.Features.Seeds.ViewModels;
 using MFMFMSF.UI.Features.Tithes.ViewModels;
@@ -16,12 +17,16 @@ namespace MFMFMSF.UI.Features.Seeds.Views
         private readonly SeedsViewModel _viewModel;
         public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
 
-        public SeedsView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public SeedsView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IGivingCategoryService givingCategoryService)
         {
             InitializeComponent();
 
-            _viewModel = new SeedsViewModel(navigationService, givingService, expenditureService);
+            _viewModel = new SeedsViewModel(navigationService, givingService, expenditureService, givingCategoryService);
             DataContext = _viewModel;
+
+            SeedTableControl.NavigationService = navigationService;
+            SeedTableControl.GivingService = givingService;
+            SeedTableControl.GivingCategoryService = givingCategoryService;
 
             SeedsTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
             Loaded += SeedsView_Loaded;

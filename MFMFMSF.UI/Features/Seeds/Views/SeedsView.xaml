@@ -46,7 +46,7 @@
                         CornerRadius="15"
                         Padding="2">
 
-                <lvc2:SeedTable/>
+                    <lvc2:SeedTable x:Name="SeedTableControl"/>
 
                 </Border>
             </Border>

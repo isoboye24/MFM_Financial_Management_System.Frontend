@@ -14,12 +14,14 @@ namespace MFMFMSF.UI.Features.Seeds.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IGivingService _givingService;
         private readonly IExpenditureService _expenditureService;
+        private readonly IGivingCategoryService _givingCategoryService;
 
-        public SeedsViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService)
+        public SeedsViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IGivingCategoryService givingCategoryService)
         {
             _navigationService = navigationService;
             _givingService = givingService;
             _expenditureService = expenditureService;
+            _givingCategoryService = givingCategoryService;
 
             SelectedMonth = DateTime.Now.Month;
             SelectedYear = DateTime.Now.Year;

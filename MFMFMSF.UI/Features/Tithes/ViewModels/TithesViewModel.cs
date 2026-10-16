@@ -22,6 +22,7 @@ namespace MFMFMSF.UI.Features.Tithes.ViewModels
             _givingService = givingService;
             _expenditureService = expenditureService;
             _givingCategoryService = givingCategoryService;
+
             SelectedMonth = DateTime.Now.Month;
             SelectedYear = DateTime.Now.Year;
         }
