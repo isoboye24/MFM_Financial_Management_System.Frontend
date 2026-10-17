@@ -289,30 +289,30 @@
                                     <!-- ================================= -->
 
                                     <StackPanel
-                                    Grid.Column="4"
-                                    Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
+                                        Grid.Column="4"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
 
 
                                         <!-- VIEW -->
 
-                                        <!--<Button
-                                        Style="{DynamicResource TableActionButton}"
-                                        Command="{Binding DataContext.ViewMeetingCommand,
-                                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                        CommandParameter="{Binding}"
-                                        ToolTip="View">
+                                        <Button Style="{DynamicResource TableActionButtonStyle}"
+                                            Command="{Binding DataContext.ViewExpenditureCommand,
+                                                RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}"
+                                             Click="ViewExpenditureButton_Click"
+                                                ToolTip="View">
 
                                             <materialDesign:PackIcon
-                                            Kind="EyeOutline"
-                                            Width="14"
-                                            Height="14"/>
+                                                Kind="EyeOutline"
+                                                Width="14"
+                                                Height="14"/>
 
-                                        </Button>-->
+                                        </Button>
 
 
-                                         <!--EDIT-->
+                                        <!--EDIT-->
 
                                         <Button
                                             Style="{DynamicResource TableActionButton}"

@@ -263,8 +263,8 @@
 
                     <Grid.ColumnDefinitions>
 
-                        <ColumnDefinition Width="0.9*"/>
-                        <ColumnDefinition Width="0.9*"/>
+                        <ColumnDefinition Width="1.0*"/>
+                        <ColumnDefinition Width="1.0*"/>
                         <ColumnDefinition Width="2.2*"/>
                         <ColumnDefinition Width="1.2*"/>
 
@@ -279,13 +279,13 @@
                     <TextBlock Grid.Column="1" 
                        Text="Amount"
                        Style="{StaticResource TableHeaderStyle}"
-                       HorizontalAlignment="Center"/>
+                       HorizontalAlignment="Left"/>
 
 
                     <TextBlock Grid.Column="2"
                        Text="Summary"
                        Style="{StaticResource TableHeaderStyle}"
-                       HorizontalAlignment="Center"/>
+                       HorizontalAlignment="Left"/>
 
 
                     <TextBlock Grid.Column="3"
@@ -320,8 +320,8 @@
 
                                     <Grid.ColumnDefinitions>
 
-                                        <ColumnDefinition Width="1.2*"/>
-                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1.0*"/>
+                                        <ColumnDefinition Width="1.0*"/>
                                         <ColumnDefinition Width="2.2*"/>
                                         <ColumnDefinition Width="1.2*"/>
 
@@ -336,15 +336,16 @@
                                        FontWeight="SemiBold"
                                        Foreground="#151936"
                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
                                        Margin="8,0"/>
 
                                     <!-- AMOUNT -->
 
                                     <TextBlock Grid.Column="1"
-                                       Text="{Binding Amount}"
+                                       Text="{Binding Amount, StringFormat=€ {0:N2}}"
                                        FontSize="12"
                                        Foreground="#303653"
-                                       HorizontalAlignment="Center"
+                                       HorizontalAlignment="Left"
                                        VerticalAlignment="Center"/>
 
 
@@ -353,17 +354,17 @@
                                     <TextBlock Grid.Column="2"
                                        Text="{Binding Summary,
                                                   Converter={StaticResource TruncateTextConverter},
-                                                  ConverterParameter=15}"
+                                                  ConverterParameter=30}"
                                        FontSize="12"
                                        Foreground="#303653"
-                                       HorizontalAlignment="Center"
+                                       HorizontalAlignment="Left"
                                        VerticalAlignment="Center"/>
 
                                     <!-- ACTIONS -->
 
                                     <StackPanel Grid.Column="3"
                                         Orientation="Horizontal"
-                                        HorizontalAlignment="Center"
+                                        HorizontalAlignment="Left"
                                         VerticalAlignment="Center">
 
 

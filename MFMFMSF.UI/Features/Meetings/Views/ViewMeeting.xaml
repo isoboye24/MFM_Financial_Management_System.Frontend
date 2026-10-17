@@ -28,8 +28,8 @@
 
             <lvc1:PageTitleBarWithCreateButton
                 BreadcrumbText="Church Service"
-                CurrentPageText="View Service"
-                Title="View Service"
+                CurrentPageText="View Service Details"
+                Title="View Service Details"
                 Description="View all the information of today's service."
                 ActionText="Add Giving"
                 ActionIcon="Plus"

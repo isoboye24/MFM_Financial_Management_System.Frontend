@@ -15,6 +15,7 @@ namespace MFMFMSF.UI.Features.Expenditures.Controls
     /// </summary>
     public partial class ExpendituresTable : UserControl
     {
+        public ICommand ViewExpenditureCommand { get; }
         public ICommand EditExpenditureCommand { get; }
         public ICommand DeleteExpenditureCommand { get; }
 
@@ -22,8 +23,26 @@ namespace MFMFMSF.UI.Features.Expenditures.Controls
         {
             InitializeComponent();
 
+            ViewExpenditureCommand = new RelayCommandGeneric<ExpendituresByMonthAndYear>(ViewExpenditure);
             EditExpenditureCommand = new RelayCommandGeneric<ExpendituresByMonthAndYear>(EditExpenditure);
             DeleteExpenditureCommand = new RelayCommandGeneric<ExpendituresByMonthAndYear>(DeleteExpenditure);
+        }
+
+        private void ViewExpenditureButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is not Button button ||
+                button.DataContext is not ExpendituresByMonthAndYear expenditure)
+            {
+                MessageBox.Show(
+                    "Unable to identify the selected expenditure record.",
+                    "View Expenditure",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                return;
+            }
+
+            ViewExpenditure(expenditure);
         }
 
         // =====================================================
@@ -84,6 +103,17 @@ namespace MFMFMSF.UI.Features.Expenditures.Controls
         // =====================================================
         // ACTIONS
         // =====================================================
+
+        private void ViewExpenditure(ExpendituresByMonthAndYear expenditure)
+        {
+            if (NavigationService == null || ExpenditureService == null)
+            {
+                MessageBox.Show("Navigation services are not configured.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            NavigationService.Navigate(new ViewSingleExpenditure(expenditure.Id, NavigationService, ExpenditureService));
+        }
 
         private void EditExpenditure(ExpendituresByMonthAndYear expenditure)
         {

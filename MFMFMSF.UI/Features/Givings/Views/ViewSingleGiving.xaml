@@ -32,8 +32,8 @@
 
             <controls:FormTitle
                 BreadcrumbText="Church Giving"
-                CurrentPageText="View Giving"
-                Title="View Giving"
+                CurrentPageText="View Giving &amp; Service Details"
+                Title="View Giving &amp; Service Details"
                 Description="View the complete information about this giving."
                 NavigationService="{Binding NavigationService,
                                            RelativeSource={RelativeSource AncestorType=UserControl}}"/>
