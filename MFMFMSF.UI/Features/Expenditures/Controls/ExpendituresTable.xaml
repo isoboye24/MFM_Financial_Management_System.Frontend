@@ -297,7 +297,7 @@
 
                                         <!-- VIEW -->
 
-                                        <Button Style="{DynamicResource TableActionButtonStyle}"
+                                        <Button Style="{DynamicResource TableActionButton}"
                                             Command="{Binding DataContext.ViewExpenditureCommand,
                                                 RelativeSource={RelativeSource AncestorType=UserControl}}"
                                                 CommandParameter="{Binding}"
