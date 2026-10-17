@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Infrastructure.Service;
 using MFMFMSF.UI.Controls;
 using MFMFMSF.UI.Features.Expenditures.ViewModels;
 using MFMFMSF.UI.Navigation;
@@ -23,6 +24,9 @@ namespace MFMFMSF.UI.Features.Expenditures.Views
 
             DataContext = _viewModel;
 
+            // The chart uses the same registered meeting service.
+            ExpendituresTrendControl.SetExpenditureService(expenditureService);
+
             ExpenditurePageTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
 
             Loaded += ExpendituresView_Loaded;
@@ -31,6 +35,8 @@ namespace MFMFMSF.UI.Features.Expenditures.Views
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+            await ExpendituresTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
+
             PeriodChanged?.Invoke(this, e);
         }
 

@@ -73,7 +73,7 @@
                             Height="200"
                             CornerRadius="15">
 
-                            <lvc2:ExpendituresTrend/>
+                            <lvc2:ExpendituresTrend x:Name="ExpendituresTrendControl"/>
 
                         </Border>
 

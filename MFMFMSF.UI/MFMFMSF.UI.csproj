@@ -20,6 +20,7 @@
     <Folder Include="Features\Expenditures\Resources\" />
     <Folder Include="Features\Givings\Resources\" />
     <Folder Include="Features\Meetings\Resources\" />
+    <Folder Include="Features\Reports\Controls\IncomeReports\Controls\" />
     <Folder Include="Features\Reports\Resources\" />
     <Folder Include="Features\Settings\Resources\" />
     <Folder Include="Features\Settings\ViewModels\" />
