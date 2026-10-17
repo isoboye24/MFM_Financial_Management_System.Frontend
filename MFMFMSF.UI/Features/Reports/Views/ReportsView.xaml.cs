@@ -22,6 +22,9 @@ namespace MFMFMSF.UI.Features.Reports.Views
         private readonly IExpenditureService _expenditureService;
         private readonly IReportService _reportService;
 
+        private int _selectedMonth = DateTime.Now.Month;
+        private int _selectedYear = DateTime.Now.Year;
+
         public ReportsView(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService)
         {
             InitializeComponent();
@@ -44,7 +47,16 @@ namespace MFMFMSF.UI.Features.Reports.Views
 
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
+            _selectedMonth = e.Month;
+            _selectedYear = e.Year;
+
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+
+            if (ReportContent.Content is IncomeReportsTabPage incomePage)
+            {
+                await incomePage.SetSelectedPeriodAsync(_selectedMonth, _selectedYear);
+            }
+
             PeriodChanged?.Invoke(this, e);
         }
 
@@ -54,9 +66,7 @@ namespace MFMFMSF.UI.Features.Reports.Views
         }
 
 
-        private void PageTabs_TabChanged(
-            object? sender,
-            TabChangedEventArgs e)
+        private async void PageTabs_TabChanged(object? sender, TabChangedEventArgs e)
         {
             switch (e.SelectedIndex)
             {
@@ -65,7 +75,10 @@ namespace MFMFMSF.UI.Features.Reports.Views
                     break;
 
                 case 1:
-                    ReportContent.Content = new IncomeReportsTabPage();
+                    var incomePage = new IncomeReportsTabPage(_givingService, _selectedYear);
+                    ReportContent.Content = incomePage;
+
+                    await incomePage.SetSelectedPeriodAsync(_selectedMonth, _selectedYear);
                     break;
 
                 case 2:
