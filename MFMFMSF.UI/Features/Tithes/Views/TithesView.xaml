@@ -13,6 +13,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
         <Border Grid.Row="0"
@@ -36,16 +37,21 @@
 
             </Border>
 
-        <Border Grid.Row="2">
+        <Border Grid.Row="2"
+             Height="Auto"
+             CornerRadius="15"
+             Padding="2" Margin="0,0,0,20">
 
-            <Border
-                Height="Auto"
-                CornerRadius="15"
-                Padding="2">
+            <lvc2:TitheTable x:Name="TitheTableControl"/>
 
-                <lvc2:TitheTable x:Name="TitheTableControl"/>
+        </Border>
 
-            </Border>
+        <Border Grid.Row="3"
+            Height="250"
+            CornerRadius="15">
+
+            <lvc2:TitheTrend x:Name="TitheTrendControl"/>
+
         </Border>
 
     </Grid>

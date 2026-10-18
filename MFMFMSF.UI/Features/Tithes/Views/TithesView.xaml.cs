@@ -27,6 +27,9 @@ namespace MFMFMSF.UI.Features.Tithes.Views
             TitheTableControl.GivingService = givingService;
             TitheTableControl.GivingCategoryService = givingCategoryService;
 
+            // The chart uses the same registered meeting service.
+            TitheTrendControl.SetGivingService(givingService);
+
             TithesTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
             Loaded += TithesView_Loaded;
         }
@@ -34,6 +37,8 @@ namespace MFMFMSF.UI.Features.Tithes.Views
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+            await TitheTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
+
             PeriodChanged?.Invoke(this, e);
         }
 
