@@ -26,6 +26,9 @@ namespace MFMFMSF.UI.Features.Offering.Views
             OfferingTableControl.GivingService = givingService;
             OfferingTableControl.GivingCategoryService = givingCategoryService;
 
+            // The chart uses the same registered meeting service.
+            OfferingTrendControl.SetGivingService(givingService);
+
             OfferingTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
 
             Loaded += OfferingsView_Loaded;
@@ -35,6 +38,8 @@ namespace MFMFMSF.UI.Features.Offering.Views
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+            await OfferingTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
+
             PeriodChanged?.Invoke(this, e);
         }
 

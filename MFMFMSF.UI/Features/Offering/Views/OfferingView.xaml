@@ -10,20 +10,21 @@
              d:DesignHeight="450" 
              d:DesignWidth="800"
              d:Padding="10,0,0,0">
-    <Grid Background="#F5F7FB">
-        <Grid Margin="20">
+    
+    <Grid Background="#F5F7FB" Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <Border Grid.Row="0"
-            Height="Auto"
-            Background="White"
-            CornerRadius="15"
-                    Padding="10"
-            Margin="0,0,0,20">
+                Height="Auto"
+                Background="White"
+                CornerRadius="15"
+                Padding="10"
+                Margin="0,0,0,20">
 
                 <lvc:OfferingTopBar x:Name="OfferingTopBar"/>
 
@@ -39,17 +40,23 @@
 
             </Border>
 
-            <Border Grid.Row="2">
+        <Border Grid.Row="2"
+            Height="Auto"
+             CornerRadius="15"
+             Padding="2"
+                Margin="0,0,0,20">
+            
+            <lvc:OfferingTable x:Name="OfferingTableControl"/>
+            
+        </Border>
 
-                <Border Grid.Column="0"
-                    Height="Auto"
-                    CornerRadius="15"
-                    Padding="2">
-                    <lvc:OfferingTable x:Name="OfferingTableControl"/>
-                    
-                </Border>
-            </Border>
-        </Grid>
-        
+        <Border Grid.Row="3"
+            Height="350"
+            CornerRadius="15">
+
+            <lvc:OfferingTrend x:Name="OfferingTrendControl"/>
+
+        </Border>
     </Grid>
+
 </UserControl>
