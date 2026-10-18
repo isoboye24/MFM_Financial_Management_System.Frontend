@@ -1,471 +1,116 @@
 ﻿<UserControl x:Class="MFMFMSF.UI.Features.OtherIncome.Controls.OtherIncomeTable"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MFMFMSF.UI.Features.OtherIncome.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-
-        <!-- ================================================= -->
-        <!-- COLORS -->
-        <!-- ================================================= -->
-
-        <SolidColorBrush x:Key="PrimaryText"
-                         Color="#172033"/>
-
-        <SolidColorBrush x:Key="SecondaryText"
-                         Color="#667085"/>
-
-        <SolidColorBrush x:Key="BorderColor"
-                         Color="#EAECF0"/>
-
-        <SolidColorBrush x:Key="LightBackground"
-                         Color="#F8F9FB"/>
-
-        <SolidColorBrush x:Key="Purple"
-                         Color="#5B4BDB"/>
-
-        <SolidColorBrush x:Key="Green"
-                         Color="#16A36A"/>
-
-        <SolidColorBrush x:Key="Blue"
-                         Color="#3182E8"/>
-
-        <SolidColorBrush x:Key="Orange"
-                         Color="#FF9D2E"/>
-
-
-        <!-- ================================================= -->
-        <!-- CARD SHADOW -->
-        <!-- ================================================= -->
-
-        <DropShadowEffect x:Key="CardShadow"
-                          BlurRadius="12"
-                          ShadowDepth="1"
-                          Opacity="0.06"
-                          Color="#000000"/>
-
-
-        <!-- ================================================= -->
-        <!-- SEARCH BOX -->
-        <!-- ================================================= -->
-
-        <Style x:Key="SearchBoxStyle"
-               TargetType="Border">
-
-            <Setter Property="Background"
-                    Value="#FFFFFF"/>
-
-            <Setter Property="BorderBrush"
-                    Value="#E5E7EB"/>
-
-            <Setter Property="BorderThickness"
-                    Value="1"/>
-
-            <Setter Property="CornerRadius"
-                    Value="7"/>
-
-            <Setter Property="Height"
-                    Value="38"/>
-
-        </Style>
-
-
-        <!-- ================================================= -->
-        <!-- FILTER BUTTON -->
-        <!-- ================================================= -->
-
-        <Style x:Key="FilterButtonStyle"
-               TargetType="Button">
-
-            <Setter Property="Background"
-                    Value="#FFFFFF"/>
-
-            <Setter Property="BorderBrush"
-                    Value="#E5E7EB"/>
-
-            <Setter Property="BorderThickness"
-                    Value="1"/>
-
-            <Setter Property="Foreground"
-                    Value="{StaticResource PrimaryText}"/>
-
-            <Setter Property="FontFamily"
-                    Value="Segoe UI"/>
-
-            <Setter Property="FontSize"
-                    Value="10"/>
-
-            <Setter Property="Height"
-                    Value="38"/>
-
-            <Setter Property="Padding"
-                    Value="12,0"/>
-
-            <Setter Property="Template">
-
-                <Setter.Value>
-
-                    <ControlTemplate TargetType="Button">
-
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="7">
-
-                            <ContentPresenter
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-
-                        </Border>
-
-                    </ControlTemplate>
-
-                </Setter.Value>
-
-            </Setter>
-
-        </Style>
-
-        <!-- ===================================================== -->
-        <!-- TABLE ACTION BUTTON -->
-        <!-- ===================================================== -->
-
-        <Style x:Key="TableActionButtonStyle"
-TargetType="Button">
-
-            <Setter Property="Width"
-     Value="28"/>
-
-            <Setter Property="Height"
-     Value="28"/>
-
-            <Setter Property="Background"
-     Value="#F5F6FC"/>
-
-            <Setter Property="Foreground"
-     Value="#5B4CF3"/>
-
-            <Setter Property="BorderThickness"
-     Value="0"/>
-
-            <Setter Property="Padding"
-     Value="0"/>
-
-            <Setter Property="Cursor"
-     Value="Hand"/>
-
-            <Setter Property="Margin"
-     Value="2,0"/>
-
-            <Setter Property="Template">
-
-                <Setter.Value>
-
-                    <ControlTemplate TargetType="Button">
-
-                        <Border Background="{TemplateBinding Background}"
-                 CornerRadius="5">
-
-                            <ContentPresenter
-                 HorizontalAlignment="Center"
-                 VerticalAlignment="Center"/>
-
-                        </Border>
-
-                    </ControlTemplate>
-
-                </Setter.Value>
-
-            </Setter>
-
-            <Style.Triggers>
-
-                <Trigger Property="IsMouseOver"
-          Value="True">
-
-                    <Setter Property="Background"
-             Value="#EAE7FF"/>
-
-                </Trigger>
-
-            </Style.Triggers>
-
-        </Style>
-
-
-        <!-- ================================================= -->
-        <!-- TYPE BADGES -->
-        <!-- ================================================= -->
-
-        <Style x:Key="BadgeText"
-               TargetType="TextBlock">
-
-            <Setter Property="FontFamily"
-                    Value="Segoe UI"/>
-
-            <Setter Property="FontSize"
-                    Value="9"/>
-
-            <Setter Property="FontWeight"
-                    Value="SemiBold"/>
-
-            <Setter Property="HorizontalAlignment"
-                    Value="Center"/>
-
-            <Setter Property="VerticalAlignment"
-                    Value="Center"/>
-
-        </Style>
-
-
-        <!-- ================================================= -->
-        <!-- TABLE TEXT -->
-        <!-- ================================================= -->
-
-        <Style x:Key="TableText"
-               TargetType="TextBlock">
-
-            <Setter Property="FontFamily"
-                    Value="Segoe UI"/>
-
-            <Setter Property="FontSize"
-                    Value="16"/>
-
-            <Setter Property="Foreground"
-                    Value="{StaticResource PrimaryText}"/>
-
-            <Setter Property="VerticalAlignment"
-                    Value="Center"/>
-
-        </Style>
-
-
-        <Style x:Key="TableSecondaryText"
-               TargetType="TextBlock"
-               BasedOn="{StaticResource TableText}">
-
-            <Setter Property="Foreground"
-                    Value="{StaticResource SecondaryText}"/>
-
-            <Setter Property="FontSize"
-                    Value="14"/>
-
-        </Style>
-
-
-        <!-- ================================================= -->
-        <!-- PAGINATION BUTTON -->
-        <!-- ================================================= -->
-
-        <Style x:Key="PageButtonStyle"
-               TargetType="Button">
-
-            <Setter Property="Width"
-                    Value="28"/>
-
-            <Setter Property="Height"
-                    Value="28"/>
-
-            <Setter Property="Background"
-                    Value="Transparent"/>
-
-            <Setter Property="BorderThickness"
-                    Value="0"/>
-
-            <Setter Property="Foreground"
-                    Value="{StaticResource PrimaryText}"/>
-
-            <Setter Property="FontFamily"
-                    Value="Segoe UI"/>
-
-            <Setter Property="FontSize"
-                    Value="12"/>
-
-            <Setter Property="Padding"
-                    Value="0"/>
-
-        </Style>
-
-    </UserControl.Resources>
-
-
-    <!-- ===================================================== -->
-    <!-- TABLE CARD -->
-    <!-- ===================================================== -->
-
-    <Border Background="White"
-        BorderBrush="{StaticResource BorderColor}"
-        BorderThickness="1"
-        CornerRadius="9"
-        Effect="{StaticResource CardShadow}">
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Border Style="{StaticResource Card}">
 
         <Grid>
 
             <Grid.RowDefinitions>
 
-                <!-- Toolbar -->
-                <RowDefinition Height="58"/>
+                <!-- FILTERS -->
+                <RowDefinition Height="Auto"/>
 
-                <!-- Header -->
+                <!-- TABLE HEADER -->
                 <RowDefinition Height="38"/>
 
-                <!-- Rows -->
+                <!-- TABLE DATA -->
                 <RowDefinition Height="*"/>
-
-                <!-- Footer -->
-                <RowDefinition Height="52"/>
 
             </Grid.RowDefinitions>
 
 
             <!-- ================================================= -->
-            <!-- TOOLBAR -->
+            <!-- FILTERS -->
             <!-- ================================================= -->
 
             <Grid Grid.Row="0"
-              Margin="12,8,12,8">
+        Margin="0,0,0,12">
 
                 <Grid.ColumnDefinitions>
 
+                    <!-- SEARCH -->
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="125"/>
-                    <ColumnDefinition Width="125"/>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="88"/>
+
+                    <!-- CLEAR -->
+                    <ColumnDefinition Width="Auto"/>
 
                 </Grid.ColumnDefinitions>
 
 
+                <!-- ================================================ -->
                 <!-- SEARCH -->
+                <!-- ================================================ -->
 
-                <Border Grid.Column="0"
-                    Style="{StaticResource SearchBoxStyle}"
-                    Margin="0,0,8,0">
+                <Grid Grid.Column="0"
+              Width="400"
+              Height="38"
+              HorizontalAlignment="Left">
 
-                    <Grid>
+                    <Border
+                Background="{DynamicResource SurfaceBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
 
-                        <Grid.ColumnDefinitions>
+                        <Grid>
 
-                            <ColumnDefinition Width="32"/>
-                            <ColumnDefinition Width="*"/>
+                            <!-- SEARCH ICON -->
 
-                        </Grid.ColumnDefinitions>
-
-                        <materialDesign:PackIcon
-                        Grid.Column="0"
+                            <materialDesign:PackIcon
                         Kind="Magnify"
-                        Width="17"
-                        Height="17"
-                        Foreground="#667085"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
-
-                        <TextBox Grid.Column="1"
-                             Text="Search transactions..."
-                             FontFamily="Segoe UI"
-                             FontSize="9"
-                             Foreground="#98A2B3"
-                             BorderThickness="0"
-                             Background="Transparent"
-                             VerticalContentAlignment="Center"
-                             Padding="0"/>
-
-                    </Grid>
-
-                </Border>
+                        Width="16"
+                        Height="16"
+                        Margin="12,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource MutedTextBrush}"
+                        IsHitTestVisible="False"/>
 
 
-                <!-- TYPE -->
+                            <!-- SEARCH TEXTBOX -->
 
-                <Button Grid.Column="1"
-                    Style="{StaticResource FilterButtonStyle}"
-                    Margin="0,0,8,0">
-
-                    <Grid Width="105">
-
-                        <TextBlock Text="All Types"
-                               VerticalAlignment="Center"/>
-
-                        <materialDesign:PackIcon
-                        Kind="ChevronDown"
-                        Width="15"
-                        Height="15"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"/>
-
-                    </Grid>
-
-                </Button>
+                            <TextBox
+                        Padding="34,0,12,0"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontFamily="Segoe UI"
+                        FontSize="11"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
+                        VerticalContentAlignment="Center"/>
 
 
-                <!-- METHOD -->
+                            <!-- PLACEHOLDER -->
 
-                <Button Grid.Column="2"
-                    Style="{StaticResource FilterButtonStyle}"
-                    Margin="0,0,8,0">
+                            <TextBlock
+                        Text="Search meetings..."
+                        Margin="36,0,12,0"
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource MutedTextBrush}"
+                        FontFamily="Segoe UI"
+                        FontSize="11"
+                        IsHitTestVisible="False"/>
 
-                    <Grid Width="105">
+                        </Grid>
 
-                        <TextBlock Text="All Methods"
-                               VerticalAlignment="Center"/>
+                    </Border>
 
-                        <materialDesign:PackIcon
-                        Kind="ChevronDown"
-                        Width="15"
-                        Height="15"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"/>
-
-                    </Grid>
-
-                </Button>
+                </Grid>
 
 
-                <!-- FILTERS -->
+                <!-- ================================================ -->
+                <!-- CLEAR -->
+                <!-- ================================================ -->
 
-                <Button Grid.Column="3"
-                    Style="{StaticResource FilterButtonStyle}"
-                    Margin="0,0,8,0"
-                    Foreground="{StaticResource Purple}">
-
-                    <StackPanel Orientation="Horizontal">
-
-                        <materialDesign:PackIcon
-                        Kind="FilterVariant"
-                        Width="15"
-                        Height="15"
-                        Margin="0,0,6,0"/>
-
-                        <TextBlock Text="Filters"
-                               VerticalAlignment="Center"/>
-
-                    </StackPanel>
-
-                </Button>
-
-
-                <!-- EXPORT -->
-
-                <Button Grid.Column="4"
-                    Style="{StaticResource FilterButtonStyle}">
-
-                    <StackPanel Orientation="Horizontal">
-
-                        <materialDesign:PackIcon
-                        Kind="DownloadOutline"
-                        Width="15"
-                        Height="15"
-                        Margin="0,0,6,0"/>
-
-                        <TextBlock Text="Export"
-                               VerticalAlignment="Center"/>
-
-                    </StackPanel>
-
-                </Button>
+                <Button
+            Grid.Column="1"
+            Width="90"
+            Height="38"
+            Margin="8,0,0,0"
+            Content="Clear"
+            Style="{StaticResource SecondaryButton}"
+            Padding="12,0"/>
 
             </Grid>
 
@@ -474,61 +119,98 @@ TargetType="Button">
             <!-- TABLE HEADER -->
             <!-- ================================================= -->
 
-            <Border Grid.Row="1"
-                Background="#F9FAFB"
-                BorderBrush="#F0F1F3"
-                BorderThickness="0,1,0,1">
+            <Border
+        Grid.Row="1"
+        Style="{StaticResource TableHeaderContainer}">
 
-                <Grid Margin="12,0,12,0">
+                <Grid>
 
                     <Grid.ColumnDefinitions>
 
-                        <ColumnDefinition Width="1.15*"/>
-                        <ColumnDefinition Width="1.7*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1.25*"/>
+                        <!-- NUMBER -->
+                        <ColumnDefinition Width="45"/>
+
+                        <!-- DATE -->
                         <ColumnDefinition Width="0.9*"/>
-                        <ColumnDefinition Width="1.15*"/>
+
+                        <!-- MESSAGE TITLE -->
+                        <ColumnDefinition Width="2.0*"/>
+
+                        <!-- AMOUNT -->
+                        <ColumnDefinition Width="0.7*"/>
+
+                        <!-- MINISTER -->
+                        <ColumnDefinition Width="1.3*"/>
+
+                        <!-- SERVICE TYPE -->
+                        <ColumnDefinition Width="1.0*"/>
+
+                        <!-- ACTIONS -->
+                        <ColumnDefinition Width="0.6*"/>
 
                     </Grid.ColumnDefinitions>
 
 
-                    <TextBlock Grid.Column="0"
-                           Text="Date"
-                           Style="{StaticResource TableSecondaryText}"
-                           FontWeight="SemiBold"
-                           VerticalAlignment="Center"/>
+                    <!-- NUMBER -->
 
-                    <TextBlock Grid.Column="1"
-                           Text="Message Title"
-                           Style="{StaticResource TableSecondaryText}"
-                           FontWeight="SemiBold"
-                           VerticalAlignment="Center"/>
+                    <TextBlock
+                Grid.Column="0"
+                Text="#"
+                Style="{StaticResource TableHeader}"
+                HorizontalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="2"
-                           Text="Amount"
-                           Style="{StaticResource TableSecondaryText}"
-                           FontWeight="SemiBold"
-                           VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="3"
-                           Text="Minister"
-                           Style="{StaticResource TableSecondaryText}"
-                           FontWeight="SemiBold"
-                           VerticalAlignment="Center"/>
+                    <!-- DATE -->
 
-                    <TextBlock Grid.Column="4"
-                           Text="Service Type"
-                           Style="{StaticResource TableSecondaryText}"
-                           FontWeight="SemiBold"
-                           VerticalAlignment="Center"/>
+                    <TextBlock
+                Grid.Column="1"
+                Text="Date"
+                Style="{StaticResource TableHeader}"
+                Margin="8,0"/>
 
-                    <TextBlock Grid.Column="5"
-                           Text="Actions"
-                           Style="{StaticResource TableSecondaryText}"
-                           FontWeight="SemiBold"
-                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
+
+                    <!-- MESSAGE TITLE -->
+
+                    <TextBlock
+                Grid.Column="2"
+                Text="Message Title"
+                Style="{StaticResource TableHeader}"
+                Margin="8,0"/>
+
+
+                    <!-- AMOUNT -->
+
+                    <TextBlock
+                Grid.Column="3"
+                Text="Amount"
+                Style="{StaticResource TableHeader}"
+                HorizontalAlignment="Center"/>
+
+
+                    <!-- MINISTER -->
+
+                    <TextBlock
+                Grid.Column="4"
+                Text="Minister"
+                Style="{StaticResource TableHeader}"
+                HorizontalAlignment="Center"/>
+
+
+                    <!-- SERVICE TYPE -->
+
+                    <TextBlock
+                Grid.Column="5"
+                Text="Service Type"
+                Style="{StaticResource TableHeader}"
+                HorizontalAlignment="Center"/>
+
+                    <!-- ACTIONS -->
+
+                    <TextBlock
+                Grid.Column="7"
+                Text="Actions"
+                Style="{StaticResource TableHeader}"
+                HorizontalAlignment="Center"/>
 
                 </Grid>
 
@@ -536,135 +218,150 @@ TargetType="Button">
 
 
             <!-- ================================================= -->
-            <!-- TRANSACTION ROWS -->
+            <!-- TABLE DATA -->
             <!-- ================================================= -->
 
-            <ScrollViewer Grid.Row="2"
-          VerticalScrollBarVisibility="Hidden"
-          HorizontalScrollBarVisibility="Disabled"
-                          Margin="0,0,0,20">
+            <ScrollViewer
+            Grid.Row="2"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled">
 
-                <ItemsControl ItemsSource="{Binding DataContext.Givings,
-                            RelativeSource={RelativeSource AncestorType=UserControl}}"
-              AlternationCount="2">
+                <ItemsControl
+                ItemsSource="{Binding DataContext.Givings,
+                 RelativeSource={RelativeSource AncestorType=UserControl}}"
+                AlternationCount="1000000">
 
                     <ItemsControl.ItemTemplate>
 
                         <DataTemplate>
 
-                            <Border Height="59"
-                            BorderBrush="#EAECF0"
-                            BorderThickness="0,0,0,1">
+                            <Border
+                            Style="{StaticResource TableStripedRow}">
 
-                                <Border.Style>
-                                    <Style TargetType="Border">
-
-                                        <!-- Normal row -->
-                                        <Setter Property="Background"
-                                        Value="White"/>
-
-                                        <!-- Stripe every second row -->
-                                        <Style.Triggers>
-
-                                            <DataTrigger
-                                            Binding="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter},
-                                                              Path=(ItemsControl.AlternationIndex)}"
-                                            Value="1">
-
-                                                <Setter Property="Background"
-                                                Value="#F8F9FB"/>
-
-                                            </DataTrigger>
-
-                                        </Style.Triggers>
-
-                                    </Style>
-                                </Border.Style>
-
-
-                                <Grid Margin="12,0">
+                                <Grid>
 
                                     <Grid.ColumnDefinitions>
 
-                                        <ColumnDefinition Width="1.15*"/>
-                                        <ColumnDefinition Width="1.7*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1.25*"/>
+                                        <!-- NUMBER -->
+                                        <ColumnDefinition Width="45"/>
+
+                                        <!-- DATE -->
                                         <ColumnDefinition Width="0.9*"/>
-                                        <ColumnDefinition Width="1.15*"/>
+
+                                        <!-- MESSAGE TITLE -->
+                                        <ColumnDefinition Width="2.0*"/>
+
+                                        <!-- AMOUNT -->
+                                        <ColumnDefinition Width="0.7*"/>
+
+                                        <!-- MINISTER -->
+                                        <ColumnDefinition Width="1.3*"/>
+
+                                        <!-- SERVICE TYPE -->
+                                        <ColumnDefinition Width="1.0*"/>
+
+                                        <!-- ACTIONS -->
+                                        <ColumnDefinition Width="0.6*"/>
 
                                     </Grid.ColumnDefinitions>
 
 
+                                    <!-- ================================= -->
+                                    <!-- NUMBER -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="0"
+                                    Style="{StaticResource TableSecondaryText}"
+                                    HorizontalAlignment="Center"
+                                    Text="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                   Path=(ItemsControl.AlternationIndex),
+                                                   Converter={StaticResource RowNumberConverter}}"/>
+
+
+                                    <!-- ================================= -->
                                     <!-- DATE -->
+                                    <!-- ================================= -->
 
-                                    <TextBlock Grid.Column="0"
-                                        Text="{Binding Date, StringFormat='{}{0:MMM d, yyyy}'}"
-                                        Style="{StaticResource TableText}"/>
+                                    <TextBlock
+                                    Grid.Column="1"
+                                    Text="{Binding Date, StringFormat='{}{0:MMM d, yyyy}'}"
+                                    Style="{StaticResource TableText}"
+                                    Margin="8,0"/>
 
 
+                                    <!-- ================================= -->
                                     <!-- MESSAGE TITLE -->
+                                    <!-- ================================= -->
 
-                                    <TextBlock Grid.Column="1"
-                                       Text="{Binding MessageTitle}"
-                                       Style="{StaticResource TableText}"
-                                       TextTrimming="CharacterEllipsis"
-                                       VerticalAlignment="Center"/>
+                                    <TextBlock
+                                    Grid.Column="2"
+                                    Text="{Binding MessageTitle,
+                                        Converter={StaticResource TruncateTextConverter},
+                                        ConverterParameter=25}"
+                                    Style="{StaticResource TableText}"
+                                    Margin="8,0"/>
 
 
+                                    <!-- ================================= -->
                                     <!-- AMOUNT -->
+                                    <!-- ================================= -->
 
-                                    <Border Grid.Column="2"
-                                        Width="70"
-                                        Height="21"
-                                        Background="#E7F0FF"
-                                        CornerRadius="7"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center">
-
-                                        <TextBlock
-                                            Text="{Binding Amount, StringFormat=€ {0:N2}}"
-                                            Style="{StaticResource BadgeText}"
-                                            Foreground="#3182E8"
-                                            FontSize="16"/>
-
-                                    </Border>
+                                    <TextBlock
+                                    Grid.Column="3"
+                                    Text="{Binding Amount, StringFormat=€ {0:N2}}"
+                                    Style="{StaticResource TableText}"
+                                    HorizontalAlignment="Center"/>
 
 
+                                    <!-- ================================= -->
                                     <!-- MINISTER -->
+                                    <!-- ================================= -->
 
-                                    <TextBlock Grid.Column="3"
-                                       Text="{Binding Minister}"
-                                       Style="{StaticResource TableText}"
-                                       VerticalAlignment="Center"
-                                       TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock
+                                    Grid.Column="4"
+                                    Text="{Binding Minister}"
+                                    Style="{StaticResource TableText}"
+                                    HorizontalAlignment="Center"/>
 
 
+                                    <!-- ================================= -->
                                     <!-- SERVICE TYPE -->
+                                    <!-- ================================= -->
 
-                                    <TextBlock Grid.Column="4"
-                                       Text="{Binding MeetingCategoryName}"
-                                       Style="{StaticResource TableSecondaryText}"
-                                       VerticalAlignment="Center"
-                                       TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock
+                                    Grid.Column="5"
+                                    Text="{Binding MeetingCategoryName}"
+                                    Style="{StaticResource TableText}"
+                                    HorizontalAlignment="Center"/>
 
 
-                                    <!-- ACTION -->
 
-                                    <StackPanel Grid.Column="5"
-                                        Orientation="Horizontal"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center">
+                                    <!-- ================================= -->
+                                    <!-- ACTIONS -->
+                                    <!-- ================================= -->
 
-                                        <Button Style="{StaticResource TableActionButtonStyle}"
+                                    <StackPanel
+                                    Grid.Column="7"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+
+                                        <!-- VIEW -->
+
+                                        <Button
+                                        Style="{DynamicResource TableActionButton}"
+                                        Command="{Binding DataContext.ViewGivingCommand,
+                                            RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}"
-                                            Click="ViewGivingButton_Click"
+                                         Click="ViewGivingButton_Click"
                                             ToolTip="View">
 
                                             <materialDesign:PackIcon
-                                                Kind="EyeOutline"
-                                                Width="14"
-                                                Height="14"/>
+                                            Kind="EyeOutline"
+                                            Width="14"
+                                            Height="14"/>
 
                                         </Button>
 
@@ -675,126 +372,13 @@ TargetType="Button">
                             </Border>
 
                         </DataTemplate>
+
                     </ItemsControl.ItemTemplate>
 
                 </ItemsControl>
 
             </ScrollViewer>
 
-
-            <!-- ================================================= -->
-            <!-- FOOTER -->
-            <!-- ================================================= -->
-
-            <Border Grid.Row="3"
-                BorderBrush="#F0F1F3"
-                BorderThickness="0,1,0,0">
-
-                <Grid Margin="12,0">
-
-                    <Grid.ColumnDefinitions>
-
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-
-                    </Grid.ColumnDefinitions>
-
-
-                    <!-- ENTRY COUNT -->
-
-                    <TextBlock Grid.Column="0"
-                           Text="Showing 1 to 10 of 215 entries"
-                           Style="{StaticResource TableSecondaryText}"
-                           VerticalAlignment="Center"/>
-
-
-                    <!-- PAGINATION -->
-
-                    <StackPanel Grid.Column="1"
-                            Orientation="Horizontal"
-                            VerticalAlignment="Center">
-
-
-                        <!-- PREVIOUS -->
-
-                        <Button Style="{StaticResource PageButtonStyle}">
-
-                            <materialDesign:PackIcon
-                            Kind="ChevronLeft"
-                            Width="15"
-                            Height="15"/>
-
-                        </Button>
-
-
-                        <!-- PAGE 1 -->
-
-                        <Button Style="{StaticResource PageButtonStyle}"
-                            Background="{StaticResource Purple}"
-                            Foreground="White"
-                            Content="1"
-                            Margin="2,0"/>
-
-
-                        <!-- PAGE 2 -->
-
-                        <Button Style="{StaticResource PageButtonStyle}"
-                            Content="2"/>
-
-
-                        <!-- PAGE 3 -->
-
-                        <Button Style="{StaticResource PageButtonStyle}"
-                            Content="3"/>
-
-
-                        <!-- PAGE 4 -->
-
-                        <Button Style="{StaticResource PageButtonStyle}"
-                            Content="4"/>
-
-
-                        <!-- PAGE 5 -->
-
-                        <Button Style="{StaticResource PageButtonStyle}"
-                            Content="5"/>
-
-
-                        <!-- DOTS -->
-
-                        <TextBlock Text="..."
-                               Width="28"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Foreground="{StaticResource SecondaryText}"
-                               FontSize="9"
-                               TextAlignment="Center"/>
-
-
-                        <!-- PAGE 22 -->
-
-                        <Button Style="{StaticResource PageButtonStyle}"
-                            Content="22"/>
-
-
-                        <!-- NEXT -->
-
-                        <Button Style="{StaticResource PageButtonStyle}">
-
-                            <materialDesign:PackIcon
-                            Kind="ChevronRight"
-                            Width="15"
-                            Height="15"/>
-
-                        </Button>
-
-                    </StackPanel>
-
-                </Grid>
-
-            </Border>
-
         </Grid>
-
     </Border>
 </UserControl>
