@@ -43,36 +43,23 @@
 
         </Border>
 
-        <Border Grid.Row="2"  Margin="0,0,0,20">
+        <Border Grid.Row="2"  Margin="0,0,0,20"
+            Height="Auto"                       
+            CornerRadius="15">
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <lvc2:ExpendituresTable
+                Expenditures="{Binding Expenditures}"
+                NavigationService="{Binding NavigationService}"
+                ExpenditureService="{Binding ExpenditureService}"/>
 
-                <Border Grid.Column="0"
-                    Height="Auto"                       
-                    CornerRadius="15">
+        </Border>
 
-                    <lvc2:ExpendituresTable
-                        Expenditures="{Binding Expenditures}"
-                        NavigationService="{Binding NavigationService}"
-                        ExpenditureService="{Binding ExpenditureService}"/>
+        <Border Grid.Row="3"
+            Height="250"
+            CornerRadius="15">
 
-                </Border>
+            <lvc2:ExpendituresTrend x:Name="ExpendituresTrendControl"/>
 
-                <Border Grid.Column="1" Padding="20,0,0,0">
-
-                    <Border Grid.Row="0"
-                        Height="200"
-                        CornerRadius="15">
-
-                        <lvc2:ExpendituresTrend x:Name="ExpendituresTrendControl"/>
-
-                    </Border>
-                </Border>
-            </Grid>
         </Border>
 
     </Grid>

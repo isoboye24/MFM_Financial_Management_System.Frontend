@@ -51,7 +51,7 @@
         </Border>
 
         <Border Grid.Row="3"
-            Height="350"
+            Height="250"
             CornerRadius="15">
 
             <lvc:OfferingTrend x:Name="OfferingTrendControl"/>
