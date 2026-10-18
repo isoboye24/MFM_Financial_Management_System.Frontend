@@ -28,6 +28,9 @@ namespace MFMFMSF.UI.Features.Seeds.Views
             SeedTableControl.GivingService = givingService;
             SeedTableControl.GivingCategoryService = givingCategoryService;
 
+            // The chart uses the same registered meeting service.
+            SeedsTrendControl.SetGivingService(givingService);
+
             SeedsTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
             Loaded += SeedsView_Loaded;
         }
@@ -35,6 +38,8 @@ namespace MFMFMSF.UI.Features.Seeds.Views
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+            await SeedsTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
+
             PeriodChanged?.Invoke(this, e);
         }
 

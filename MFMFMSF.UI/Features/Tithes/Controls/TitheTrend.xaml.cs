@@ -100,22 +100,19 @@ namespace MFMFMSF.UI.Features.Tithes.Controls
                         Values = values,
 
                         // Blue line 3478E5
-                        Stroke = new SolidColorPaint(
-                            new SKColor(0x34, 0x78, 0xE5))
+                        Stroke = new SolidColorPaint(new SKColor(0x34, 0x78, 0xE5))
                         {
                             StrokeThickness = 2
                         },
 
                         // Light blue area
-                        Fill = new SolidColorPaint(
-                            new SKColor(0x34, 0x78, 0xE5, 35)),
+                        Fill = new SolidColorPaint(new SKColor(0x34, 0x78, 0xE5, 35)),
 
 
                         GeometrySize = 6,
 
                         // Blue data points
-                        GeometryFill = new SolidColorPaint(
-                            new SKColor(0x34, 0x78, 0xE5)),
+                        GeometryFill = new SolidColorPaint(new SKColor(0x34, 0x78, 0xE5)),
 
                         GeometryStroke = new SolidColorPaint(SKColors.White)
                         {
@@ -138,8 +135,7 @@ namespace MFMFMSF.UI.Features.Tithes.Controls
 
                     TextSize = 9,
 
-                    LabelsPaint = new SolidColorPaint(
-                        new SKColor(0x68, 0x70, 0x8A)),
+                    LabelsPaint = new SolidColorPaint(new SKColor(0x68, 0x70, 0x8A)),
 
                     SeparatorsPaint = null,
                     TicksPaint = null

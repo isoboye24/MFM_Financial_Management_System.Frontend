@@ -39,16 +39,20 @@
 
             </Border>
 
-            <Border Grid.Row="2">
+            <Border Grid.Row="2"
+                Height="Auto"
+                CornerRadius="15"
+                Padding="2" Margin="0,0,0,20">
 
-                <Border Grid.Column="0"
-                        Height="Auto"
-                        CornerRadius="15"
-                        Padding="2">
+                <lvc2:SeedTable x:Name="SeedTableControl"/>
+            </Border>
 
-                    <lvc2:SeedTable x:Name="SeedTableControl"/>
+            <Border Grid.Row="3"
+                Height="250"
+                CornerRadius="15">
 
-                </Border>
+                <lvc2:SeedsTrend x:Name="SeedsTrendControl"/>
+
             </Border>
         </Grid>
     </Grid>
