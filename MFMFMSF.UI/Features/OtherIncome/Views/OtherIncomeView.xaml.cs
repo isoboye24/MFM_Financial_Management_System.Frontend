@@ -28,6 +28,9 @@ namespace MFMFMSF.UI.Features.OtherIncome.Views
             OtherIncomeTableControl.GivingService = givingService;
             OtherIncomeTableControl.GivingCategoryService = givingCategoryService;
 
+            // The chart uses the same registered meeting service.
+            OtherIncomeTrendControl.SetGivingService(givingService);
+
             OtherIncomeTopBar.PeriodChanged += MonthYearPicker_PeriodChanged;
             Loaded += OtherIncomeView_Loaded;
         }
@@ -35,6 +38,8 @@ namespace MFMFMSF.UI.Features.OtherIncome.Views
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
             await _viewModel.SetSelectedPeriodAsync(e.Month, e.Year);
+            await OtherIncomeTrendControl.SetSelectedPeriodAsync(e.Month, e.Year);
+
             PeriodChanged?.Invoke(this, e);
         }
 
