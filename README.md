@@ -361,7 +361,7 @@ The following items represent ongoing development and integration priorities. Th
 
 The backend is maintained separately and provides the API for server-side operations and data access.
 
-- Backend repository: Add the actual backend repository URL when ready.
+- Backend repository: [Here](https://github.com/isoboye24/MFM-Financial-Management-System)
 
 Backend setup instructions, API documentation, database configuration, and backend-specific requirements belong in the backend repository.
 
