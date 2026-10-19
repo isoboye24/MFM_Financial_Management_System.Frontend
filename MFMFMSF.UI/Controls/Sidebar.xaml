@@ -56,15 +56,15 @@
                 VerticalAlignment="Center">
 
                 <TextBlock
-                    Text="Mountain of "
+                    Text="Church Name"
                     Foreground="{DynamicResource SidebarTextBrush}"
                     FontWeight="Bold"
                     FontSize="18"/>
 
-                <TextBlock
+                <!--<TextBlock
                     Text="Fire Ministries"
                     Foreground="{DynamicResource SidebarTextBrush}"
-                    FontSize="18"/>
+                    FontSize="18"/>-->
 
             </StackPanel>
 

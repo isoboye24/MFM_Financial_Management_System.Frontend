@@ -84,7 +84,7 @@
 
                                 <TextBlock
                                     Text="{Binding Expenditure.Amount,
-                                           StringFormat={}{0:N2} €}"
+                                           StringFormat={}{0:N2}}"
                                     FontSize="30"
                                     FontWeight="Bold"
                                     Foreground="#151936"/>
