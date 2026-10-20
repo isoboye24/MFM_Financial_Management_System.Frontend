@@ -52,7 +52,6 @@
     <SolidColorBrush x:Key="SidebarIconBrush" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="SidebarActiveBrush" Color="#5B4CF3"/>
     <SolidColorBrush x:Key="SidebarHoverBrush" Color="#2A2F50"/>
-
     <SolidColorBrush x:Key="PageBackgroundBrush"  Color="#181B25"/>
 
     <!--<SolidColorBrush x:Key="SurfaceBrush" Color="#222735"/>-->
@@ -65,12 +64,8 @@
     </Style>
 
     <!-- Category badge -->
-    <SolidColorBrush x:Key="OfferingBadgeBackgroundBrush"
-                 Color="#383252"/>
-
-    <SolidColorBrush x:Key="CategoryBadgeTextBrush"
-                 Color="#C4B5FD"/>
-
+    <SolidColorBrush x:Key="OfferingBadgeBackgroundBrush" Color="#383252"/>
+    <SolidColorBrush x:Key="CategoryBadgeTextBrush" Color="#C4B5FD"/>
 
 
     <!-- Chart -->
@@ -89,5 +84,20 @@
 
     <SolidColorBrush x:Key="ChartSeriesBrushChildren" Color="#14B8A6"/>
     <SolidColorBrush x:Key="ChartAreaBrushChildren" Color="#2314B8A6"/>
+
+
+    <!-- Input controls -->
+    <SolidColorBrush x:Key="InputBackgroundBrush" Color="#222735"/>
+    <SolidColorBrush x:Key="InputForegroundBrush" Color="#F1F3F9"/>
+    <SolidColorBrush x:Key="InputBorderBrush" Color="#353B4D"/>
+    <SolidColorBrush x:Key="InputHoverBrush" Color="#302B50"/>
+    <SolidColorBrush x:Key="InputFocusBrush" Color="#8B80FF"/>
+    <SolidColorBrush x:Key="InputPlaceholderBrush" Color="#858DA2"/>
+
+    <!-- Dropdown and calendar -->
+    <SolidColorBrush x:Key="PopupBackgroundBrush" Color="#222735"/>
+    <SolidColorBrush x:Key="PopupHoverBrush" Color="#302B50"/>
+    <SolidColorBrush x:Key="PopupSelectedBrush" Color="#7063E8"/>
+    <SolidColorBrush x:Key="PopupSelectedTextBrush" Color="#FFFFFF"/>
 
 </ResourceDictionary>

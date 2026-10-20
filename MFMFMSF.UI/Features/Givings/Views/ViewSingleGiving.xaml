@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              d:DesignHeight="700"
              d:DesignWidth="1100"
-             Background="#F5F7FB">
+            Background="{DynamicResource AppBackgroundBrush}">
 
     <Grid Margin="20">
 
@@ -28,7 +28,7 @@
         <Border Grid.Row="0"
             Margin="0,0,0,20"
                 Padding="20"
-                Background="White">
+                Background="{DynamicResource SurfaceBrush}">
 
             <controls:FormTitle
                 BreadcrumbText="Church Giving"
@@ -69,8 +69,8 @@
             <!-- ================================================= -->
 
             <Border Grid.Column="0"
-                    Background="White"
-                    BorderBrush="#E8EAF2"
+                    Background="{DynamicResource SurfaceBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
                     BorderThickness="1"
                     CornerRadius="12"
                     Padding="20">
@@ -81,12 +81,12 @@
                         Text="Giving Information"
                         FontSize="20"
                         FontWeight="SemiBold"
-                        Foreground="#151936"/>
+                        Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                     <TextBlock
                         Text="Details about this church giving."
                         FontSize="16"
-                        Foreground="#68708A"
+                        Foreground="{DynamicResource SecondaryTextBrush}"
                         Margin="0,4,0,35"/>
 
 
@@ -96,12 +96,12 @@
                         Text="Giving Category"
                         FontSize="14"
                         FontWeight="Bold"
-                        Foreground="#68708A"/>
+                       Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                     <TextBlock
                         Text="{Binding Giving.CategoryName}"
                         FontSize="16"
-                        Foreground="#303653"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
                         Margin="0,5,0,30"/>
 
 
@@ -111,7 +111,7 @@
                         Text="Amount"
                         FontSize="14"
                         FontWeight="Bold"
-                        Foreground="#68708A"/>
+                        Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                     <TextBlock
                         Text="{Binding Giving.Amount, StringFormat=€ {0:N2}}"
@@ -127,12 +127,12 @@
                         Text="Date"
                         FontSize="14"
                         FontWeight="Bold"
-                        Foreground="#68708A"/>
+                        Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                     <TextBlock
-                        Text="{Binding Giving.Date, StringFormat={}{0:MMM d, yyyy}}"
+                        Text="{Binding Giving.Date, StringFormat='{}{0:MMM d, yyyy}'}"
                         FontSize="16"
-                        Foreground="#303653"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
                         Margin="0,5,0,0"/>
 
                 </StackPanel>
@@ -145,8 +145,8 @@
             <!-- ================================================= -->
 
             <Border Grid.Column="2"
-                    Background="White"
-                    BorderBrush="#E8EAF2"
+                   Background="{DynamicResource SurfaceBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
                     BorderThickness="1"
                     CornerRadius="12"
                     Padding="20">
@@ -157,12 +157,12 @@
                         Text="Service Information"
                         FontSize="20"
                         FontWeight="SemiBold"
-                        Foreground="#151936"/>
+                         Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                     <TextBlock
                         Text="Information about the church service."
                         FontSize="16"
-                        Foreground="#68708A"
+                         Foreground="{DynamicResource SecondaryTextBrush}"
                         Margin="0,4,0,35"/>
 
 
@@ -172,12 +172,12 @@
                         Text="Message Title"
                         FontSize="14"
                         FontWeight="Bold"
-                        Foreground="#68708A"/>
+                         Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                     <TextBlock
                         Text="{Binding Giving.MessageTitle}"
                         FontSize="16"
-                        Foreground="#303653"
+                         Foreground="{DynamicResource PrimaryTextBrush}"
                         TextWrapping="Wrap"
                         Margin="0,5,0,30"/>
 
@@ -188,12 +188,12 @@
                         Text="Minister"
                         FontSize="14"
                         FontWeight="Bold"
-                        Foreground="#68708A"/>
+                         Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                     <TextBlock
                         Text="{Binding Giving.Minister}"
                         FontSize="16"
-                        Foreground="#303653"
+                         Foreground="{DynamicResource PrimaryTextBrush}"
                         Margin="0,5,0,30"/>
                     
                     <!-- SERVICE CATEGORY -->
@@ -222,8 +222,8 @@
         <!-- ===================================================== -->
 
         <Border Grid.Row="3"
-                Background="White"
-                BorderBrush="#E8EAF2"
+                 Background="{DynamicResource AppBackgroundBrush}"
+                BorderBrush="{DynamicResource TableBorderBrush}"
                 BorderThickness="1"
                 CornerRadius="12"
                 Padding="20"
@@ -235,12 +235,12 @@
                     Text="Summary"
                     FontSize="14"
                     FontWeight="Bold"
-                    Foreground="#151936"/>
+                    Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                 <TextBlock
                     Text="{Binding Giving.Summary}"
                     FontSize="16"
-                    Foreground="#303653"
+                    Foreground="{DynamicResource SecondaryTextBrush}"
                     TextWrapping="Wrap"
                     Margin="0,8,0,0"/>
 

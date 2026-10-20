@@ -19,19 +19,11 @@
 
         <Style x:Key="TableHeaderStyle"
        TargetType="TextBlock">
-
-            <Setter Property="FontSize"
-            Value="12"/>
-
-            <Setter Property="FontWeight"
-            Value="SemiBold"/>
-
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Foreground"
-            Value="#303653"/>
-
-            <Setter Property="VerticalAlignment"
-            Value="Center"/>
-
+            Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
 
@@ -41,64 +33,48 @@
 
         <Style x:Key="TableActionButtonStyle"
        TargetType="Button">
-
-            <Setter Property="Width"
-            Value="28"/>
-
-            <Setter Property="Height"
-            Value="28"/>
-
+            <Setter Property="Width" Value="28"/>
+            <Setter Property="Height" Value="28"/>
             <Setter Property="Background"
-            Value="#F5F6FC"/>
-
+            Value="{DynamicResource AppBackgroundBrush}"/>
             <Setter Property="Foreground"
-            Value="#5B4CF3"/>
-
-            <Setter Property="BorderThickness"
-            Value="0"/>
-
-            <Setter Property="Padding"
-            Value="0"/>
-
-            <Setter Property="Cursor"
-            Value="Hand"/>
-
-            <Setter Property="Margin"
-            Value="2,0"/>
+            Value="{DynamicResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="2,0"/>
 
             <Setter Property="Template">
-
                 <Setter.Value>
-
                     <ControlTemplate TargetType="Button">
-
-                        <Border Background="{TemplateBinding Background}"
+                        <Border x:Name="ButtonBorder"
+                        Background="{TemplateBinding Background}"
                         CornerRadius="5">
-
                             <ContentPresenter
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"/>
-
                         </Border>
 
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource PrimaryPressedBackgroundBrush}"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
-
                 </Setter.Value>
-
             </Setter>
-
-            <Style.Triggers>
-
-                <Trigger Property="IsMouseOver"
-                 Value="True">
-
-                    <Setter Property="Background"
-                    Value="#EAE7FF"/>
-
-                </Trigger>
-
-            </Style.Triggers>
-
         </Style>
 
 
@@ -109,22 +85,15 @@
         <Style x:Key="DeleteActionButtonStyle"
        TargetType="Button"
        BasedOn="{StaticResource TableActionButtonStyle}">
-
             <Setter Property="Foreground"
-            Value="#F0445F"/>
+            Value="{DynamicResource DangerBrush}"/>
 
             <Style.Triggers>
-
-                <Trigger Property="IsMouseOver"
-                 Value="True">
-
+                <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background"
-                    Value="#FFE9ED"/>
-
+                    Value="{DynamicResource DangerHoverBackgroundBrush}"/>
                 </Trigger>
-
             </Style.Triggers>
-
         </Style>
 
 
@@ -134,30 +103,17 @@
 
         <Style x:Key="TableFilterStyle"
        TargetType="ComboBox">
-
-            <Setter Property="Height"
-            Value="30"/>
-
-            <Setter Property="FontSize"
-            Value="12"/>
-
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground"
-            Value="#303653"/>
-
+            Value="{DynamicResource InputForegroundBrush}"/>
             <Setter Property="Background"
-            Value="White"/>
-
+            Value="{DynamicResource InputBackgroundBrush}"/>
             <Setter Property="BorderBrush"
-            Value="#E8EAF2"/>
-
-            <Setter Property="BorderThickness"
-            Value="1"/>
-
-            <Setter Property="Padding"
-            Value="8,0"/>
-
+            Value="{DynamicResource InputBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,0"/>
         </Style>
-
 
         <!-- ===================================================== -->
         <!-- SEARCH BOX -->
@@ -165,28 +121,16 @@
 
         <Style x:Key="TableSearchStyle"
        TargetType="TextBox">
-
-            <Setter Property="Height"
-            Value="30"/>
-
-            <Setter Property="FontSize"
-            Value="12"/>
-
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground"
-            Value="#303653"/>
-
+            Value="{DynamicResource InputForegroundBrush}"/>
             <Setter Property="Background"
-            Value="White"/>
-
+            Value="{DynamicResource InputBackgroundBrush}"/>
             <Setter Property="BorderBrush"
-            Value="#E8EAF2"/>
-
-            <Setter Property="BorderThickness"
-            Value="1"/>
-
-            <Setter Property="Padding"
-            Value="8,0"/>
-
+            Value="{DynamicResource InputBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,0"/>
         </Style>
 
     </UserControl.Resources>
@@ -196,8 +140,8 @@
     <!-- MAIN CARD -->
     <!-- ========================================================= -->
 
-    <Border Background="White"
-    BorderBrush="#E8EAF2"
+    <Border Background="{DynamicResource SurfaceBrush}"
+        BorderBrush="{DynamicResource TableBorderBrush}"
     BorderThickness="1"
     CornerRadius="10"
     Padding="12">
@@ -243,7 +187,7 @@
                 <TextBox Grid.Column="0"
                  Width="220"
                  HorizontalAlignment="Left"
-                 Style="{StaticResource TableSearchStyle}"
+                 Style="{DynamicResource TableSearchStyle}"
                  Text=""/>
 
 
@@ -255,8 +199,8 @@
             <!-- ================================================= -->
 
             <Border Grid.Row="1"
-            Background="#F8F9FC"
-            BorderBrush="#E8EAF2"
+            Style="{DynamicResource TableHeaderContainer}"
+            BorderBrush="{DynamicResource TableBorderBrush}"
             BorderThickness="0,1,0,1">
 
                 <Grid>
@@ -273,18 +217,18 @@
 
                     <TextBlock Grid.Column="0"
                        Text="Category"
-                       Style="{StaticResource TableHeaderStyle}"
+                       Style="{DynamicResource TableHeaderStyle}"
                        Margin="8,0"/>
 
                     <TextBlock Grid.Column="1" 
                        Text="Amount"
-                       Style="{StaticResource TableHeaderStyle}"
+                       Style="{DynamicResource TableHeaderStyle}"
                        HorizontalAlignment="Left"/>
 
 
                     <TextBlock Grid.Column="2"
                        Text="Summary"
-                       Style="{StaticResource TableHeaderStyle}"
+                       Style="{DynamicResource TableHeaderStyle}"
                        HorizontalAlignment="Left"/>
 
 
@@ -312,7 +256,7 @@
 
                         <DataTemplate>
 
-                            <Border BorderBrush="#EEF0F5"
+                            <Border BorderBrush="{DynamicResource TableBorderBrush}"
                             BorderThickness="0,0,0,1"
                             Padding="0,10">
 
@@ -334,7 +278,7 @@
                                        Text="{Binding CategoryName}"
                                        FontSize="12"
                                        FontWeight="SemiBold"
-                                       Foreground="#151936"
+                                       Foreground="{DynamicResource PrimaryTextBrush}"
                                        VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                        Margin="8,0"/>
@@ -344,7 +288,7 @@
                                     <TextBlock Grid.Column="1"
                                        Text="{Binding Amount, StringFormat=€ {0:N2}}"
                                        FontSize="12"
-                                       Foreground="#303653"
+                                       Foreground="{DynamicResource PrimaryTextBrush}"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"/>
 
@@ -356,7 +300,7 @@
                                                   Converter={StaticResource TruncateTextConverter},
                                                   ConverterParameter=30}"
                                        FontSize="12"
-                                       Foreground="#303653"
+                                      Foreground="{DynamicResource SecondaryTextBrush}"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"/>
 

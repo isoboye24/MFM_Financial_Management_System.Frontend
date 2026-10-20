@@ -7,7 +7,7 @@
              xmlns:controls2="clr-namespace:MFMFMSF.UI.Features.Meetings.Controls.Form"
              mc:Ignorable="d">
 
-    <Grid Background="#F5F7FB"
+    <Grid Background="{DynamicResource AppBackgroundBrush}"
           Margin="20">
 
         <Grid.RowDefinitions>
