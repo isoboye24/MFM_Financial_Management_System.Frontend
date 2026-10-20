@@ -9,7 +9,7 @@
              d:DesignHeight="75"
              d:DesignWidth="1200">
 
-    <Grid Background="#FFFFFF">
+    <Grid Background="{DynamicResource SurfaceBrush}">
 
         <Grid.ColumnDefinitions>
 
@@ -31,17 +31,17 @@
         <StackPanel Grid.Column="0"
                     VerticalAlignment="Center">
 
-            <TextBlock Text="Welcome back, Pastor Momodu Martin!"
-                       FontFamily="Segoe UI"
-                       FontSize="20"
-                       FontWeight="SemiBold"
-                       Foreground="#111827"/>
+            <TextBlock Text="Welcome back, Pastor Name Surname!"
+                FontFamily="Segoe UI"
+                FontSize="20"
+                FontWeight="SemiBold"
+                Foreground="{DynamicResource PrimaryTextBrush}"/>
 
             <TextBlock Text="Give, and it will be given to you. – Luke 6:38"
-                       FontFamily="Segoe UI"
-                       FontSize="11"
-                       Foreground="#667085"
-                       Margin="0,3,0,0"/>
+               FontFamily="Segoe UI"
+               FontSize="11"
+               Foreground="{DynamicResource SecondaryTextBrush}"
+               Margin="0,3,0,0"/>
 
         </StackPanel>
 
@@ -69,10 +69,12 @@
             <!-- ================================================= -->
 
             <Button Width="44"
-                    Height="44"
-                    Background="#FFFFFF"
-                    BorderThickness="0"
-                    Padding="0">
+                Height="44"
+                Background="{DynamicResource SurfaceBrush}"
+                Foreground="{DynamicResource PrimaryTextBrush}"
+                BorderBrush="{DynamicResource TableBorderBrush}"
+                BorderThickness="1"
+                Padding="0">
 
                 <Grid Width="44"
                       Height="44">
@@ -81,7 +83,7 @@
                         Kind="BellOutline"
                         Width="22"
                         Height="22"
-                        Foreground="#344054"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"/>
 

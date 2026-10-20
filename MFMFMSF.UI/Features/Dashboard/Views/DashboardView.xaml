@@ -3,17 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls" 
-             xmlns:lvc="clr-namespace:MFMFMSF.UI.Features.Dashboard.Controls" 
-             xmlns:viewmodels="clr-namespace:MFMFMSF.UI.ViewModels"              
+             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
+             xmlns:lvc="clr-namespace:MFMFMSF.UI.Features.Dashboard.Controls"
+             xmlns:viewmodels="clr-namespace:MFMFMSF.UI.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="900"
              d:DesignWidth="1400">
 
-    <Grid Background="#F5F7FB">
+    <Grid Background="{DynamicResource AppBackgroundBrush}">
 
-        <!-- Page Margin -->
         <Grid Margin="20">
 
             <Grid.RowDefinitions>
@@ -23,11 +22,9 @@
                 <RowDefinition Height="350"/>
             </Grid.RowDefinitions>
 
-            <!-- ================= TOP BAR ================= -->
-
+            <!-- TOP BAR -->
             <Border Grid.Row="0"
-                    Height="Auto"
-                    Background="White"
+                    Background="{DynamicResource SurfaceBrush}"
                     CornerRadius="15"
                     Padding="20"
                     Margin="0,0,0,20">
@@ -36,18 +33,16 @@
 
             </Border>
 
-            <!-- ================= STATISTICS ================= -->
-
+            <!-- STATISTICS -->
             <Border Grid.Row="1"
-            Padding="2"
-            Margin="0,0,0,20">
+                    Padding="2"
+                    Margin="0,0,0,20">
 
                 <controls:StatisticCards/>
 
             </Border>
 
-            <!-- ================= CHARTS ================= -->
-
+            <!-- CHARTS -->
             <Grid Grid.Row="2"
                   Margin="0,0,0,20">
 
@@ -58,16 +53,20 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="0"
-                    Background="White"
-                    CornerRadius="18"
-                    Padding="10">
+                        Background="{DynamicResource SurfaceBrush}"
+                        BorderBrush="{DynamicResource TableBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="18"
+                        Padding="10">
 
                     <ContentControl x:Name="IncomeChartHost"/>
 
                 </Border>
 
                 <Border Grid.Column="2"
-                        Background="White"
+                        Background="{DynamicResource SurfaceBrush}"
+                        BorderBrush="{DynamicResource TableBorderBrush}"
+                        BorderThickness="1"
                         CornerRadius="18"
                         Padding="20">
 
@@ -77,8 +76,7 @@
 
             </Grid>
 
-            <!-- ================= BOTTOM ================= -->
-
+            <!-- BOTTOM -->
             <Grid Grid.Row="3">
 
                 <Grid.ColumnDefinitions>
@@ -88,7 +86,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="0"
-                        Background="White"
+                        Background="{DynamicResource SurfaceBrush}"
+                        BorderBrush="{DynamicResource TableBorderBrush}"
+                        BorderThickness="1"
                         CornerRadius="18"
                         Padding="20">
 
@@ -97,9 +97,11 @@
                 </Border>
 
                 <Border Grid.Column="2"
-            Background="White"
-            CornerRadius="18"
-            Padding="20">
+                        Background="{DynamicResource SurfaceBrush}"
+                        BorderBrush="{DynamicResource TableBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="18"
+                        Padding="20">
 
                     <lvc:QuickActionCards x:Name="DashboardQuickActions"/>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using MFMFMSF.UI.Utilities;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -106,5 +107,31 @@ namespace MFMFMSF.UI.Controls
             if (e.ButtonState == MouseButtonState.Pressed)
                 window.DragMove();
         }
+
+
+        private void ThemeToggleButton_Click(
+            object sender,
+            RoutedEventArgs e)
+        {
+            ThemeManager.ToggleTheme();
+            UpdateThemeIcon();
+        }
+
+        private void UpdateThemeIcon()
+        {
+            ThemeToggleIcon.Kind =
+                ThemeManager.CurrentTheme == AppTheme.Dark
+                    ? PackIconKind.WhiteBalanceSunny
+                    : PackIconKind.MoonWaningCrescent;
+
+            ThemeToggleButtonTooltip();
+        }
+
+        private void ThemeToggleButtonTooltip()
+        {
+            // Describe the theme that will be activated next.
+            ThemeToggleIcon.Kind = ThemeManager.CurrentTheme == AppTheme.Dark ? PackIconKind.WhiteBalanceSunny : PackIconKind.MoonWaningCrescent;
+        }
+
     }
 }

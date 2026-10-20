@@ -40,7 +40,8 @@
                TargetType="Border"
                BasedOn="{StaticResource TableBadge}">
 
-            <Setter Property="Background" Value="#EAE7FF"/>
+            <Setter Property="Background"
+        Value="{DynamicResource OfferingBadgeBackgroundBrush}"/>
 
         </Style>
 
@@ -156,13 +157,13 @@
 
                                     <!-- Category -->
                                     <Border Grid.Column="2"
-                                            Style="{DynamicResource RecentGivingCategoryBadge}">
+                                        Style="{DynamicResource RecentGivingCategoryBadge}">
 
                                         <TextBlock Text="{Binding CategoryName}"
-                                                   FontSize="12"
-                                                   Foreground="#5946D2"
-                                                   VerticalAlignment="Center"/>
-
+                                           FontSize="12"
+                                           FontWeight="SemiBold"
+                                           Foreground="{DynamicResource CategoryBadgeTextBrush}"
+                                           VerticalAlignment="Center"/> 
                                     </Border>
 
                                     <!-- Amount -->

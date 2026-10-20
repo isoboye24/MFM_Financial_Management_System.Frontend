@@ -4,6 +4,13 @@
 
 
     <!-- ===================================================== -->
+    <!-- TOP BAR ICONS -->
+    <!-- ===================================================== -->
+
+    <SolidColorBrush x:Key="WindowControlHoverBrush" Color="#E8E8E8"/>
+    <SolidColorBrush x:Key="WindowControlPressedBrush" Color="#D5D5D5"/>
+
+    <!-- ===================================================== -->
     <!-- PRIMARY -->
     <!-- ===================================================== -->
 
@@ -15,6 +22,14 @@
 
     <SolidColorBrush x:Key="PrimaryPressedBrush"
              Color="#4033C2"/>
+
+    <SolidColorBrush x:Key="PageBackgroundBrush"
+                 Color="#F5F7FB"/>
+
+    <!--<SolidColorBrush x:Key="SurfaceBrush"
+                 Color="#FFFFFF"/>-->
+    
+  
 
 
     <!-- ===================================================== -->
@@ -57,6 +72,9 @@
     <!-- APPLICATION COLORS -->
     <!-- ===================================================== -->
 
+    <SolidColorBrush x:Key="TransparentBrush"
+                 Color="Transparent"/>
+    
     <SolidColorBrush x:Key="AppBackgroundBrush"
                  Color="#F5F7FB"/>
 
@@ -120,5 +138,38 @@
 
     <SolidColorBrush x:Key="SidebarHoverBrush"
                  Color="#2A2F63"/>
+
+
+    <!-- Recent records table header -->
+    <Style x:Key="TableHeaderContainer"
+       TargetType="Border">
+        <Setter Property="Background" Value="#E8ECF4"/>
+        <Setter Property="Padding" Value="5,6"/>
+    </Style>
+
+    <!-- Category badge -->
+    <SolidColorBrush x:Key="OfferingBadgeBackgroundBrush"
+                 Color="#EAE7FF"/>
+
+    <SolidColorBrush x:Key="CategoryBadgeTextBrush"
+                 Color="#5946D2"/>
+
+
+    <!-- Chart -->
+    <SolidColorBrush x:Key="ChartLabelBrush" Color="#68708A"/>
+    <SolidColorBrush x:Key="ChartSeparatorBrush" Color="#E8EAF2"/>
+    <SolidColorBrush x:Key="ChartPointBorderBrush" Color="#FFFFFF"/>
+    
+    <SolidColorBrush x:Key="ChartSeriesBrush" Color="#F59E0B"/>
+    <SolidColorBrush x:Key="ChartAreaBrush" Color="#23F59E0B"/>
+    
+    <SolidColorBrush x:Key="ChartSeriesBrushMale" Color="#6654D9"/>
+    <SolidColorBrush x:Key="ChartAreaBrushMale" Color="#236654D9"/>
+    
+    <SolidColorBrush x:Key="ChartSeriesBrushFemale" Color="#EC4899"/>
+    <SolidColorBrush x:Key="ChartAreaBrushFemale" Color="#23EC4899"/>
+    
+    <SolidColorBrush x:Key="ChartSeriesBrushChildren" Color="#14B8A6"/>
+    <SolidColorBrush x:Key="ChartAreaBrushChildren" Color="#2314B8A6"/>
 
 </ResourceDictionary>

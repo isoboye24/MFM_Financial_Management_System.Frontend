@@ -53,95 +53,77 @@
 
     </Style>
 
-
     <!-- SECONDARY BUTTON -->
 
     <Style x:Key="SecondaryButton"
-           TargetType="Button">
+       TargetType="Button">
 
         <Setter Property="Height" Value="42"/>
         <Setter Property="MinWidth" Value="110"/>
         <Setter Property="Padding" Value="20,0"/>
 
+        <!-- Theme-aware colors -->
         <Setter Property="Background"
-                Value="White"/>
+            Value="{DynamicResource SurfaceBrush}"/>
 
         <Setter Property="Foreground"
-                Value="{DynamicResource PrimaryTextBrush}"/>
+            Value="{DynamicResource PrimaryTextBrush}"/>
 
         <Setter Property="BorderBrush"
-                Value="{DynamicResource BorderBrush}"/>
+            Value="{DynamicResource BorderBrush}"/>
 
-        <Setter Property="BorderThickness"
-                Value="1"/>
+        <Setter Property="BorderThickness" Value="1"/>
 
-        <Setter Property="FontFamily"
-                Value="Segoe UI"/>
-
-        <Setter Property="FontSize"
-                Value="12"/>
-
-        <Setter Property="FontWeight"
-                Value="SemiBold"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Cursor" Value="Hand"/>
 
         <Setter Property="Template">
             <Setter.Value>
-
                 <ControlTemplate TargetType="Button">
 
-                    <Border
+                    <Border x:Name="ButtonBorder"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="7">
 
                         <ContentPresenter
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
 
                     </Border>
 
-                </ControlTemplate>
+                    <ControlTemplate.Triggers>
 
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+                        </Trigger>
+
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ButtonBorder"
+                                Property="Background"
+                                Value="{DynamicResource PrimaryPressedBackgroundBrush}"/>
+                        </Trigger>
+
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
 
-        <Style.Triggers>
-
-            <!-- MOUSE ENTER -->
-
-            <EventTrigger RoutedEvent="Mouse.MouseEnter">
-                <BeginStoryboard>
-                    <Storyboard>
-
-                        <ColorAnimation
-                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                        To="#EEE9FF"
-                        Duration="0:0:0.12"/>
-
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-
-
-            <!-- MOUSE LEAVE -->
-
-            <EventTrigger RoutedEvent="Mouse.MouseLeave">
-                <BeginStoryboard>
-                    <Storyboard>
-
-                        <ColorAnimation
-                        Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                        To="#FFFFFF"
-                        Duration="0:0:0.12"/>
-
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-
-        </Style.Triggers>
-
     </Style>
+
 
 
     <!-- DANGER BUTTON -->

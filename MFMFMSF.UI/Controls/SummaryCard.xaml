@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
-    <Border Background="White"
-            BorderBrush="#E8EAF2"
-            BorderThickness="1"
-            CornerRadius="10"
-            Padding="16,14">
+    <Border Background="{DynamicResource SurfaceBrush}"
+        BorderBrush="{DynamicResource TableBorderBrush}"
+        BorderThickness="1"
+        CornerRadius="10"
+        Padding="16,14">
 
         <Grid>
 
@@ -63,7 +63,7 @@
                             RelativeSource={RelativeSource AncestorType=UserControl}}"
                         FontSize="12"
                         FontWeight="SemiBold"
-                        Foreground="#151936"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
                         TextTrimming="CharacterEllipsis"/>
 
                     <TextBlock
@@ -72,7 +72,7 @@
                         Margin="0,3,0,0"
                         FontSize="18"
                         FontWeight="SemiBold"
-                        Foreground="#101432"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
                         TextTrimming="CharacterEllipsis"/>
 
                 </StackPanel>
@@ -120,7 +120,7 @@
                     Text="{Binding Comparison,
                         RelativeSource={RelativeSource AncestorType=UserControl}}"
                     FontSize="10"
-                    Foreground="#68708A"
+                    Foreground="{DynamicResource SecondaryTextBrush}"
                     VerticalAlignment="Center"
                     TextTrimming="CharacterEllipsis"/>
 

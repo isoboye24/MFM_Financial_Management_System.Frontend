@@ -1,0 +1,93 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- PRIMARY -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="#8B80FF"/>
+    <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#A49AFF"/>
+    <SolidColorBrush x:Key="PrimaryPressedBrush" Color="#7063E8"/>
+    
+    <!-- TOP BAR ICONS -->
+    <SolidColorBrush x:Key="WindowControlHoverBrush" Color="#343A49"/>
+    <SolidColorBrush x:Key="WindowControlPressedBrush" Color="#454D60"/>
+
+    <SolidColorBrush x:Key="PrimaryHoverBackgroundBrush" Color="#302B50"/>
+    <SolidColorBrush x:Key="PrimaryPressedBackgroundBrush" Color="#3D3568"/>
+
+    <!-- TEXT -->
+    <SolidColorBrush x:Key="PrimaryText" Color="#F1F3F9"/>
+    <SolidColorBrush x:Key="SecondaryText" Color="#B1B8C8"/>
+    <SolidColorBrush x:Key="PrimaryTextBrush" Color="#F1F3F9"/>
+    <SolidColorBrush x:Key="SecondaryTextBrush" Color="#B1B8C8"/>
+    <SolidColorBrush x:Key="MutedTextBrush" Color="#858DA2"/>
+
+    <!-- GENERAL COLORS -->
+    <SolidColorBrush x:Key="BorderColor" Color="#353B4D"/>
+    <SolidColorBrush x:Key="BackgroundColor" Color="#171A24"/>
+    <SolidColorBrush x:Key="PrimaryPurple" Color="#8B80FF"/>
+
+    <SolidColorBrush x:Key="SuccessGreen" Color="#4ADE9A"/>
+    <SolidColorBrush x:Key="InfoBlue" Color="#60A5FA"/>
+    <SolidColorBrush x:Key="WarningOrange" Color="#FBBF24"/>
+
+    <!-- APPLICATION SURFACES -->
+    <SolidColorBrush x:Key="TransparentBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="#171A24"/>
+    <SolidColorBrush x:Key="SurfaceBrush" Color="#222735"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="#353B4D"/>
+    <SolidColorBrush x:Key="TableBorderBrush" Color="#343A4B"/>
+
+    <!-- STATUS -->
+    <SolidColorBrush x:Key="SuccessBrush" Color="#4ADE9A"/>
+    <SolidColorBrush x:Key="InfoBrush" Color="#60A5FA"/>
+    <SolidColorBrush x:Key="WarningBrush" Color="#FBBF24"/>
+    <SolidColorBrush x:Key="DangerBrush" Color="#FF7278"/>
+
+    <!-- TABLE -->
+    <SolidColorBrush x:Key="TableAlternateRowBrush" Color="#292F3E"/>
+
+    <!-- SIDEBAR -->
+    <SolidColorBrush x:Key="SidebarBackgroundBrush" Color="#111426"/>
+    <SolidColorBrush x:Key="SidebarTextBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="SidebarIconBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="SidebarActiveBrush" Color="#5B4CF3"/>
+    <SolidColorBrush x:Key="SidebarHoverBrush" Color="#2A2F50"/>
+
+    <SolidColorBrush x:Key="PageBackgroundBrush"  Color="#181B25"/>
+
+    <!--<SolidColorBrush x:Key="SurfaceBrush" Color="#222735"/>-->
+
+    <!-- Recent records table header -->
+    <Style x:Key="TableHeaderContainer"
+       TargetType="Border">
+        <Setter Property="Background" Value="#303747"/>
+        <Setter Property="Padding" Value="5,6"/>
+    </Style>
+
+    <!-- Category badge -->
+    <SolidColorBrush x:Key="OfferingBadgeBackgroundBrush"
+                 Color="#383252"/>
+
+    <SolidColorBrush x:Key="CategoryBadgeTextBrush"
+                 Color="#C4B5FD"/>
+
+
+
+    <!-- Chart -->
+    <SolidColorBrush x:Key="ChartLabelBrush" Color="#B1B8C8"/>
+    <SolidColorBrush x:Key="ChartSeparatorBrush" Color="#353B4D"/>
+    <SolidColorBrush x:Key="ChartPointBorderBrush" Color="#222735"/>
+    
+    <SolidColorBrush x:Key="ChartSeriesBrush" Color="#FBBF24"/>
+    <SolidColorBrush x:Key="ChartAreaBrush" Color="#30FBBF24"/>
+
+    <SolidColorBrush x:Key="ChartSeriesBrushMale" Color="#6654D9"/>
+    <SolidColorBrush x:Key="ChartAreaBrushMale" Color="#236654D9"/>
+    
+    <SolidColorBrush x:Key="ChartSeriesBrushFemale" Color="#EC4899"/>
+    <SolidColorBrush x:Key="ChartAreaBrushFemale" Color="#23EC4899"/>
+
+    <SolidColorBrush x:Key="ChartSeriesBrushChildren" Color="#14B8A6"/>
+    <SolidColorBrush x:Key="ChartAreaBrushChildren" Color="#2314B8A6"/>
+
+</ResourceDictionary>

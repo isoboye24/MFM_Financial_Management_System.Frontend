@@ -14,11 +14,11 @@
     <!-- MAIN CARD -->
     <!-- ================================================= -->
 
-    <Border Background="#FFFFFF"
-            BorderBrush="#EAECF0"
-            BorderThickness="1"
-            CornerRadius="12"
-            Padding="13">
+    <Border Background="{DynamicResource SurfaceBrush}"
+        BorderBrush="{DynamicResource TableBorderBrush}"
+        BorderThickness="1"
+        CornerRadius="12"
+        Padding="13">
 
         <Grid>
 
@@ -38,12 +38,12 @@
             <!-- ============================================ -->
 
             <TextBlock Grid.Row="0"
-                       Text="Quick Actions"
-                       FontFamily="Segoe UI"
-                       FontSize="12"
-                       FontWeight="SemiBold"
-                       Foreground="#172033"
-                       Margin="0,0,0,8"/>
+               Text="Quick Actions"
+               FontFamily="Segoe UI"
+               FontSize="12"
+               FontWeight="SemiBold"
+               Foreground="{DynamicResource PrimaryTextBrush}"
+               Margin="0,0,0,8"/>
 
 
             <!-- ============================================ -->

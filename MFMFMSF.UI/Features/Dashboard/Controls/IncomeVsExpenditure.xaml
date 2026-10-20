@@ -11,19 +11,22 @@
 
         <Style x:Key="ChartTitleStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Lato"/>
-            <Setter Property="Foreground" Value="#303653"/>
+            <Setter Property="Foreground"
+            Value="{DynamicResource PrimaryTextBrush}"/>
         </Style>
 
         <Style x:Key="ChartSecondaryTextStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Lato"/>
-            <Setter Property="Foreground" Value="#667085"/>
+            <Setter Property="Foreground"
+            Value="{DynamicResource SecondaryTextBrush}"/>
         </Style>
 
         <Style x:Key="ChartValueStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Lato"/>
             <Setter Property="FontSize" Value="9"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Foreground" Value="#344054"/>
+            <Setter Property="Foreground"
+            Value="{DynamicResource PrimaryTextBrush}"/>
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
 
@@ -100,31 +103,31 @@
                             <TextBlock Grid.Row="0"
                                        Text="{Binding AxisLabel4}"
                                        FontSize="9"
-                                       Foreground="#667085"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
                                        VerticalAlignment="Top"/>
 
                             <TextBlock Grid.Row="1"
                                        Text="{Binding AxisLabel3}"
                                        FontSize="9"
-                                       Foreground="#667085"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
                                        VerticalAlignment="Center"/>
 
                             <TextBlock Grid.Row="2"
                                        Text="{Binding AxisLabel2}"
                                        FontSize="9"
-                                       Foreground="#667085"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
                                        VerticalAlignment="Center"/>
 
                             <TextBlock Grid.Row="3"
                                        Text="{Binding AxisLabel1}"
                                        FontSize="9"
-                                       Foreground="#667085"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
                                        VerticalAlignment="Center"/>
 
                             <TextBlock Grid.Row="4"
                                        Text="0"
                                        FontSize="9"
-                                       Foreground="#667085"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
                                        VerticalAlignment="Bottom"/>
                         </Grid>
 
@@ -139,19 +142,19 @@
                             </Grid.RowDefinitions>
 
                             <Border Grid.Row="0"
-                                    BorderBrush="#EAECF0"
+                                    BorderBrush="{DynamicResource TableBorderBrush}"
                                     BorderThickness="0,1,0,0"/>
                             <Border Grid.Row="1"
-                                    BorderBrush="#EAECF0"
+                                    BorderBrush="{DynamicResource TableBorderBrush}"
                                     BorderThickness="0,1,0,0"/>
                             <Border Grid.Row="2"
-                                    BorderBrush="#EAECF0"
+                                    BorderBrush="{DynamicResource TableBorderBrush}"
                                     BorderThickness="0,1,0,0"/>
                             <Border Grid.Row="3"
-                                    BorderBrush="#EAECF0"
+                                    BorderBrush="{DynamicResource TableBorderBrush}"
                                     BorderThickness="0,1,0,0"/>
                             <Border Grid.Row="4"
-                                    BorderBrush="#EAECF0"
+                                    BorderBrush="{DynamicResource TableBorderBrush}"
                                     BorderThickness="0,1,0,0"/>
 
                             <!-- Bars and their value labels -->
@@ -223,21 +226,21 @@
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    FontSize="9"
-                                   Foreground="#667085"/>
+                                   Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                         <TextBlock Grid.Column="1"
                                    Text="Total Expenditure"
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    FontSize="9"
-                                   Foreground="#667085"/>
+                                   Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                         <TextBlock Grid.Column="2"
                                    Text="Net Balance"
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    FontSize="9"
-                                   Foreground="#667085"/>
+                                   Foreground="{DynamicResource SecondaryTextBrush}"/>
                     </Grid>
                 </Grid>
 
@@ -246,8 +249,8 @@
 
                     <!-- NET BALANCE -->
                     <Border MinHeight="82"
-                            Background="White"
-                            BorderBrush="#EAECF0"
+                            Background="{DynamicResource SurfaceBrush}"
+                            BorderBrush="{DynamicResource TableBorderBrush}"
                             BorderThickness="1"
                             CornerRadius="10"
                             Padding="11">
@@ -296,20 +299,24 @@
 
                     <!-- EXPENDITURE RATIO -->
                     <Border MinHeight="108"
-                            Background="White"
-                            BorderBrush="#EAECF0"
+                            Background="{DynamicResource SurfaceBrush}"
+                            BorderBrush="{DynamicResource TableBorderBrush}"
                             BorderThickness="1"
                             CornerRadius="10"
                             Padding="11">
 
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="59*"/>
+                            </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0">
+                            <Grid Grid.Row="0" Grid.ColumnSpan="2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="38"/>
                                     <ColumnDefinition Width="*"/>
@@ -345,19 +352,19 @@
                             <TextBlock Grid.Row="1"
                                        Text="{Binding ExpenditureRatioDescription}"
                                        FontSize="9"
-                                       Foreground="#667085"
-                                       Margin="45,7,0,8"
-                                       TextWrapping="Wrap"/>
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       Margin="27,7,0,8"
+                                       TextWrapping="Wrap" Grid.Column="1"/>
 
                             <ProgressBar Grid.Row="2"
                                  Height="7"
-                                 Margin="45,0,0,0"
+                                 Margin="27,0,0,0"
                                  Minimum="0"
                                  Maximum="100"
                                  Value="{Binding ExpenditureRatioProgress, Mode=OneWay}"
-                                 Background="#F0F2F5"
+                                 Background="{DynamicResource TableAlternateRowBrush}"
                                  Foreground="#FF9D2E"
-                                 BorderThickness="0"/> 
+                                 BorderThickness="0" Grid.Column="1"/>
                         </Grid>
                     </Border>
                 </StackPanel>

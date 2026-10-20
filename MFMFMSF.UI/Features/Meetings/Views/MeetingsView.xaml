@@ -9,7 +9,8 @@
              xmlns:lv3="clr-namespace:MFMFMSF.UI.Features.Meetings.Controls.ViewMeeting"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#F5F7FB" Margin="20">
+    <Grid Background="{DynamicResource PageBackgroundBrush}"
+      Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -18,18 +19,19 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0"
-            Height="Auto"
-            Background="White"
-            CornerRadius="15"
-            Margin="0,0,0,20">
+        Height="Auto"
+        Background="{DynamicResource SurfaceBrush}"
+        CornerRadius="15"
+        Margin="0,0,0,20">
 
-            <lvc1:PageTopBar x:Name="MeetingPageTopBar"
-                PageTitle="Church Services"
-                PageDescription="View and manage all services of the church."
-                DateRangeText="May 1 – May 31, 2025"
-                ActionText="Add Church Service"
-                ActionCommand="{Binding AddMeetingCommand}"
-                DateRangeCommand="{Binding SelectDateRangeCommand}"/>
+            <lvc1:PageTopBar
+        x:Name="MeetingPageTopBar"
+        PageTitle="Church Services"
+        PageDescription="View and manage all services of the church."
+        DateRangeText="May 1 – May 31, 2025"
+        ActionText="Add Church Service"
+        ActionCommand="{Binding AddMeetingCommand}"
+        DateRangeCommand="{Binding SelectDateRangeCommand}"/>
 
         </Border>
 

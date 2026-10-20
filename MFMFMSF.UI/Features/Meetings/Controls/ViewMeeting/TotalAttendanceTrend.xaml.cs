@@ -6,6 +6,7 @@ using SkiaSharp;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MFMFMSF.UI.Features.Meetings.Controls.ViewMeeting
 {
@@ -95,68 +96,83 @@ namespace MFMFMSF.UI.Features.Meetings.Controls.ViewMeeting
             }
         }
 
+        private SKColor GetChartColor(string resourceKey)
+        {
+            if (Application.Current.TryFindResource(resourceKey)
+                is SolidColorBrush brush)
+            {
+                var color = brush.Color;
+
+                return new SKColor(
+                    color.R,
+                    color.G,
+                    color.B,
+                    color.A);
+            }
+
+            throw new InvalidOperationException(
+                $"Theme resource '{resourceKey}' was not found.");
+        }
 
         private void CreateChart(IReadOnlyList<double> values)
         {
+            // Get semantic brushes from the active theme.
+            var seriesColor = GetChartColor("ChartSeriesBrush");
+            var areaColor = GetChartColor("ChartAreaBrush");
+            var labelColor = GetChartColor("ChartLabelBrush");
+            var separatorColor = GetChartColor("ChartSeparatorBrush");
+            var pointBorderColor = GetChartColor("ChartPointBorderBrush");
+
             Series =
-                [
-                    new LineSeries<double>
-                    {
-                        Name = "T. A.",
-                        Values = values,
+            [
+                new LineSeries<double>
+        {
+            Name = "T. A.",
+            Values = values,
 
-                        // Teal line
-                        Stroke = new SolidColorPaint(
-                            new SKColor(0xF5, 0x9E, 0x0B))
-                        {
-                            StrokeThickness = 2
-                        },
+            Stroke = new SolidColorPaint(seriesColor)
+            {
+                StrokeThickness = 2
+            },
 
-                        // Light teal area
-                        Fill = new SolidColorPaint(
-                            new SKColor(0xF5, 0x9E, 0x0B, 35)),
+            Fill = new SolidColorPaint(areaColor),
 
+            GeometrySize = 6,
 
-                        GeometrySize = 6,
+            GeometryFill = new SolidColorPaint(seriesColor),
 
-                        // Teal data points
-                        GeometryFill = new SolidColorPaint(
-                            new SKColor(0xF5, 0x9E, 0x0B)),
+            GeometryStroke = new SolidColorPaint(pointBorderColor)
+            {
+                StrokeThickness = 1.5f
+            },
 
-                        GeometryStroke = new SolidColorPaint(SKColors.White)
-                        {
-                            StrokeThickness = 1.5f
-                        },
-
-                        LineSmoothness = 0.7,
-                    }
-                ];
+            LineSmoothness = 0.7
+        }
+            ];
 
             XAxes =
             [
                 new Axis
-                {
-                    Labels =
-                    [
-                        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-                    ],
+        {
+            Labels =
+            [
+                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+            ],
 
-                    TextSize = 9,
+            TextSize = 9,
 
-                    LabelsPaint = new SolidColorPaint(
-                        new SKColor(0x68, 0x70, 0x8A)),
+            LabelsPaint = new SolidColorPaint(labelColor),
 
-                    SeparatorsPaint = null,
-                    TicksPaint = null
-                }
+            SeparatorsPaint = null,
+            TicksPaint = null
+        }
             ];
 
             double maximum = values.Count > 0
                 ? values.Max()
                 : 0;
 
-            // Round the upper limit up to a useful interval.
             double step = maximum <= 10
                 ? 2
                 : Math.Pow(10, Math.Floor(Math.Log10(maximum)) - 1);
@@ -171,27 +187,24 @@ namespace MFMFMSF.UI.Features.Meetings.Controls.ViewMeeting
             YAxes =
             [
                 new Axis
-                {
-                    MinLimit = 0,
-                    MaxLimit = axisMaximum,
-                    MinStep = step,
-                    TextSize = 9,
+        {
+            MinLimit = 0,
+            MaxLimit = axisMaximum,
+            MinStep = step,
+            TextSize = 9,
 
-                    LabelsPaint = new SolidColorPaint(
-                        new SKColor(0x68, 0x70, 0x8A)),
+            LabelsPaint = new SolidColorPaint(labelColor),
 
-                    SeparatorsPaint = new SolidColorPaint(
-                        new SKColor(0xE8, 0xEA, 0xF2))
-                    {
-                        StrokeThickness = 1
-                    },
+            SeparatorsPaint = new SolidColorPaint(separatorColor)
+            {
+                StrokeThickness = 1
+            },
 
-                    TicksPaint = null,
-                    Labeler = value => value.ToString("N0")
-                }
+            TicksPaint = null,
+            Labeler = value => value.ToString("N0")
+        }
             ];
 
-            // Refresh the chart bindings.
             DataContext = null;
             DataContext = this;
         }
