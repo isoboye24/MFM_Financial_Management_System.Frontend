@@ -7,8 +7,10 @@
          xmlns:controls="clr-namespace:MFMFMSF.UI.Controls" 
          xmlns:controls2="clr-namespace:MFMFMSF.UI.Features.Expenditures.Controls.Form"
          mc:Ignorable="d" 
-         d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#F5F7FB" Margin="20">
+         d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource AppBackgroundBrush}">
+
+    <Grid Background="{DynamicResource AppBackgroundBrush}" Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

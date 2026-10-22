@@ -6,119 +6,147 @@
 
     <UserControl.Resources>
 
-        <!-- ===================================================== -->
+
         <!-- LABEL -->
-        <!-- ===================================================== -->
-
-        <Style x:Key="FormLabel"
-       TargetType="TextBlock">
-
-            <Setter Property="FontSize"
-            Value="14"/>
-
-            <Setter Property="FontWeight"
-            Value="SemiBold"/>
-
+        <Style x:Key="FormLabel" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Foreground"
-            Value="#151936"/>
-
-            <Setter Property="Margin"
-            Value="0,0,0,5"/>
-
+      Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
         </Style>
 
-
-        <!-- ===================================================== -->
         <!-- HELPER TEXT -->
-        <!-- ===================================================== -->
-
-        <Style x:Key="FormHelperText"
-       TargetType="TextBlock">
-
-            <Setter Property="FontSize"
-            Value="10"/>
-
+        <Style x:Key="FormHelperText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground"
-            Value="#68708A"/>
-
-            <Setter Property="Margin"
-            Value="0,5,0,0"/>
-
+      Value="{DynamicResource SecondaryTextBrush}"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
         </Style>
 
-
-        <!-- ===================================================== -->
         <!-- TEXT BOX -->
-        <!-- ===================================================== -->
-
-        <Style x:Key="FormTextBox"
-       TargetType="TextBox">
-
-            <Setter Property="Height"
-            Value="36"/>
-
-            <Setter Property="FontSize"
-            Value="14"/>
-
+        <Style x:Key="FormTextBox" TargetType="TextBox">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground"
-            Value="#303653"/>
-
+      Value="{DynamicResource PrimaryTextBrush}"/>
             <Setter Property="Background"
-            Value="White"/>
-
+      Value="{DynamicResource SurfaceBrush}"/>
             <Setter Property="BorderBrush"
-            Value="#DDE1EC"/>
+      Value="{DynamicResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0"/>
+        </Style>
 
-            <Setter Property="BorderThickness"
-            Value="1"/>
+        <!-- ================================================ -->
+        <!-- COMBOBOX -->
+        <!-- ================================================ -->
 
-            <Setter Property="Padding"
-            Value="10,0"/>
+        <Style x:Key="AppComboBoxItem"
+ TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="Foreground"
+      Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="Background"
+      Value="{DynamicResource SurfaceBrush}"/>
+            <Setter Property="Padding" Value="10,7"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border x:Name="ItemBorder"
+                  Background="{TemplateBinding Background}"
+                  Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter TargetName="ItemBorder"
+                          Property="Background"
+                          Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="ItemBorder"
+                          Property="Background"
+                          Value="{DynamicResource PrimaryPressedBackgroundBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
+        <Style x:Key="AppComboBox"
+ TargetType="{x:Type ComboBox}">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground"
+      Value="{DynamicResource InputForegroundBrush}"/>
+            <Setter Property="Background"
+      Value="{DynamicResource InputBackgroundBrush}"/>
+            <Setter Property="BorderBrush"
+      Value="{DynamicResource InputBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="ItemContainerStyle"
+      Value="{DynamicResource AppComboBoxItem}"/>
         </Style>
 
 
 
-        <!-- ===================================================== -->
-        <!-- DATE PICKER -->
-        <!-- ===================================================== -->
+        <!-- ================================================ -->
+        <!-- DATEPICKER INTERNAL TEXT BOX -->
+        <!-- ================================================ -->
 
-        <Style x:Key="FormDatePicker"
-       TargetType="DatePicker">
-
-            <Setter Property="Height"
-            Value="36"/>
-
-            <Setter Property="FontSize"
-            Value="14"/>
-
+        <Style x:Key="AppDatePickerTextBox"
+ TargetType="{x:Type DatePickerTextBox}">
             <Setter Property="Foreground"
-            Value="#303653"/>
-
+      Value="{DynamicResource PrimaryTextBrush}"/>
             <Setter Property="Background"
-            Value="White"/>
-
+      Value="{DynamicResource SurfaceBrush}"/>
             <Setter Property="BorderBrush"
-            Value="#DDE1EC"/>
-
-            <Setter Property="BorderThickness"
-            Value="1"/>
-
+      Value="{DynamicResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="6,0"/>
+            <Setter Property="FontSize" Value="12"/>
         </Style>
 
 
-        <!-- ===================================================== -->
+        <!-- ================================================ -->
+        <!-- DATEPICKER -->
+        <!-- ================================================ -->
+
+
+
+        <Style x:Key="AppDatePicker"
+ TargetType="{x:Type DatePicker}">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground"
+      Value="{DynamicResource InputForegroundBrush}"/>
+            <Setter Property="Background"
+      Value="{DynamicResource InputBackgroundBrush}"/>
+            <Setter Property="BorderBrush"
+      Value="{DynamicResource InputBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="6,0"/>
+        </Style>
+
+
+
+
+
         <!-- NUMBER BOX -->
-        <!-- ===================================================== -->
-
         <Style x:Key="NumberBoxStyle"
-       TargetType="TextBox"
-       BasedOn="{StaticResource FormTextBox}">
-
-            <Setter Property="TextAlignment"
-            Value="Left"/>
-
+ TargetType="TextBox"
+ BasedOn="{StaticResource FormTextBox}">
+            <Setter Property="TextAlignment" Value="Left"/>
         </Style>
+
 
     </UserControl.Resources>
 
@@ -127,8 +155,8 @@
     <!-- MAIN CARD -->
     <!-- ========================================================= -->
 
-    <Border Background="White"
-    BorderBrush="#E8EAF2"
+    <Border Background="{DynamicResource SurfaceBrush}"
+        BorderBrush="{DynamicResource TableBorderBrush}"
     BorderThickness="1"
     CornerRadius="10"
     Padding="12">
@@ -159,15 +187,15 @@
                          Margin="0,0,0,12">
 
                             <TextBlock Text="Date *"
-                            Style="{StaticResource FormLabel}"/>
+                            Style="{DynamicResource FormLabel}"/>
 
                             <DatePicker
                             SelectedDate="{Binding ExpenditureDate,
                                                     RelativeSource={RelativeSource AncestorType=UserControl}}"
-                             Style="{StaticResource FormDatePicker}"/>
+                             Style="{DynamicResource AppDatePicker}"/>
 
                             <TextBlock Text="Select the date of the giving."
-                            Style="{StaticResource FormHelperText}"/>
+                            Style="{DynamicResource FormHelperText}"/>
 
                         </StackPanel>
 
@@ -181,16 +209,16 @@
                          Margin="0,0,0,12">
 
                             <TextBlock Text="Amount"
-                            Style="{StaticResource FormLabel}"/>
+                            Style="{DynamicResource FormLabel}"/>
 
                             <TextBox
                              Text="{Binding Amount,
                                             RelativeSource={RelativeSource AncestorType=UserControl},
                                             UpdateSourceTrigger=PropertyChanged}"
-                             Style="{StaticResource FormTextBox}"/>
+                             Style="{DynamicResource FormTextBox}"/>
 
                             <TextBlock Text="Enter the amount of the expenditure."
-                            Style="{StaticResource FormHelperText}"/>
+                            Style="{DynamicResource FormHelperText}"/>
 
                         </StackPanel>
                     </Grid>
@@ -207,7 +235,7 @@
 
                     <TextBlock
                     Text="Summary"
-                    Style="{StaticResource FormLabel}"
+                    Style="{DynamicResource FormLabel}"
                     Margin="0,0,0,20"/>
 
                     <TextBox
@@ -218,9 +246,9 @@
                                    Mode=TwoWay,
                                    UpdateSourceTrigger=PropertyChanged}" 
                 FontSize="12"
-                Foreground="#303653"
-                Background="White"
-                BorderBrush="#DDE1EC"
+                Foreground="{DynamicResource PrimaryTextBrush}"
+ Background="{DynamicResource AppBackgroundBrush}"
+ BorderBrush="{DynamicResource BorderBrush}"
                 BorderThickness="1"
                 Padding="10"
                 TextWrapping="Wrap"
@@ -231,7 +259,7 @@
 
                     <TextBlock
                     Text="Enter the giving details or additional notes."
-                    Style="{StaticResource FormHelperText}"
+                    Style="{DynamicResource FormHelperText}"
                     Margin="0,5,0,0"/>
 
                 </StackPanel>
