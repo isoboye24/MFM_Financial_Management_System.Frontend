@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Background="#F5F7FB">
+             Background="{DynamicResource AppBackgroundBrush}">
 
     <Grid Margin="20">
 
@@ -23,7 +23,7 @@
         <!-- ================= TOP BAR ================= -->
 
         <Border Grid.Row="0"
-                Background="White"
+                Background="{DynamicResource SurfaceBrush}"
                 CornerRadius="15"
                 Margin="0,0,0,20">
 
@@ -41,7 +41,7 @@
         <!-- ================= STATISTICS ================= -->
 
         <Border Grid.Row="1"
-                Background="Transparent"
+                Background="{DynamicResource TransparentBrush}"
                 CornerRadius="15"
                 Margin="0,0,0,20">
 
@@ -53,7 +53,7 @@
         <!-- ================= REPORT SECTION ================= -->
 
         <Border Grid.Row="2"
-                Background="White"
+                Background="{DynamicResource SurfaceBrush}"
                 CornerRadius="10">
 
             <Grid>
@@ -77,9 +77,7 @@
 
                 <!-- ================= REPORT CONTENT ================= -->
 
-                <ContentControl
-                    x:Name="ReportContent"
-                    Grid.Row="1"/>
+                <ContentControl x:Name="ReportContent" Grid.Row="1"/>
 
             </Grid>
 

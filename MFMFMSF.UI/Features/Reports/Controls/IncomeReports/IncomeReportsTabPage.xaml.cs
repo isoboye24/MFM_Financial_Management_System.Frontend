@@ -53,5 +53,10 @@ namespace MFMFMSF.UI.Features.Reports.Controls.IncomeReports
         {
             return _incomeTrends.LoadYearAsync(year);
         }
+
+        public void RefreshChartTheme()
+        {
+            _incomeTrends.RefreshChartTheme();
+        }
     }
 }

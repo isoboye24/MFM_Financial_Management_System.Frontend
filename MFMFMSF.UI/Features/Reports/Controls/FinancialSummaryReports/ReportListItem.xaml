@@ -22,7 +22,7 @@
         <Border Grid.Column="0"
                 Width="18"
                 Height="18"
-                Background="#F4F3FF"
+               Background="{DynamicResource SurfaceBrush}"
                 CornerRadius="3"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center">
@@ -31,7 +31,7 @@
                 Kind="FileDocumentOutline"
                 Width="11"
                 Height="11"
-                Foreground="#303653"
+                Foreground="{DynamicResource SecondaryTextBrush}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
 
@@ -48,13 +48,13 @@
                        RelativeSource={RelativeSource AncestorType=UserControl}}"
                 FontSize="8"
                 FontWeight="SemiBold"
-                Foreground="#151936"/>
+                Foreground="{DynamicResource PrimaryTextBrush}"/>
 
             <TextBlock
                 Text="{Binding GeneratedText,
                        RelativeSource={RelativeSource AncestorType=UserControl}}"
                 FontSize="6.5"
-                Foreground="#6D7188"
+                Foreground="{DynamicResource SecondaryTextBrush}"
                 Margin="0,1,0,0"/>
 
         </StackPanel>
@@ -73,7 +73,7 @@
             <Button
                 Width="22"
                 Height="22"
-                Background="Transparent"
+                Background="{DynamicResource TransparentBrush}"
                 BorderThickness="0"
                 Padding="0"
                 Cursor="Hand"
@@ -85,7 +85,7 @@
                     Kind="EyeOutline"
                     Width="11"
                     Height="11"
-                    Foreground="#303653"/>
+                    Foreground="{DynamicResource SecondaryTextBrush}"/>
 
             </Button>
 
@@ -107,7 +107,7 @@
                     Kind="Download"
                     Width="11"
                     Height="11"
-                    Foreground="#303653"/>
+                    Foreground="{DynamicResource SecondaryTextBrush}"/>
 
             </Button>
 
@@ -117,7 +117,7 @@
             <Button
                 Width="22"
                 Height="22"
-                Background="Transparent"
+                Background="{DynamicResource TransparentBrush}"
                 BorderThickness="0"
                 Padding="0"
                 Cursor="Hand"
@@ -129,7 +129,7 @@
                     Kind="DeleteOutline"
                     Width="11"
                     Height="11"
-                    Foreground="#303653"/>
+                    Foreground="{DynamicResource SecondaryTextBrush}"/>
 
             </Button>
 

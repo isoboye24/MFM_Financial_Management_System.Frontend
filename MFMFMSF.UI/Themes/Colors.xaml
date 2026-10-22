@@ -97,6 +97,9 @@
     <SolidColorBrush x:Key="ChartSeriesBrushChildren" Color="#14B8A6"/>
     <SolidColorBrush x:Key="ChartAreaBrushChildren" Color="#2314B8A6"/>
 
+    <SolidColorBrush x:Key="ChartLabelBrush2" Color="#667085"/>
+    <SolidColorBrush x:Key="ChartSeparatorBrush2" Color="#EAECF0"/>
+
     <!-- Input controls -->
     <SolidColorBrush x:Key="InputBackgroundBrush" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="InputForegroundBrush" Color="#172033"/>

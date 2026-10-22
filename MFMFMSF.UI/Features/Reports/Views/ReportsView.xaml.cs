@@ -45,6 +45,14 @@ namespace MFMFMSF.UI.Features.Reports.Views
             ReportContent.Content = new FinancialSummaryTabPage(_navigationService, _reportService, _givingService, _expenditureService);  
         }
 
+        public void RefreshCurrentReportTheme()
+        {
+            if (ReportContent.Content is IncomeReportsTabPage incomePage)
+            {
+                incomePage.RefreshChartTheme();
+            }
+        }
+
         private async void MonthYearPicker_PeriodChanged(object? sender, PeriodChangedEventArgs e)
         {
             _selectedMonth = e.Month;

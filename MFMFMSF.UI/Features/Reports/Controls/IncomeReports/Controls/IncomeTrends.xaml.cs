@@ -1,12 +1,15 @@
-﻿using LiveChartsCore;
+﻿
+using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using MFMFMSF.Core.Interfaces;
+using SkiaSharp;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
-using SkiaSharp;
+using System.Windows.Media;
 
 namespace MFMFMSF.UI.Features.Reports.Controls.IncomeReports.Controls
 {
@@ -15,12 +18,11 @@ namespace MFMFMSF.UI.Features.Reports.Controls.IncomeReports.Controls
         private readonly IGivingService? _givingService;
 
         private int _selectedYear = DateTime.Today.Year;
-        private int _selectedMonth = DateTime.Today.Month;
 
-        private decimal _offeringsTotal;
-        private decimal _tithesTotal;
-        private decimal _seedsTotal;
-        private decimal _otherIncomeTotal;
+        private double[] _offerings = Array.Empty<double>();
+        private double[] _tithes = Array.Empty<double>();
+        private double[] _seeds = Array.Empty<double>();
+        private double[] _otherIncome = Array.Empty<double>();
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -33,6 +35,9 @@ namespace MFMFMSF.UI.Features.Reports.Controls.IncomeReports.Controls
             InitializeComponent();
 
             _givingService = givingService;
+
+            InitializeAxes();
+
             DataContext = this;
         }
 
@@ -42,24 +47,28 @@ namespace MFMFMSF.UI.Features.Reports.Controls.IncomeReports.Controls
             private set => SetProperty(ref _selectedYear, value);
         }
 
+        private decimal _offeringsTotal;
         public decimal OfferingsTotal
         {
             get => _offeringsTotal;
             private set => SetProperty(ref _offeringsTotal, value);
         }
 
+        private decimal _tithesTotal;
         public decimal TithesTotal
         {
             get => _tithesTotal;
             private set => SetProperty(ref _tithesTotal, value);
         }
 
+        private decimal _seedsTotal;
         public decimal SeedsTotal
         {
             get => _seedsTotal;
             private set => SetProperty(ref _seedsTotal, value);
         }
 
+        private decimal _otherIncomeTotal;
         public decimal OtherIncomeTotal
         {
             get => _otherIncomeTotal;
@@ -68,60 +77,120 @@ namespace MFMFMSF.UI.Features.Reports.Controls.IncomeReports.Controls
 
         public ObservableCollection<ISeries> IncomeSeries { get; } = new();
 
+        public Axis[] XAxes { get; private set; } = Array.Empty<Axis>();
+
+        public Axis[] YAxes { get; private set; } = Array.Empty<Axis>();
+
+        // Reads a SolidColorBrush from the active WPF theme dictionary
+        // and converts its color to SkiaSharp's SKColor.
+        private static SKColor GetThemeColor(
+            string resourceKey,
+            SKColor fallback)
+        {
+            if (Application.Current?.TryFindResource(resourceKey)
+                is SolidColorBrush brush)
+            {
+                var color = brush.Color;
+
+                return new SKColor(
+                    color.R,
+                    color.G,
+                    color.B,
+                    color.A);
+            }
+
+            return fallback;
+        }
+
+        private static SolidColorPaint CreatePaint(
+            string resourceKey,
+            SKColor fallback)
+        {
+            return new SolidColorPaint(GetThemeColor(resourceKey, fallback));
+        }
+
+
+        private void InitializeAxes()
+        {
+            var labelColor = GetThemeColor(
+                "ChartLabelBrush2",
+                SKColor.Parse("#C5CAD5"));
+
+            var separatorColor = GetThemeColor(
+                "ChartSeparatorBrush2",
+                SKColor.Parse("#3A4050"));
+
+            var labelPaint = new SolidColorPaint(labelColor);
+            var separatorPaint = new SolidColorPaint(separatorColor);
+
+            XAxes = new[]
+            {
+        new Axis
+        {
+            Labels = new[]
+            {
+                "Jan", "Feb", "Mar", "Apr",
+                "May", "Jun", "Jul", "Aug",
+                "Sep", "Oct", "Nov", "Dec"
+            },
+
+            LabelsPaint = new SolidColorPaint(labelColor),
+            TextSize = 12,
+
+            SeparatorsPaint = new SolidColorPaint(separatorColor)
+        }
+    };
+
+            YAxes = new[]
+            {
+        new Axis
+        {
+            Name = "Income (€)",
+            NamePaint = new SolidColorPaint(labelColor),
+            NameTextSize = 14,
+
+            Labeler = value => $"€{value:N0}",
+            LabelsPaint = new SolidColorPaint(labelColor),
+            TextSize = 11,
+
+            MinLimit = 0,
+            SeparatorsPaint = new SolidColorPaint(separatorColor)
+        }
+    };
+
+            OnPropertyChanged(nameof(XAxes));
+            OnPropertyChanged(nameof(YAxes));
+        }
+
+
         public async Task SetSelectedPeriodAsync(int month, int year)
         {
             if (_givingService is null)
             {
                 throw new InvalidOperationException(
-             "IGivingService was not supplied to IncomeTrends.");
+                    "IGivingService was not supplied to IncomeTrends.");
             }
-            else
-            {
-                await LoadYearAsync(year);                
-            }
+
+            // Preserve the existing behavior: load the selected year.
+            await LoadYearAsync(year);
         }
-
-        public Axis[] XAxes { get; } =
-        {
-            new Axis
-            {
-                Labels = new[]
-                {
-                    "Jan", "Feb", "Mar", "Apr",
-                    "May", "Jun", "Jul", "Aug",
-                    "Sep", "Oct", "Nov", "Dec"
-                },
-                LabelsPaint = new SolidColorPaint(SKColor.Parse("#68708A")),
-                TextSize = 12,
-                SeparatorsPaint = new SolidColorPaint(
-                    SKColor.Parse("#EDF0F6"))
-            }
-        };
-
-        public Axis[] YAxes { get; } =
-        {
-            new Axis
-            {
-                Name = "Income (€)",
-                Labeler = value => $"€{value:N0}",
-                LabelsPaint = new SolidColorPaint(SKColor.Parse("#68708A")),
-                TextSize = 11,
-                MinLimit = 0,
-                SeparatorsPaint = new SolidColorPaint(
-                    SKColor.Parse("#EDF0F6"))
-            }
-        };
-        
 
         public async Task LoadYearAsync(int year)
         {
+            if (_givingService is null)
+            {
+                throw new InvalidOperationException(
+                    "IGivingService was not supplied to IncomeTrends.");
+            }
+
             SelectedYear = year;
 
             var monthlyTasks = Enumerable.Range(1, 12)
                 .Select(async month => new
                 {
                     Month = month,
-                    Statistics = await _givingService.GetMonthlyStatisticsAsync(month, year)
+                    Statistics = await _givingService
+                        .GetMonthlyStatisticsAsync(month, year)
                 });
 
             var monthlyResults = await Task.WhenAll(monthlyTasks);
@@ -130,77 +199,93 @@ namespace MFMFMSF.UI.Features.Reports.Controls.IncomeReports.Controls
                 .OrderBy(result => result.Month)
                 .ToArray();
 
-            
-            var offerings = orderedResults
+            _offerings = orderedResults
                 .Select(x => (double)x.Statistics.MonthlyOfferings)
                 .ToArray();
 
-            var tithes = orderedResults
+            _tithes = orderedResults
                 .Select(x => (double)x.Statistics.MonthlyTithes)
                 .ToArray();
 
-            var seeds = orderedResults
+            _seeds = orderedResults
                 .Select(x => (double)x.Statistics.MonthlySeeds)
                 .ToArray();
 
-            var otherIncome = orderedResults
+            _otherIncome = orderedResults
                 .Select(x => (double)x.Statistics.MonthlyOtherIncome)
                 .ToArray();
 
-            OfferingsTotal = (decimal)offerings.Sum();
-            TithesTotal = (decimal)tithes.Sum();
-            SeedsTotal = (decimal)seeds.Sum();
-            OtherIncomeTotal = (decimal)otherIncome.Sum();
+            OfferingsTotal = (decimal)_offerings.Sum();
+            TithesTotal = (decimal)_tithes.Sum();
+            SeedsTotal = (decimal)_seeds.Sum();
+            OtherIncomeTotal = (decimal)_otherIncome.Sum();
+
+            RefreshChartTheme();
+        }
+
+        /// <summary>
+        /// Rebuilds chart paints using the currently active theme resources.
+        /// Call this after switching the application's theme dictionaries.
+        /// </summary>
+        /// 
+
+
+
+        private static LineSeries<double> CreateIncomeSeries(
+            string name,
+            double[] values,
+            string colorResourceKey)
+        {
+            var textColor = GetThemeColor(
+                "ChartLabelBrush",
+                SKColors.LightGray);
+
+            return new LineSeries<double>
+            {
+                Name = name,
+                Values = values,
+
+                Stroke = new SolidColorPaint(
+                    GetThemeColor(
+                        colorResourceKey,
+                        GetThemeColor("PrimaryTextBrush", SKColors.White)))
+                {
+                    StrokeThickness = 3
+                },
+
+                Fill = null,
+                GeometrySize = 7
+            };
+        }
+
+
+
+
+        public void RefreshChartTheme()
+        {
+            InitializeAxes();
 
             IncomeSeries.Clear();
 
-            IncomeSeries.Add(new LineSeries<double>
-            {
-                Name = "Offerings",
-                Values = offerings,
-                Stroke = new SolidColorPaint(SKColor.Parse("#6048EE"))
-                {
-                    StrokeThickness = 3
-                },
-                Fill = null,
-                GeometrySize = 7
-            });
+            IncomeSeries.Add(CreateIncomeSeries(
+                IncomeCategoryNames.Offerings,
+                _offerings,
+                "PrimaryBrush"));
 
-            IncomeSeries.Add(new LineSeries<double>
-            {
-                Name = "Tithes",
-                Values = tithes,
-                Stroke = new SolidColorPaint(SKColor.Parse("#3784ED"))
-                {
-                    StrokeThickness = 3
-                },
-                Fill = null,
-                GeometrySize = 7
-            });
+            IncomeSeries.Add(CreateIncomeSeries(
+                IncomeCategoryNames.Tithes,
+                _tithes,
+                "InfoBrush"));
 
-            IncomeSeries.Add(new LineSeries<double>
-            {
-                Name = "Seeds (Faith Promise)",
-                Values = seeds,
-                Stroke = new SolidColorPaint(SKColor.Parse("#28A879"))
-                {
-                    StrokeThickness = 3
-                },
-                Fill = null,
-                GeometrySize = 7
-            });
+            IncomeSeries.Add(CreateIncomeSeries(
+                IncomeCategoryNames.Seeds,
+                _seeds,
+                "SuccessBrush"));
 
-            IncomeSeries.Add(new LineSeries<double>
-            {
-                Name = "Other Income",
-                Values = otherIncome,
-                Stroke = new SolidColorPaint(SKColor.Parse("#E99A2E"))
-                {
-                    StrokeThickness = 3
-                },
-                Fill = null,
-                GeometrySize = 7
-            });
+            IncomeSeries.Add(CreateIncomeSeries(
+                IncomeCategoryNames.OtherIncome,
+                _otherIncome,
+                "WarningBrush"));
 
             OnPropertyChanged(nameof(IncomeSeries));
         }

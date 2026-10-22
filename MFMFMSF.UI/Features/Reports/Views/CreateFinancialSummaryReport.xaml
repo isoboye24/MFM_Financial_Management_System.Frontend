@@ -8,8 +8,8 @@
         xmlns:controls2="clr-namespace:MFMFMSF.UI.Features.Reports.Controls.Form"
              mc:Ignorable="d" 
          d:DesignHeight="450" d:DesignWidth="800">
-    
-    <Grid Background="#F5F7FB" Margin="20">
+
+    <Grid  Background="{DynamicResource AppBackgroundBrush}" Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>

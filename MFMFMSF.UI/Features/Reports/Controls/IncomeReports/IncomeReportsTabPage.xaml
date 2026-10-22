@@ -6,23 +6,27 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Background="#F5F7FB">
+             Background="{DynamicResource AppBackgroundBrush}">
 
-    <Grid Margin="20">
+    <Grid Background="{DynamicResource AppBackgroundBrush}"
+          Margin="20">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- PAGE HEADER -->
         <TextBlock Grid.Row="0"
                    Text="Income Report"
                    FontSize="20"
                    FontWeight="SemiBold"
-                   Foreground="#151936"
+                   Foreground="{DynamicResource PrimaryTextBrush}"
                    Margin="0,0,0,16"/>
 
         <!-- IncomeTrends is created in code-behind with IGivingService. -->
         <Grid x:Name="ContentGrid"
               Grid.Row="1"/>
+
     </Grid>
 </UserControl>

@@ -8,108 +8,73 @@
              d:DesignHeight="300"
              d:DesignWidth="400">
 
-    <Border Background="White"
-            BorderBrush="#E8EAF2"
+    <Border Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource TableBorderBrush}"
             BorderThickness="1"
             CornerRadius="8"
             Padding="10">
 
         <Grid>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-
-            <!-- ========================================== -->
             <!-- TITLE -->
-            <!-- ========================================== -->
-
             <TextBlock Grid.Row="0"
                        Text="Income by Category (This Month)"
                        FontSize="10"
                        FontWeight="SemiBold"
-                       Foreground="#151936"
+                       Foreground="{DynamicResource PrimaryTextBrush}"
                        Margin="0,0,0,5"/>
 
-
-            <!-- ========================================== -->
-            <!-- CHART + LEGEND -->
-            <!-- ========================================== -->
-
+            <!-- CHART AND LEGEND -->
             <Grid Grid.Row="1">
-
                 <Grid.ColumnDefinitions>
-
-                    <!-- DONUT -->
                     <ColumnDefinition Width="125"/>
-
-                    <!-- LEGEND -->
                     <ColumnDefinition Width="*"/>
-
                 </Grid.ColumnDefinitions>
 
-
-                <!-- ====================================== -->
                 <!-- DONUT CHART -->
-                <!-- ====================================== -->
-
                 <Grid Width="125"
-                  Height="125"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center">
+                      Height="125"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
 
-                    <!-- DONUT -->
-
-                    <lvc:PieChart
-                    Series="{Binding Series}"
-                    LegendPosition="Hidden"
-                    InitialRotation="-90"
-                    Background="Transparent"
-                    Width="125"
-                    Height="125"/>
-
+                    <lvc:PieChart Series="{Binding Series}"
+                                  LegendPosition="Hidden"
+                                  InitialRotation="-90"
+                                  Background="Transparent"
+                                  Width="125"
+                                  Height="125"/>
 
                     <!-- CENTER TEXT -->
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
 
-                    <StackPanel
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                        <TextBlock Text="$148,320"
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
+                                   HorizontalAlignment="Center"/>
 
-                                        <TextBlock
-                            Text="$148,320"
-                            FontSize="12"
-                            FontWeight="SemiBold"
-                            Foreground="#151936"
-                            HorizontalAlignment="Center"/>
-
-                                    <TextBlock
-                            Text="Total Income"
-                            FontSize="6"
-                            Foreground="#303653"
-                            HorizontalAlignment="Center"
-                            Margin="0,2,0,0"/>
+                        <TextBlock Text="Total Income"
+                                   FontSize="6"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,2,0,0"/>
 
                     </StackPanel>
-
                 </Grid>
 
-
-                <!-- ====================================== -->
                 <!-- LEGEND -->
-                <!-- ====================================== -->
-
                 <StackPanel Grid.Column="1"
                             VerticalAlignment="Center"
                             Margin="5,0,0,0">
 
-
                     <!-- OFFERINGS -->
-
                     <Grid Height="20">
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="14"/>
                             <ColumnDefinition Width="*"/>
@@ -125,22 +90,18 @@
                         <TextBlock Grid.Column="1"
                                    Text="Offerings"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
 
                         <TextBlock Grid.Column="2"
                                    Text="$62,450 (42.1%)"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
                                    VerticalAlignment="Center"/>
-
                     </Grid>
 
-
                     <!-- TITHES -->
-
                     <Grid Height="20">
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="14"/>
                             <ColumnDefinition Width="*"/>
@@ -156,22 +117,18 @@
                         <TextBlock Grid.Column="1"
                                    Text="Tithes"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
 
                         <TextBlock Grid.Column="2"
                                    Text="$38,700 (26.1%)"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
                                    VerticalAlignment="Center"/>
-
                     </Grid>
 
-
                     <!-- SEEDS -->
-
                     <Grid Height="20">
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="14"/>
                             <ColumnDefinition Width="*"/>
@@ -187,22 +144,18 @@
                         <TextBlock Grid.Column="1"
                                    Text="Seeds (Faith Promise)"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
 
                         <TextBlock Grid.Column="2"
                                    Text="$22,650 (15.3%)"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
                                    VerticalAlignment="Center"/>
-
                     </Grid>
 
-
                     <!-- OTHER INCOME -->
-
                     <Grid Height="20">
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="14"/>
                             <ColumnDefinition Width="*"/>
@@ -218,22 +171,18 @@
                         <TextBlock Grid.Column="1"
                                    Text="Other Income"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
 
                         <TextBlock Grid.Column="2"
                                    Text="$17,820 (12.0%)"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
                                    VerticalAlignment="Center"/>
-
                     </Grid>
 
-
-                    <!-- PROJECTS & GRANTS -->
-
+                    <!-- PROJECTS AND GRANTS -->
                     <Grid Height="20">
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="14"/>
                             <ColumnDefinition Width="*"/>
@@ -249,31 +198,25 @@
                         <TextBlock Grid.Column="1"
                                    Text="Projects &amp; Grants"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
 
                         <TextBlock Grid.Column="2"
                                    Text="$6,700 (4.5%)"
                                    FontSize="8"
-                                   Foreground="#303653"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
                                    VerticalAlignment="Center"/>
-
                     </Grid>
 
                 </StackPanel>
-
             </Grid>
 
-
-            <!-- ========================================== -->
             <!-- FOOTER -->
-            <!-- ========================================== -->
-
             <Button Grid.Row="2"
                     Content="View full income report  →"
                     Background="Transparent"
                     BorderThickness="0"
-                    Foreground="#5B4CF3"
+                    Foreground="{DynamicResource PrimaryBrush}"
                     FontSize="8"
                     FontWeight="SemiBold"
                     Cursor="Hand"
@@ -282,7 +225,5 @@
                     Margin="0,3,10,0"/>
 
         </Grid>
-
     </Border>
-
 </UserControl>
