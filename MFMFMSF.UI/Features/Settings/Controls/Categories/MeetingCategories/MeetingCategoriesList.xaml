@@ -7,94 +7,54 @@
              xmlns:Iv1="clr-namespace:MFMFMSF.UI.Features.Settings.Controls.Categories.MeetingCategories"
              mc:Ignorable="d"
              d:DesignHeight="450"
-             d:DesignWidth="800">
+             d:DesignWidth="800"
+             Background="{DynamicResource AppBackgroundBrush}">
 
     <UserControl.Resources>
 
-        <!-- ================================================= -->
         <!-- ACTION BUTTON STYLE -->
-        <!-- ================================================= -->
-
         <Style x:Key="ActionButtonStyle"
                TargetType="Button">
 
-            <Setter Property="Width"
-                    Value="30"/>
-
-            <Setter Property="Height"
-                    Value="30"/>
-
-            <Setter Property="Background"
-                    Value="Transparent"/>
-
-            <Setter Property="BorderThickness"
-                    Value="0"/>
-
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground"
-                    Value="#68708A"/>
-
-            <Setter Property="Cursor"
-                    Value="Hand"/>
-
-            <Setter Property="Padding"
-                    Value="0"/>
-
-            <Setter Property="HorizontalContentAlignment"
-                    Value="Center"/>
-
-            <Setter Property="VerticalContentAlignment"
-                    Value="Center"/>
+                    Value="{DynamicResource SecondaryTextBrush}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
 
             <Style.Triggers>
-
-                <!-- Hover -->
-
-                <Trigger Property="IsMouseOver"
-                         Value="True">
-
+                <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background"
-                            Value="#F1F0FF"/>
-
+                            Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
                     <Setter Property="Foreground"
-                            Value="#5B4CF3"/>
-
+                            Value="{DynamicResource PrimaryBrush}"/>
                 </Trigger>
-
             </Style.Triggers>
-
         </Style>
 
-
-        <!-- ================================================= -->
         <!-- DELETE BUTTON STYLE -->
-        <!-- ================================================= -->
-
         <Style x:Key="DeleteButtonStyle"
                TargetType="Button"
                BasedOn="{StaticResource ActionButtonStyle}">
 
             <Style.Triggers>
-
-                <Trigger Property="IsMouseOver"
-                         Value="True">
-
+                <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background"
-                            Value="#FFF0F2"/>
-
-                    <Setter Property="Foreground"
-                            Value="#F0445F"/>
-
+                            Value="{DynamicResource DangerBrush}"/>
+                    <Setter Property="Foreground" Value="White"/>
                 </Trigger>
-
             </Style.Triggers>
-
         </Style>
 
     </UserControl.Resources>
 
-
-    <Border Background="White"
-            BorderBrush="#E8EAF2"
+    <Border Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource TableBorderBrush}"
             BorderThickness="1"
             CornerRadius="8">
 
@@ -105,13 +65,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-
-            <!-- ================================================= -->
             <!-- TABLE HEADER -->
-            <!-- ================================================= -->
-
             <Border Grid.Row="0"
-                    Background="#F8F9FC"
+                    Background="{DynamicResource AppBackgroundBrush}"
                     CornerRadius="8,8,0,0">
 
                 <Grid>
@@ -122,48 +78,37 @@
                         <ColumnDefinition Width="120"/>
                     </Grid.ColumnDefinitions>
 
-
                     <!-- NUMBER -->
-
                     <TextBlock Grid.Column="0"
                                Text="No."
                                Margin="18,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="10"
                                FontWeight="SemiBold"
-                               Foreground="#68708A"/>
-
+                               Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                     <!-- NAME -->
-
                     <TextBlock Grid.Column="1"
                                Text="Name"
                                Margin="10,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="10"
                                FontWeight="SemiBold"
-                               Foreground="#68708A"/>
-
+                               Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                     <!-- ACTIONS -->
-
                     <TextBlock Grid.Column="2"
                                Text="Actions"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="10"
                                FontWeight="SemiBold"
-                               Foreground="#68708A"/>
+                               Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                 </Grid>
-
             </Border>
 
-
-            <!-- ================================================= -->
             <!-- TABLE CONTENT -->
-            <!-- ================================================= -->
-
             <ScrollViewer Grid.Row="1"
                           VerticalScrollBarVisibility="Auto"
                           HorizontalScrollBarVisibility="Disabled">
@@ -171,11 +116,10 @@
                 <ItemsControl x:Name="CategoriesItemsControl">
 
                     <ItemsControl.ItemTemplate>
-
                         <DataTemplate>
 
-                            <Border BorderBrush="#E8EAF2"
-                                BorderThickness="0,0,0,1">
+                            <Border BorderBrush="{DynamicResource TableBorderBrush}"
+                                    BorderThickness="0,0,0,1">
 
                                 <Grid Height="44">
 
@@ -185,39 +129,33 @@
                                         <ColumnDefinition Width="120"/>
                                     </Grid.ColumnDefinitions>
 
-
                                     <!-- NUMBER -->
-
                                     <TextBlock Grid.Column="0"
-                                       Text="{Binding Number}"
-                                       Margin="18,0,0,0"
-                                       VerticalAlignment="Center"
-                                       FontSize="10"
-                                       Foreground="#68708A"/>
-
+                                               Text="{Binding Number}"
+                                               Margin="18,0,0,0"
+                                               VerticalAlignment="Center"
+                                               FontSize="10"
+                                               Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                                     <!-- NAME -->
-
                                     <TextBlock Grid.Column="1"
-                                       Text="{Binding Name}"
-                                       Margin="10,0,0,0"
-                                       VerticalAlignment="Center"
-                                       FontSize="10"
-                                       FontWeight="SemiBold"
-                                       Foreground="#303653"/>
-
+                                               Text="{Binding Name}"
+                                               Margin="10,0,0,0"
+                                               VerticalAlignment="Center"
+                                               FontSize="10"
+                                               FontWeight="SemiBold"
+                                               Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                                     <!-- ACTIONS -->
-
                                     <StackPanel Grid.Column="2"
-                                        Orientation="Horizontal"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center">
+                                                Orientation="Horizontal"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
 
                                         <Button Style="{StaticResource ActionButtonStyle}"
-                                            ToolTip="Edit"
-                                            Click="EditButton_Click"
-                                            Tag="{Binding}">
+                                                ToolTip="Edit"
+                                                Click="EditButton_Click"
+                                                Tag="{Binding}">
 
                                             <materialDesign:PackIcon
                                                 Kind="PencilOutline"
@@ -226,11 +164,10 @@
 
                                         </Button>
 
-
                                         <Button Style="{StaticResource DeleteButtonStyle}"
-                                            ToolTip="Delete"
-                                            Click="DeleteButton_Click"
-                                            Tag="{Binding}">
+                                                ToolTip="Delete"
+                                                Click="DeleteButton_Click"
+                                                Tag="{Binding}">
 
                                             <materialDesign:PackIcon
                                                 Kind="DeleteOutline"
@@ -242,19 +179,15 @@
                                     </StackPanel>
 
                                 </Grid>
-
                             </Border>
 
                         </DataTemplate>
-
                     </ItemsControl.ItemTemplate>
 
                 </ItemsControl>
-
             </ScrollViewer>
 
         </Grid>
-
     </Border>
 
 </UserControl>

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800"
-             Background="#F5F7FB">
+             Background="{DynamicResource AppBackgroundBrush}">
 
     <Grid Margin="0,20,0,0">
         <Grid.RowDefinitions>

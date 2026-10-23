@@ -2,10 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             Background="Transparent">
+             Background="{DynamicResource TransparentBrush}">
 
-    <Border Background="White"
-            BorderBrush="#E8EAF2"
+    <Border Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource TableBorderBrush}"
             BorderThickness="1"
             CornerRadius="8"
             Padding="15">
@@ -38,8 +38,8 @@
 
             <Border Grid.Column="1"
                 Height="36"
-                Background="#F8F9FC"
-                BorderBrush="#DDE0EA"
+                Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource TableBorderBrush}"
                 BorderThickness="1"
                 CornerRadius="10">
 
@@ -50,8 +50,8 @@
                     VerticalContentAlignment="Center"
                     Padding="10,0"
                     FontSize="10"
-                    Foreground="#303653"
-                    Background="Transparent"
+                    Foreground="{DynamicResource InputForegroundBrush}"
+                    Background="{DynamicResource TransparentBrush}"
                     BorderThickness="0"
                     ToolTip="Enter meeting category name"/>
 
@@ -68,7 +68,7 @@
         MinWidth="100"
         Margin="15,0,0,0"
         Padding="16,0"
-        Background="#5B4CF3"
+         Background="{DynamicResource PrimaryBrush}"
         Foreground="White"
         BorderThickness="0"
         Cursor="Hand"
@@ -114,7 +114,7 @@
 
                                 <Setter TargetName="ActionButtonBorder"
                             Property="Background"
-                            Value="#4E40D9"/>
+                            Value="{DynamicResource PrimaryHoverBrush}"/>
 
                             </Trigger>
 
@@ -126,7 +126,7 @@
 
                                 <Setter TargetName="ActionButtonBorder"
                             Property="Background"
-                            Value="#4033C2"/>
+                            Value="{DynamicResource PrimaryPressedBrush}"/>
 
                             </Trigger>
 
