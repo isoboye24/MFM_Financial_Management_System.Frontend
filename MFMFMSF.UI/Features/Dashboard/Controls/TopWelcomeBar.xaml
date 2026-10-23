@@ -64,51 +64,6 @@
                 PeriodChanged="MonthYearPicker_PeriodChanged"/>
 
 
-            <!-- ================================================= -->
-            <!-- NOTIFICATION -->
-            <!-- ================================================= -->
-
-            <Button Width="44"
-                Height="44"
-                Background="{DynamicResource SurfaceBrush}"
-                Foreground="{DynamicResource PrimaryTextBrush}"
-                BorderBrush="{DynamicResource TableBorderBrush}"
-                BorderThickness="1"
-                Padding="0">
-
-                <Grid Width="44"
-                      Height="44">
-
-                    <materialDesign:PackIcon
-                        Kind="BellOutline"
-                        Width="22"
-                        Height="22"
-                        Foreground="{DynamicResource PrimaryTextBrush}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
-
-
-                    <Border Width="17"
-                            Height="17"
-                            CornerRadius="9"
-                            Background="#E83E57"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top">
-
-                        <TextBlock Text="3"
-                                   FontFamily="Segoe UI"
-                                   FontSize="9"
-                                   FontWeight="SemiBold"
-                                   Foreground="White"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-
-                    </Border>
-
-                </Grid>
-
-            </Button>
-
         </StackPanel>
 
     </Grid>

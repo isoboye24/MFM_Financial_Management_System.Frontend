@@ -16,7 +16,7 @@
 
             <Setter Property="Width" Value="40"/>
             <Setter Property="Height" Value="36"/>
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
             <Setter Property="Foreground"
             Value="{DynamicResource PrimaryTextBrush}"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -94,7 +94,7 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="220"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="1"
@@ -102,23 +102,51 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top">
 
-
-                <!-- Dark mode toggle -->
-
-                <Button Width="40"
+                <!-- LIGHT / DARK MODE TOGGLE -->
+                <Button x:Name="ThemeToggleButton"
+                    Width="44"
                     Height="36"
-                    Background="Transparent"
+                    Margin="0,0,4,0"
+                    Background="{DynamicResource TransparentBrush}"
                     Foreground="{DynamicResource PrimaryTextBrush}"
                     BorderThickness="0"
                     Cursor="Hand"
-                    ToolTip="Toggle light/dark mode"
+                    ToolTip="Switch to dark mode"
                     Click="ThemeToggleButton_Click">
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="ToggleBackground"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8">
+
+                                <ContentPresenter
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="ToggleBackground"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+                                </Trigger>
+
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="ToggleBackground"
+                            Property="Background"
+                            Value="{DynamicResource PrimaryPressedBackgroundBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
 
                     <materialDesign:PackIcon
                         x:Name="ThemeToggleIcon"
                         Kind="MoonWaningCrescent"
-                        Width="18"
-                        Height="18"
+                        Width="21"
+                        Height="21"
                         Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                 </Button>

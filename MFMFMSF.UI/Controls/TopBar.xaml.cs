@@ -111,8 +111,8 @@ namespace MFMFMSF.UI.Controls
 
 
         private void ThemeToggleButton_Click(
-            object sender,
-            RoutedEventArgs e)
+    object sender,
+    RoutedEventArgs e)
         {
             ThemeManager.ToggleTheme();
             UpdateThemeIcon();
@@ -120,17 +120,19 @@ namespace MFMFMSF.UI.Controls
 
         private void UpdateThemeIcon()
         {
-            ThemeToggleIcon.Kind =
-                ThemeManager.CurrentTheme == AppTheme.Dark
-                    ? PackIconKind.WhiteBalanceSunny
-                    : PackIconKind.MoonWaningCrescent;
+            bool isDarkMode = ThemeManager.CurrentTheme == AppTheme.Dark;
 
-            ThemeToggleButtonTooltip();
+            ThemeToggleIcon.Kind = isDarkMode
+                ? PackIconKind.WhiteBalanceSunny
+                : PackIconKind.MoonWaningCrescent;
+
+            ThemeToggleButton.ToolTip = isDarkMode
+                ? "Switch to light mode"
+                : "Switch to dark mode";
         }
 
         private void ThemeToggleButtonTooltip()
         {
-            // Describe the theme that will be activated next.
             ThemeToggleIcon.Kind = ThemeManager.CurrentTheme == AppTheme.Dark ? PackIconKind.WhiteBalanceSunny : PackIconKind.MoonWaningCrescent;
         }
 
