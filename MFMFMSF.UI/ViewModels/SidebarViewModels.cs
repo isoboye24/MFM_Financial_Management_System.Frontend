@@ -26,6 +26,9 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
         private readonly IGivingService _givingService;
         private readonly IExpenditureService _expenditureService;
         private readonly IReportService _reportService;
+        private readonly IPositionService _positionService;
+        private readonly IWorkerService _workerService;
+        private readonly IGenderService _genderService;
 
         public ICommand NavigateDashboardCommand { get; }
         public ICommand NavigateMeetingsCommand { get; }
@@ -42,7 +45,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 
         public SidebarViewModel(INavigationService navigation, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
             IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService, IncomeChart incomeChart,
-            IncomeVsExpenditure incomeVsExpenditure)
+            IncomeVsExpenditure incomeVsExpenditure, IPositionService positionService, IWorkerService workerService, IGenderService genderService)
         {
             _navigation = navigation;
             _meetingCategoryService = meetingCategoryService;
@@ -51,6 +54,9 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
             _reportService = reportService;
             _givingService = givingService;
             _expenditureService = expenditureService;
+            _positionService = positionService;
+            _workerService = workerService;
+            _genderService = genderService;
 
             NavigateDashboardCommand = new RelayCommand(_ =>  _navigation.Navigate(new DashboardView(_navigation, _meetingCategoryService, _meetingService, 
                 _givingCategoryService, _givingService, _expenditureService, incomeChart, incomeVsExpenditure, _reportService)));
@@ -70,7 +76,7 @@ namespace MFMFMSF.UI.Features.Dashboard.ViewModels
 
             NavigateProjectsCommand = new RelayCommand(_ =>  _navigation.Navigate(new ProjectsView()));
 
-            NavigateWorkersCommand = new RelayCommand(_ =>  _navigation.Navigate(new WorkersView()));
+            NavigateWorkersCommand = new RelayCommand(_ =>  _navigation.Navigate(new WorkersView(_navigation, _positionService, _workerService, _genderService)));
 
             NavigateReportsCommand = new RelayCommand(_ =>  _navigation.Navigate(new ReportsView(_navigation, _givingService, _expenditureService, _reportService)));
 

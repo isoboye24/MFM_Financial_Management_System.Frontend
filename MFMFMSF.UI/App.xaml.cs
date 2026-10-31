@@ -16,6 +16,8 @@ namespace MFMFMSF.UI
         public static IExpenditureService ExpenditureService { get; } = new ExpenditureService(HttpClient);
         public static IPositionService PositionService { get; } = new PositionService(HttpClient);
         public static IReportService ReportService { get; } = new ReportService(HttpClient);
+        public static IWorkerService WorkerService { get; } = new WorkerService(HttpClient);
+        public static IGenderService GenderService { get; } = new GenderService(HttpClient);
 
         private static HttpClient CreateHttpClient()
         {

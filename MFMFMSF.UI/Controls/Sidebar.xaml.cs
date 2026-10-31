@@ -16,10 +16,11 @@ namespace MFMFMSF.UI.Controls
 
         public void SetNavigationService(INavigationService navigation, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
             IGivingCategoryService givingCategoryService, IGivingService givingService, IExpenditureService expenditureService, IReportService reportService, 
-            IncomeChart incomeChart, IncomeVsExpenditure incomeVsExpenditure)
+            IncomeChart incomeChart, IncomeVsExpenditure incomeVsExpenditure, IPositionService positionService, IWorkerService workerService, 
+            IGenderService genderService)
         {
             DataContext = new SidebarViewModel(navigation, meetingCategoryService, meetingService, givingCategoryService, givingService, expenditureService, reportService, 
-                incomeChart, incomeVsExpenditure);
+                incomeChart, incomeVsExpenditure, positionService, workerService, genderService);
         }
 
         private void SidebarMenuItem_Click(object sender, RoutedEventArgs e)

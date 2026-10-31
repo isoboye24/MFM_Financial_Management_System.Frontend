@@ -17,6 +17,9 @@ namespace MFMFMSF.UI.ViewModels
         private readonly IGivingService _givingService;
         private readonly IExpenditureService _expenditureService;
         private readonly IReportService _reportService;
+        private readonly IPositionService _positionService;
+        private readonly IWorkerService _workerService;
+        private readonly IGenderService _genderService;
 
         private UserControl _currentView;
 
@@ -33,7 +36,8 @@ namespace MFMFMSF.UI.ViewModels
 
         public MainViewModel(INavigationService navigationService, IGivingService givingService, IExpenditureService expenditureService, IncomeChart incomeChart, 
             IncomeVsExpenditure incomeVsExpenditure, IMeetingCategoryService meetingCategoryService, IMeetingService meetingService, 
-            IGivingCategoryService givingCategoryService, IReportService reportService)
+            IGivingCategoryService givingCategoryService, IReportService reportService, IPositionService positionService, IWorkerService workerService, 
+            IGenderService genderService)
         {
             _navigation = navigationService;
             _meetingCategoryService = meetingCategoryService;
@@ -42,6 +46,9 @@ namespace MFMFMSF.UI.ViewModels
             _givingService = givingService;
             _expenditureService = expenditureService;
             _reportService = reportService;
+            _positionService = positionService;
+            _workerService = workerService;
+            _genderService = genderService;
 
             _navigation.PageChanged += OnPageChanged;
 

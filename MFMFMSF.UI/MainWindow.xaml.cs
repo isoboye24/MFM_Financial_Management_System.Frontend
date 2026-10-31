@@ -15,6 +15,9 @@ namespace MFMFMSF.UI
         private readonly IGivingCategoryService _givingCategoryService;
         private readonly IExpenditureService _expenditureService;
         private readonly IReportService _reportService;
+        private readonly IPositionService _positionService;
+        private readonly IWorkerService _workerService;
+        private readonly IGenderService _genderService;
 
 
         public MainWindow()
@@ -33,13 +36,18 @@ namespace MFMFMSF.UI
             _givingCategoryService = App.GivingCategoryService;
             _expenditureService = App.ExpenditureService;
             _reportService = App.ReportService;
+            _positionService = App.PositionService;
+            _workerService = App.WorkerService;
+            _genderService = App.GenderService;
+
             var incomeChart = new IncomeChart(_givingService);
             var incomeVsExpenditure = new IncomeVsExpenditure(_givingService, _expenditureService);
 
             DataContext = new MainViewModel(_navigation, _givingService, _expenditureService, incomeChart, incomeVsExpenditure, _meetingCategoryService, 
-                _meetingService, _givingCategoryService, _reportService);
+                _meetingService, _givingCategoryService, _reportService, _positionService, _workerService, _genderService);
 
-            SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, _expenditureService, _reportService, incomeChart, incomeVsExpenditure);
+            SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, 
+                _expenditureService, _reportService, incomeChart, incomeVsExpenditure, _positionService, _workerService, _genderService);
         }
 
         private void TopBar_MinimizeRequested(object? sender, EventArgs e)

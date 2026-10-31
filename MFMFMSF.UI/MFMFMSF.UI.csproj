@@ -24,7 +24,6 @@
     <Folder Include="Features\Settings\Resources\" />
     <Folder Include="Features\Settings\ViewModels\" />
     <Folder Include="Features\Workers\Resources\" />
-    <Folder Include="Features\Workers\ViewModels\" />
     <Folder Include="Features\Offering\Resources\" />
     <Folder Include="Features\OtherIncome\Resources\" />
     <Folder Include="Features\Projects\ViewModels\" />

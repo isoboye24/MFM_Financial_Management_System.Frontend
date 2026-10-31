@@ -21,9 +21,7 @@ namespace MFMFMSF.UI.Features.Meetings.Views
 
             NavigationService = navigationService;
 
-            _viewModel = new CreateMeetingViewModel(
-                meetingCategoryService,
-                meetingService);
+            _viewModel = new CreateMeetingViewModel(meetingCategoryService, meetingService);
 
             DataContext = _viewModel;
 

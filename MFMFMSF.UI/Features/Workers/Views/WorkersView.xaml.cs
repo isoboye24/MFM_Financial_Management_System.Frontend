@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.UI.Controls;
+using MFMFMSF.UI.Features.Workers.ViewModels;
+using MFMFMSF.UI.Navigation;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MFMFMSF.UI.Features.Workers.Views
 {
@@ -20,9 +11,19 @@ namespace MFMFMSF.UI.Features.Workers.Views
     /// </summary>
     public partial class WorkersView : UserControl
     {
-        public WorkersView()
+        private readonly WorkersViewModel _viewModel;
+        public event EventHandler<PeriodChangedEventArgs>? PeriodChanged;
+        private readonly IWorkerService _workerService;
+
+        public WorkersView(INavigationService navigationService, IPositionService positionService, IWorkerService workerService, IGenderService genderService)
         {
             InitializeComponent();
+
+            _workerService = workerService;
+
+            _viewModel = new WorkersViewModel(navigationService, positionService, _workerService, genderService);
+
+            DataContext = _viewModel;
         }
     }
 }
