@@ -21,5 +21,12 @@ namespace MFMFMSF.Infrastructure.Service
 
             response.EnsureSuccessStatusCode();
         }
+
+        public async Task<IReadOnlyList<WorkersListItem>> GetAllAsync()
+        {
+            var workers = await _httpClient.GetFromJsonAsync<List<WorkersListItem>>($"{Endpoint}?Page=1&RecordsPerPage=100");
+
+            return workers ?? [];
+        }
     }
 }

@@ -2,6 +2,7 @@
 using MFMFMSF.UI.Controls;
 using MFMFMSF.UI.Features.Workers.ViewModels;
 using MFMFMSF.UI.Navigation;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MFMFMSF.UI.Features.Workers.Views
@@ -24,6 +25,13 @@ namespace MFMFMSF.UI.Features.Workers.Views
             _viewModel = new WorkersViewModel(navigationService, positionService, _workerService, genderService);
 
             DataContext = _viewModel;
+
+            Loaded += WorkersView_Loaded;
+        }
+
+        private async void WorkersView_Loaded(object sender, RoutedEventArgs e)
+        {
+            await _viewModel.LoadWorkersAsync();
         }
     }
 }

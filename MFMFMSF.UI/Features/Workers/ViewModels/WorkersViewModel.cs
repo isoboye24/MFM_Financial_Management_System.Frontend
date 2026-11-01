@@ -1,7 +1,9 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Workers;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Navigation;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -14,6 +16,8 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         private readonly IPositionService _positionService;
         private readonly IWorkerService _workerService;
         private readonly IGenderService _genderService;
+
+        public ObservableCollection<WorkersListItem> Workers { get; } = new();
 
         public ICommand AddWorkerCommand { get; }
 
@@ -41,7 +45,17 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             _navigationService.Navigate(new CreateWorker(_navigationService, _positionService, _workerService, _genderService));    
         }
 
+        public async Task LoadWorkersAsync()
+        {
+            var workers = await _workerService.GetAllAsync();
 
+            Workers.Clear();
+
+            foreach (var worker in workers)
+            {
+                Workers.Add(worker);
+            }
+        }
 
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {

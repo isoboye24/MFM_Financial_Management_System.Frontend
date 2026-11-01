@@ -68,7 +68,18 @@
                             CornerRadius="15"
                             Margin="0,0,0,20">
                             
-                            <lvc2:WorkersTable/>
+                            <lvc2:WorkersTable
+                                Workers="{Binding DataContext.Workers,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                PositionService="{Binding DataContext.PositionService,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                GenderService="{Binding DataContext.GenderService,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                NavigationService="{Binding DataContext.NavigationService,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                WorkerService="{Binding DataContext.WorkerService,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                />
                             
                         </Border>
 
