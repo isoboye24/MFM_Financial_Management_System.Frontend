@@ -161,5 +161,24 @@ namespace MFMFMSF.UI.Features.Workers.Controls.Form
                 typeof(GenderListItem),
                 typeof(WorkerForm),
                 new PropertyMetadata(null));
+
+
+        // =====================================================
+        // EMAIL
+        // =====================================================
+
+        public string Email
+        {
+            get => (string)GetValue(EmailProperty);
+            set => SetValue(EmailProperty, value);
+        }
+        
+
+        public static readonly DependencyProperty EmailProperty =
+            DependencyProperty.Register(
+                nameof(Email),
+                typeof(string),
+                typeof(WorkerForm),
+                new PropertyMetadata(string.Empty));
     }
 }

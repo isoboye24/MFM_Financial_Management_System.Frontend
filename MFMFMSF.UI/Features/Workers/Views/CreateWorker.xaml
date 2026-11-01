@@ -48,7 +48,8 @@
                  Positions="{Binding Positions}"
                 SelectedPosition="{Binding SelectedPosition, Mode=TwoWay}"
                 Genders="{Binding Genders}"
-                SelectedGender="{Binding SelectedGender, Mode=TwoWay}"/>
+                SelectedGender="{Binding SelectedGender, Mode=TwoWay}"
+                Email="{Binding Email, Mode=TwoWay}"/>
 
             </Border>
 

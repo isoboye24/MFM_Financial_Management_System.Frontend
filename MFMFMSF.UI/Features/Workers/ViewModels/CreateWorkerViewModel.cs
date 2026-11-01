@@ -92,6 +92,13 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             set => SetProperty(ref _selectedGender, value);
         }
 
+        private string _email = string.Empty;
+        public string Email
+        {
+            get => _email;
+            set => SetProperty(ref _email, value);
+        }
+
 
         public CreateWorkerViewModel(IWorkerService workerService, IPositionService positionService, IGenderService genderService, INavigationService navigationService)
         {
@@ -197,7 +204,8 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
                 Address = string.IsNullOrWhiteSpace(Address) ? null : Address.Trim(),
                 PhoneNumber = string.IsNullOrWhiteSpace(PhoneNumber) ? null : PhoneNumber.Trim(),
                 PositionId = SelectedPosition.Id,
-                GenderId = SelectedGender.Id
+                GenderId = SelectedGender.Id,
+                Email = string.IsNullOrWhiteSpace(Email) ? null : Email.Trim()
             };
 
             await _workerService.CreateAsync(request);
@@ -234,6 +242,7 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             LastName = string.Empty;
             Address = string.Empty;
             PhoneNumber = string.Empty;
+            Email = string.Empty;
         }
 
 

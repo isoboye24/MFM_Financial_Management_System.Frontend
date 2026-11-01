@@ -281,7 +281,7 @@
                      Grid.Column="0"
                      Margin="0,0,0,12">
 
-                    <TextBlock Text="Address"
+                    <TextBlock Text="Address *"
                         Style="{DynamicResource FormLabel}"/>
 
                     <TextBox
@@ -303,7 +303,7 @@
                      Grid.Column="2"
                      Margin="0,0,0,12">
 
-                    <TextBlock Text="Phone Number"
+                    <TextBlock Text="Phone Number *"
                         Style="{DynamicResource FormLabel}"/>
 
                     <TextBox
@@ -318,56 +318,93 @@
                 </StackPanel>
 
                 <!-- ================================================= -->
-                <!-- POSITIONS -->
+                <!-- POSITIONS AND GENDERS -->
+                <!-- ================================================= -->
+
+                <Border Grid.Row="2"
+                        Grid.Column="0">
+    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- ================================================= -->
+                        <!-- POSITIONS -->
+                        <!-- ================================================= -->
+
+                        <StackPanel Grid.Column="0"
+                            Margin="0,0,0,12">
+
+                            <TextBlock Text="Positions *"
+                                Style="{DynamicResource FormLabel}"/>
+
+                            <ComboBox
+                                ItemsSource="{Binding Positions,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                SelectedItem="{Binding SelectedPosition,
+                                   RelativeSource={RelativeSource AncestorType=UserControl},
+                                   Mode=TwoWay}"
+                                DisplayMemberPath="Name"
+                                Style="{DynamicResource AppComboBox}"
+                                ToolTip="Select the position of this worker"/>
+
+                            <TextBlock Text="Select the position of this worker."
+                                Style="{DynamicResource FormHelperText}"/>
+                        </StackPanel>
+
+                        <!-- ================================================= -->
+                        <!-- GENDER -->
+                        <!-- ================================================= -->
+
+                        <StackPanel Grid.Column="2"
+                            Margin="0,0,0,12">
+
+                            <TextBlock Text="Gender *"
+                                Style="{DynamicResource FormLabel}"/>
+
+                            <ComboBox
+                                ItemsSource="{Binding Genders,
+                                                      RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                SelectedItem="{Binding SelectedGender,
+                                                       RelativeSource={RelativeSource AncestorType=UserControl},
+                                                       Mode=TwoWay}"
+                            DisplayMemberPath="Name"
+                            Style="{DynamicResource AppComboBox}"
+                            ToolTip="Select the gender of this worker"/>
+
+                            <TextBlock Text="Select the gender of this worker."
+                                Style="{DynamicResource FormHelperText}"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Border>
+
+
+                <!-- ================================================= -->
+                <!-- EMAIL -->
                 <!-- ================================================= -->
 
                 <StackPanel Grid.Row="2"
-                        Grid.Column="0"
-                        Margin="0,0,0,12">
+     Grid.Column="2"
+     Margin="0,0,0,12">
 
-                    <TextBlock Text="Positions *"
-                           Style="{DynamicResource FormLabel}"/>
+                    <TextBlock Text="Email"
+        Style="{DynamicResource FormLabel}"/>
 
-                    <ComboBox
-                    ItemsSource="{Binding Positions,
-                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    SelectedItem="{Binding SelectedPosition,
-                                           RelativeSource={RelativeSource AncestorType=UserControl},
-                                           Mode=TwoWay}"
-                    DisplayMemberPath="Name"
-                    Style="{DynamicResource AppComboBox}"
-                    ToolTip="Select the position of this worker"/>
+                    <TextBox
+        Text="{Binding Email,
+        RelativeSource={RelativeSource AncestorType=UserControl},
+        UpdateSourceTrigger=PropertyChanged}"
+        Style="{DynamicResource FormTextBox}"/>
 
-                    <TextBlock Text="Select the position of this worker."
-                           Style="{DynamicResource FormHelperText}"/>
-                </StackPanel>
-                
-                <!-- ================================================= -->
-                <!-- GENDER -->
-                <!-- ================================================= -->
+                    <TextBlock Text="Enter the email of the worker."
+        Style="{DynamicResource FormHelperText}"/>
 
-                <StackPanel Grid.Row="2"
-                        Grid.Column="2"
-                        Margin="0,0,0,12">
-
-                    <TextBlock Text="Gender *"
-                           Style="{DynamicResource FormLabel}"/>
-
-                    <ComboBox
-                    ItemsSource="{Binding Genders,
-                                          RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    SelectedItem="{Binding SelectedGender,
-                                           RelativeSource={RelativeSource AncestorType=UserControl},
-                                           Mode=TwoWay}"
-                    DisplayMemberPath="Name"
-                    Style="{DynamicResource AppComboBox}"
-                    ToolTip="Select the gender of this worker"/>
-
-                    <TextBlock Text="Select the gender of this worker."
-                           Style="{DynamicResource FormHelperText}"/>
                 </StackPanel>
 
-              
             </Grid>
 
         </Grid>
