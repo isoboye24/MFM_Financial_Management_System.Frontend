@@ -229,7 +229,7 @@
                 <ItemsControl
                     ItemsSource="{Binding DataContext.Workers,
                      RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    AlternationCount="1000000">
+                    AlternationCount="2">
 
                     <ItemsControl.ItemTemplate>
 
@@ -348,20 +348,19 @@
 
                                         <!-- VIEW -->
 
-                                        <!--<Button
-                                        Style="{DynamicResource TableActionButton}"
-                                        Command="{Binding DataContext.ViewGivingCommand,
-                                            RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        <Button
+                                            Style="{DynamicResource TableActionButton}"
+                                            Command="{Binding ViewWorkerCommand,
+                                                              RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}"
-                                         Click="ViewGivingButton_Click"
                                             ToolTip="View">
 
                                             <materialDesign:PackIcon
-                                            Kind="EyeOutline"
-                                            Width="14"
-                                            Height="14"/>
+                                                Kind="EyeOutline"
+                                                Width="14"
+                                                Height="14"/>
 
-                                        </Button>-->
+                                        </Button>
 
                                     </StackPanel>
 

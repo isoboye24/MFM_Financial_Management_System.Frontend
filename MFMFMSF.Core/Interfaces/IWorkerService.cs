@@ -6,5 +6,6 @@ namespace MFMFMSF.Core.Interfaces
     {
         Task CreateAsync(CreateWorkerRequest request);
         Task<IReadOnlyList<WorkersListItem>> GetAllAsync();
+        Task<WorkerDetail> GetByIdAsync(Guid id);
     }
 }

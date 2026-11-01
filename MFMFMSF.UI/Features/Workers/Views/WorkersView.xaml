@@ -44,129 +44,31 @@
 
         </Border>
 
-        <Border Grid.Row="2"  Margin="0,0,0,20">
+        <Border Grid.Row="2"  Margin="0,0,0,20"
+             Height="Auto"                       
+             CornerRadius="15">
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <Border Grid.Row="0"
+Height="Auto"
+CornerRadius="15"
+Margin="0,0,0,20">
 
-                <Border Grid.Column="0"
-                    Height="Auto"                       
-                    CornerRadius="15">
+                <lvc2:WorkersTable
+    Workers="{Binding DataContext.Workers,
+        RelativeSource={RelativeSource AncestorType=UserControl}}"
+    PositionService="{Binding DataContext.PositionService,
+        RelativeSource={RelativeSource AncestorType=UserControl}}"
+    GenderService="{Binding DataContext.GenderService,
+        RelativeSource={RelativeSource AncestorType=UserControl}}"
+    NavigationService="{Binding DataContext.NavigationService,
+        RelativeSource={RelativeSource AncestorType=UserControl}}"
+    WorkerService="{Binding DataContext.WorkerService,
+        RelativeSource={RelativeSource AncestorType=UserControl}}"
+    />
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        
-                        <Border Grid.Row="0"
-                            Height="Auto"
-                            CornerRadius="15"
-                            Margin="0,0,0,20">
-                            
-                            <lvc2:WorkersTable
-                                Workers="{Binding DataContext.Workers,
-                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                PositionService="{Binding DataContext.PositionService,
-                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                GenderService="{Binding DataContext.GenderService,
-                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                NavigationService="{Binding DataContext.NavigationService,
-                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                WorkerService="{Binding DataContext.WorkerService,
-                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                />
-                            
-                        </Border>
-
-                        <Border Grid.Row="1"
-                            Height="Auto"
-                            CornerRadius="15"
-                            Margin="0,0,0,20">
-
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="10"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="10"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Border Grid.Column="0"
-                                    Height="Auto"
-                                    CornerRadius="15"
-                                    Padding="0,0,2,0">
-
-                                    <lvc2:MembersByDepartmentCard/>
-
-                                </Border>
-                                
-                                <Border Grid.Column="2"
-                                    Height="Auto"
-                                    CornerRadius="15"
-                                    Padding="0,0,2,0">
-
-                                    <lvc2:WorkersByAgeGroup/>
-
-                                </Border>
-                                
-                                <Border Grid.Column="4"
-                                    Height="Auto"
-                                    CornerRadius="15"
-                                    Padding="0,0,2,0">
-
-                                    <lvc2:NewWorkersTrend/>
-
-                                </Border>
-                            </Grid>
-
-                        </Border>
-                    </Grid>
-
-                </Border>
-
-                <Border Grid.Column="2">
-
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-
-                        <Border Grid.Row="0"
-                            Height="Auto"
-                            Margin="0,0,0,20">
-
-                            <lvc2:WorkerProfileSummaryCard/>
-
-                        </Border>
+            </Border>
 
 
-                        <Border Grid.Row="1"
-                            Height="Auto"
-                            CornerRadius="15"
-                             Margin="0,0,0,20">
-
-                            <lvc2:MembershipInformationCard/>
-
-                        </Border>
-
-                        <Border Grid.Row="2"
-                            Height="200"
-                            CornerRadius="15">
-
-                            <lvc2:WorkersQuickActionCards/>
-
-                        </Border>
-                    </Grid>
-                </Border>
-            </Grid>
         </Border>
 
 

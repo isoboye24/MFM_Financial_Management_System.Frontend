@@ -1,9 +1,15 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Meetings;
 using MFMFMSF.Core.Models.Workers;
+using MFMFMSF.Infrastructure.Service;
+using MFMFMSF.UI.Commands;
+using MFMFMSF.UI.Features.Meetings.Views;
+using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MFMFMSF.UI.Features.Workers.Controls
 {
@@ -12,9 +18,13 @@ namespace MFMFMSF.UI.Features.Workers.Controls
     /// </summary>
     public partial class WorkersTable : UserControl
     {
+        public ICommand ViewWorkerCommand { get; }
+
         public WorkersTable()
         {
             InitializeComponent();
+
+            ViewWorkerCommand = new RelayCommandGeneric<WorkersListItem>(ViewWorker);
         }
 
         // =====================================================
@@ -105,5 +115,26 @@ namespace MFMFMSF.UI.Features.Workers.Controls
                 typeof(IGenderService),
                 typeof(WorkersTable),
                 new PropertyMetadata(null));
+
+
+        // =====================================================
+        // ACTIONS
+        // =====================================================
+
+        private void ViewWorker(WorkersListItem worker)
+        {
+            if (NavigationService == null || WorkerService == null || PositionService == null || GenderService == null)
+            {
+                MessageBox.Show(
+                    "Navigation services are not configured.",
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return;
+            }
+
+            NavigationService.Navigate(new ViewWorker(worker.Id, WorkerService, NavigationService, PositionService, GenderService));
+        }
     }
 }

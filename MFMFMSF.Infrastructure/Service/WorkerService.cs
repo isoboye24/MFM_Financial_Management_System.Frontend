@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Meetings;
 using MFMFMSF.Core.Models.Workers;
 using System.Net.Http.Json;
 
@@ -27,6 +28,13 @@ namespace MFMFMSF.Infrastructure.Service
             var workers = await _httpClient.GetFromJsonAsync<List<WorkersListItem>>($"{Endpoint}?Page=1&RecordsPerPage=100");
 
             return workers ?? [];
+        }
+
+        public async Task<WorkerDetail> GetByIdAsync(Guid id)
+        {
+            var worker = await _httpClient.GetFromJsonAsync<WorkerDetail>($"{Endpoint}/{id}");
+
+            return worker ?? throw new InvalidOperationException("Worker not found.");
         }
     }
 }
