@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:converters="clr-namespace:MFMFMSF.UI.Converters">
+
+    <converters:OddRowIndexConverter x:Key="OddRowIndexConverter"/>
 
     <!-- ===================================================== -->
     <!-- TABLE HEADER -->
@@ -213,12 +216,12 @@
 
             <DataTrigger
             Binding="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter},
-                              Path=(ItemsControl.AlternationIndex)}"
-            Value="1">
+                              Path=(ItemsControl.AlternationIndex),
+                              Converter={StaticResource OddRowIndexConverter}}"
+            Value="True">
 
-                <Setter
-                Property="Background"
-                Value="{DynamicResource TableAlternateRowBrush}"/>
+                <Setter Property="Background"
+                    Value="{DynamicResource TableAlternateRowBrush}"/>
 
             </DataTrigger>
 
@@ -227,17 +230,14 @@
             <!-- ROW HOVER -->
             <!-- =============================================== -->
 
-            <Trigger
-            Property="IsMouseOver"
-            Value="True">
+            <Trigger Property="IsMouseOver"
+                 Value="True">
 
-                <Setter
-                Property="Background"
-                Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+                <Setter Property="Background"
+                    Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
 
-                <Setter
-                Property="BorderBrush"
-                Value="{DynamicResource PrimaryBrush}"/>
+                <Setter Property="BorderBrush"
+                    Value="{DynamicResource PrimaryBrush}"/>
 
             </Trigger>
 

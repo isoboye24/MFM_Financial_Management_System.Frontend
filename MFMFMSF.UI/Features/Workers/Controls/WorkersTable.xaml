@@ -229,7 +229,7 @@
                 <ItemsControl
                     ItemsSource="{Binding DataContext.Workers,
                      RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    AlternationCount="2">
+                    AlternationCount="10000000">
 
                     <ItemsControl.ItemTemplate>
 

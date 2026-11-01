@@ -11,6 +11,7 @@
 
             <converters:TruncateTextConverter x:Key="TruncateTextConverter"/>
             <converters:RowNumberConverter x:Key="RowNumberConverter"/>
+            <converters:OddRowIndexConverter x:Key="OddRowIndexConverter"/>
 
             <ResourceDictionary.MergedDictionaries>
 
