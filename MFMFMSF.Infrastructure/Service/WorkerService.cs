@@ -36,5 +36,12 @@ namespace MFMFMSF.Infrastructure.Service
 
             return worker ?? throw new InvalidOperationException("Worker not found.");
         }
+
+        public async Task UpdateAsync(Guid id, UpdateWorkerRequest request)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"{Endpoint}/{id}", request);
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 }

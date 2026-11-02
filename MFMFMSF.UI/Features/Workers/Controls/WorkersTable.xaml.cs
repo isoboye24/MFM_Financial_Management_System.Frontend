@@ -19,12 +19,14 @@ namespace MFMFMSF.UI.Features.Workers.Controls
     public partial class WorkersTable : UserControl
     {
         public ICommand ViewWorkerCommand { get; }
+        public ICommand EditWorkerCommand { get; }
 
         public WorkersTable()
         {
             InitializeComponent();
 
             ViewWorkerCommand = new RelayCommandGeneric<WorkersListItem>(ViewWorker);
+            EditWorkerCommand = new RelayCommandGeneric<WorkersListItem>(EditWorker);
         }
 
         // =====================================================
@@ -135,6 +137,22 @@ namespace MFMFMSF.UI.Features.Workers.Controls
             }
 
             NavigationService.Navigate(new ViewWorker(worker.Id, WorkerService, NavigationService, PositionService, GenderService));
+        }
+        
+        private void EditWorker(WorkersListItem worker)
+        {
+            if (NavigationService == null || WorkerService == null || PositionService == null || GenderService == null)
+            {
+                MessageBox.Show(
+                    "Navigation services are not configured.",
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return;
+            }
+
+            NavigationService.Navigate(new EditWorker(worker.Id, WorkerService, NavigationService, PositionService, GenderService));
         }
     }
 }

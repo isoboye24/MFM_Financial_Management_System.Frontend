@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.Workers.Views.EditWorker"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+         xmlns:controls="clr-namespace:MFMFMSF.UI.Controls" 
+         xmlns:controls2="clr-namespace:MFMFMSF.UI.Features.Workers.Controls.Form"
+         mc:Ignorable="d"
+         d:DesignHeight="700"
+         d:DesignWidth="1000"
+         Background="{DynamicResource AppBackgroundBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+              HorizontalScrollBarVisibility="Disabled">
+
+        <Grid Margin="28">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- PAGE HEADER -->
+            <Border Grid.Row="0"
+            Margin="0,0,0,20">
+
+                <controls:FormTitle
+                    BreadcrumbText="Church Workers"
+                    CurrentPageText="Edit Worker"
+                    Title="Edit Worker"
+                    Description="Edit an existing worker and update their position."
+                    NavigationService="{Binding NavigationService,
+                        RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+            </Border>
+
+            <!-- WORKER FORM -->
+            <Border Grid.Row="1"
+            Margin="0,0,0,20">
+
+                <controls2:WorkerForm
+                    FirstName="{Binding FirstName, Mode=TwoWay}"
+                    LastName="{Binding LastName, Mode=TwoWay}"
+                    Address="{Binding Address, Mode=TwoWay}"
+                    PhoneNumber="{Binding PhoneNumber, Mode=TwoWay}"
+                     Positions="{Binding Positions}"
+                    SelectedPosition="{Binding SelectedPosition, Mode=TwoWay}"
+                    Genders="{Binding Genders}"
+                    SelectedGender="{Binding SelectedGender, Mode=TwoWay}"
+                    Email="{Binding Email, Mode=TwoWay}"/>
+
+            </Border>
+
+            <!-- PAGE HEADER -->
+            <Border Grid.Row="2"
+            Margin="0,0,0,20">
+
+                <controls:SaveAndCancelButton
+                SaveText="Update Worker"
+                CancelText="Cancel"
+                SaveIconKind="AccountPlusOutline"
+                SaveCommand="{Binding UpdateWorkerCommand}"
+                CancelCommand="{Binding CancelCommand}"/>
+
+            </Border>
+
+        </Grid>
+
+
+    </ScrollViewer>
+</UserControl>
