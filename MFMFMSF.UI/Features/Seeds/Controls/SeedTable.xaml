@@ -84,7 +84,7 @@
                             <!-- PLACEHOLDER -->
 
                             <TextBlock
-                        Text="Search meetings..."
+                        Text="Search seeds..."
                         Margin="36,0,12,0"
                         VerticalAlignment="Center"
                         Foreground="{DynamicResource MutedTextBrush}"

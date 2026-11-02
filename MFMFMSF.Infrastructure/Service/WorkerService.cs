@@ -43,5 +43,12 @@ namespace MFMFMSF.Infrastructure.Service
 
             response.EnsureSuccessStatusCode();
         }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var response = await _httpClient.DeleteAsync($"{Endpoint}/{id}");
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 }

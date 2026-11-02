@@ -379,6 +379,22 @@
 
                                         </Button>
 
+                                        <!-- DELETE -->
+
+                                        <Button
+                                             Style="{DynamicResource TableDeleteActionButton}"
+                                             Command="{Binding DeleteWorkerCommand,
+                                                RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                             CommandParameter="{Binding}"
+                                             ToolTip="Delete">
+
+                                            <materialDesign:PackIcon
+                                                 Kind="DeleteOutline"
+                                                 Width="14"
+                                                 Height="14"/>
+
+                                        </Button>
+
                                     </StackPanel>
 
                                 </Grid>

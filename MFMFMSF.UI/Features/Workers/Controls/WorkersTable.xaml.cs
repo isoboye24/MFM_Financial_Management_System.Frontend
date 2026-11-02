@@ -20,6 +20,7 @@ namespace MFMFMSF.UI.Features.Workers.Controls
     {
         public ICommand ViewWorkerCommand { get; }
         public ICommand EditWorkerCommand { get; }
+        public ICommand DeleteWorkerCommand { get; }
 
         public WorkersTable()
         {
@@ -27,6 +28,7 @@ namespace MFMFMSF.UI.Features.Workers.Controls
 
             ViewWorkerCommand = new RelayCommandGeneric<WorkersListItem>(ViewWorker);
             EditWorkerCommand = new RelayCommandGeneric<WorkersListItem>(EditWorker);
+            DeleteWorkerCommand = new RelayCommandGeneric<WorkersListItem>(DeleteWorker);
         }
 
         // =====================================================
@@ -153,6 +155,33 @@ namespace MFMFMSF.UI.Features.Workers.Controls
             }
 
             NavigationService.Navigate(new EditWorker(worker.Id, WorkerService, NavigationService, PositionService, GenderService));
+        }
+
+        private async void DeleteWorker(WorkersListItem worker)
+        {
+            var result = MessageBox.Show($"Are you sure you want to delete '{worker.FirstName} {worker.LastName}'?", "Delete Worker", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            try
+            {
+                if (WorkerService == null)
+                {
+                    MessageBox.Show("Worker service is not configured.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                await WorkerService.DeleteAsync(worker.Id);
+
+                Workers.Remove(worker);
+
+                MessageBox.Show("Worker deleted successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"The worker could not be deleted.\n\n{ex.Message}", "Delete Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
