@@ -18,6 +18,7 @@ namespace MFMFMSF.UI
         private readonly IPositionService _positionService;
         private readonly IWorkerService _workerService;
         private readonly IGenderService _genderService;
+        private readonly IWorkerNoteService _workerNoteService;
 
 
         public MainWindow()
@@ -39,6 +40,7 @@ namespace MFMFMSF.UI
             _positionService = App.PositionService;
             _workerService = App.WorkerService;
             _genderService = App.GenderService;
+            _workerNoteService = App.WorkerNoteService;
 
             var incomeChart = new IncomeChart(_givingService);
             var incomeVsExpenditure = new IncomeVsExpenditure(_givingService, _expenditureService);
@@ -47,7 +49,7 @@ namespace MFMFMSF.UI
                 _meetingService, _givingCategoryService, _reportService, _positionService, _workerService, _genderService);
 
             SidebarControl.SetNavigationService(_navigation, _meetingCategoryService, _meetingService, _givingCategoryService, _givingService, 
-                _expenditureService, _reportService, incomeChart, incomeVsExpenditure, _positionService, _workerService, _genderService);
+                _expenditureService, _reportService, incomeChart, incomeVsExpenditure, _positionService, _workerService, _genderService, _workerNoteService);
         }
 
         private void TopBar_MinimizeRequested(object? sender, EventArgs e)

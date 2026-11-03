@@ -13,13 +13,14 @@ namespace MFMFMSF.UI.Features.Workers.Views
     {
         private readonly EditWorkerViewModel _viewModel;
 
-        public EditWorker(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, IGenderService genderService)
+        public EditWorker(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, 
+            IGenderService genderService, IWorkerNoteService workerNoteService)
         {
             InitializeComponent();
 
             NavigationService = navigationService;
 
-            _viewModel = new EditWorkerViewModel(workerId, workerService, navigationService, positionService, genderService);
+            _viewModel = new EditWorkerViewModel(workerId, workerService, navigationService, positionService, genderService, workerNoteService);
             DataContext = _viewModel;
 
             Loaded += EditWorker_Loaded;

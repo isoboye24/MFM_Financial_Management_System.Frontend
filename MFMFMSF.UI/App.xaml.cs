@@ -18,6 +18,7 @@ namespace MFMFMSF.UI
         public static IReportService ReportService { get; } = new ReportService(HttpClient);
         public static IWorkerService WorkerService { get; } = new WorkerService(HttpClient);
         public static IGenderService GenderService { get; } = new GenderService(HttpClient);
+        public static IWorkerNoteService WorkerNoteService { get; } = new WorkerNoteService(HttpClient);
 
         private static HttpClient CreateHttpClient()
         {

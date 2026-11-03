@@ -19,6 +19,7 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IPositionService _positionService;
         private readonly IGenderService _genderService;
+        private readonly IWorkerNoteService _workerNoteService;
 
         public Guid WorkerId { get; }
 
@@ -26,7 +27,8 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         public ICommand CancelCommand { get; }
 
 
-        public EditWorkerViewModel(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, IGenderService genderService)
+        public EditWorkerViewModel(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, 
+            IGenderService genderService, IWorkerNoteService workerNoteService)
         {
             WorkerId = workerId;
 
@@ -34,6 +36,7 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             _navigationService = navigationService;
             _positionService = positionService;
             _genderService = genderService;
+            _workerNoteService = workerNoteService;
 
             UpdateWorkerCommand = new RelayCommand(async _ => await UpdateWorkerAsync());
             CancelCommand = new RelayCommand(_ => Cancel());
@@ -233,7 +236,7 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         private void Cancel()
         {
             ClearForm();
-            _navigationService.Navigate(new WorkersView(_navigationService, _positionService, _workerService, _genderService));
+            _navigationService.Navigate(new WorkersView(_navigationService, _positionService, _workerService, _genderService, _workerNoteService));
         }
 
         // =====================================================

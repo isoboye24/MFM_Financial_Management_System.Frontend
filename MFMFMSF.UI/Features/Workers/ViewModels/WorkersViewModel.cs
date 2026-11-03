@@ -16,6 +16,7 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         private readonly IPositionService _positionService;
         private readonly IWorkerService _workerService;
         private readonly IGenderService _genderService;
+        private readonly IWorkerNoteService _workerNoteService;
 
         public ObservableCollection<WorkersListItem> Workers { get; } = new();
 
@@ -28,21 +29,24 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         public IPositionService PositionService => _positionService;
         public IWorkerService WorkerService => _workerService;
         public IGenderService GenderService => _genderService;
+        public IWorkerNoteService WorkerNoteService => _workerNoteService;
 
 
-        public WorkersViewModel(INavigationService navigationService, IPositionService positionService, IWorkerService workerService, IGenderService genderService)
+        public WorkersViewModel(INavigationService navigationService, IPositionService positionService, IWorkerService workerService, 
+            IGenderService genderService, IWorkerNoteService workerNoteService)
         {
             _navigationService = navigationService;
             _positionService = positionService;
             _workerService = workerService;
             _genderService = genderService;
+            _workerNoteService = workerNoteService;
 
             AddWorkerCommand = new RelayCommand(_ => AddWorker());
         }
 
         private void AddWorker()
         {
-            _navigationService.Navigate(new CreateWorker(_navigationService, _positionService, _workerService, _genderService));    
+            _navigationService.Navigate(new CreateWorker(_navigationService, _positionService, _workerService, _genderService, _workerNoteService));    
         }
 
         public async Task LoadWorkersAsync()

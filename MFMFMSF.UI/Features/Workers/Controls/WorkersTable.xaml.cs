@@ -1,9 +1,6 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.Core.Models.Meetings;
 using MFMFMSF.Core.Models.Workers;
-using MFMFMSF.Infrastructure.Service;
 using MFMFMSF.UI.Commands;
-using MFMFMSF.UI.Features.Meetings.Views;
 using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
@@ -119,6 +116,24 @@ namespace MFMFMSF.UI.Features.Workers.Controls
                 typeof(IGenderService),
                 typeof(WorkersTable),
                 new PropertyMetadata(null));
+        
+        
+        // =====================================================
+        // WORKER NOTE SERVICE
+        // =====================================================
+
+        public IWorkerNoteService? WorkerNoteService
+        {
+            get => (IWorkerNoteService?)GetValue(WorkerNoteServiceProperty);
+            set => SetValue(WorkerNoteServiceProperty, value);
+        }
+
+        public static readonly DependencyProperty WorkerNoteServiceProperty =
+            DependencyProperty.Register(
+                nameof(WorkerNoteService),
+                typeof(IWorkerNoteService),
+                typeof(WorkersTable),
+                new PropertyMetadata(null));
 
 
         // =====================================================
@@ -127,7 +142,7 @@ namespace MFMFMSF.UI.Features.Workers.Controls
 
         private void ViewWorker(WorkersListItem worker)
         {
-            if (NavigationService == null || WorkerService == null || PositionService == null || GenderService == null)
+            if (NavigationService == null || WorkerService == null || PositionService == null || GenderService == null || WorkerNoteService == null)
             {
                 MessageBox.Show(
                     "Navigation services are not configured.",
@@ -138,7 +153,7 @@ namespace MFMFMSF.UI.Features.Workers.Controls
                 return;
             }
 
-            NavigationService.Navigate(new ViewWorker(worker.Id, WorkerService, NavigationService, PositionService, GenderService));
+            NavigationService.Navigate(new ViewWorker(worker.Id, WorkerService, NavigationService, PositionService, GenderService, WorkerNoteService));
         }
         
         private void EditWorker(WorkersListItem worker)
@@ -154,7 +169,7 @@ namespace MFMFMSF.UI.Features.Workers.Controls
                 return;
             }
 
-            NavigationService.Navigate(new EditWorker(worker.Id, WorkerService, NavigationService, PositionService, GenderService));
+            NavigationService.Navigate(new EditWorker(worker.Id, WorkerService, NavigationService, PositionService, GenderService, WorkerNoteService));
         }
 
         private async void DeleteWorker(WorkersListItem worker)

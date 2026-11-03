@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
+             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls" 
+             xmlns:controls1="clr-namespace:MFMFMSF.UI.Features.WorkerNotes.Controls.Form" xmlns:workerNotes="clr-namespace:MFMFMSF.UI.Features.WorkerNotes.Controls"
              mc:Ignorable="d"
              d:DesignHeight="750"
              d:DesignWidth="1100"
              Background="{DynamicResource AppBackgroundBrush}">
 
     <UserControl.Resources>
-
         <!-- SECTION TITLE -->
         <Style x:Key="ProfileSectionTitle"
                TargetType="TextBlock">
@@ -52,412 +52,463 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
+        <!-- WORKER NOTE POPUP VISIBILITY -->
+        <Style x:Key="WorkerNotePopupStyle"
+       TargetType="{x:Type UserControl}">
+
+            <Setter Property="Visibility" Value="Collapsed"/>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsWorkerNoteFormVisible}"
+                     Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+
+        </Style>
+
     </UserControl.Resources>
 
-
-    <ScrollViewer VerticalScrollBarVisibility="Auto"
-                  HorizontalScrollBarVisibility="Disabled">
-
-        <Grid Margin="20">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-
-            <!-- ===================================================== -->
-            <!-- PAGE HEADER -->
-            <!-- ===================================================== -->
-
-            <Border Grid.Row="0"
-                    Margin="0,0,0,20"
-                    Padding="20"
-                    Background="{DynamicResource SurfaceBrush}">
-
-                <controls:FormTitle
-                    BreadcrumbText="Church Workers"
-                    CurrentPageText="Worker Profile"
-                    Title="Worker Profile"
-                    Description="View personal and contact information of this church worker."
-                    NavigationService="{Binding NavigationService,
-                        RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-
-            </Border>
-
-
-            <!-- ===================================================== -->
-            <!-- WORKER PROFILE HEADER -->
-            <!-- ===================================================== -->
-
-            <Border Grid.Row="1"
-                    Background="{DynamicResource SurfaceBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="14"
-                    Padding="25"
-                    Margin="0,0,0,20">
-
-                <Grid>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="22"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-
-                    <!-- CIRCULAR PROFILE AVATAR -->
-
-                    <Border Grid.Column="0"
-                            Width="105"
-                            Height="105"
-                            CornerRadius="53"
-                            Background="{DynamicResource PrimaryHoverBackgroundBrush}"
-                            BorderBrush="{DynamicResource PrimaryBrush}"
-                            BorderThickness="2"
-                            VerticalAlignment="Center">
-
-                        <materialDesign:PackIcon
-                            Kind="Account"
-                            Width="52"
-                            Height="52"
-                            Foreground="{DynamicResource PrimaryBrush}"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>
-
-                    </Border>
-
-
-                    <!-- WORKER NAME AND DETAILS -->
-
-                    <StackPanel Grid.Column="2"
-                                VerticalAlignment="Center">
-
-                        <TextBlock FontSize="24"
-                                   FontWeight="SemiBold"
-                                   Foreground="{DynamicResource PrimaryTextBrush}">
-
-                            <Run Text="{Binding Worker.FirstName}"/>
-                            <Run Text=" "/>
-                            <Run Text="{Binding Worker.LastName}"/>
-
-                        </TextBlock>
-
-
-                        <!-- POSITION -->
-
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="0,7,0,0"
-                                    VerticalAlignment="Center">
-
-                            <materialDesign:PackIcon
-                                Kind="BriefcaseOutline"
-                                Width="15"
-                                Height="15"
-                                Foreground="{DynamicResource SecondaryTextBrush}"
-                                Margin="0,0,7,0"/>
-
-                            <TextBlock Text="{Binding Worker.PositionName}"
-                                       FontSize="13"
-                                       Foreground="{DynamicResource SecondaryTextBrush}"/>
-
-                        </StackPanel>
-
-
-                        <!-- GENDER AND REGISTRATION DATE -->
-
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="0,13,0,0">
-
-                            <Border Background="{DynamicResource PrimaryHoverBackgroundBrush}"
-                                    CornerRadius="5"
-                                    Padding="10,5">
-
-                                <StackPanel Orientation="Horizontal">
-
-                                    <materialDesign:PackIcon
-                                        Kind="AccountOutline"
-                                        Width="13"
-                                        Height="13"
-                                        Foreground="{DynamicResource PrimaryBrush}"
-                                        Margin="0,0,5,0"/>
-
-                                    <TextBlock Text="{Binding Worker.GenderName}"
-                                               FontSize="11"
-                                               FontWeight="SemiBold"
-                                               Foreground="{DynamicResource PrimaryBrush}"/>
-
-                                </StackPanel>
-
-                            </Border>
-
-
-                            <Border Background="{DynamicResource AppBackgroundBrush}"
-                                    BorderBrush="{DynamicResource BorderBrush}"
-                                    BorderThickness="1"
-                                    CornerRadius="5"
-                                    Padding="10,5"
-                                    Margin="9,0,0,0">
-
-                                <StackPanel Orientation="Horizontal">
-
-                                    <materialDesign:PackIcon
-                                        Kind="CalendarOutline"
-                                        Width="13"
-                                        Height="13"
-                                        Foreground="{DynamicResource SecondaryTextBrush}"
-                                        Margin="0,0,5,0"/>
-
-                                    <TextBlock
-                                        Text="{Binding Worker.CreatedAt,
-                                            StringFormat='Registered {0:MMM d, yyyy}'}"
-                                        FontSize="11"
-                                        Foreground="{DynamicResource SecondaryTextBrush}"/>
-
-                                </StackPanel>
-
-                            </Border>
-
-                        </StackPanel>
-
-                    </StackPanel>
-
-                </Grid>
-
-            </Border>
-
-            <!-- ===================================================== -->
-            <!-- CONTACT INFORMATION -->
-            <!-- ===================================================== -->
-
-            <Border Grid.Row="2"
-                Background="{DynamicResource SurfaceBrush}"
-                BorderBrush="{DynamicResource BorderBrush}"
-                BorderThickness="1"
-                CornerRadius="14"
-                Padding="25">
-
-                <StackPanel>
-
-                    <!-- CARD HEADING -->
-
-                    <StackPanel Orientation="Horizontal"
-                    Margin="0,0,0,28">
-
-                        <Border Width="42"
-                    Height="42"
-                    CornerRadius="11"
-                    Background="{DynamicResource PrimaryHoverBackgroundBrush}">
-
-                            <materialDesign:PackIcon
-                    Kind="CardAccountPhoneOutline"
-                    Width="22"
-                    Height="22"
-                    Foreground="{DynamicResource PrimaryBrush}"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
-
-                        </Border>
-
-                        <StackPanel Margin="13,0,0,0"
-                        VerticalAlignment="Center">
-
-                            <TextBlock Text="Contact Information"
-                           FontSize="19"
-                           FontWeight="SemiBold"
-                           Foreground="{DynamicResource PrimaryTextBrush}"/>
-
-                            <TextBlock Text="Contact details and residential address of this church worker."
-                           FontSize="12"
-                           Foreground="{DynamicResource SecondaryTextBrush}"
-                           Margin="0,4,0,0"/>
-
-                        </StackPanel>
-
-                    </StackPanel>
-
-
-                    <!-- CONTACT DETAILS: TWO COLUMNS -->
+    <Grid>
+        
+    
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <Grid Margin="20">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- ===================================================== -->
+                <!-- PAGE HEADER -->
+                <!-- ===================================================== -->
+
+                <!-- PAGE TITLE -->
+                <Border Grid.Row="0"
+             Background="{DynamicResource SurfaceBrush}"
+             BorderBrush="{DynamicResource BorderBrush}"
+             BorderThickness="1"
+             CornerRadius="15"
+             Margin="0,0,0,20"
+             Padding="20">
+
+                    <controls:PageTitleBarWithCreateButton
+                         BreadcrumbText="Church Worker"
+                         CurrentPageText="Worker Profile"
+                         Title="Worker Profile"
+                         Description="View personal and contact information of this church worker."
+                         ActionText="Add Note"
+                         ActionIcon="Plus"
+                         ActionCommand="{Binding AddWorkerNoteCommand}"
+                         NavigationService="{Binding NavigationService,
+                             RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+                </Border>
+
+                <!-- ===================================================== -->
+                <!-- WORKER PROFILE HEADER -->
+                <!-- ===================================================== -->
+
+                <Border Grid.Row="1"
+                        Background="{DynamicResource SurfaceBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="14"
+                        Padding="25"
+                        Margin="0,0,0,20">
 
                     <Grid>
 
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="22"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="35"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
 
+                        <!-- CIRCULAR PROFILE AVATAR -->
 
-                        <!-- ================================================= -->
-                        <!-- EMAIL ADDRESS -->
-                        <!-- ================================================= -->
+                        <Border Grid.Column="0"
+                                Width="105"
+                                Height="105"
+                                CornerRadius="53"
+                                Background="{DynamicResource PrimaryHoverBackgroundBrush}"
+                                BorderBrush="{DynamicResource PrimaryBrush}"
+                                BorderThickness="2"
+                                VerticalAlignment="Center">
 
-                        <Border Grid.Row="0"
-                    Grid.Column="0"
-                    Background="{DynamicResource AppBackgroundBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="10"
-                    Padding="18">
-
-                            <StackPanel>
-
-                                <StackPanel Orientation="Horizontal"
-                                Margin="0,0,0,14">
-
-                                    <materialDesign:PackIcon
-                            Kind="EmailOutline"
-                            Width="19"
-                            Height="19"
-                            Foreground="{DynamicResource PrimaryBrush}"
-                            VerticalAlignment="Center"/>
-
-                                    <TextBlock Text="EMAIL ADDRESS"
-                                   FontSize="10"
-                                   FontWeight="SemiBold"
-                                   Foreground="{DynamicResource SecondaryTextBrush}"
-                                   Margin="10,0,0,0"
-                                   VerticalAlignment="Center"/>
-
-                                </StackPanel>
-
-                                <TextBlock
-                        Text="{Binding Worker.Email,
-                            TargetNullValue='Not provided',
-                            FallbackValue='Not provided'}"
-                        FontSize="14"
-                        FontWeight="SemiBold"
-                        Foreground="{DynamicResource PrimaryTextBrush}"
-                        TextWrapping="Wrap"/>
-
-                            </StackPanel>
+                            <materialDesign:PackIcon
+                                Kind="Account"
+                                Width="52"
+                                Height="52"
+                                Foreground="{DynamicResource PrimaryBrush}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
 
                         </Border>
 
 
-                        <!-- ================================================= -->
-                        <!-- PHONE NUMBER -->
-                        <!-- ================================================= -->
+                        <!-- WORKER NAME AND DETAILS -->
 
-                        <Border Grid.Row="0"
-                    Grid.Column="2"
-                    Background="{DynamicResource AppBackgroundBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="10"
-                    Padding="18">
+                        <StackPanel Grid.Column="2"
+                                    VerticalAlignment="Center">
 
-                            <StackPanel>
+                            <TextBlock FontSize="24"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource PrimaryTextBrush}">
 
-                                <StackPanel Orientation="Horizontal"
-                                Margin="0,0,0,14">
+                                <Run Text="{Binding Worker.FirstName}"/>
+                                <Run Text=" "/>
+                                <Run Text="{Binding Worker.LastName}"/>
 
-                                    <materialDesign:PackIcon
-                            Kind="PhoneOutline"
-                            Width="19"
-                            Height="19"
-                            Foreground="{DynamicResource PrimaryBrush}"
-                            VerticalAlignment="Center"/>
+                            </TextBlock>
 
-                                    <TextBlock Text="PHONE NUMBER"
-                                   FontSize="10"
-                                   FontWeight="SemiBold"
-                                   Foreground="{DynamicResource SecondaryTextBrush}"
-                                   Margin="10,0,0,0"
-                                   VerticalAlignment="Center"/>
 
-                                </StackPanel>
+                            <!-- POSITION -->
 
-                                <TextBlock
-                        Text="{Binding Worker.PhoneNumber}"
-                        FontSize="14"
-                        FontWeight="SemiBold"
-                        Foreground="{DynamicResource PrimaryTextBrush}"
-                        TextWrapping="Wrap"/>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0,7,0,0"
+                                        VerticalAlignment="Center">
+
+                                <materialDesign:PackIcon
+                                    Kind="BriefcaseOutline"
+                                    Width="15"
+                                    Height="15"
+                                    Foreground="{DynamicResource SecondaryTextBrush}"
+                                    Margin="0,0,7,0"/>
+
+                                <TextBlock Text="{Binding Worker.PositionName}"
+                                           FontSize="13"
+                                           Foreground="{DynamicResource SecondaryTextBrush}"/>
 
                             </StackPanel>
 
-                        </Border>
 
+                            <!-- GENDER AND REGISTRATION DATE -->
 
-                        <!-- ================================================= -->
-                        <!-- RESIDENTIAL ADDRESS -->
-                        <!-- ================================================= -->
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0,13,0,0">
 
-                        <Border Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    Background="{DynamicResource AppBackgroundBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="10"
-                    Padding="18">
+                                <Border Background="{DynamicResource PrimaryHoverBackgroundBrush}"
+                                        CornerRadius="5"
+                                        Padding="10,5">
 
-                            <Grid>
+                                    <StackPanel Orientation="Horizontal">
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="15"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                                        <materialDesign:PackIcon
+                                            Kind="AccountOutline"
+                                            Width="13"
+                                            Height="13"
+                                            Foreground="{DynamicResource PrimaryBrush}"
+                                            Margin="0,0,5,0"/>
 
-                                <Border Grid.Column="0"
-                            Width="38"
-                            Height="38"
-                            CornerRadius="9"
-                            Background="{DynamicResource PrimaryHoverBackgroundBrush}"
-                            VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Worker.GenderName}"
+                                                   FontSize="11"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource PrimaryBrush}"/>
 
-                                    <materialDesign:PackIcon
-                            Kind="MapMarkerOutline"
-                            Width="20"
-                            Height="20"
-                            Foreground="{DynamicResource PrimaryBrush}"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"/>
+                                    </StackPanel>
 
                                 </Border>
 
-                                <StackPanel Grid.Column="2"
-                                VerticalAlignment="Center">
 
-                                    <TextBlock Text="RESIDENTIAL ADDRESS"
-                                   FontSize="10"
-                                   FontWeight="SemiBold"
-                                   Foreground="{DynamicResource SecondaryTextBrush}"
-                                   Margin="0,0,0,7"/>
+                                <Border Background="{DynamicResource AppBackgroundBrush}"
+                                        BorderBrush="{DynamicResource BorderBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="5"
+                                        Padding="10,5"
+                                        Margin="9,0,0,0">
 
-                                    <TextBlock
-                            Text="{Binding Worker.Address}"
-                            FontSize="14"
-                            FontWeight="SemiBold"
-                            Foreground="{DynamicResource PrimaryTextBrush}"
-                            TextWrapping="Wrap"/>
+                                    <StackPanel Orientation="Horizontal">
 
-                                </StackPanel>
+                                        <materialDesign:PackIcon
+                                            Kind="CalendarOutline"
+                                            Width="13"
+                                            Height="13"
+                                            Foreground="{DynamicResource SecondaryTextBrush}"
+                                            Margin="0,0,5,0"/>
 
-                            </Grid>
+                                        <TextBlock
+                                            Text="{Binding Worker.CreatedAt,
+                                                StringFormat='Registered {0:MMM d, yyyy}'}"
+                                            FontSize="11"
+                                            Foreground="{DynamicResource SecondaryTextBrush}"/>
 
-                        </Border>
+                                    </StackPanel>
+
+                                </Border>
+
+                            </StackPanel>
+
+                        </StackPanel>
 
                     </Grid>
 
-                </StackPanel>
+                </Border>
 
-            </Border>
+                <Border Grid.Row="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- ===================================================== -->
+                        <!-- CONTACT INFORMATION -->
+                        <!-- ===================================================== -->
+
+                        <Border Grid.Column="0"
+                    Background="{DynamicResource SurfaceBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="14"
+                    Padding="25">
+
+                            <StackPanel>
+
+                                <!-- CARD HEADING -->
+
+                                <StackPanel Orientation="Horizontal"
+    Margin="0,0,0,28">
+
+                                    <Border Width="42"
+    Height="42"
+    CornerRadius="11"
+    Background="{DynamicResource PrimaryHoverBackgroundBrush}">
+
+                                        <materialDesign:PackIcon
+    Kind="CardAccountPhoneOutline"
+    Width="22"
+    Height="22"
+    Foreground="{DynamicResource PrimaryBrush}"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center"/>
+
+                                    </Border>
+
+                                    <StackPanel Margin="13,0,0,0"
+        VerticalAlignment="Center">
+
+                                        <TextBlock Text="Contact Information"
+           FontSize="19"
+           FontWeight="SemiBold"
+           Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                                        <TextBlock Text="Contact details and residential address of this church worker."
+           FontSize="12"
+           Foreground="{DynamicResource SecondaryTextBrush}"
+           Margin="0,4,0,0"/>
+
+                                    </StackPanel>
+
+                                </StackPanel>
 
 
-        </Grid>
+                                <!-- CONTACT DETAILS: TWO COLUMNS -->
 
-    </ScrollViewer>
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="35"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <!-- ================================================= -->
+                                    <!-- EMAIL ADDRESS -->
+                                    <!-- ================================================= -->
+
+                                    <Border Grid.Row="0"
+    Grid.Column="0"
+    Background="{DynamicResource AppBackgroundBrush}"
+    BorderBrush="{DynamicResource BorderBrush}"
+    BorderThickness="1"
+    CornerRadius="10"
+    Padding="18">
+
+                                        <StackPanel>
+
+                                            <StackPanel Orientation="Horizontal"
+                Margin="0,0,0,14">
+
+                                                <materialDesign:PackIcon
+            Kind="EmailOutline"
+            Width="19"
+            Height="19"
+            Foreground="{DynamicResource PrimaryBrush}"
+            VerticalAlignment="Center"/>
+
+                                                <TextBlock Text="EMAIL ADDRESS"
+                   FontSize="10"
+                   FontWeight="SemiBold"
+                   Foreground="{DynamicResource SecondaryTextBrush}"
+                   Margin="10,0,0,0"
+                   VerticalAlignment="Center"/>
+
+                                            </StackPanel>
+
+                                            <TextBlock
+        Text="{Binding Worker.Email,
+            TargetNullValue='Not provided',
+            FallbackValue='Not provided'}"
+        FontSize="14"
+        FontWeight="SemiBold"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        TextWrapping="Wrap"/>
+
+                                        </StackPanel>
+
+                                    </Border>
+
+
+                                    <!-- ================================================= -->
+                                    <!-- PHONE NUMBER -->
+                                    <!-- ================================================= -->
+
+                                    <Border Grid.Row="0"
+    Grid.Column="2"
+    Background="{DynamicResource AppBackgroundBrush}"
+    BorderBrush="{DynamicResource BorderBrush}"
+    BorderThickness="1"
+    CornerRadius="10"
+    Padding="18">
+
+                                        <StackPanel>
+
+                                            <StackPanel Orientation="Horizontal"
+                Margin="0,0,0,14">
+
+                                                <materialDesign:PackIcon
+            Kind="PhoneOutline"
+            Width="19"
+            Height="19"
+            Foreground="{DynamicResource PrimaryBrush}"
+            VerticalAlignment="Center"/>
+
+                                                <TextBlock Text="PHONE NUMBER"
+                   FontSize="10"
+                   FontWeight="SemiBold"
+                   Foreground="{DynamicResource SecondaryTextBrush}"
+                   Margin="10,0,0,0"
+                   VerticalAlignment="Center"/>
+
+                                            </StackPanel>
+
+                                            <TextBlock
+        Text="{Binding Worker.PhoneNumber}"
+        FontSize="14"
+        FontWeight="SemiBold"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        TextWrapping="Wrap"/>
+
+                                        </StackPanel>
+
+                                    </Border>
+
+
+                                    <!-- ================================================= -->
+                                    <!-- RESIDENTIAL ADDRESS -->
+                                    <!-- ================================================= -->
+
+                                    <Border Grid.Row="2"
+    Grid.Column="0"
+    Grid.ColumnSpan="3"
+    Background="{DynamicResource AppBackgroundBrush}"
+    BorderBrush="{DynamicResource BorderBrush}"
+    BorderThickness="1"
+    CornerRadius="10"
+    Padding="18">
+
+                                        <Grid>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="15"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Border Grid.Column="0"
+            Width="38"
+            Height="38"
+            CornerRadius="9"
+            Background="{DynamicResource PrimaryHoverBackgroundBrush}"
+            VerticalAlignment="Center">
+
+                                                <materialDesign:PackIcon
+            Kind="MapMarkerOutline"
+            Width="20"
+            Height="20"
+            Foreground="{DynamicResource PrimaryBrush}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+
+                                            </Border>
+
+                                            <StackPanel Grid.Column="2"
+                VerticalAlignment="Center">
+
+                                                <TextBlock Text="RESIDENTIAL ADDRESS"
+                   FontSize="10"
+                   FontWeight="SemiBold"
+                   Foreground="{DynamicResource SecondaryTextBrush}"
+                   Margin="0,0,0,7"/>
+
+                                                <TextBlock
+            Text="{Binding Worker.Address}"
+            FontSize="14"
+            FontWeight="SemiBold"
+            Foreground="{DynamicResource PrimaryTextBrush}"
+            TextWrapping="Wrap"/>
+
+                                            </StackPanel>
+
+                                        </Grid>
+
+                                    </Border>
+
+                                </Grid>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- ===================================================== -->
+                        <!-- WORKER NOTES -->
+                        <!-- ===================================================== -->
+                        <Border Grid.Column="2">
+                            <workerNotes:NoteCards
+                                Grid.Column="2"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"/>
+                            
+                        </Border>
+                    </Grid>
+                </Border>
+
+            </Grid>
+
+        </ScrollViewer>
+
+        <!-- WORKER NOTE POPUP -->
+        <controls1:WorkerNoteForm
+        Panel.ZIndex="100"
+        Style="{StaticResource WorkerNotePopupStyle}"
+        NoteTitle="{Binding NoteTitle, Mode=TwoWay}"
+        Note="{Binding Note, Mode=TwoWay}"/>
+
+    </Grid>
 
 </UserControl>

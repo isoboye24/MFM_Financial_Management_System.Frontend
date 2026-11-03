@@ -1,6 +1,4 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.UI.Features.Givings.ViewModels;
-using MFMFMSF.UI.Features.Givings.Views;
 using MFMFMSF.UI.Features.Workers.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
@@ -15,13 +13,14 @@ namespace MFMFMSF.UI.Features.Workers.Views
     {
         private readonly ViewWorkerViewModel _viewModel;
 
-        public ViewWorker(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, IGenderService genderService)
+        public ViewWorker(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, 
+            IGenderService genderService, IWorkerNoteService workerNoteService)
         {
             InitializeComponent();
 
             NavigationService = navigationService;
 
-            _viewModel = new ViewWorkerViewModel(workerId, workerService, navigationService, positionService, genderService);
+            _viewModel = new ViewWorkerViewModel(workerId, workerService, navigationService, positionService, genderService, workerNoteService);
             DataContext = _viewModel;
 
             Loaded += ViewWorker_Loaded;
@@ -55,7 +54,7 @@ namespace MFMFMSF.UI.Features.Workers.Views
             DependencyProperty.Register(
                 nameof(NavigationService),
                 typeof(INavigationService),
-                typeof(ViewSingleGiving),
+                typeof(ViewWorker),
                 new PropertyMetadata(null));
 
     }

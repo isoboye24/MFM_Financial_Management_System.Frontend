@@ -1,0 +1,282 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.WorkerNotes.Controls.Form.WorkerNoteForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
+             mc:Ignorable="d"
+             d:DesignHeight="600"
+             d:DesignWidth="900"
+             Background="{DynamicResource TransparentBrush}">
+
+    <UserControl.Resources>
+
+        <!-- LABEL -->
+        <Style x:Key="FormLabel" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+
+        <!-- HELPER TEXT -->
+        <Style x:Key="FormHelperText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+
+        <!-- TEXT BOX -->
+        <Style x:Key="FormTextBox" TargetType="TextBox">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!-- COMBOBOX ITEM -->
+        <Style x:Key="AppComboBoxItem" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+            <Setter Property="Padding" Value="10,7"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border x:Name="ItemBorder"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter TargetName="ItemBorder"
+                                        Property="Background"
+                                        Value="{DynamicResource PrimaryHoverBackgroundBrush}"/>
+                            </Trigger>
+
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="ItemBorder"
+                                        Property="Background"
+                                        Value="{DynamicResource PrimaryPressedBackgroundBrush}"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- COMBOBOX -->
+        <Style x:Key="AppComboBox" TargetType="{x:Type ComboBox}">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="{DynamicResource InputForegroundBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource InputBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="ItemContainerStyle" Value="{DynamicResource AppComboBoxItem}"/>
+        </Style>
+
+        <!-- DATEPICKER TEXTBOX -->
+        <Style x:Key="AppDatePickerTextBox" TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="6,0"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <!-- DATEPICKER -->
+        <Style x:Key="AppDatePicker" TargetType="{x:Type DatePicker}">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="{DynamicResource InputForegroundBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource InputBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="6,0"/>
+        </Style>
+
+        <!-- NUMBER BOX -->
+        <Style x:Key="NumberBoxStyle"
+               TargetType="TextBox"
+               BasedOn="{StaticResource FormTextBox}">
+            <Setter Property="TextAlignment" Value="Left"/>
+        </Style>
+
+        <!-- POPUP ACTION BUTTON -->
+        <Style x:Key="PopupActionButton" TargetType="Button">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="MinWidth" Value="95"/>
+            <Setter Property="Padding" Value="16,0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+    </UserControl.Resources>
+
+    <!-- ===================================================== -->
+    <!-- POPUP OVERLAY -->
+    <!-- ===================================================== -->
+
+    <Grid Background="#99000000"
+          HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch">
+
+        <!-- MODAL CARD -->
+        <Border Width="620"
+                MaxHeight="550"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="{DynamicResource SurfaceBrush}"
+                BorderBrush="{DynamicResource TableBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="12"
+                Padding="24">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- ================================================= -->
+                <!-- HEADER -->
+                <!-- ================================================= -->
+
+                <Grid Grid.Row="0" Margin="0,0,0,25">
+
+                    <StackPanel>
+                        <TextBlock Text="Create New Note"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                        <TextBlock Text="Enter the details of the note."
+                                   FontSize="12"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <!-- CLOSE BUTTON -->
+                    <Button Width="30"
+                            Height="30"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Content="&#x2715;"
+                            FontSize="14"
+                            Foreground="{DynamicResource SecondaryTextBrush}"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Command="{Binding CancelCommand}"/>
+
+                </Grid>
+
+                <!-- ================================================= -->
+                <!-- FORM CONTENT -->
+                <!-- ================================================= -->
+
+                <Grid Grid.Row="1"
+      Margin="0,0,0,25">
+
+                    <Grid.RowDefinitions>
+                        <!-- NOTE TITLE -->
+                        <RowDefinition Height="Auto"/>
+
+                        <!-- NOTE -->
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- ================================================= -->
+                    <!-- NOTE TITLE -->
+                    <!-- ================================================= -->
+
+                    <StackPanel Grid.Row="0"
+                Margin="0,0,0,18">
+
+                        <TextBlock Text="Note Title *"
+                   Style="{DynamicResource FormLabel}"/>
+
+                        <TextBox Style="{DynamicResource FormTextBox}"
+                 MaxLength="30"
+                 Text="{Binding NoteTitle,
+                     RelativeSource={RelativeSource AncestorType=UserControl},
+                     UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="Enter the title of the note."
+                   Style="{DynamicResource FormHelperText}"/>
+
+                    </StackPanel>
+
+                    <!-- ================================================= -->
+                    <!-- NOTE -->
+                    <!-- ================================================= -->
+
+                    <StackPanel Grid.Row="1">
+
+                        <TextBlock Text="Note *"
+                   Style="{DynamicResource FormLabel}"/>
+
+                        <TextBox Height="150"
+                 FontSize="12"
+                 Foreground="{DynamicResource PrimaryTextBrush}"
+                 Background="{DynamicResource SurfaceBrush}"
+                 BorderBrush="{DynamicResource BorderBrush}"
+                 BorderThickness="1"
+                 Padding="10,8"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Disabled"
+                 VerticalContentAlignment="Top"
+                 Text="{Binding Note,
+                     RelativeSource={RelativeSource AncestorType=UserControl},
+                     UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="Enter the note."
+                   Style="{DynamicResource FormHelperText}"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+                <!-- ================================================= -->
+                <!-- FOOTER ACTIONS -->
+                <!-- ================================================= -->
+                <Border Grid.Row="2"
+                    Margin="0,0,0,20">
+
+                    <controls:SaveAndCancelButton
+                        SaveText="Save Note"
+                        CancelText="Cancel"
+                        SaveIconKind="NoteAdd"
+                        SaveCommand="{Binding SaveWorkerNoteCommand}"
+                        CancelCommand="{Binding CancelCommand}"/>
+
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+
+</UserControl>

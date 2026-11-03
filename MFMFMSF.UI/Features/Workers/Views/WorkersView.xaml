@@ -64,6 +64,8 @@ Margin="0,0,0,20">
         RelativeSource={RelativeSource AncestorType=UserControl}}"
     WorkerService="{Binding DataContext.WorkerService,
         RelativeSource={RelativeSource AncestorType=UserControl}}"
+    WorkerNoteService="{Binding DataContext.WorkerNoteService,
+        RelativeSource={RelativeSource AncestorType=UserControl}}"
     />
 
             </Border>

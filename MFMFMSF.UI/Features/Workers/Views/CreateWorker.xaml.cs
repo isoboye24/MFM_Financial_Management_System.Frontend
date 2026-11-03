@@ -12,13 +12,14 @@ namespace MFMFMSF.UI.Features.Workers.Views
     public partial class CreateWorker : UserControl
     {
         private readonly CreateWorkerViewModel _viewModel;
-        public CreateWorker(INavigationService navigationService, IPositionService positionService, IWorkerService workerService, IGenderService genderService)
+        public CreateWorker(INavigationService navigationService, IPositionService positionService, IWorkerService workerService, IGenderService genderService,
+            IWorkerNoteService workerNoteService)
         {
             InitializeComponent();
 
             NavigationService = navigationService;
 
-            _viewModel = new CreateWorkerViewModel(workerService, positionService, genderService, navigationService);
+            _viewModel = new CreateWorkerViewModel(workerService, positionService, genderService, navigationService, workerNoteService);
             DataContext = _viewModel;
 
             Loaded += Load_positions_and_genders_Loaded;
