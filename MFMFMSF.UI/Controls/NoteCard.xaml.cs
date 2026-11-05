@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MFMFMSF.UI.Controls
 {
@@ -51,6 +52,52 @@ namespace MFMFMSF.UI.Controls
             DependencyProperty.Register(
                 nameof(CreationTime),
                 typeof(DateTime?),
+                typeof(NoteCard),
+                new PropertyMetadata(null));
+
+        // ===================================================== -->
+        // ACTION BUTTONS -->
+        // ===================================================== -->
+
+        // View command
+        public ICommand? ViewCommand
+        {
+            get => (ICommand?)GetValue(ViewCommandProperty);
+            set => SetValue(ViewCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty ViewCommandProperty =
+            DependencyProperty.Register(
+                nameof(ViewCommand),
+                typeof(ICommand),
+                typeof(NoteCard),
+                new PropertyMetadata(null));
+
+        // Edit command
+        public ICommand? EditCommand
+        {
+            get => (ICommand?)GetValue(EditCommandProperty);
+            set => SetValue(EditCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty EditCommandProperty =
+            DependencyProperty.Register(
+                nameof(EditCommand),
+                typeof(ICommand),
+                typeof(NoteCard),
+                new PropertyMetadata(null));
+
+        // Delete command
+        public ICommand? DeleteCommand
+        {
+            get => (ICommand?)GetValue(DeleteCommandProperty);
+            set => SetValue(DeleteCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty DeleteCommandProperty =
+            DependencyProperty.Register(
+                nameof(DeleteCommand),
+                typeof(ICommand),
                 typeof(NoteCard),
                 new PropertyMetadata(null));
     }

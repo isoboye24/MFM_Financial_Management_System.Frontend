@@ -1,4 +1,5 @@
 ﻿using MFMFMSF.Core.Interfaces;
+using MFMFMSF.Core.Models.Workers;
 using MFMFMSF.Core.Models.WorkersNotes;
 using System.Net.Http.Json;
 
@@ -28,6 +29,13 @@ namespace MFMFMSF.Infrastructure.Service
                     $"Status: {(int)response.StatusCode} ({response.StatusCode})\n" +
                     $"Response: {responseContent}");
             }
+        }
+
+        public async Task<IReadOnlyList<WorkerNoteByWorkerIdListItem>> GetAllByWorkerIdAsync(Guid memberId)
+        {
+            var notes = await _httpClient.GetFromJsonAsync<List<WorkerNoteByWorkerIdListItem>>($"{Endpoint}/{memberId}/by-member-id");
+
+            return notes ?? [];
         }
     }
 }

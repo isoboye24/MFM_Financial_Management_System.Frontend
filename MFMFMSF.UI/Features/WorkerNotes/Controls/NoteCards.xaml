@@ -80,18 +80,23 @@
                           HorizontalScrollBarVisibility="Disabled">
 
                 <ItemsControl ItemsSource="{Binding RecentNotes}">
-
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-
                             <controls:NoteCard
-                                NoteTitle="{Binding NoteTitle}"
-                                Note="{Binding Note}"
-                                CreationTime="{Binding CreationTime}"/>
+                NoteTitle="{Binding NoteTitle}"
+                Note="{Binding Note}"
+                CreationTime="{Binding CreationTime}"
 
+                ViewCommand="{Binding DataContext.ViewWorkerNoteCommand,
+                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+
+                EditCommand="{Binding DataContext.EditWorkerNoteCommand,
+                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+
+                DeleteCommand="{Binding DataContext.DeleteWorkerNoteCommand,
+                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-
                 </ItemsControl>
 
             </ScrollViewer>

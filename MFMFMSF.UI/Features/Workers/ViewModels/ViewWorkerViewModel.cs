@@ -4,6 +4,7 @@ using MFMFMSF.Core.Models.WorkersNotes;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Navigation;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -73,6 +74,12 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         public ICommand CancelCommand { get; }
         public ICommand SaveWorkerNoteCommand { get; }
 
+        public ICommand ViewWorkerNoteCommand { get; }
+        public ICommand EditWorkerNoteCommand { get; }
+        public ICommand DeleteWorkerNoteCommand { get; }
+
+        public ObservableCollection<WorkerNoteByWorkerIdListItem> RecentNotes { get; } = new();
+
         public ViewWorkerViewModel(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, 
             IGenderService genderService, IWorkerNoteService workerNoteService)
         {
@@ -87,11 +94,28 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             AddWorkerNoteCommand = new RelayCommand(_ => OpenWorkerNoteForm());
             CancelCommand = new RelayCommand(_ => CloseWorkerNoteForm());
             SaveWorkerNoteCommand = new RelayCommand(async _ => await SaveWorkerNoteAsync());
+            //ViewWorkerNoteCommand = new RelayCommand(async _ => await ViewWorkerNoteAsync());
+            //EditWorkerNoteCommand = new RelayCommand(async _ => await EditWorkerNoteAsync());
+            //DeleteWorkerNoteCommand = new RelayCommand(async _ => await DeleteWorkerNoteAsync());
         }
 
         public async Task LoadAsync()
         {
             Worker = await _workerService.GetByIdAsync(WorkerId);
+
+            await LoadWorkerNotesAsync();
+        }
+
+        private async Task LoadWorkerNotesAsync()
+        {
+            var notes = await _workerNoteService.GetAllByWorkerIdAsync(WorkerId);
+
+            RecentNotes.Clear();
+
+            foreach (var note in notes)
+            {
+                RecentNotes.Add(note);
+            }
         }
 
         private void OpenWorkerNoteForm()
@@ -145,6 +169,8 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
 
             await _workerNoteService.CreateAsync(request);
 
+            await LoadWorkerNotesAsync();
+
             MessageBox.Show(
                 "Worker note created successfully.",
                 "Success",
@@ -152,7 +178,6 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
                 MessageBoxImage.Information);
 
             ClearForm();
-
         }
 
         // =====================================================
