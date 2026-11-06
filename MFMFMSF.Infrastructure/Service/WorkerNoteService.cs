@@ -1,5 +1,4 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.Core.Models.Workers;
 using MFMFMSF.Core.Models.WorkersNotes;
 using System.Net.Http.Json;
 
@@ -36,6 +35,13 @@ namespace MFMFMSF.Infrastructure.Service
             var notes = await _httpClient.GetFromJsonAsync<List<WorkerNoteByWorkerIdListItem>>($"{Endpoint}/{memberId}/by-member-id");
 
             return notes ?? [];
+        }
+
+        public async Task<WorkerNoteDetail> GetByIdAsync(Guid id)
+        {
+            var worker = await _httpClient.GetFromJsonAsync<WorkerNoteDetail>($"{Endpoint}/{id}");
+
+            return worker ?? throw new InvalidOperationException("Worker note not found.");
         }
     }
 }

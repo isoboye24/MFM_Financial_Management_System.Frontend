@@ -1,0 +1,367 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.WorkerNotes.Views.ViewWorkerNote"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"
+             mc:Ignorable="d"
+      d:DesignHeight="750"
+      d:DesignWidth="1200">
+
+    <UserControl.Resources>
+
+        <!-- Note action button -->
+        <Style x:Key="NotePageActionButton"
+               TargetType="Button">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="Padding" Value="14,0"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="7"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder"
+                                        Property="Opacity"
+                                        Value="0.82"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder"
+                                        Property="Opacity"
+                                        Value="0.65"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder"
+                                        Property="Opacity"
+                                        Value="0.4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ================================================= -->
+        <!-- PAGE HEADER -->
+        <!-- ================================================= -->
+
+        <Border Grid.Row="0"
+    Margin="0,0,0,20"
+        Padding="20"
+        Background="{DynamicResource SurfaceBrush}">
+
+            <controls:FormTitle
+        BreadcrumbText="Worker Notes"
+        CurrentPageText="View Worker Note"
+        Title="View Worker Note"
+        Description="View the complete information about this worker note."
+        NavigationService="{Binding NavigationService,
+                                   RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+        </Border>
+
+        <!-- ================================================= -->
+        <!-- NOTE CONTENT -->
+        <!-- ================================================= -->
+
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- MAIN NOTE CONTENT -->
+                <Border Grid.Column="0"
+                        Background="{DynamicResource SurfaceBrush}"
+                        BorderBrush="{DynamicResource TableBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="14"
+                        Padding="26"
+                        Margin="0,0,12,0">
+
+                    <StackPanel>
+
+                        <!-- Note icon and category -->
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,0,22">
+
+                            <Border Width="44"
+                                    Height="44"
+                                    CornerRadius="11"
+                                    Background="{DynamicResource PrimaryLightBrush}">
+                                <TextBlock Text="&#xE70B;"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           FontSize="20"
+                                           Foreground="{DynamicResource PrimaryBrush}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+
+                            <StackPanel Margin="13,0,0,0"
+                                        VerticalAlignment="Center">
+
+                                <TextBlock Text="NOTE'S DETAILS"
+                                           FontSize="9"
+                                           FontWeight="SemiBold"
+                                           Foreground="{DynamicResource PrimaryBrush}"/>
+
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Note title -->
+                        <TextBlock Text="{Binding WorkerNote.NoteTitle}"
+                                   FontSize="23"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,0,14"/>
+
+                        <!-- Metadata -->
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,0,0,22">
+
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Center">
+                                <TextBlock Text="&#xE787;"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           FontSize="12"
+                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                           Margin="0,0,7,0"/>
+
+                                <TextBlock Text="{Binding WorkerNote.CreationTime,
+                                    StringFormat='{}{0:dd MMMM yyyy}'}"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource SecondaryTextBrush}"/>
+                            </StackPanel>
+
+                            <TextBlock Text="  •  "
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       Margin="8,0"/>
+
+                            <TextBlock Text="{Binding WorkerNote.CreationTime,
+                                StringFormat='{}{0:HH:mm}'}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"/>
+                        </StackPanel>
+
+                        <Border Height="1"
+                                Background="{DynamicResource BorderBrush}"
+                                Margin="0,0,0,24"/>
+
+                        <!-- Note body -->
+                        <TextBlock Text="NOTE DETAILS"
+                                   FontSize="10"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
+                                   Margin="0,0,0,14"/>
+
+                        <TextBlock Text="{Binding WorkerNote.Note}"
+                                   FontSize="13"
+                                   LineHeight="23"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
+                                   TextWrapping="Wrap"/>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- WORKER'S INFORMATION CARD -->
+                <Border Grid.Column="1"
+        Background="{DynamicResource SurfaceBrush}"
+        BorderBrush="{DynamicResource TableBorderBrush}"
+        BorderThickness="1"
+        CornerRadius="15"
+        Padding="22">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- TITLE -->
+                        <TextBlock Grid.Row="0"
+                   Text="Worker's Information"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Foreground="{DynamicResource PrimaryTextBrush}"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+                        <!-- PROFILE IMAGE -->
+                        <Border Grid.Row="1"
+                Width="110"
+                Height="110"
+                CornerRadius="55"
+                Background="{DynamicResource PrimaryLightBrush}"
+                BorderBrush="{DynamicResource PrimaryBrush}"
+                BorderThickness="2"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,20">
+
+                            <TextBlock Text="&#xE77B;"
+                       FontFamily="Segoe MDL2 Assets"
+                       FontSize="48"
+                       Foreground="{DynamicResource PrimaryBrush}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+                        </Border>
+
+                        <!-- WORKER NAME -->
+                        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,22">
+
+                            <TextBlock Text="{Binding Worker.FirstName}"
+                       FontSize="17"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource PrimaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+
+                            <TextBlock Text="{Binding Worker.LastName}"
+                       FontSize="17"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource PrimaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+
+                        <!-- WORKER DETAILS: TWO COLUMNS -->
+                        <Grid Grid.Row="3">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- FIRST NAME -->
+                            <Border Grid.Row="0"
+                    Grid.Column="0"
+                    Background="{DynamicResource SurfaceVariantBrush}"
+                    CornerRadius="8"
+                    Padding="12"
+                    Margin="0,0,6,8">
+
+                                <StackPanel>
+                                    <TextBlock Text="FIRST NAME"
+                               FontSize="9"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+                                    <TextBlock Text="{Binding Worker.FirstName}"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
+                               Margin="0,6,0,0"
+                               TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- LAST NAME -->
+                            <Border Grid.Row="0"
+                    Grid.Column="1"
+                    Background="{DynamicResource SurfaceVariantBrush}"
+                    CornerRadius="8"
+                    Padding="12"
+                    Margin="6,0,0,8">
+
+                                <StackPanel>
+                                    <TextBlock Text="LAST NAME"
+                               FontSize="9"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+                                    <TextBlock Text="{Binding Worker.LastName}"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
+                               Margin="0,6,0,0"
+                               TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- GENDER -->
+                            <Border Grid.Row="1"
+                    Grid.Column="0"
+                    Background="{DynamicResource SurfaceVariantBrush}"
+                    CornerRadius="8"
+                    Padding="12"
+                    Margin="0,0,6,0">
+
+                                <StackPanel>
+                                    <TextBlock Text="GENDER"
+                               FontSize="9"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+                                    <TextBlock Text="{Binding Worker.GenderName}"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
+                               Margin="0,6,0,0"
+                               TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- POSITION -->
+                            <Border Grid.Row="1"
+                    Grid.Column="1"
+                    Background="{DynamicResource SurfaceVariantBrush}"
+                    CornerRadius="8"
+                    Padding="12"
+                    Margin="6,0,0,0">
+
+                                <StackPanel>
+                                    <TextBlock Text="POSITION"
+                               FontSize="9"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource SecondaryTextBrush}"/>
+
+                                    <TextBlock Text="{Binding Worker.PositionName}"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
+                               Margin="0,6,0,0"
+                               TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+
+                        </Grid>
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

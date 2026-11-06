@@ -26,7 +26,6 @@
     <Folder Include="Assets\Images\" />
     <Folder Include="Features\Settings\ViewModels\" />
     <Folder Include="Features\Projects\ViewModels\" />
-    <Folder Include="Features\WorkerNotes\Views\" />
   </ItemGroup>
 
   <ItemGroup>

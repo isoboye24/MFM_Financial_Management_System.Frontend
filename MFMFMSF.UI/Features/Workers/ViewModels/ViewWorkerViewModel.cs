@@ -2,7 +2,7 @@
 using MFMFMSF.Core.Models.Workers;
 using MFMFMSF.Core.Models.WorkersNotes;
 using MFMFMSF.UI.Commands;
-using MFMFMSF.UI.Features.Workers.Views;
+using MFMFMSF.UI.Features.WorkerNotes.Views;
 using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -94,7 +94,7 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             AddWorkerNoteCommand = new RelayCommand(_ => OpenWorkerNoteForm());
             CancelCommand = new RelayCommand(_ => CloseWorkerNoteForm());
             SaveWorkerNoteCommand = new RelayCommand(async _ => await SaveWorkerNoteAsync());
-            //ViewWorkerNoteCommand = new RelayCommand(async _ => await ViewWorkerNoteAsync());
+            ViewWorkerNoteCommand = new RelayCommandGeneric<WorkerNoteByWorkerIdListItem>(ViewWorkerNote);
             //EditWorkerNoteCommand = new RelayCommand(async _ => await EditWorkerNoteAsync());
             //DeleteWorkerNoteCommand = new RelayCommand(async _ => await DeleteWorkerNoteAsync());
         }
@@ -189,6 +189,36 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             NoteTitle = string.Empty;
             Note = string.Empty;
         }
+
+
+
+        // =====================================================
+        // ACTIONS
+        // =====================================================
+
+        // =====================================================
+        // ACTIONS
+        // =====================================================
+
+        private void ViewWorkerNote(WorkerNoteByWorkerIdListItem note)
+        {
+            if (note == null)
+                return;
+
+            if (_navigationService == null || _workerNoteService == null)
+            {
+                MessageBox.Show(
+                    "Navigation services are not configured.",
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return;
+            }
+
+            _navigationService.Navigate(new ViewWorkerNote(note.Id, _navigationService, _workerNoteService, _workerService, _positionService, _genderService));
+        }
+
 
 
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
