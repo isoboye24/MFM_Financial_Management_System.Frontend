@@ -1,5 +1,4 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.Core.Models.Meetings;
 using MFMFMSF.Core.Models.Workers;
 using System.Net.Http.Json;
 

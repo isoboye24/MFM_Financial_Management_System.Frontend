@@ -4,6 +4,7 @@ using MFMFMSF.Core.Models.WorkersNotes;
 using MFMFMSF.Infrastructure.Service;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.WorkerNotes.Views;
+using MFMFMSF.UI.Features.Workers.Controls;
 using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
@@ -32,6 +33,18 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             private set
             {
                 _worker = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private WorkerNoteDetail? _workerNote;
+
+        public WorkerNoteDetail? WorkerNote
+        {
+            get => _workerNote;
+            private set
+            {
+                _workerNote = value;
                 OnPropertyChanged();
             }
         }
@@ -124,8 +137,9 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             SaveWorkerNoteCommand = new RelayCommand(async _ => await SaveWorkerNoteAsync());
             ViewWorkerNoteCommand = new RelayCommandGeneric<WorkerNoteByWorkerIdListItem>(ViewWorkerNote);
             EditWorkerNoteCommand = new RelayCommandGeneric<WorkerNoteByWorkerIdListItem>(EditWorkerNote);
-            //DeleteWorkerNoteCommand = new RelayCommand(async _ => await DeleteWorkerNoteAsync());
+            DeleteWorkerNoteCommand = new RelayCommandGeneric<WorkerNoteByWorkerIdListItem>(DeleteWorkerNote);
         }
+
 
         public async Task LoadAsync()
         {
@@ -258,11 +272,6 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         }
 
 
-
-        // =====================================================
-        // ACTIONS
-        // =====================================================
-
         // =====================================================
         // ACTIONS
         // =====================================================
@@ -298,6 +307,32 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
 
             IsEditMode = true;
             IsWorkerNoteFormVisible = true;
+        }
+
+        private async void DeleteWorkerNote(WorkerNoteByWorkerIdListItem note)
+        {
+            var result = MessageBox.Show($"Are you sure you want to delete '{note.NoteTitle} '?", "Delete Worker", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            try
+            {
+                if (_workerNoteService == null)
+                {
+                    MessageBox.Show("Worker note service is not configured.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                await _workerNoteService.DeleteAsync(note.Id);
+                RecentNotes.Remove(note);
+
+                MessageBox.Show("Worker note deleted successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"The worker could not be deleted.\n\n{ex.Message}", "Delete Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
 

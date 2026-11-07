@@ -8,5 +8,6 @@ namespace MFMFMSF.Core.Interfaces
         Task<IReadOnlyList<WorkerNoteByWorkerIdListItem>> GetAllByWorkerIdAsync(Guid memberId);
         Task<WorkerNoteDetail> GetByIdAsync(Guid id);
         Task UpdateAsync(Guid id, UpdateWorkerNoteRequest request);
+        Task DeleteAsync(Guid id);
     }
 }
