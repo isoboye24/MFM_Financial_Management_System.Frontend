@@ -1,6 +1,6 @@
 ﻿using MFMFMSF.Core.Interfaces;
-using MFMFMSF.UI.Features.Givings.Views;
 using MFMFMSF.UI.Features.WorkerNotes.ViewModels;
+using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,13 +10,17 @@ namespace MFMFMSF.UI.Features.WorkerNotes.Views
     public partial class ViewWorkerNote : UserControl
     {
         private readonly ViewWorkerNoteViewModel _viewModel;
+        private readonly Action _editNoteAction;
+        private readonly Action _deleteNoteAction;
 
         public ViewWorkerNote(Guid noteId, INavigationService navigationService, IWorkerNoteService workerNoteService, IWorkerService workerService, 
-            IPositionService positionService, IGenderService genderService)
+            IPositionService positionService, IGenderService genderService, Action editNoteAction, Action deleteNoteAction)
         {
             InitializeComponent();
 
             NavigationService = navigationService;
+            _editNoteAction = editNoteAction;
+            _deleteNoteAction = deleteNoteAction;
 
             _viewModel = new ViewWorkerNoteViewModel(noteId, navigationService, workerNoteService, workerService, positionService, genderService);
 
@@ -41,6 +45,29 @@ namespace MFMFMSF.UI.Features.WorkerNotes.Views
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
+        }
+
+        private void EditNote_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService == null || !NavigationService.CanGoBack)
+                return;
+
+            NavigationService.GoBack();
+
+            if (NavigationService.CurrentPage is ViewWorker)
+            {
+                _editNoteAction?.Invoke();
+            }
+        }
+
+        private void DeleteNote_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService == null || !NavigationService.CanGoBack)
+                return;
+
+            _deleteNoteAction?.Invoke();
+
+            NavigationService.GoBack();
         }
 
         public INavigationService? NavigationService

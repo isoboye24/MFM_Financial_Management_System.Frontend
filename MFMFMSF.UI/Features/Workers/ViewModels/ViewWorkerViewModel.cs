@@ -1,11 +1,8 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Workers;
 using MFMFMSF.Core.Models.WorkersNotes;
-using MFMFMSF.Infrastructure.Service;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.WorkerNotes.Views;
-using MFMFMSF.UI.Features.Workers.Controls;
-using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -154,7 +151,7 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
 
             RecentNotes.Clear();
 
-            foreach (var note in notes)
+            foreach (var note in notes.OrderByDescending(x => x.CreationTime).Take(3))
             {
                 RecentNotes.Add(note);
             }
@@ -292,7 +289,8 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
                 return;
             }
 
-            _navigationService.Navigate(new ViewWorkerNote(note.Id, _navigationService, _workerNoteService, _workerService, _positionService, _genderService));
+            _navigationService.Navigate(new ViewWorkerNote(note.Id, _navigationService, _workerNoteService, _workerService, _positionService, _genderService, 
+                () => EditWorkerNote(note), () => DeleteWorkerNote(note)));
         }
 
         private void EditWorkerNote(WorkerNoteByWorkerIdListItem note)
