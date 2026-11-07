@@ -118,6 +118,23 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
 
         public ObservableCollection<WorkerNoteByWorkerIdListItem> RecentNotes { get; } = new();
 
+
+        private int _totalNotesCount;
+
+        public int TotalNotesCount
+        {
+            get => _totalNotesCount;
+            private set
+            {
+                _totalNotesCount = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(HasMoreNotes));
+            }
+        }
+
+        public bool HasMoreNotes => TotalNotesCount > 3;
+
+
         public ViewWorkerViewModel(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, 
             IGenderService genderService, IWorkerNoteService workerNoteService)
         {
@@ -148,6 +165,8 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         private async Task LoadWorkerNotesAsync()
         {
             var notes = await _workerNoteService.GetAllByWorkerIdAsync(WorkerId);
+
+            TotalNotesCount = notes.Count;
 
             RecentNotes.Clear();
 

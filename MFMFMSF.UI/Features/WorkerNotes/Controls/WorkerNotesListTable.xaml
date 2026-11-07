@@ -1,0 +1,331 @@
+﻿<UserControl x:Class="MFMFMSF.UI.Features.WorkerNotes.Controls.WorkerNotesListTable"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Border Style="{StaticResource Card}">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <!-- FILTERS -->
+                <RowDefinition Height="Auto"/>
+
+                <!-- TABLE HEADER -->
+                <RowDefinition Height="38"/>
+
+                <!-- TABLE DATA -->
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+
+            <!-- ================================================= -->
+            <!-- FILTERS -->
+            <!-- ================================================= -->
+
+            <Grid Grid.Row="0"
+        Margin="0,0,0,12">
+
+                <Grid.ColumnDefinitions>
+
+                    <!-- SEARCH -->
+                    <ColumnDefinition Width="*"/>
+
+                    <!-- CLEAR -->
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+
+                <!-- ================================================ -->
+                <!-- SEARCH -->
+                <!-- ================================================ -->
+
+                <Grid Grid.Column="0"
+              Width="400"
+              Height="38"
+              HorizontalAlignment="Left">
+
+                    <Border
+                Background="{DynamicResource SurfaceBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+
+                        <Grid>
+
+                            <!-- SEARCH ICON -->
+
+                            <materialDesign:PackIcon
+                        Kind="Magnify"
+                        Width="16"
+                        Height="16"
+                        Margin="12,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource MutedTextBrush}"
+                        IsHitTestVisible="False"/>
+
+
+                            <!-- SEARCH TEXTBOX -->
+
+                            <TextBox
+                        Padding="34,0,12,0"
+                        Background="{DynamicResource TransparentBrush}"
+                        BorderThickness="0"
+                        FontFamily="Segoe UI"
+                        FontSize="11"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
+                        VerticalContentAlignment="Center"/>
+
+
+                            <!-- PLACEHOLDER -->
+
+                            <TextBlock
+                        Text="Search notes..."
+                        Margin="36,0,12,0"
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource MutedTextBrush}"
+                        FontFamily="Segoe UI"
+                        FontSize="11"
+                        IsHitTestVisible="False"/>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
+
+                <!-- ================================================ -->
+                <!-- CLEAR -->
+                <!-- ================================================ -->
+
+                <Button
+            Grid.Column="1"
+            Width="90"
+            Height="38"
+            Margin="8,0,0,0"
+            Content="Clear"
+            Style="{StaticResource SecondaryButton}"
+            Padding="12,0"/>
+
+            </Grid>
+
+
+            <!-- ================================================= -->
+            <!-- TABLE HEADER -->
+            <!-- ================================================= -->
+
+            <Border
+        Grid.Row="1"
+        Style="{StaticResource TableHeaderContainer}">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+
+                        <!-- NUMBER -->
+                        <ColumnDefinition Width="45"/>
+
+                        <!-- DATE -->
+                        <ColumnDefinition Width="0.7*"/>
+
+                        <!-- TITLE -->
+                        <ColumnDefinition Width="1.0*"/>
+
+                        <!-- NOTE -->
+                        <ColumnDefinition Width="2.0*"/>
+
+                        <!-- ACTIONS -->
+                        <ColumnDefinition Width="0.6*"/>
+
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- NUMBER -->
+
+                    <TextBlock
+                Grid.Column="0"
+                Text="#"
+                Style="{StaticResource TableHeader}"
+                HorizontalAlignment="Center"/>
+
+
+                    <!-- DATE -->
+
+                    <TextBlock
+                Grid.Column="1"
+                Text="Date"
+                Style="{StaticResource TableHeader}"
+                Margin="8,0"/>
+
+
+                    <!-- TITLE -->
+
+                    <TextBlock
+                Grid.Column="2"
+                Text="Title"
+                Style="{StaticResource TableHeader}"
+                Margin="8,0"/>
+
+    
+                    <!-- NOTE -->
+
+                    <TextBlock
+                Grid.Column="3"
+                Text="Note"
+                Style="{StaticResource TableHeader}"
+                HorizontalAlignment="Center"/>
+
+
+                    <!-- ACTIONS -->
+
+                    <TextBlock
+                Grid.Column="4"
+                Text="Actions"
+                Style="{StaticResource TableHeader}"
+                HorizontalAlignment="Center"/>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- TABLE DATA -->
+            <!-- ================================================= -->
+
+            <ScrollViewer
+            Grid.Row="2"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Disabled">
+
+                <ItemsControl
+                ItemsSource="{Binding DataContext.Givings,
+                 RelativeSource={RelativeSource AncestorType=UserControl}}"
+                AlternationCount="1000000">
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border
+                            Style="{StaticResource TableStripedRow}">
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <!-- NUMBER -->
+                                        <ColumnDefinition Width="45"/>
+
+                                        <!-- DATE -->
+                                        <ColumnDefinition Width="0.7*"/>
+
+                                        <!-- TITLE -->
+                                        <ColumnDefinition Width="1.0*"/>
+
+                                        <!-- NOTE -->
+                                        <ColumnDefinition Width="2.0*"/>
+
+                                        <!-- ACTIONS -->
+                                        <ColumnDefinition Width="0.6*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <!-- ================================= -->
+                                    <!-- NUMBER -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="0"
+                                    Style="{StaticResource TableSecondaryText}"
+                                    HorizontalAlignment="Center"
+                                    Text="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                   Path=(ItemsControl.AlternationIndex),
+                                                   Converter={StaticResource RowNumberConverter}}"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- DATE -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="1"
+                                    Text="{Binding Date, StringFormat='{}{0:MMM d, yyyy}'}"
+                                    Style="{StaticResource TableText}"
+                                    Margin="8,0"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- TITLE -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="2"
+                                    Text="{Binding Title,
+                                        Converter={StaticResource TruncateTextConverter},
+                                        ConverterParameter=25}"
+                                    Style="{StaticResource TableText}"
+                                    Margin="8,0"/>
+
+
+                                    <!-- ================================= -->
+                                    <!-- NOTE -->
+                                    <!-- ================================= -->
+
+                                    <TextBlock
+                                    Grid.Column="3"
+                                    Text="{Binding Note}"
+                                    Style="{StaticResource TableText}"
+                                    Margin="8,0"/>
+
+                                    <!-- ================================= -->
+                                    <!-- ACTIONS -->
+                                    <!-- ================================= -->
+
+                                    <StackPanel
+                                    Grid.Column="4"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+
+                                        <!-- VIEW -->
+
+                                        <!--<Button
+                                        Style="{DynamicResource TableActionButton}"
+                                        Command="{Binding DataContext.ViewGivingCommand,
+                                            RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"
+                                         Click="ViewGivingButton_Click"
+                                            ToolTip="View">
+
+                                            <materialDesign:PackIcon
+                                            Kind="EyeOutline"
+                                            Width="14"
+                                            Height="14"/>
+
+                                        </Button>-->
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+            </ScrollViewer>
+
+        </Grid>
+    </Border>
+</UserControl>

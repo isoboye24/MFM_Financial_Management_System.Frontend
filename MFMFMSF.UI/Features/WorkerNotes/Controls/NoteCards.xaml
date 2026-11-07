@@ -8,7 +8,6 @@
              d:DesignHeight="450"
              d:DesignWidth="400">
 
-    <!-- MAIN CARD -->
     <Border Background="{DynamicResource SurfaceBrush}"
             BorderBrush="{DynamicResource TableBorderBrush}"
             BorderThickness="1"
@@ -20,12 +19,10 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- ============================================= -->
             <!-- HEADER -->
-            <!-- ============================================= -->
-
             <Grid Grid.Row="0"
                   Margin="0,0,0,18">
 
@@ -34,7 +31,6 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- ICON -->
                 <Border Grid.Column="0"
                         Width="38"
                         Height="38"
@@ -48,10 +44,8 @@
                                Foreground="{DynamicResource PrimaryBrush}"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
-
                 </Border>
 
-                <!-- TITLE AND DESCRIPTION -->
                 <StackPanel Grid.Column="1"
                             Margin="12,0,0,0"
                             VerticalAlignment="Center">
@@ -66,43 +60,69 @@
                                Foreground="{DynamicResource SecondaryTextBrush}"
                                Margin="0,4,0,0"
                                TextWrapping="Wrap"/>
-
                 </StackPanel>
-
             </Grid>
 
-            <!-- ============================================= -->
             <!-- NOTES LIST -->
-            <!-- ============================================= -->
-
             <ScrollViewer Grid.Row="1"
                           VerticalScrollBarVisibility="Auto"
                           HorizontalScrollBarVisibility="Disabled">
 
                 <ItemsControl ItemsSource="{Binding RecentNotes}">
+
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
+
                             <controls:NoteCard
-                NoteTitle="{Binding NoteTitle}"
-                Note="{Binding Note}"
-                CreationTime="{Binding CreationTime}"
+                                NoteTitle="{Binding NoteTitle}"
+                                Note="{Binding Note}"
+                                CreationTime="{Binding CreationTime}"
 
-                ViewCommand="{Binding DataContext.ViewWorkerNoteCommand,
-                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                ViewCommand="{Binding DataContext.ViewWorkerNoteCommand,
+                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
 
-                EditCommand="{Binding DataContext.EditWorkerNoteCommand,
-                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                EditCommand="{Binding DataContext.EditWorkerNoteCommand,
+                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"
 
-                DeleteCommand="{Binding DataContext.DeleteWorkerNoteCommand,
-                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
+                                DeleteCommand="{Binding DataContext.DeleteWorkerNoteCommand,
+                                    RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
+
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ItemsControl>
 
+                </ItemsControl>
             </ScrollViewer>
 
+            <!-- FOOTER: VIEW ALL NOTES -->
+            <Button Grid.Row="2"
+        Content="View All Notes"
+        Command="{Binding ViewAllWorkerNotesCommand}"
+        Margin="0,15,0,0"
+        Height="38"
+        Background="{DynamicResource PrimaryBrush}"
+        Foreground="White"
+        BorderThickness="0"
+        FontSize="12"
+        FontWeight="SemiBold"
+        Cursor="Hand"
+        HorizontalAlignment="Stretch">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding HasMoreNotes}"
+                             Value="True">
+                                <Setter Property="Visibility"
+                            Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+            </Button>
+
         </Grid>
-
     </Border>
-
 </UserControl>
