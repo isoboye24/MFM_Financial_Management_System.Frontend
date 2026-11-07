@@ -1,8 +1,10 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Workers;
 using MFMFMSF.Core.Models.WorkersNotes;
+using MFMFMSF.Infrastructure.Service;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.WorkerNotes.Views;
+using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Navigation;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -78,6 +80,32 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         public ICommand EditWorkerNoteCommand { get; }
         public ICommand DeleteWorkerNoteCommand { get; }
 
+
+        // =====================================================
+        // EDIT WORKER NOTE FORM PROPERTIES
+        // =====================================================
+
+        private bool _isEditMode;
+
+        public bool IsEditMode
+        {
+            get => _isEditMode;
+            set
+            {
+                _isEditMode = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(FormTitle));
+                OnPropertyChanged(nameof(FormDescription));
+                OnPropertyChanged(nameof(SaveButtonText));
+            }
+        }
+
+        public string FormTitle => IsEditMode ? "Edit Worker Note" : "Create New Note";
+        public string FormDescription => IsEditMode ? "Update the title and details of this worker note." : "Enter the details of the note.";
+        public string SaveButtonText => IsEditMode ? "Update Note" : "Save Note";
+        private Guid? _editingNoteId;
+
+
         public ObservableCollection<WorkerNoteByWorkerIdListItem> RecentNotes { get; } = new();
 
         public ViewWorkerViewModel(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, 
@@ -95,7 +123,7 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             CancelCommand = new RelayCommand(_ => CloseWorkerNoteForm());
             SaveWorkerNoteCommand = new RelayCommand(async _ => await SaveWorkerNoteAsync());
             ViewWorkerNoteCommand = new RelayCommandGeneric<WorkerNoteByWorkerIdListItem>(ViewWorkerNote);
-            //EditWorkerNoteCommand = new RelayCommand(async _ => await EditWorkerNoteAsync());
+            EditWorkerNoteCommand = new RelayCommandGeneric<WorkerNoteByWorkerIdListItem>(EditWorkerNote);
             //DeleteWorkerNoteCommand = new RelayCommand(async _ => await DeleteWorkerNoteAsync());
         }
 
@@ -120,6 +148,10 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
 
         private void OpenWorkerNoteForm()
         {
+            _editingNoteId = null;
+
+            IsEditMode = false;
+
             NoteTitle = string.Empty;
             Note = string.Empty;
 
@@ -129,6 +161,9 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         private void CloseWorkerNoteForm()
         {
             IsWorkerNoteFormVisible = false;
+
+            _editingNoteId = null;
+            IsEditMode = false;
 
             NoteTitle = string.Empty;
             Note = string.Empty;
@@ -158,26 +193,58 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
                 return;
             }
 
-            
-            var request = new CreateWorkerNoteRequest
+            try
             {
-                NoteTitle = NoteTitle.Trim(),
-                Note = Note.Trim(),
-                MemberId = WorkerId
-            };
-                
+                if (IsEditMode && _editingNoteId.HasValue)
+                {
+                    var request = new UpdateWorkerNoteRequest
+                    {
+                        Id = _editingNoteId.Value,
+                        NoteTitle = NoteTitle.Trim(),
+                        Note = Note.Trim(),
+                        MemberId = WorkerId
+                    };
 
-            await _workerNoteService.CreateAsync(request);
+                    await _workerNoteService.UpdateAsync(request.Id, request);
 
-            await LoadWorkerNotesAsync();
+                    MessageBox.Show(
+                        "Worker note updated successfully.",
+                        "Success",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
 
-            MessageBox.Show(
-                "Worker note created successfully.",
-                "Success",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information);
+                    await LoadWorkerNotesAsync();
+                    CloseWorkerNoteForm();
+                }
+                else
+                {
+                    var request = new CreateWorkerNoteRequest
+                    {
+                        NoteTitle = NoteTitle.Trim(),
+                        Note = Note.Trim(),
+                        MemberId = WorkerId
+                    };
 
-            ClearForm();
+                    await _workerNoteService.CreateAsync(request);
+
+                    MessageBox.Show(
+                        "Worker note created successfully.",
+                        "Success",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+
+                    await LoadWorkerNotesAsync();
+                    ClearForm();
+                }                    
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Unable to save the worker note.\n\n{ex.Message}",
+                    "Save Failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
 
         // =====================================================
@@ -217,6 +284,20 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             }
 
             _navigationService.Navigate(new ViewWorkerNote(note.Id, _navigationService, _workerNoteService, _workerService, _positionService, _genderService));
+        }
+
+        private void EditWorkerNote(WorkerNoteByWorkerIdListItem note)
+        {
+            if (note == null)
+                return;
+
+            _editingNoteId = note.Id;
+
+            NoteTitle = note.NoteTitle;
+            Note = note.Note;
+
+            IsEditMode = true;
+            IsWorkerNoteFormVisible = true;
         }
 
 

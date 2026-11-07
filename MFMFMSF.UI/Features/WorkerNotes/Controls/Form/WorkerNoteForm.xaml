@@ -164,15 +164,16 @@
                 <Grid Grid.Row="0" Margin="0,0,0,25">
 
                     <StackPanel>
-                        <TextBlock Text="Create New Note"
-                                   FontSize="16"
-                                   FontWeight="SemiBold"
-                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <TextBlock Text="{Binding FormTitle}"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
 
-                        <TextBlock Text="Enter the details of the note."
-                                   FontSize="12"
-                                   Foreground="{DynamicResource SecondaryTextBrush}"
-                                   Margin="0,5,0,0"/>
+                        <TextBlock Text="{Binding FormDescription}"
+                           FontSize="12"
+                           Foreground="{DynamicResource SecondaryTextBrush}"
+                           Margin="0,5,0,0"/>
+                        
                     </StackPanel>
 
                     <!-- CLOSE BUTTON -->
@@ -265,9 +266,9 @@
                     Margin="0,0,0,20">
 
                     <controls:SaveAndCancelButton
-                        SaveText="Save Note"
+                        SaveText="{Binding SaveButtonText}"
                         CancelText="Cancel"
-                        SaveIconKind="NoteAdd"
+                        SaveIconKind="ContentSave"
                         SaveCommand="{Binding SaveWorkerNoteCommand}"
                         CancelCommand="{Binding CancelCommand}"/>
 
