@@ -4,6 +4,7 @@ using MFMFMSF.UI.Features.Dashboard.ViewModels;
 using MFMFMSF.UI.Navigation;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MFMFMSF.UI.Controls
 {
@@ -34,11 +35,25 @@ namespace MFMFMSF.UI.Controls
                 }
             }
 
+            // Deselect Settings separately
+            SettingsMenuItem.IsSelected = false;
+
+
             // Select the clicked item
             if (sender is SidebarMenuItem clickedItem)
             {
                 clickedItem.IsSelected = true;
             }
+        }
+
+        private void ChurchLogo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (DataContext is SidebarViewModel viewModel)
+            {
+                viewModel.NavigateDashboardCommand.Execute(null);
+            }
+
+            e.Handled = true;
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿
 using MFMFMSF.Core.Interfaces;
 using MFMFMSF.UI.Features.Reports.Controls.IncomeReports.Controls;
-using System;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 

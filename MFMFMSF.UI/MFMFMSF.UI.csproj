@@ -16,13 +16,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Icons\ChurchLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Icons\ChurchLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MFMFMSF.Core\MFMFMSF.Core.csproj" />
     <ProjectReference Include="..\MFMFMSF.Infrastructure\MFMFMSF.Infrastructure.csproj" />
     <ProjectReference Include="..\MFMFMSF.Shared\MFMFMSF.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\Icons\" />
     <Folder Include="Assets\Images\" />
     <Folder Include="Features\Settings\ViewModels\" />
     <Folder Include="Features\Projects\ViewModels\" />

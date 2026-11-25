@@ -102,7 +102,7 @@
                         Margin="0,0,10,0">
 
                     <StackPanel>
-                        <TextBlock Text="Seeds (Faith Promise)"
+                        <TextBlock Text="Seeds (Vows)"
                                    Foreground="{DynamicResource PrimaryTextBrush}"
                                    FontSize="12"/>
 

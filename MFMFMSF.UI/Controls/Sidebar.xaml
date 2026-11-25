@@ -6,18 +6,15 @@
              Background="{DynamicResource SidebarBackgroundBrush}">
 
     <Grid>
-
         <Grid.RowDefinitions>
-
-            <!-- Logo -->
-            <RowDefinition Height="90"/>
+            <!-- Church Header -->
+            <RowDefinition Height="150"/>
 
             <!-- Navigation -->
             <RowDefinition Height="*"/>
 
-            <!-- User -->
-            <RowDefinition Height="90"/>
-
+            <!-- Settings - Fixed at Bottom -->
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
 
@@ -29,44 +26,28 @@
             Grid.Row="0"
             Orientation="Horizontal"
             VerticalAlignment="Center"
-            Margin="20">
+            HorizontalAlignment="Center">
 
             <!-- CHURCH LOGO -->
 
             <Border
-                Width="45"
-                Height="45"
-                Background="{DynamicResource SurfaceBrush}"
-                CornerRadius="10">
+    Width="100"
+    Height="100"
+    CornerRadius="0"
+    Margin="0,5,0,5"
+    ClipToBounds="True"
+    VerticalAlignment="Center"
+    HorizontalAlignment="Center"
+    Cursor="Hand"
+    ToolTip="Go to Dashboard"
+    MouseLeftButtonUp="ChurchLogo_MouseLeftButtonUp">
 
-                <TextBlock
-                    Text="✝"
-                    FontSize="24"
-                    Foreground="{DynamicResource PrimaryTextBrush}"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
+                <Image
+        Source="pack://siteoforigin:,,,/Assets/Icons/ChurchLogo.png"
+        Stretch="Uniform"
+        RenderOptions.BitmapScalingMode="HighQuality"/>
 
             </Border>
-
-
-            <!-- CHURCH NAME -->
-
-            <StackPanel
-                Margin="15,0,0,0"
-                VerticalAlignment="Center">
-
-                <TextBlock
-                    Text="Church Name"
-                    Foreground="{DynamicResource SidebarTextBrush}"
-                    FontWeight="Bold"
-                    FontSize="18"/>
-
-                <!--<TextBlock
-                    Text="Fire Ministries"
-                    Foreground="{DynamicResource SidebarTextBrush}"
-                    FontSize="18"/>-->
-
-            </StackPanel>
 
         </StackPanel>
 
@@ -85,7 +66,6 @@
                 x:Name="NavigationMenu"
                 Margin="0,20,0,20">
 
-
                 <!-- DASHBOARD -->
 
                 <controls:SidebarMenuItem
@@ -100,7 +80,7 @@
 
                 <controls:SidebarMenuItem
                     Title="Church Services"
-                    Icon="MonitorAccount"
+                    Icon="BookOpenBlankVariantOutline"
                     Command="{Binding NavigateMeetingsCommand}"
                     Click="SidebarMenuItem_Click"/>
 
@@ -167,27 +147,30 @@
                     Command="{Binding NavigateReportsCommand}"
                     Click="SidebarMenuItem_Click"/>
 
-
-                <!-- SETTINGS -->
-
-                <controls:SidebarMenuItem
-                    Title="Settings"
-                    Icon="Cog"
-                    Command="{Binding NavigateSettingsCommand}"
-                    Click="SidebarMenuItem_Click"/>
-
             </StackPanel>
 
         </ScrollViewer>
 
 
         <!-- ===================================================== -->
-        <!-- USER PROFILE -->
+        <!-- SETTINGS - BOTTOM OF SIDEBAR -->
         <!-- ===================================================== -->
 
         <Border
             Grid.Row="2"
-            Background="Transparent"/>
+            Background="Transparent"
+            BorderThickness="0,1,0,0"
+            BorderBrush="{DynamicResource BorderBrush}"
+            Padding="0,8,0,8">
+
+            <controls:SidebarMenuItem
+                x:Name="SettingsMenuItem"
+                Title="Settings"
+                Icon="Cog"
+                Command="{Binding NavigateSettingsCommand}"
+                Click="SidebarMenuItem_Click"/>
+
+        </Border>
 
     </Grid>
 

@@ -31,12 +31,15 @@
         <StackPanel Grid.Column="0"
                     VerticalAlignment="Center">
 
-            <TextBlock Text="Welcome back, Pastor Name Surname!"
+            <TextBlock Text="Welcome back, THE KINGDOMITES CHURCH INTERNATIONAL!"
                 FontFamily="Segoe UI"
                 FontSize="20"
                 FontWeight="SemiBold"
                 Foreground="{DynamicResource PrimaryTextBrush}"/>
 
+            <!-- ================================================= -->
+            <!-- MAKE THE SCRIPTURE EDITABLE -->
+            <!-- ================================================= -->
             <TextBlock Text="Give, and it will be given to you. – Luke 6:38"
                FontFamily="Segoe UI"
                FontSize="11"
