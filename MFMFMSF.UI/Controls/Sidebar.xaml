@@ -150,15 +150,6 @@
                     Click="SidebarMenuItem_Click"/>
 
 
-                <!-- PROJECTS -->
-
-                <controls:SidebarMenuItem
-                    Title="Projects"
-                    Icon="OfficeBuilding"
-                    Command="{Binding NavigateProjectsCommand}"
-                    Click="SidebarMenuItem_Click"/>
-
-
                 <!-- WORKERS -->
 
                 <controls:SidebarMenuItem
