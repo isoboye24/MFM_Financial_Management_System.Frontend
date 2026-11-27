@@ -134,43 +134,44 @@
                         <!-- CIRCULAR PROFILE AVATAR -->
 
                         <Border Grid.Column="0"
-        Width="105"
-        Height="105"
-        CornerRadius="53"
-        Background="{DynamicResource PrimaryHoverBackgroundBrush}"
-        BorderBrush="{DynamicResource PrimaryBrush}"
-        BorderThickness="2"
-        VerticalAlignment="Center">
+                            Width="110"
+                            Height="110"
+                            CornerRadius="53"
+                            Background="{DynamicResource PrimaryHoverBackgroundBrush}"
+                            BorderBrush="{DynamicResource PrimaryBrush}"
+                            BorderThickness="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
 
                             <Grid>
 
                                 <!-- WORKER IMAGE -->
-                                <Image Source="{Binding WorkerImageUrl}"
-               Width="101"
-               Height="101"
-               Stretch="UniformToFill">
+                                <Ellipse
+    Width="100"
+    Height="100"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center">
 
-                                    <Image.Clip>
-                                        <EllipseGeometry
-                    Center="50.5,50.5"
-                    RadiusX="50.5"
-                    RadiusY="50.5"/>
-                                    </Image.Clip>
+                                    <Ellipse.Fill>
+                                        <ImageBrush
+            ImageSource="{Binding WorkerImageUrl}"
+            Stretch="UniformToFill"
+            AlignmentX="Center"
+            AlignmentY="Center"/>
+                                    </Ellipse.Fill>
 
-                                    <Image.Style>
-                                        <Style TargetType="Image">
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
                                             <Setter Property="Visibility" Value="Collapsed"/>
 
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding HasWorkerImage}"
-                                     Value="True">
+                                                <DataTrigger Binding="{Binding HasWorkerImage}" Value="True">
                                                     <Setter Property="Visibility" Value="Visible"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
-                                    </Image.Style>
-
-                                </Image>
+                                    </Ellipse.Style>
+                                </Ellipse>
 
                                 <!-- DEFAULT PROFILE ICON -->
                                 <materialDesign:PackIcon

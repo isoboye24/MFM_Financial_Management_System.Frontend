@@ -5,11 +5,14 @@ using MFMFMSF.Core.Models.Workers;
 using MFMFMSF.UI.Commands;
 using MFMFMSF.UI.Features.Workers.Views;
 using MFMFMSF.UI.Navigation;
+using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace MFMFMSF.UI.Features.Workers.ViewModels
 {
@@ -25,6 +28,8 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
 
         public ICommand UpdateWorkerCommand { get; }
         public ICommand CancelCommand { get; }
+        public ICommand SelectImageCommand { get; }
+        public ICommand RemoveImageCommand { get; }
 
 
         public EditWorkerViewModel(Guid workerId, IWorkerService workerService, INavigationService navigationService, IPositionService positionService, 
@@ -40,6 +45,8 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
 
             UpdateWorkerCommand = new RelayCommand(async _ => await UpdateWorkerAsync());
             CancelCommand = new RelayCommand(_ => Cancel());
+            SelectImageCommand = new RelayCommand(_ => SelectImage());
+            RemoveImageCommand = new RelayCommand(_ => RemoveImage());
         }
 
         // =====================================================
@@ -112,6 +119,28 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             set => SetProperty(ref _email, value);
         }
 
+
+        // =====================================================
+        // WORKER IMAGE
+        // =====================================================
+
+        private string? _currentImagePath;
+        private bool _isImageRemoved;
+
+        private string? _selectedImagePath;
+        public string? SelectedImagePath
+        {
+            get => _selectedImagePath;
+            set => SetProperty(ref _selectedImagePath, value);
+        }
+
+        private ImageSource? _selectedImagePreview;
+        public ImageSource? SelectedImagePreview
+        {
+            get => _selectedImagePreview;
+            set => SetProperty(ref _selectedImagePreview, value);
+        }
+
         // =====================================================
         // LOAD DATA
         // =====================================================
@@ -141,6 +170,32 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
 
             // Then load the worker
             var worker = await _workerService.GetByIdAsync(WorkerId);
+
+            // Load image if selected
+            _currentImagePath = worker.ImagePath;
+            _isImageRemoved = false;
+            SelectedImagePath = null;
+
+            if (!string.IsNullOrWhiteSpace(_currentImagePath))
+            {
+                var imageUrl = new Uri(
+                    App.HttpClient.BaseAddress!,
+                    $"uploads/Members/{Uri.EscapeDataString(_currentImagePath)}");
+
+                var bitmap = new BitmapImage();
+
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.UriSource = imageUrl;
+                bitmap.EndInit();
+                bitmap.Freeze();
+
+                SelectedImagePreview = bitmap;
+            }
+            else
+            {
+                SelectedImagePreview = null;
+            }
 
 
             // Populate the form
@@ -205,6 +260,22 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             }
 
 
+            string? imagePath;
+
+            if (_isImageRemoved)
+            {
+                imagePath = null;
+            }
+            else if (!string.IsNullOrWhiteSpace(SelectedImagePath))
+            {
+                imagePath = await _workerService.UploadImageAsync(SelectedImagePath);
+            }
+            else
+            {
+                imagePath = _currentImagePath;
+            }
+
+
             var request = new UpdateWorkerRequest
             {
                 FirstName = FirstName.Trim(),
@@ -213,7 +284,8 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
                 PhoneNumber = string.IsNullOrWhiteSpace(PhoneNumber) ? null : PhoneNumber.Trim(),
                 Email = string.IsNullOrWhiteSpace(Email) ? null : Email.Trim(),
                 PositionId = SelectedPosition.Id,
-                GenderId = SelectedGender.Id
+                GenderId = SelectedGender.Id,
+                ImagePath = imagePath
             };
 
 
@@ -237,6 +309,47 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
         {
             ClearForm();
             _navigationService.Navigate(new WorkersView(_navigationService, _positionService, _workerService, _genderService, _workerNoteService));
+        }
+
+
+        // =====================================================
+        // SELECT IMAGE
+        // =====================================================
+        private void SelectImage()
+        {
+            var dialog = new OpenFileDialog
+            {
+                Title = "Select Worker Photograph",
+                Filter = "Image Files|*.jpg;*.jpeg;*.png",
+                Multiselect = false
+            };
+
+            if (dialog.ShowDialog() != true)
+                return;
+
+            SelectedImagePath = dialog.FileName;
+            _isImageRemoved = false;
+
+            var bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.UriSource = new Uri(dialog.FileName);
+            bitmap.EndInit();
+            bitmap.Freeze();
+
+            SelectedImagePreview = bitmap;
+        }
+
+
+        // =====================================================
+        // REMOVE IMAGE
+        // =====================================================
+        private void RemoveImage()
+        {
+            SelectedImagePath = null;
+            SelectedImagePreview = null;
+            _isImageRemoved = true;
         }
 
         // =====================================================

@@ -49,7 +49,9 @@
                     SelectedPosition="{Binding SelectedPosition, Mode=TwoWay}"
                     Genders="{Binding Genders}"
                     SelectedGender="{Binding SelectedGender, Mode=TwoWay}"
-                    Email="{Binding Email, Mode=TwoWay}"/>
+                    Email="{Binding Email, Mode=TwoWay}"
+                    SelectedImagePath="{Binding SelectedImagePath, Mode=TwoWay}"
+                    SelectedImagePreview="{Binding SelectedImagePreview, Mode=TwoWay}"/>
 
             </Border>
 
