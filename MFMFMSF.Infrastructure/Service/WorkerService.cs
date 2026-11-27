@@ -87,5 +87,12 @@ namespace MFMFMSF.Infrastructure.Service
             return result?.ImagePath
                 ?? throw new InvalidOperationException("Image upload did not return an image path.");
         }
+
+        public async Task<TotalMemberStatistics> GetTotalStatisticsAsync()
+        {
+            var statistics = await _httpClient.GetFromJsonAsync<TotalMemberStatistics>($"{Endpoint}/total/statistics");
+
+            return statistics ?? new TotalMemberStatistics();
+        }
     }
 }

@@ -4,78 +4,45 @@
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
             xmlns:controls="clr-namespace:MFMFMSF.UI.Controls"> 
     <Grid>
-        <UniformGrid Columns="5"
+        <UniformGrid Columns="4"
               HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch">
 
             <!-- TOTAL WORKERS -->
-            <controls:SummaryCard
-             Margin="8"
-             Title="Total Workers"
-             Amount="10"
-             Percentage="12.5%"
-             Comparison="vs Apr 1 – Apr 30"
-             TrendArrow="↑"
-             TrendForeground="#0DAA68"
-             Icon="AccountGroup"
-             IconBackground="#EEE7FF"
-             IconForeground="#6941E8"/>
-
-
-            <!-- ACTIVE WORKERS -->
-            <controls:SummaryCard
-             Margin="8"
-             Title="Active Workers"
-             Amount="6"
-             Percentage="10.3%"
-             Comparison="vs Apr 1 – Apr 30"
-             TrendArrow="↑"
-             TrendForeground="#0DAA68"
-             Icon="AccountMultiple"
-             IconBackground="#E2EEFF"
-             IconForeground="#3478E5"/>
-
+            <controls:PlainSideCard
+                Margin="8"
+                Title="Total Workers"
+                Amount="{Binding Worker.TotalWorkers}"
+                Icon="AccountGroup"
+                IconBackground="#EEE7FF"
+                IconForeground="#6941E8"/>
 
             <!-- NEW WORKERS -->
-            <controls:SummaryCard
-             Margin="8"
-             Title="New Workers"
-             Amount="0"
-             Percentage="8.7%"
-             Comparison="vs Apr 1 – Apr 30"
-             TrendArrow="↑"
-             TrendForeground="#0DAA68"
-             Icon="AccountMultiplePlus"
-             IconBackground="#E1F5EC"
-             IconForeground="#42A979"/>
-
+            <controls:PlainSideCard
+                Margin="8"
+                Title="New Workers"
+                Amount="{Binding Worker.TotalNewWorkers}"
+                Icon="Person"
+                IconBackground="#E1F5EC"
+                IconForeground="#42A979"/>
 
             <!-- MALE WORKERS -->
-            <controls:SummaryCard
-             Margin="8"
-             Title="Male Workers"
-             Amount="7"
-             Percentage="5.2%"
-             Comparison="vs Apr 1 – Apr 30"
-             TrendArrow="↑"
-             TrendForeground="#0DAA68"
-             Icon="HumanMaleMale"
-             IconBackground="#FFE9C7"
-             IconForeground="#FF9D20"/>
-
-
+            <controls:PlainSideCard
+                Margin="8"
+                Title="Total Male Workers"
+                Amount="{Binding Worker.TotalMaleWorkers}"
+                Icon="HumanMaleMale"
+                IconBackground="#FFE9C7"
+                IconForeground="#FF9D20"/>
+           
             <!-- FEMALE WORKERS -->
-            <controls:SummaryCard
-             Margin="3"
-             Title="Female Workers"
-             Amount="3"
-             Percentage="9.1%"
-             Comparison="vs Apr 1 – Apr 30"
-             TrendArrow="↑"
-             TrendForeground="#0DAA68"
-             Icon="HumanFemaleFemale"
-             IconBackground="#FFE5EE"
-             IconForeground="#E65B89"/>
+            <controls:PlainSideCard
+                Margin="8"
+                Title="Total Female Workers"
+                Amount="{Binding Worker.TotalFemaleWorkers}"
+                Icon="HumanMaleMale"
+                IconBackground="#FFE5EE"
+                IconForeground="#E65B89"/>
 
         </UniformGrid>
     </Grid>

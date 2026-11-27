@@ -11,5 +11,7 @@ namespace MFMFMSF.Core.Interfaces
         Task<WorkerDetail> GetByIdAsync(Guid id);
         Task UpdateAsync(Guid id, UpdateWorkerRequest request);
         Task DeleteAsync(Guid id);
+
+        Task<TotalMemberStatistics> GetTotalStatisticsAsync();
     }
 }
