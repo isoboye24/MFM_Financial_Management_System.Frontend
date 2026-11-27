@@ -1,5 +1,6 @@
 ﻿using MFMFMSF.Core.Interfaces;
 using MFMFMSF.Core.Models.Workers;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace MFMFMSF.Infrastructure.Service
@@ -48,6 +49,43 @@ namespace MFMFMSF.Infrastructure.Service
             var response = await _httpClient.DeleteAsync($"{Endpoint}/{id}");
 
             response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<string> UploadImageAsync(string imagePath)
+        {
+            if (!File.Exists(imagePath))
+                throw new FileNotFoundException("Image file not found.", imagePath);
+
+            using var form = new MultipartFormDataContent();
+
+            await using var fileStream = File.OpenRead(imagePath);
+
+            using var fileContent = new StreamContent(fileStream);
+
+            var extension = Path.GetExtension(imagePath).ToLowerInvariant();
+
+            var contentType = extension switch
+            {
+                ".jpg" or ".jpeg" => "image/jpeg",
+                ".png" => "image/png",
+                _ => throw new InvalidOperationException("Unsupported image format.")
+            };
+
+            fileContent.Headers.ContentType =
+                new MediaTypeHeaderValue(contentType);
+
+            form.Add(fileContent, "file", Path.GetFileName(imagePath));
+
+            var response = await _httpClient.PostAsync(
+                $"{Endpoint}/images",
+                form);
+
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadFromJsonAsync<UploadImageResponse>();
+
+            return result?.ImagePath
+                ?? throw new InvalidOperationException("Image upload did not return an image path.");
         }
     }
 }

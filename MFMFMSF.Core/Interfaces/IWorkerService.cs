@@ -5,6 +5,8 @@ namespace MFMFMSF.Core.Interfaces
     public interface IWorkerService
     {
         Task CreateAsync(CreateWorkerRequest request);
+        Task<string> UploadImageAsync(string imagePath);
+
         Task<IReadOnlyList<WorkersListItem>> GetAllAsync();
         Task<WorkerDetail> GetByIdAsync(Guid id);
         Task UpdateAsync(Guid id, UpdateWorkerRequest request);

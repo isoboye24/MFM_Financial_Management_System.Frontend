@@ -12,6 +12,7 @@
         public Guid GenderId { get; set; }
         public string GenderName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public string ImagePath { get; set; } = string.Empty;
         public DateOnly CreatedAt { get; set; }
     }
 }

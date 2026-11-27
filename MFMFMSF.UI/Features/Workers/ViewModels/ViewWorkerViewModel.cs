@@ -22,6 +22,7 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
 
         public Guid WorkerId { get; }
 
+
         private WorkerDetail? _worker;
 
         public WorkerDetail? Worker
@@ -30,9 +31,24 @@ namespace MFMFMSF.UI.Features.Workers.ViewModels
             private set
             {
                 _worker = value;
+
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(WorkerImageUrl));
+                OnPropertyChanged(nameof(HasWorkerImage));
             }
         }
+
+        public bool HasWorkerImage =>
+            !string.IsNullOrWhiteSpace(Worker?.ImagePath);
+
+        public string? WorkerImageUrl =>
+            HasWorkerImage
+                ? new Uri(
+                    MFMFMSF.UI.App.HttpClient.BaseAddress!,
+                    $"uploads/Members/{Uri.EscapeDataString(Worker!.ImagePath)}"
+                  ).AbsoluteUri
+                : null;
+
 
         private WorkerNoteDetail? _workerNote;
 

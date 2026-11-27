@@ -24,9 +24,9 @@ namespace MFMFMSF.UI.Controls
                 incomeChart, incomeVsExpenditure, positionService, workerService, genderService, workerNoteService);
         }
 
-        private void SidebarMenuItem_Click(object sender, RoutedEventArgs e)
+        private void ClearNavigationSelection()
         {
-            // Deselect every menu item
+            // Deselect all navigation items
             foreach (var child in NavigationMenu.Children)
             {
                 if (child is SidebarMenuItem menuItem)
@@ -35,9 +35,12 @@ namespace MFMFMSF.UI.Controls
                 }
             }
 
-            // Deselect Settings separately
             SettingsMenuItem.IsSelected = false;
+        }
 
+        private void SidebarMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ClearNavigationSelection();
 
             // Select the clicked item
             if (sender is SidebarMenuItem clickedItem)
@@ -46,8 +49,14 @@ namespace MFMFMSF.UI.Controls
             }
         }
 
-        private void ChurchLogo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void ChurchLogo_MouseLeftButtonUp(
+            object sender,
+            MouseButtonEventArgs e)
         {
+            ClearNavigationSelection();
+
+            DashboardMenuItem.IsSelected = true;
+
             if (DataContext is SidebarViewModel viewModel)
             {
                 viewModel.NavigateDashboardCommand.Execute(null);

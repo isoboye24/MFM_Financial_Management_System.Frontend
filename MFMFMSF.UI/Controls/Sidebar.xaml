@@ -69,6 +69,7 @@
                 <!-- DASHBOARD -->
 
                 <controls:SidebarMenuItem
+                    x:Name="DashboardMenuItem"
                     Title="Dashboard"
                     Icon="ViewDashboard"
                     Command="{Binding NavigateDashboardCommand}"

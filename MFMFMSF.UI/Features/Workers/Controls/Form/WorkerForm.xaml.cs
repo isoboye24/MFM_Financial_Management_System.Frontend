@@ -2,6 +2,7 @@
 using MFMFMSF.Core.Models.Positions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MFMFMSF.UI.Features.Workers.Controls.Form
 {
@@ -180,5 +181,41 @@ namespace MFMFMSF.UI.Features.Workers.Controls.Form
                 typeof(string),
                 typeof(WorkerForm),
                 new PropertyMetadata(string.Empty));
+
+
+        // =====================================================
+        // SELECTED IMAGE PATH
+        // =====================================================
+
+        public string? SelectedImagePath
+        {
+            get => (string?)GetValue(SelectedImagePathProperty);
+            set => SetValue(SelectedImagePathProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedImagePathProperty =
+            DependencyProperty.Register(
+                nameof(SelectedImagePath),
+                typeof(string),
+                typeof(WorkerForm),
+                new PropertyMetadata(null));
+
+
+        // =====================================================
+        // IMAGE PREVIEW
+        // =====================================================
+
+        public ImageSource? SelectedImagePreview
+        {
+            get => (ImageSource?)GetValue(SelectedImagePreviewProperty);
+            set => SetValue(SelectedImagePreviewProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedImagePreviewProperty =
+            DependencyProperty.Register(
+                nameof(SelectedImagePreview),
+                typeof(ImageSource),
+                typeof(WorkerForm),
+                new PropertyMetadata(null));
     }
 }

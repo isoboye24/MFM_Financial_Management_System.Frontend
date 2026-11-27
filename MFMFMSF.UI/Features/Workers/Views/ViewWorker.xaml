@@ -134,21 +134,69 @@
                         <!-- CIRCULAR PROFILE AVATAR -->
 
                         <Border Grid.Column="0"
-                                Width="105"
-                                Height="105"
-                                CornerRadius="53"
-                                Background="{DynamicResource PrimaryHoverBackgroundBrush}"
-                                BorderBrush="{DynamicResource PrimaryBrush}"
-                                BorderThickness="2"
-                                VerticalAlignment="Center">
+        Width="105"
+        Height="105"
+        CornerRadius="53"
+        Background="{DynamicResource PrimaryHoverBackgroundBrush}"
+        BorderBrush="{DynamicResource PrimaryBrush}"
+        BorderThickness="2"
+        VerticalAlignment="Center">
 
-                            <materialDesign:PackIcon
-                                Kind="Account"
-                                Width="52"
-                                Height="52"
-                                Foreground="{DynamicResource PrimaryBrush}"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
+                            <Grid>
+
+                                <!-- WORKER IMAGE -->
+                                <Image Source="{Binding WorkerImageUrl}"
+               Width="101"
+               Height="101"
+               Stretch="UniformToFill">
+
+                                    <Image.Clip>
+                                        <EllipseGeometry
+                    Center="50.5,50.5"
+                    RadiusX="50.5"
+                    RadiusY="50.5"/>
+                                    </Image.Clip>
+
+                                    <Image.Style>
+                                        <Style TargetType="Image">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding HasWorkerImage}"
+                                     Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+
+                                </Image>
+
+                                <!-- DEFAULT PROFILE ICON -->
+                                <materialDesign:PackIcon
+            Kind="Account"
+            Width="52"
+            Height="52"
+            Foreground="{DynamicResource PrimaryBrush}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                                    <materialDesign:PackIcon.Style>
+                                        <Style TargetType="materialDesign:PackIcon">
+                                            <Setter Property="Visibility" Value="Visible"/>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding HasWorkerImage}"
+                                     Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </materialDesign:PackIcon.Style>
+
+                                </materialDesign:PackIcon>
+
+                            </Grid>
 
                         </Border>
 
