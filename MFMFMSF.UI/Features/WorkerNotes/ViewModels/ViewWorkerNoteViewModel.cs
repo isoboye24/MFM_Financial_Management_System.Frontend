@@ -38,8 +38,21 @@ namespace MFMFMSF.UI.Features.WorkerNotes.ViewModels
             {
                 _worker = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(WorkerImageUrl));
+                OnPropertyChanged(nameof(HasWorkerImage));
             }
         }
+
+        public bool HasWorkerImage =>
+            !string.IsNullOrWhiteSpace(Worker?.ImagePath);
+
+        public string? WorkerImageUrl =>
+            HasWorkerImage
+                ? new Uri(
+                    MFMFMSF.UI.App.HttpClient.BaseAddress!,
+                    $"uploads/Members/{Uri.EscapeDataString(Worker!.ImagePath)}"
+                  ).AbsoluteUri
+                : null;
 
         public ViewWorkerNoteViewModel(
             Guid noteId,

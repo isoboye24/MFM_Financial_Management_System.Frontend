@@ -92,11 +92,11 @@
                 </Border>
 
                 <Border Grid.Column="1"
-        VerticalAlignment="Center"
-        Margin="12,0,0,0">
+                    VerticalAlignment="Center"
+                    Margin="12,0,0,0">
 
                     <StackPanel Orientation="Horizontal"
-                VerticalAlignment="Center">
+                        VerticalAlignment="Center">
 
                         <!-- Edit Note -->
                         <Button Width="38"
@@ -239,118 +239,170 @@
 
                 <!-- WORKER'S INFORMATION CARD -->
                 <Border Grid.Column="1"
-        Background="{DynamicResource SurfaceBrush}"
-        BorderBrush="{DynamicResource TableBorderBrush}"
-        BorderThickness="1"
-        CornerRadius="15"
-        Padding="20">
+                    Background="{DynamicResource SurfaceBrush}"
+                    BorderBrush="{DynamicResource TableBorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="15"
+                    Padding="20">
 
                     <StackPanel>
 
                         <!-- TITLE -->
                         <TextBlock Text="Worker's Information"
-                   FontSize="16"
-                   FontWeight="Bold"
-                   Foreground="{DynamicResource PrimaryTextBrush}"
-                   HorizontalAlignment="Center"
-                   Margin="0,0,0,20"/>
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"/>
 
                         <!-- PROFILE IMAGE -->
-                        <Border Width="100"
-                Height="100"
-                CornerRadius="50"
-                Background="{DynamicResource PrimaryLightBrush}"
-                BorderBrush="{DynamicResource PrimaryBrush}"
-                BorderThickness="1.5"
-                HorizontalAlignment="Center"
-                Margin="0,0,0,12">
+                        <Border
+                            Width="110"
+                            Height="110"
+                            CornerRadius="53"
+                            Background="{DynamicResource PrimaryHoverBackgroundBrush}"
+                            BorderBrush="{DynamicResource PrimaryBrush}"
+                            BorderThickness="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
 
-                            <TextBlock Text="&#xE77B;"
-                       FontFamily="Segoe MDL2 Assets"
-                       FontSize="44"
-                       Foreground="{DynamicResource PrimaryBrush}"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+                            <Grid>
+
+                                <!-- WORKER IMAGE -->
+                                <Ellipse
+                                    Width="100"
+                                    Height="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                                    <Ellipse.Fill>
+                                        <ImageBrush
+                                            ImageSource="{Binding WorkerImageUrl}"
+                                            Stretch="UniformToFill"
+                                            AlignmentX="Center"
+                                            AlignmentY="Center"/> 
+                                    </Ellipse.Fill>
+
+                                    <Ellipse.Style>
+                                        <Style TargetType="Ellipse">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding HasWorkerImage}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Ellipse.Style>
+                                </Ellipse>
+
+                                <!-- DEFAULT PROFILE ICON -->
+                                <materialDesign:PackIcon
+                                    Kind="Account"
+                                    Width="52"
+                                    Height="52"
+                                    Foreground="{DynamicResource PrimaryBrush}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                                    <materialDesign:PackIcon.Style>
+                                        <Style TargetType="materialDesign:PackIcon">
+                                            <Setter Property="Visibility" Value="Visible"/>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding HasWorkerImage}"
+                                                            Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </materialDesign:PackIcon.Style>
+
+                                </materialDesign:PackIcon>
+
+                            </Grid>
+
                         </Border>
+
 
                         <!-- FULL NAME -->
                         <TextBlock FontSize="19"
-                   FontWeight="Bold"
-                   Foreground="{DynamicResource PrimaryTextBrush}"
-                   HorizontalAlignment="Center"
-                   TextAlignment="Center"
-                   Margin="0,0,0,7">
-            <Run Text="{Binding Worker.FirstName}"/>
-            <Run Text=" "/>
-            <Run Text="{Binding Worker.LastName}"/>
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           Margin="0,0,0,7"> 
+                            <Run Text="{Binding Worker.FirstName}"/>
+                            <Run Text=" "/>
+                            <Run Text="{Binding Worker.LastName}"/> 
                         </TextBlock>
 
                         <!-- POSITION -->
                         <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center"
-                    Margin="0,0,0,14">
+                            HorizontalAlignment="Center"
+                            Margin="0,0,0,14">
 
                             <TextBlock Text="&#xE734;"
-                       FontFamily="Segoe MDL2 Assets"
-                       FontSize="12"
-                       Foreground="{DynamicResource SecondaryTextBrush}"
-                       VerticalAlignment="Center"
-                       Margin="0,0,7,0"/>
+                               FontFamily="Segoe MDL2 Assets"
+                               FontSize="12"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               VerticalAlignment="Center"
+                               Margin="0,0,7,0"/>
 
                             <TextBlock Text="{Binding Worker.PositionName}"
-                       FontSize="12"
-                       Foreground="{DynamicResource SecondaryTextBrush}"
-                       VerticalAlignment="Center"/>
+                               FontSize="12"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               VerticalAlignment="Center"/> 
                         </StackPanel>
 
                         <!-- GENDER AND REGISTRATION DATE BADGES -->
                         <WrapPanel HorizontalAlignment="Center"
-                   Margin="0,0,0,20">
+                            Margin="0,0,0,20">
 
                             <!-- GENDER BADGE -->
                             <Border Background="{DynamicResource PrimaryLightBrush}"
-                    CornerRadius="5"
-                    Padding="10,6"
-                    Margin="0,0,6,5">
+                                CornerRadius="5"
+                                Padding="10,6"
+                                Margin="0,0,6,5">
 
                                 <StackPanel Orientation="Horizontal">
 
                                     <TextBlock Text="&#xE77B;"
-                               FontFamily="Segoe MDL2 Assets"
-                               FontSize="10"
-                               Foreground="{DynamicResource PrimaryBrush}"
-                               VerticalAlignment="Center"
-                               Margin="0,0,6,0"/>
+                                       FontFamily="Segoe MDL2 Assets"
+                                       FontSize="10"
+                                       Foreground="{DynamicResource PrimaryBrush}"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,6,0"/>
 
                                     <TextBlock Text="{Binding Worker.GenderName}"
-                               FontSize="10"
-                               Foreground="{DynamicResource PrimaryBrush}"
-                               VerticalAlignment="Center"/>
+                                       FontSize="10"
+                                       Foreground="{DynamicResource PrimaryBrush}"
+                                       VerticalAlignment="Center"/> 
                                 </StackPanel>
                             </Border>
 
                             <!-- REGISTRATION DATE BADGE -->
                             <Border Background="{DynamicResource SurfaceVariantBrush}"
-                    BorderBrush="{DynamicResource TableBorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="5"
-                    Padding="10,6"
-                    Margin="0,0,0,5">
+                                BorderBrush="{DynamicResource TableBorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                Padding="10,6"
+                                Margin="0,0,0,5">
 
                                 <StackPanel Orientation="Horizontal">
 
                                     <TextBlock Text="&#xE787;"
-                               FontFamily="Segoe MDL2 Assets"
-                               FontSize="10"
-                               Foreground="{DynamicResource SecondaryTextBrush}"
-                               VerticalAlignment="Center"
-                               Margin="0,0,6,0"/>
+                                       FontFamily="Segoe MDL2 Assets"
+                                       FontSize="10"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,6,0"/>
 
                                     <TextBlock Text="{Binding Worker.CreatedAt,
-                                      StringFormat='{}{0:MMM d, yyyy}'}"
-                               FontSize="10"
-                               Foreground="{DynamicResource SecondaryTextBrush}"
-                               VerticalAlignment="Center"/>
+                                              StringFormat='{}{0:MMM d, yyyy}'}"
+                                       FontSize="10"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                               VerticalAlignment="Center"/> 
                                 </StackPanel>
                             </Border>
                         </WrapPanel>
@@ -358,8 +410,8 @@
 
                         <!-- SEPARATOR -->
                         <Border Height="1"
-        Background="{DynamicResource BorderBrush}"
-        Margin="0,0,0,18"/>
+                            Background="{DynamicResource BorderBrush}"
+                            Margin="0,0,0,18"/>
 
                         <!-- CONTACT INFORMATION -->
                         <StackPanel>
@@ -372,34 +424,34 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Border Grid.Column="0"
-                Width="40"
-                Height="40"
-                CornerRadius="10"
-                Background="{DynamicResource PrimaryLightBrush}"
-                VerticalAlignment="Center">
+                                    Width="40"
+                                    Height="40"
+                                    CornerRadius="10"
+                                    Background="{DynamicResource PrimaryLightBrush}"
+                                    VerticalAlignment="Center">
 
                                     <TextBlock Text="&#xE77B;"
-                       FontFamily="Segoe MDL2 Assets"
-                       FontSize="19"
-                       Foreground="{DynamicResource PrimaryBrush}"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+                                       FontFamily="Segoe MDL2 Assets"
+                                       FontSize="19"
+                                       Foreground="{DynamicResource PrimaryBrush}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/> 
                                 </Border>
 
                                 <StackPanel Grid.Column="1"
-                    Margin="12,0,0,0"
-                    VerticalAlignment="Center">
+                                    Margin="12,0,0,0"
+                                    VerticalAlignment="Center">
 
                                     <TextBlock Text="Contact Information"
-                       FontSize="15"
-                       FontWeight="SemiBold"
-                       Foreground="{DynamicResource PrimaryTextBrush}"/>
+                                       FontSize="15"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource PrimaryTextBrush}"/>
 
                                     <TextBlock Text="Contact details and residential address of this worker."
-                       FontSize="10"
-                       Foreground="{DynamicResource SecondaryTextBrush}"
-                       Margin="0,4,0,0"
-                       TextWrapping="Wrap"/>
+                                       FontSize="10"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       Margin="0,4,0,0"
+                                       TextWrapping="Wrap"/> 
                                 </StackPanel>
                             </Grid>
 

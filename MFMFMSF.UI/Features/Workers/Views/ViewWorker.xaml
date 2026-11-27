@@ -147,17 +147,17 @@
 
                                 <!-- WORKER IMAGE -->
                                 <Ellipse
-    Width="100"
-    Height="100"
-    HorizontalAlignment="Center"
-    VerticalAlignment="Center">
+                                    Width="100"
+                                    Height="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
 
                                     <Ellipse.Fill>
                                         <ImageBrush
-            ImageSource="{Binding WorkerImageUrl}"
-            Stretch="UniformToFill"
-            AlignmentX="Center"
-            AlignmentY="Center"/>
+                                            ImageSource="{Binding WorkerImageUrl}"
+                                            Stretch="UniformToFill"
+                                            AlignmentX="Center"
+                                            AlignmentY="Center"/> 
                                     </Ellipse.Fill>
 
                                     <Ellipse.Style>
@@ -175,12 +175,12 @@
 
                                 <!-- DEFAULT PROFILE ICON -->
                                 <materialDesign:PackIcon
-            Kind="Account"
-            Width="52"
-            Height="52"
-            Foreground="{DynamicResource PrimaryBrush}"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
+                                    Kind="Account"
+                                    Width="52"
+                                    Height="52"
+                                    Foreground="{DynamicResource PrimaryBrush}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
 
                                     <materialDesign:PackIcon.Style>
                                         <Style TargetType="materialDesign:PackIcon">
