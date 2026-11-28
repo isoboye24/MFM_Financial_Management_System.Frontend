@@ -127,6 +127,8 @@ namespace MFMFMSF.UI.Features.Expenditures.ViewModels
             }
         }
 
+        
+
         public async Task LoadExpendituresAsync()
         {
             // Calculate the previous month, including January -> December.
@@ -193,6 +195,9 @@ namespace MFMFMSF.UI.Features.Expenditures.ViewModels
 
 
             var expenditures = await _expenditureService.GetByMonthAndYearAsync(SelectedMonth, SelectedYear, 1, 10);
+
+            _selectedPeriodExpenditures.Clear();
+            _selectedPeriodExpenditures.AddRange(expenditures);
 
             Expenditures.Clear();
 
@@ -355,6 +360,72 @@ namespace MFMFMSF.UI.Features.Expenditures.ViewModels
                 _expenditures = value;
                 OnPropertyChanged();
             }
+        }
+
+
+        // =====================================================
+        // SEARCH MACHINE
+        // =====================================================
+        private readonly List<ExpendituresByMonthAndYear> _selectedPeriodExpenditures = new();
+
+        private string _searchText = string.Empty;
+
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                if (_searchText == value)
+                    return;
+
+                _searchText = value;
+                OnPropertyChanged();
+
+                _ = SearchExpendituresAsync();
+            }
+        }
+
+        public bool IsSearching => !string.IsNullOrWhiteSpace(SearchText);
+
+
+        private async Task SearchExpendituresAsync()
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                RestoreSelectedPeriodExpenditures();
+                return;
+            }
+
+            var allExpenditures = await _expenditureService.GetAllAsync();
+
+            var searchTerm = SearchText.Trim();
+
+            var results = allExpenditures
+                .Where(x =>
+                    x.Summary.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    x.Amount.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    x.Date.ToString("dd/MM/yyyy").Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                .Select(x => new ExpendituresByMonthAndYear
+                {
+                    Id = x.Id,
+                    Date = x.Date.ToDateTime(TimeOnly.MinValue),
+                    Summary = x.Summary,
+                    Amount = x.Amount
+                })
+                .ToList();
+
+            Expenditures.Clear();
+
+            foreach (var expenditure in results)
+                Expenditures.Add(expenditure);
+        }
+
+        private void RestoreSelectedPeriodExpenditures()
+        {
+            Expenditures.Clear();
+
+            foreach (var expenditure in _selectedPeriodExpenditures)
+                Expenditures.Add(expenditure);
         }
 
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
